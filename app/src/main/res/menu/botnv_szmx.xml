@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/szmx_qb"
+        android:checked="true"
+        android:title="全部"></item>
+    <item
+        android:id="@+id/szmx_sr"
+        android:title="收入"></item>
+    <item
+        android:id="@+id/szmx_zc"
+        android:title="支出"></item>
+</menu>

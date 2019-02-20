@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bai"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/dp_per">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:gravity="center_horizontal"
+            android:text="店   铺"
+            android:textColor="@color/bai"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/per_imhead"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginTop="80dp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/per_lin1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:src="@mipmap/dp_pericon" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="24dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="店铺基本信息"
+            android:textColor="@color/hei"
+            android:textSize="13sp" />
+
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="12dp"
+            android:src="@mipmap/fhy" />
+    </LinearLayout>
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+    <LinearLayout
+        android:id="@+id/per_lin3"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:src="@mipmap/per_fk" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="24dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="问题反馈"
+            android:textColor="@color/hei"
+            android:textSize="13sp" />
+
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="12dp"
+            android:src="@mipmap/fhy" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+
+    <LinearLayout
+        android:id="@+id/per_lin4"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:src="@mipmap/per_yhk" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="24dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="银行卡管理"
+            android:textColor="@color/hei"
+            android:textSize="13sp" />
+
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="12dp"
+            android:src="@mipmap/fhy" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+
+    <LinearLayout
+        android:id="@+id/per_lin5"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:src="@mipmap/per_hc" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="24dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="清除缓存"
+            android:textColor="@color/hei"
+            android:textSize="13sp" />
+
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="12dp"
+            android:src="@mipmap/fhy" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+    <LinearLayout
+        android:id="@+id/per_lin6"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:src="@mipmap/per_gx" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="24dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="版本更新"
+            android:textColor="@color/hei"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/per_tebbh"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="24dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
+            android:paddingRight="6dp"
+            android:text="版本更新"
+            android:textColor="@color/hei"
+            android:textSize="13sp" />
+
+
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="12dp"
+            android:src="@mipmap/fhy" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+    <LinearLayout
+        android:id="@+id/per_lin2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:src="@mipmap/per_sz" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="24dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="账号安全设置"
+            android:textColor="@color/hei"
+            android:textSize="13sp" />
+
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="12dp"
+            android:src="@mipmap/fhy" />
+    </LinearLayout>
+
+</LinearLayout>

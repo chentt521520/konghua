@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bai"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/xzfs_tebd"
+        android:layout_width="260dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/round_bkgd"
+        android:gravity="center"
+        android:text="百度地图"
+        android:textColor="@color/bai"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/xzfs_tetx"
+        android:layout_width="260dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/round_bkgd"
+        android:gravity="center"
+        android:text="腾讯地图"
+        android:textColor="@color/bai"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/xzfs_teqx"
+        android:layout_width="260dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/round_bkgd1"
+        android:gravity="center"
+        android:text="取消"
+        android:textColor="@color/zhu"
+        android:textSize="12sp" />
+</LinearLayout>

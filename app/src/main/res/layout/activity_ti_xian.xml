@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bai"
+    android:orientation="vertical"
+    tools:context=".main.per.payandget.per.tixian.tiXian">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/zhu"
+        android:gravity="center"
+        android:text="财务"
+        android:textColor="@color/bai"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/zhu"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:gravity="center_vertical"
+            android:text="总收入"
+            android:textColor="@color/bai"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/txian_teAllNum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="12dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/bai"
+            android:textSize="25sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            android:orientation="horizontal"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="68dp"
+                android:layout_marginRight="24dp"
+                android:layout_weight="1"
+                android:background="@drawable/biankuang_caiwu2"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="6dp"
+                    android:text="已提现"
+                    android:textColor="@color/hei"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/txian_teyitx"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="6dp"
+                    android:textColor="@color/hei"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="68dp"
+                android:layout_weight="1"
+                android:background="@drawable/biankuang_caiwu"
+                android:orientation="vertical"
+                android:paddingLeft="6dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="可提现"
+                    android:textColor="@color/hei"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/txian_tenum1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/hei"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="24dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txian_teszmx"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="24dp"
+            android:layout_weight="1"
+            android:background="@drawable/biankuang_caiwu1"
+            android:gravity="center"
+            android:text="收支明细"
+            android:textColor="@color/zhu"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/txian_tetxls"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="24dp"
+            android:layout_weight="1"
+            android:background="@drawable/biankuang_caiwu1"
+            android:gravity="center"
+            android:text="提现记录"
+            android:textColor="@color/zhu"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/txian_tetx"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/biankuang_caiwu1"
+            android:gravity="center"
+            android:text="申请提现"
+            android:textColor="@color/zhu"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="7dp"
+        android:text="\n您可将余额提现到绑定的银行卡，单笔提现金额不低于1元"
+        android:textColor="@color/da00"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/txian_tesm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="7dp"
+        android:text="\n申请提现后您的款项将在 5个工作日（节假日往后延期）内按照后进先出的原则转入您所绑定的银行卡。以下几种金额不支持自助提现："
+        android:textColor="@color/hei"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/txian_tesm1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="7dp"
+        android:text="1.账户存在异常现象不允许提现操作\n2.账户被冻结不允许提现操作"
+        android:textColor="@color/danhei"
+        android:textSize="14sp" />
+
+</LinearLayout>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bai"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginBottom="17dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="49dp"
+            android:gravity="center_vertical"
+            android:text="产品图片："
+            android:textColor="@color/hei"
+            android:textSize="13sp" />
+
+        <ImageView
+            android:id="@+id/spxqit_im"
+            android:layout_width="36dp"
+            android:layout_height="match_parent"
+            android:src="@mipmap/sctpx" />
+
+        <TextView
+            android:id="@+id/spxqit_tefd"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp"
+            android:gravity="center_vertical"
+            android:text="点击放大 >"
+            android:textColor="@color/zhu"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/spxqit_tenum"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|end"
+            android:paddingRight="12dp"
+            android:text="X 23"
+            android:textColor="@color/hei"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="top"
+            android:paddingLeft="12dp"
+            android:text="花材:  "
+            android:textColor="@color/hei"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/spxqit_tehuacai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="5dp"
+            android:minHeight="30dp"
+            android:paddingRight="12sp"
+            android:paddingBottom="5dp"
+            android:text="配 addksdada而非的撒的·"
+            android:textColor="@color/hei"
+            android:textSize="13dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="top"
+            android:paddingLeft="12dp"
+            android:text="包装:  "
+            android:textColor="@color/hei"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/spxqit_tebaozhuang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="5dp"
+            android:minHeight="30dp"
+            android:paddingRight="12sp"
+            android:paddingBottom="5dp"
+            android:text="配 addksdada而非的撒的·"
+            android:textColor="@color/hei"
+            android:textSize="13dp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:background="#ffdecb" />
+
+</LinearLayout>

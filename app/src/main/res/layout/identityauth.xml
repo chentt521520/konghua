@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bai"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="验证身份"
+        android:textColor="@color/hei"
+        android:textSize="14sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="12dp"
+        android:gravity="center_vertical"
+        android:text="为了您的账号安全，进行敏感操作前须先验证身份。"
+        android:textColor="@color/zhu"
+        android:textSize="12sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginStart="12dp"
+            android:gravity="center_vertical"
+            android:text="验证方式"
+            android:textColor="@color/hei"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginStart="12dp"
+            android:gravity="center_vertical"
+            android:text="手机验证"
+            android:textColor="@color/danhei"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginStart="12dp"
+            android:gravity="center_vertical"
+            android:text="绑定手机"
+            android:textColor="@color/hei"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/sfyz_tepho"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginStart="12dp"
+            android:gravity="center_vertical"
+            android:text="183****4852"
+            android:textColor="@color/danhei"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginStart="12dp"
+            android:gravity="center_vertical"
+            android:text="短信验证码"
+            android:textColor="@color/hei"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/sfyz_edcode"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginStart="6dp"
+            android:digits="0123456789"
+            android:gravity="center"
+            android:background="@color/bai"
+            android:inputType="number"
+            android:maxLength="6"
+            android:hint="6位验证码"
+            android:textColor="@color/danhei"
+            android:textSize="12sp" />
+
+        <com.shijiucheng.konghua.main.per.payandget.per.tixian.TimerTextView
+            android:id="@+id/sfyz_teget"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="4dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="4dp"
+            android:background="@color/zhu"
+            android:gravity="center"
+            android:text="获取验证码"
+            android:textColor="@color/bai"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="12dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/sfyz_teok"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="4dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/biankuang_qb3"
+            android:gravity="center"
+            android:text="确认"
+            android:textColor="@color/zhu"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/sfyz_tequxiao"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="4dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/biankuang_qb3"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@color/hei"
+            android:textSize="11sp" />
+    </LinearLayout>
+</LinearLayout>

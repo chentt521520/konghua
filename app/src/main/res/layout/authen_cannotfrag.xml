@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bai"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="温馨提示"
+        android:textColor="@color/hei"
+        android:textSize="14dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="* 注意，完成以下事项才可以重新提交认证信息哦"
+        android:textColor="@color/hon"
+        android:textSize="11sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+    <TextView
+        android:id="@+id/rzcannot_te1"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/biankuangxia"
+        android:gravity="center"
+        android:text="* 注意，完成以下事项才可以重新提交认证信息哦"
+        android:textColor="@color/hei"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/rzcannot_te2"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/biankuangxia"
+        android:gravity="center"
+        android:text="* 注意，完成以下事项才可以重新提交认证信息哦"
+        android:textColor="@color/hei"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/rzcannot_te3"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/biankuangxia"
+        android:gravity="center"
+        android:text="* 注意，完成以下事项才可以重新提交认证信息哦"
+        android:textColor="@color/hei"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/rzcannot_te4"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/biankuangxia"
+        android:gravity="center"
+        android:text="* 注意，完成以下事项才可以重新提交认证信息哦"
+        android:textColor="@color/hei"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/rzcannot_te5"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/biankuangxia"
+        android:gravity="center"
+        android:text="* 注意，完成以下事项才可以重新提交认证信息哦"
+        android:textColor="@color/hei"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/rzcannot_te6"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/biankuangxia"
+        android:gravity="center"
+        android:text="* 注意，完成以下事项才可以重新提交认证信息哦"
+        android:textColor="@color/hei"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/rzcannot_te7"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/biankuangxia"
+        android:gravity="center"
+        android:text="* 注意，完成以下事项才可以重新提交认证信息哦"
+        android:textColor="@color/hei"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/rzcannot_te8"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/biankuangxia"
+        android:gravity="center"
+        android:text="* 注意，完成以下事项才可以重新提交认证信息哦"
+        android:textColor="@color/hei"
+        android:textSize="11sp" />
+    <TextView
+        android:id="@+id/rzcannot_teok"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/zhu"
+        android:gravity="center"
+        android:text="确定"
+        android:textColor="@color/bai"
+        android:textSize="11sp" />
+
+
+</LinearLayout>

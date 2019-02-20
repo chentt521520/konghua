@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bai"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:gravity="center"
+        android:text="新版本更新提示"
+        android:textColor="@color/hei"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+    <TextView
+        android:id="@+id/bbgx_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="5dp"
+        android:maxLines="6"
+        android:minHeight="40dp"
+        android:paddingLeft="12dp"
+        android:paddingTop="5dp"
+        android:paddingRight="12dp"
+        android:paddingBottom="5dp"
+        android:scrollbars="vertical"
+        android:text="空花网"
+        android:textColor="@color/hei"
+        android:textSize="12sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/bbgx_gx"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/zhu"
+            android:gravity="center"
+            android:minHeight="40dp"
+            android:paddingLeft="12dp"
+            android:paddingEnd="12dp"
+            android:text="更新"
+            android:textColor="@color/bai"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/bbgx_fl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/qianhei"
+            android:gravity="center"
+            android:minHeight="40dp"
+            android:paddingLeft="12dp"
+            android:paddingEnd="12dp"
+            android:text="忽略"
+            android:textColor="@color/hei"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/bbgx_linjdt"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <ProgressBar
+            android:id="@+id/bbgx_progress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:progressDrawable="@drawable/progressbar_preview" />
+
+        <TextView
+            android:id="@+id/bbgx_tejd"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:maxLines="6"
+            android:minHeight="40dp"
+            android:padding="12dp"
+            android:paddingEnd="6dp"
+            android:scrollbars="vertical"
+            android:text="00%"
+            android:textColor="@color/zhu"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

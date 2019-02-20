@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/caozuoit_im"
+        android:layout_width="20dp"
+        android:layout_height="70dp"
+        android:src="@mipmap/addimg" />
+
+    <LinearLayout
+        android:id="@+id/caozuoit_lin"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/caozuoit_te1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="【下单方】进行了订单全额结算"
+            android:textColor="@color/hei"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/caozuoit_te2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="2018-06-28 09:33"
+            android:textColor="@color/danhei"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bai"
+    android:orientation="vertical">
+
+
+    <android.support.v7.widget.ContentFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/addyhkssq_tetit"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="选择省市区"
+            android:textColor="@color/hei"
+            android:textSize="14sp" />
+
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/addyhkssq_teok"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:layout_marginRight="12dp"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="@color/zhu"
+            android:textSize="13sp" />
+
+    </android.support.v7.widget.ContentFrameLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/addyhkssq_recyc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

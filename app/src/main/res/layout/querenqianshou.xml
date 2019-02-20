@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bai"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/qianshou_teqb"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="14dp"
+            android:background="@drawable/biankuangxiaselector_orderdh"
+            android:gravity="center"
+            android:paddingStart="12dp"
+            android:text="确认签收"
+            android:textColor="@color/hei"
+            android:textSize="14sp" />
+
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/qianshou_imclose"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="12dp"
+            android:src="@mipmap/sy" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+    <TextView
+        android:id="@+id/qianshou_tebc"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="12dp"
+        android:gravity="center_vertical"
+        android:text="请勿在没有送达的情况下点击签收，送达前确认签收产生的交易纠纷由接单方承担。"
+        android:textColor="@color/zhu"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:id="@+id/qianshou_linqsper"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/qianshou_teper"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:gravity="center_vertical"
+            android:text="签收人员："
+            android:textColor="@color/hei"
+            android:textSize="13sp" />
+
+        <CheckBox
+            android:id="@+id/checkBox1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="12dp"
+            android:checked="true"
+            android:text="收货人本人签收"
+            android:textColor="@color/hei"
+            android:textSize="12sp" />
+
+        <CheckBox
+            android:id="@+id/checkBox2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="他人代签"
+            android:textColor="@color/hei"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/qianshou_teqsr"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:gravity="center_vertical"
+            android:text="签收时间："
+            android:textColor="@color/hei"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/qianshou_terqq"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="12dp"
+            android:text="请选择日期"
+            android:textColor="@color/hei"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="350dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="240dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/qianshou_teqpz"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="12dp"
+                android:gravity="center_vertical"
+                android:text="签收凭证："
+                android:textColor="@color/hei"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:id="@+id/qianshou_imqs"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginStart="12dp"
+                android:padding="2dp"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/sctpx" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/qianshou_linrq"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="90dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/biankuang_qianshou"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <RelativeLayout
+
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginStart="12dp"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:paddingBottom="10dp"
+                android:paddingTop="3dp">
+
+                <ImageView
+                    android:id="@+id/iv_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:contentDescription="@null"
+                    android:paddingBottom="7dp"
+                    android:paddingTop="7dp"
+                    android:src="@mipmap/fh" />
+
+                <ImageView
+                    android:id="@+id/iv_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:contentDescription="@null"
+                    android:paddingBottom="7dp"
+                    android:paddingTop="7dp"
+                    android:src="@mipmap/fhy" />
+
+                <LinearLayout
+                    android:id="@+id/date_operator_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/date_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:textColor="#666666"
+                        android:textSize="20sp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+
+            <com.shijiucheng.konghua.main.Json_.ordershaixuanview.utils1.utils.WeekDayView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginStart="12dp"
+                android:background="#ffffff" />
+
+            <com.shijiucheng.konghua.main.Json_.ordershaixuanview.utils1.utils.MonthDateView
+                android:id="@+id/rili_date"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginStart="12dp"
+                android:background="#ffffff" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/qianhei1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="5dp"
+                android:background="#ffffff"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="12dp"
+                    android:gravity="center_vertical"
+                    android:text="时间："
+                    android:textColor="@color/hei"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/qianshou_edxiaos"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/biankuang"
+                    android:digits="0123456789"
+                    android:gravity="center"
+                    android:hint="00"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:singleLine="true"
+                    android:textColor="@color/hei" />
+
+                <TextView
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="时"
+                    android:textColor="@color/hei"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/qianshou_edfen"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/biankuang"
+                    android:digits="0123456789"
+                    android:gravity="center"
+                    android:hint="00"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:singleLine="true"
+                    android:textColor="@color/hei" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="分"
+                    android:textColor="@color/hei"
+                    android:textSize="12sp" />
+
+
+            </LinearLayout>
+
+            <TextView
+
+                android:id="@+id/qianshou_teoksj"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/zhu"
+                android:gravity="center"
+                android:text="确定"
+                android:textColor="@color/bai"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/qianshou_teok"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/zhu"
+        android:gravity="center"
+        android:text="确定"
+        android:textColor="@color/bai"
+        android:textSize="13sp" />
+</LinearLayout>

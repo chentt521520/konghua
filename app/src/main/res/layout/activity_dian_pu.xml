@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bai"
+    android:orientation="vertical"
+    tools:context=".renzheng.DianPu">
+
+    <com.shijiucheng.konghua.com.shijiucheng.konghua.app.DaoHang_top
+        android:id="@+id/dianpu_dh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/dianpu_linqy"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/biankuangxia"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/dianpu_teqy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="企业名称:"
+                    android:textColor="@color/hei"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/dianpu_edqy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/bai"
+                    android:gravity="center_vertical"
+                    android:hint="须和营业执照上面的名称保持一致！"
+                    android:maxLength="8"
+                    android:minWidth="150dp"
+                    android:paddingLeft="5sp"
+                    android:singleLine="true"
+                    android:textColor="@color/hei"
+                    android:textCursorDrawable="@drawable/guangbiao"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dianpu_linzch"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/biankuangxia"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/dianpu_tezch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="营业执照注册号:"
+                    android:textColor="@color/hei"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/dianpu_edzch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/bai"
+                    android:digits="01234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
+                    android:gravity="center_vertical"
+                    android:hint="须和营业执照上面的名称保持一致！"
+                    android:maxLength="21"
+                    android:minWidth="150dp"
+                    android:paddingLeft="5sp"
+                    android:singleLine="true"
+                    android:textColor="@color/hei"
+                    android:textCursorDrawable="@drawable/guangbiao"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/dianpu_tesfzt"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:text="营业执照扫描件:"
+                android:textColor="@color/hei"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/dianpu_imzzhao"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_marginRight="5dp"
+                android:src="@mipmap/yyzz" />
+
+            <TextView
+                android:id="@+id/dianzhu_tezzts"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:lineSpacingExtra="4dp"
+                android:gravity="center_vertical"
+                android:text="*营业执照需为jpg、png格式，且大小不超过5M，须保证营业执照扫描件完整且信息清晰可见！"
+                android:textColor="@color/zhu"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/dianzhu_temmzx"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="12dp"
+                android:text="店铺门面照"
+                android:textColor="@color/hei" />
+
+            <LinearLayout
+                android:id="@+id/pinjia_lintp"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/pinjia_retp1"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/pinjia_imtp1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingRight="7dp"
+                        android:paddingTop="5dp"
+                        android:src="@mipmap/sctpx" />
+
+                    <ImageView
+                        android:id="@+id/pinjia_imtp1de"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:src="@mipmap/detel"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/pinjia_retp2"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/pinjia_imtp2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingRight="7dp"
+                        android:paddingTop="5dp"
+                        android:src="@mipmap/sctpx" />
+
+                    <ImageView
+                        android:id="@+id/pinjia_imtp2de"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:src="@mipmap/detel"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/pinjia_retp3"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:id="@+id/pinjia_imtp3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingRight="7dp"
+                        android:paddingTop="5dp"
+                        android:src="@mipmap/sctpx" />
+
+                    <ImageView
+                        android:id="@+id/pinjia_imtp3de"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignParentRight="true"
+                        android:src="@mipmap/detel"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/dianpu_teok"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/zhu"
+        android:gravity="center"
+        android:text="保存"
+        android:textColor="@color/bai" />
+
+</LinearLayout>

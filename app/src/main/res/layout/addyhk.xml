@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bai"
+    android:orientation="vertical">
+
+
+    <com.shijiucheng.konghua.com.shijiucheng.konghua.app.DaoHang_top
+        android:id="@+id/addyhk_tit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="12dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="持卡人姓名："
+            android:textColor="@color/hei"
+            android:textSize="13sp" />
+
+        <EditText
+            android:id="@+id/addyhk_edname"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:hint="请输入开户人姓名"
+            android:maxLength="14"
+            android:textColor="@color/hei"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="12dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="12dp"
+            android:gravity="center"
+            android:text="开户行："
+            android:textColor="@color/hei"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/addyhk_edyhkname"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:enabled="true"
+            android:gravity="center_vertical"
+            android:maxLength="21"
+            android:singleLine="true"
+            android:text="请选择开户类型"
+            android:textColor="@color/hei"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="12dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="银行卡号："
+            android:textColor="@color/hei"
+            android:textSize="13sp" />
+
+        <EditText
+            android:id="@+id/addyhk_edyhk"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:hint="请输入银行卡号"
+            android:inputType="number"
+            android:maxLength="30"
+            android:singleLine="true"
+            android:textColor="@color/hei"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="12dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="开户地区："
+            android:textColor="@color/hei"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/addyhk_spindizhi"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:maxLength="21"
+            android:singleLine="true"
+            android:spinnerMode="dropdown"
+            android:text="请选择开户行地区"
+            android:textColor="@color/hei"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="12dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="开户支行："
+            android:textColor="@color/hei"
+            android:textSize="13sp" />
+
+        <EditText
+            android:id="@+id/addyhk_edkhh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:hint="如：中国工商银行北京朝阳芳园里支行"
+            android:maxLength="21"
+            android:singleLine="true"
+            android:textColor="@color/hei"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="24dp"
+        android:lineSpacingExtra="8dp"
+        android:text="如填写错误的开户行信息可能会导致提现不能到账或到账时间较长。若无法确定开户行名称，可致电银行客服。"
+        android:textColor="@color/hon"
+        android:textSize="11sp" />
+
+
+    <TextView
+        android:id="@+id/addyhk_teok"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="6dp"
+        android:background="@color/zhu"
+        android:gravity="center"
+        android:text="确认绑定"
+        android:textColor="@color/bai"
+        android:textSize="11sp" />
+</LinearLayout>

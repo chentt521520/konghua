@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bai"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="请求涨价"
+        android:textColor="@color/hei"
+        android:textSize="14dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+    <TextView
+        android:id="@+id/zhangjia_jine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginBottom="12dp"
+        android:gravity="center_vertical"
+        android:singleLine="true"
+        android:text="目前订单金额：100.00"
+        android:textColor="@color/hei"
+        android:textSize="12dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginBottom="14dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="期望订单金额："
+            android:textColor="@color/hei"
+            android:textSize="12dp" />
+
+        <EditText
+            android:id="@+id/zhangjia_edit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/biankuang"
+            android:digits="0123456789"
+            android:gravity="center_vertical"
+            android:hint="请输入大于当前订单金额"
+            android:inputType="number"
+            android:maxLength="7"
+            android:paddingLeft="12dp"
+            android:textColor="@color/hei"
+            android:textSize="12dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/zhangjia_teok"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/zhu"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="@color/bai"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/zhangjia_tequxiao"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/danhei"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@color/bai"
+            android:textSize="12dp" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bai"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/orderre_linddbh"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/orderre_tebh"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="订单编号:"
+            android:textColor="@color/hei" />
+
+        <TextView
+            android:id="@+id/orderre_tebh1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="123131432134234"
+            android:textColor="@color/hei" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/bai" />
+
+        <TextView
+            android:id="@+id/orderre_tezt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="待接单"
+            android:textColor="@color/hei" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/orderre_linxdsj"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/orderre_texdsj"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="下单时间:"
+            android:textColor="@color/hei" />
+
+        <TextView
+            android:id="@+id/orderre_texdsj1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="2018.03.09下午"
+            android:textColor="@color/hei" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/orderre_teprice"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="￥133.66"
+            android:textColor="@color/zhu" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/orderre_tedz"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:singleLine="true"
+        android:text="广东省 广州市 白云区 清湖村大布路106号（隆旺工业园）C栋四楼"
+        android:textColor="@color/hei" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/orderre_reit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/orderre_linbq"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/bai" />
+
+        <TextView
+            android:id="@+id/orderre_tehk"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/biankuang"
+            android:gravity="center"
+            android:text="贺"
+            android:textColor="@color/hei" />
+
+        <TextView
+            android:id="@+id/orderre_tebz"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/biankuang"
+            android:gravity="center"
+            android:text="备"
+            android:textColor="@color/hei" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/orderre_lincz"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/bai" />
+
+        <TextView
+            android:id="@+id/orderre_tejj"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/biankuang"
+            android:gravity="center"
+            android:text="拒绝接单"
+            android:textColor="@color/hei" />
+
+        <TextView
+            android:id="@+id/orderre_tejd"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/biankuang"
+            android:gravity="center"
+            android:text="立即接单"
+            android:textColor="@color/hei" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/qianhei" />
+
+</LinearLayout>

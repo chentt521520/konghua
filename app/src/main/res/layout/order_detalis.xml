@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bai"
+    android:orientation="vertical"
+    tools:context=".main.order.Order_detalis">
+
+    <com.shijiucheng.konghua.com.shijiucheng.konghua.app.DaoHang_top
+        android:id="@+id/oddtails_dh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/ddxq_refrag1"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="#fff123">
+
+                <fragment
+                    android:id="@+id/ddxq_viewpagerlunbos"
+                    android:name="com.shijiucheng.konghua.com.shijiucheng.konghua.app.lunbo.CycleViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:descendantFocusability="blocksDescendants"
+                    tools:layout="@layout/view_cycle_viewpager_contet" />
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/order_recycy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/ddxq_teddxx"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/qianhei1"
+                android:gravity="center|start"
+                android:lineSpacingExtra="5dp"
+                android:paddingLeft="12dp"
+                android:text="订单信息"
+                android:textColor="@color/hei"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/ddxq_teddbh"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center|start"
+                android:lineSpacingExtra="5dp"
+                android:text="订单编号：2018032267240"
+                android:textColor="@color/hei"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/qianhei" />
+
+            <TextView
+                android:id="@+id/ddxq_teddzt"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center|start"
+                android:lineSpacingExtra="5dp"
+                android:text="订单状态：接单方待接单"
+                android:textColor="@color/hei"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/qianhei" />
+
+            <TextView
+                android:id="@+id/ddxq_teddxdtime"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center|start"
+                android:lineSpacingExtra="5dp"
+                android:text="下单时间：2018-06-28 09:31"
+                android:textColor="@color/hei"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/qianhei" />
+
+            <TextView
+                android:id="@+id/ddxq_teddprice"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center|start"
+                android:lineSpacingExtra="5dp"
+                android:text="订单价格：¥402.00"
+                android:textColor="@color/hei"
+                android:textSize="12sp" />
+
+
+            <TextView
+                android:id="@+id/ddxq_teddpsxx"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/qianhei1"
+                android:gravity="center|start"
+                android:lineSpacingExtra="5dp"
+                android:paddingLeft="12dp"
+                android:text="配送信息"
+                android:textColor="@color/hei"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/ddxq_tepssj"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:text="配送时间    按时段2018-03-22日下午 不限时段"
+                android:textColor="@color/hei"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/qianhei" />
+
+            <TextView
+                android:id="@+id/ddxq_teshr"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:text="收货人姓名	冯绸妹"
+                android:textColor="@color/hei"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/qianhei" />
+
+            <TextView
+                android:id="@+id/ddxq_teshrph"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:text="收货人电话	1811121323"
+                android:textColor="@color/hei"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/qianhei" />
+
+            <LinearLayout
+                android:id="@+id/ddxq_lindz"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ddxq_tedz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:text="收货人地址     "
+                    android:textColor="@color/hei"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/ddxq_tedz1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:text="广东省 广州市 白云区 清湖村大布路106号（隆旺工业园）C栋四楼"
+                    android:textColor="@color/hei"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/qianhei" />
+
+            <LinearLayout
+                android:id="@+id/ddxq_linpsjl"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ddxq_tepsjl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:text="配送距离约     "
+                    android:textColor="@color/hei"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/ddxq_tepsjl1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:text="1225.60公里"
+                    android:textColor="@color/hei"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:id="@+id/ddxq_imdt"
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/sfz1" />
+
+                <TextView
+                    android:id="@+id/ddxq_teckdt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="12dp"
+                    android:gravity="center_vertical"
+                    android:text="查看地图"
+                    android:textColor="@color/zhu"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/ddxq_tehk"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/qianhei1"
+                android:gravity="center_vertical"
+                android:paddingLeft="12dp"
+                android:text="贺卡信息     "
+                android:textColor="@color/hei"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/ddxq_tehk1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:text="永远永远爱你。。。。。。。。。。。 猫公"
+                android:textColor="@color/hei"
+                android:textSize="12sp" />
+
+
+            <TextView
+                android:id="@+id/ddxq_tebz"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/qianhei1"
+                android:gravity="center_vertical"
+                android:paddingLeft="12dp"
+                android:text="订单备注     "
+                android:textColor="@color/hei"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/ddxq_tebz1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:text="如果联系人打不通可打18200810178"
+                android:textColor="@color/hei"
+                android:textSize="12sp" />
+
+
+            <TextView
+                android:id="@+id/ddxq_tebztp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/qianhei1"
+                android:gravity="center_vertical"
+                android:paddingLeft="12dp"
+                android:text="包扎好的鲜花图片"
+                android:textColor="@color/hei"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:id="@+id/ddxq_linbztp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ddxq_pstp1"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/addimg" />
+
+                <ImageView
+                    android:id="@+id/ddxq_pstp2"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/addimg" />
+
+                <ImageView
+                    android:id="@+id/ddxq_pstp3"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/addimg" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/ddxq_teqs"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/qianhei1"
+                android:gravity="center_vertical"
+                android:paddingLeft="12dp"
+                android:text="订单签收信息"
+                android:textColor="@color/hei"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/ddxq_teddqstime"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center|start"
+                android:lineSpacingExtra="5dp"
+                android:text="签收时间：2018-06-28 09:31"
+                android:textColor="@color/hei"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/qianhei1" />
+
+            <TextView
+                android:id="@+id/ddxq_teddqsren"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center|start"
+                android:lineSpacingExtra="5dp"
+                android:text="签收人"
+                android:textColor="@color/hei"
+                android:textSize="12sp" />
+
+
+            <TextView
+                android:id="@+id/ddxq_teczls"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/qianhei1"
+                android:gravity="center_vertical"
+                android:paddingLeft="12dp"
+                android:text="操作历史"
+                android:textColor="@color/hei"
+                android:textSize="14sp" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/ddxq_recyc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/ddxq_linbot"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/ddxq_tecz1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="3dp"
+            android:background="@color/zhu"
+            android:gravity="center_vertical"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingStart="12dp"
+            android:textColor="@color/bai"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/ddxq_tecz2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="3dp"
+            android:background="@color/zhu"
+            android:gravity="center_vertical"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingStart="12dp"
+            android:textColor="@color/bai"
+            android:textSize="14sp" />
+    </LinearLayout>
+</LinearLayout>

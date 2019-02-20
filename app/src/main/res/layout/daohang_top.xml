@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/dh_lintop"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/zhu">
+
+        <ImageView
+            android:id="@+id/dh_imreturn"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/fh" />
+
+        <TextView
+            android:id="@+id/dh_tetit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="填写店主信息"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/dh_im"
+            android:layout_width="35dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"
+            android:src="@mipmap/tjpic" />
+    </RelativeLayout>
+</LinearLayout>

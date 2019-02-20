@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/qianhei1"
+    android:orientation="vertical"
+    tools:context=".renzheng.LianXiRen">
+
+    <com.shijiucheng.konghua.com.shijiucheng.konghua.app.DaoHang_top
+        android:id="@+id/lxr_dh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/round_bglxr"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/lxr_tets1"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="12dp"
+                    android:text="联系人1:(必填)"
+                    android:textColor="@color/hei"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:id="@+id/lxr_lin1"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/biankuangxia"
+                    android:orientation="horizontal"
+                    android:paddingLeft="12dp">
+
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="6dp"
+                        android:src="@mipmap/lxrlxr" />
+
+                    <TextView
+                        android:id="@+id/lxr_teqy1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="姓名："
+                        android:textColor="@color/hei"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/lxr_edqy1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:background="@color/bai"
+                        android:gravity="center_vertical"
+                        android:hint="请输入联系人姓名"
+                        android:maxLength="8"
+                        android:minWidth="150dp"
+                        android:paddingLeft="5sp"
+                        android:singleLine="true"
+                        android:textColor="@color/hei"
+                        android:textCursorDrawable="@drawable/guangbiao"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@color/qianhei" />
+
+                <LinearLayout
+                    android:id="@+id/lxr_linpho"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/biankuangxia"
+                    android:orientation="horizontal"
+                    android:paddingLeft="12dp">
+
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="6dp"
+                        android:src="@mipmap/lxrpho" />
+
+                    <TextView
+                        android:id="@+id/lxr_tepho"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="手机："
+                        android:textColor="@color/hei"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/lxr_edpho"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:background="@color/bai"
+                        android:digits="0123456789-"
+                        android:gravity="center_vertical"
+                        android:hint="请输入手机号"
+                        android:inputType="number"
+                        android:maxLength="11"
+                        android:minWidth="150dp"
+                        android:paddingLeft="5sp"
+                        android:singleLine="true"
+                        android:textColor="@color/hei"
+                        android:textCursorDrawable="@drawable/guangbiao"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@color/qianhei" />
+
+                <LinearLayout
+                    android:id="@+id/lxr_linqq"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/biankuangxia"
+                    android:orientation="horizontal"
+                    android:paddingLeft="12dp">
+
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="6dp"
+                        android:src="@mipmap/lxrqq" />
+
+                    <TextView
+                        android:id="@+id/lxr_teqq"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="QQ："
+                        android:textColor="@color/hei"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/lxr_edqq"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:background="@color/bai"
+                        android:digits="0123456789"
+                        android:gravity="center_vertical"
+                        android:hint="请输入qq号"
+                        android:inputType="number"
+                        android:maxLength="11"
+                        android:minWidth="150dp"
+                        android:paddingLeft="5sp"
+                        android:singleLine="true"
+                        android:textColor="@color/hei"
+                        android:textCursorDrawable="@drawable/guangbiao"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="12dp"
+                    android:background="@drawable/round_bglxr1" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginStart="12dp"
+                android:background="@drawable/round_bglxr"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/lxr_tets2"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="12dp"
+                    android:gravity="center_vertical"
+                    android:text="联系人2:(选填)"
+                    android:textColor="@color/hei"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:id="@+id/lxr_lin2"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@drawable/biankuangxia"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="6dp"
+                        android:src="@mipmap/lxrlxr" />
+
+                    <TextView
+                        android:id="@+id/lxr_teqy2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="姓名："
+                        android:textColor="@color/hei"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/lxr_edqy2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:background="@color/bai"
+                        android:gravity="center_vertical"
+                        android:hint="请输入联系人姓名"
+                        android:maxLength="8"
+                        android:minWidth="150dp"
+                        android:paddingLeft="5sp"
+                        android:singleLine="true"
+                        android:textColor="@color/hei"
+                        android:textCursorDrawable="@drawable/guangbiao"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@color/qianhei" />
+
+                <LinearLayout
+                    android:id="@+id/lxr_linpho2"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@drawable/biankuangxia"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="6dp"
+                        android:src="@mipmap/lxrpho" />
+
+                    <TextView
+                        android:id="@+id/lxr_tepho2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="手机："
+                        android:textColor="@color/hei"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/lxr_edpho2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:background="@color/bai"
+                        android:digits="0123456789-"
+                        android:gravity="center_vertical"
+                        android:hint="请输入手机号"
+                        android:inputType="number"
+                        android:maxLength="11"
+                        android:minWidth="150dp"
+                        android:paddingLeft="5sp"
+                        android:singleLine="true"
+                        android:textColor="@color/hei"
+                        android:textCursorDrawable="@drawable/guangbiao"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@color/qianhei" />
+
+                <LinearLayout
+                    android:id="@+id/lxr_linqq2"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@drawable/biankuangxia"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="6dp"
+                        android:src="@mipmap/lxrqq" />
+
+                    <TextView
+                        android:id="@+id/lxr_teqq2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="QQ："
+                        android:textColor="@color/hei"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/lxr_edqq2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:background="@color/bai"
+                        android:digits="0123456789"
+                        android:gravity="center_vertical"
+                        android:hint="请输入qq号"
+                        android:inputType="number"
+                        android:maxLength="11"
+                        android:minWidth="150dp"
+                        android:paddingLeft="5sp"
+                        android:singleLine="true"
+                        android:textColor="@color/hei"
+                        android:textCursorDrawable="@drawable/guangbiao"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="12dp"
+                    android:background="@drawable/round_bglxr1" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginStart="12dp"
+                android:background="@drawable/round_bglxr"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/lxr_tets3"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="12dp"
+                    android:gravity="center_vertical"
+                    android:text="联系人3:(选填)"
+                    android:textColor="@color/hei"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:id="@+id/lxr_lin3"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@drawable/biankuangxia"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="6dp"
+                        android:src="@mipmap/lxrlxr" />
+
+                    <TextView
+                        android:id="@+id/lxr_teqy3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="姓名："
+                        android:textColor="@color/hei"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/lxr_edqy3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:background="@color/bai"
+                        android:gravity="center_vertical"
+                        android:hint="请输入联系人姓名"
+                        android:maxLength="8"
+                        android:minWidth="150dp"
+                        android:paddingLeft="5sp"
+                        android:singleLine="true"
+                        android:textColor="@color/hei"
+                        android:textCursorDrawable="@drawable/guangbiao"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@color/qianhei" />
+
+                <LinearLayout
+                    android:id="@+id/lxr_linpho3"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@drawable/biankuangxia"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="6dp"
+                        android:src="@mipmap/lxrpho" />
+
+                    <TextView
+                        android:id="@+id/lxr_tepho3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="手机："
+                        android:textColor="@color/hei"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/lxr_edpho3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:background="@color/bai"
+                        android:digits="0123456789-"
+                        android:gravity="center_vertical"
+                        android:hint="请输入手机号"
+                        android:inputType="number"
+                        android:maxLength="11"
+                        android:minWidth="150dp"
+                        android:paddingLeft="5sp"
+                        android:singleLine="true"
+                        android:textColor="@color/hei"
+                        android:textCursorDrawable="@drawable/guangbiao"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@color/qianhei" />
+
+                <LinearLayout
+                    android:id="@+id/lxr_linqq3"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@drawable/biankuangxia"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="6dp"
+                        android:src="@mipmap/lxrqq" />
+
+                    <TextView
+                        android:id="@+id/lxr_teqq3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="QQ："
+                        android:textColor="@color/hei"
+                        android:textSize="12sp" />
+
+                    <EditText
+                        android:id="@+id/lxr_edqq3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="2dp"
+                        android:background="@color/bai"
+                        android:digits="0123456789"
+                        android:gravity="center_vertical"
+                        android:hint="请输入qq号"
+                        android:inputType="number"
+                        android:maxLength="11"
+                        android:minWidth="150dp"
+                        android:paddingLeft="5sp"
+                        android:singleLine="true"
+                        android:textColor="@color/hei"
+                        android:textCursorDrawable="@drawable/guangbiao"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="12dp"
+                    android:background="@drawable/round_bglxr1" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/lxr_teok"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="12dp"
+        android:background="@color/zhu"
+        android:gravity="center"
+        android:text="保存"
+        android:layout_marginBottom="5dp"
+        android:textColor="@color/bai" />
+
+</LinearLayout>

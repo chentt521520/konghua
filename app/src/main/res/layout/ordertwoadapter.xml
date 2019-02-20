@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ordertwoit_lin"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bai"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/ordertwoit_tebh"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center_vertical"
+            android:paddingLeft="12dp"
+            android:singleLine="true"
+            android:text="0"
+            android:textColor="@color/hei777"
+            android:textSize="13dp" />
+
+        <TextView
+
+            android:id="@+id/ordertwoit_tezt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="12dp"
+            android:text="0"
+            android:textColor="@color/hei"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/ordertwoit_texq"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:gravity="center_vertical|right"
+            android:paddingLeft="12dp"
+            android:paddingRight="12sp"
+            android:text="查看详情"
+            android:textColor="@color/hei"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/ordertwoit_tetime"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:paddingLeft="12dp"
+            android:text="0"
+            android:textColor="@color/hei"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/ordertwoit_tetime1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="12dp"
+            android:text="0"
+            android:textColor="@color/hei"
+            android:textSize="13dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/ordertwoit_teprice"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|right"
+            android:paddingLeft="12dp"
+            android:paddingRight="12sp"
+            android:text="0"
+            android:textColor="@color/hei"
+            android:textSize="13dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="12dp"
+            android:text="配送地址:  "
+            android:textColor="@color/hei"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/ordertwoit_tedizhi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="4dp"
+            android:minHeight="30dp"
+            android:paddingRight="12sp"
+            android:paddingBottom="5dp"
+            android:text="配 addksdada而非的撒的·"
+            android:textColor="@color/hei"
+            android:textSize="13dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/ordertwoit_teshren"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:gravity="center_vertical"
+            android:paddingLeft="12dp"
+            android:text="收货人："
+            android:textColor="@color/hei"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/ordertwoit_tepho"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="12dp"
+            android:text="137234234234"
+            android:textColor="@color/hei"
+            android:textSize="13dp" />
+
+        <ImageView
+            android:id="@+id/ordertwoit_impho"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:paddingLeft="12dp"
+            android:paddingTop="5dp"
+            android:paddingRight="12sp"
+            android:paddingBottom="5dp"
+            android:src="@mipmap/ordertwopho"
+            android:textColor="@color/hei"
+            android:textSize="13dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/ordertwoit_tetxjs"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_gravity="right"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/zhu"
+        android:gravity="center"
+        android:text="提醒下单方结算"
+        android:textColor="@color/bai"
+        android:textSize="13sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#ffdecb" />
+
+</LinearLayout>

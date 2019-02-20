@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="guide">#e6ebf4</color>
+    <color name="zhu">#ec702d</color>
+    <color name="danhei">#999999</color>
+    <color name="qianhei">#cccccc</color>
+    <color name="qianhei1">#f4f4f4</color>
+    <color name="hei">#666666</color>
+    <color name="hei777">#777777</color>
+    <color name="da00">#da0000</color>
+    <color name="bai">#ffffff</color>
+    <color name="eee">#eeeeee</color>
+    <color name="white">#ffffff</color>
+    <color name="qianheilxr">#f9f9f9</color>
+
+    <color name="hon">#FF4081</color>
+    <color name="qianlan">#d8e9f1</color>
+    <color name="quan">#b1b0b0</color>
+</resources>

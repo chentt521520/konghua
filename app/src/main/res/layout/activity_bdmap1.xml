@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bai"
+    tools:context=".renzheng.BDMap">
+
+    <RelativeLayout
+        android:id="@+id/map_lintop"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/zhu">
+
+        <ImageView
+            android:id="@+id/map_imreturn"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/fh" />
+
+        <TextView
+            android:id="@+id/map_tetit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="查看配送距离"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+    <com.baidu.mapapi.map.MapView
+        android:visibility="invisible"
+        android:id="@+id/bmapViewxx"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</LinearLayout>

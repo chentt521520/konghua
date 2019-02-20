@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bai"
+    android:orientation="vertical"
+    tools:context=".renzheng.DianZhu">
+
+    <com.shijiucheng.konghua.com.shijiucheng.konghua.app.DaoHang_top
+        android:id="@+id/dianzu_dh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/dianzhu_linxm"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/biankuangxia"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/dianzhu_texm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="姓名:"
+                    android:textColor="@color/hei"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/dianzhu_edxm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/bai"
+                    android:gravity="center_vertical"
+                    android:hint="一经认证成功，不能更换！"
+                    android:maxLength="8"
+                    android:minWidth="150dp"
+                    android:paddingLeft="5sp"
+                    android:singleLine="true"
+                    android:textColor="@color/hei"
+                    android:textCursorDrawable="@drawable/guangbiao"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dianzhu_linpho"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/biankuangxia"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/dianzhu_tepho"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="手机号:"
+                    android:textColor="@color/hei"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/dianzhu_edpho"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/bai"
+                    android:digits="0123456789"
+                    android:gravity="center_vertical"
+                    android:hint="一经认证成功，不能更换！"
+                    android:inputType="number"
+                    android:maxLength="11"
+                    android:minWidth="150dp"
+                    android:paddingLeft="5sp"
+                    android:singleLine="true"
+                    android:textColor="@color/hei"
+                    android:textCursorDrawable="@drawable/guangbiao"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dianzhu_linqq"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/biankuangxia"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/dianzhu_teqq"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="QQ:"
+                    android:textColor="@color/hei"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/dianzhu_edqq"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/bai"
+                    android:gravity="center_vertical"
+                    android:hint="一经认证成功，不能更换！"
+                    android:inputType="number"
+                    android:maxLength="11"
+                    android:minWidth="150dp"
+                    android:paddingLeft="5sp"
+                    android:singleLine="true"
+                    android:textColor="@color/hei"
+                    android:textCursorDrawable="@drawable/guangbiao"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dianzhu_linsfz"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/biankuangxia"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/dianzhu_tesfz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="身份证:"
+                    android:textColor="@color/hei"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/dianzhu_edsfz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/bai"
+                    android:digits="0123456789X"
+                    android:gravity="center_vertical"
+                    android:hint="一经认证成功，不能更换！"
+                    android:inputType="number"
+                    android:maxLength="18"
+                    android:minWidth="150dp"
+                    android:paddingLeft="5sp"
+                    android:singleLine="true"
+                    android:textColor="@color/hei"
+                    android:textCursorDrawable="@drawable/guangbiao"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/dianzhu_tesfzt"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:text="店主身份证照:"
+                android:textColor="@color/hei"
+                android:textSize="12sp" />
+
+
+            <LinearLayout
+                android:id="@+id/dianzhu_linsfztp"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/dianzhu_imsfz1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:src="@mipmap/zm" />
+
+                <ImageView
+                    android:id="@+id/dianzhu_imsfz2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:src="@mipmap/fm" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dianzhu_linsfztp1"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/dianzhu_imsfz11"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:src="@mipmap/sfz1" />
+
+                <ImageView
+                    android:id="@+id/dianzhu_imsfz21"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:src="@mipmap/sfz2" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/dianzhu_tesfzt1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:text="证件照需为jpg、png、gif格式，且大小不超过5M，须同时拍到人脸与身份证上的信息且保证信息清晰可见！"
+                android:textColor="@color/hei"
+                android:textSize="10sp" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/dianzhu_teok"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/zhu"
+        android:gravity="center"
+        android:text="保存"
+        android:textColor="@color/bai" />
+</LinearLayout>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bai"
+    android:orientation="vertical"
+    tools:context=".Login_konghua">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@mipmap/loginbac"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/login_imhead"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="65dp"
+            android:layout_marginBottom="20dp"
+            android:src="@mipmap/appicon" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="欢迎加入花脉!"
+            android:textColor="@color/bai"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/biankuang_login"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:gravity="center_vertical"
+            android:src="@mipmap/login1" />
+
+        <EditText
+            android:id="@+id/login_edZHn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="请输入账号"
+            android:maxLength="20"
+            android:paddingStart="25dp"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:textColor="@color/hei"
+            android:textColorHint="@color/danhei"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/biankuang_login"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:gravity="center_vertical"
+            android:src="@mipmap/login2" />
+
+        <EditText
+            android:id="@+id/login_edmmn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:digits="01234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
+            android:gravity="center_vertical"
+            android:hint="请输入密码"
+            android:inputType="textPassword"
+            android:maxLength="20"
+            android:paddingStart="25dp"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:textColor="@color/hei"
+            android:textColorHint="@color/danhei"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/login_te"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/biankuang_login1"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="立即登录"
+        android:textColor="@color/bai" />
+
+</LinearLayout>

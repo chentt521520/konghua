@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bai"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/jujueyy_lin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/jujueyy_im"
+            android:layout_width="15dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/yuan_selsec" />
+
+        <TextView
+            android:id="@+id/jujueyy_te"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="6dp"
+            android:gravity="center_vertical"
+            android:text="无法备齐货物"
+            android:textColor="@color/hei"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</LinearLayout>

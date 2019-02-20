@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bai"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/order_teqb"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="14dp"
+            android:background="@drawable/biankuangxiaselector_orderdh"
+            android:gravity="center"
+            android:paddingStart="12dp"
+            android:text="系统提示"
+            android:textColor="@color/hei"
+            android:textSize="14sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/jiedan_imclose"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="12dp"
+            android:src="@mipmap/sy" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+    <TextView
+        android:id="@+id/jiedan_texx"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginRight="14dp"
+        android:background="@drawable/biankuangxiaselector_orderdh"
+        android:gravity="center_vertical|start"
+        android:lineSpacingExtra="5dp"
+        android:paddingStart="12dp"
+        android:text="您接收该笔订单后不可撤单，确认继续？"
+        android:textColor="@color/hei"
+        android:textSize="12sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/order_jdteok"
+            android:layout_width="0dp"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:background="@drawable/biankuang_qb"
+            android:gravity="center"
+            android:text="确认接单"
+            android:textColor="@color/bai"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/order_jdtequxiao"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="bottom"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:text="取消"
+            android:background="@drawable/biankuang_qb1"
+            android:textColor="@color/hei"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

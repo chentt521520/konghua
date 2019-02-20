@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bai"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rili_retop"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+
+        <TextView
+            android:id="@+id/rili_teddbh"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center_vertical"
+            android:text="选择日期"
+            android:textColor="@color/hei"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/rili_teok"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"
+            android:gravity="center_vertical"
+            android:text="确定"
+            android:textColor="@color/zhu"
+            android:textSize="13sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/danhei" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#ffffff"
+        android:gravity="center_vertical"
+        android:paddingTop="3dp"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:id="@+id/iv_left"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:contentDescription="@null"
+            android:paddingTop="9dp"
+            android:paddingBottom="9dp"
+            android:src="@mipmap/fhz" />
+
+        <ImageView
+            android:id="@+id/iv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:contentDescription="@null"
+            android:paddingTop="9dp"
+            android:paddingBottom="9dp"
+            android:src="@mipmap/fhy" />
+
+        <LinearLayout
+            android:id="@+id/date_operator_ll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignStart="@+id/iv_left"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="0dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/date_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textColor="#666666"
+                android:textSize="13sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <com.shijiucheng.konghua.main.Json_.ordershaixuanview.utils1.utils.WeekDayView
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+    <com.shijiucheng.konghua.main.Json_.ordershaixuanview.utils1.utils.MonthDateView
+        android:id="@+id/rili_date"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+</LinearLayout>

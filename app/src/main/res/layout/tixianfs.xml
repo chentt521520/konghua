@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bai"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:lineSpacingExtra="7dp"
+        android:text="选择提现方式"
+        android:textColor="@color/hei"
+        android:textSize="14sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+    <TextView
+        android:id="@+id/sqtx_tezfb"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="12dp"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="7dp"
+        android:text="支付宝提现"
+        android:textColor="@color/hei"
+        android:textSize="12sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+    <TextView
+        android:id="@+id/sqtx_teyhk"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="12dp"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="7dp"
+        android:text="银行卡提现"
+        android:textColor="@color/hei"
+        android:textSize="12sp" />
+
+</LinearLayout>

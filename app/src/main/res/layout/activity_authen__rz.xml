@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bai"
+    android:orientation="vertical"
+    tools:context=".authen_RZ">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/renzhen_teTit"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:gravity="center"
+                android:text="没有店铺  申请开店"
+                android:textColor="@color/zhu"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/renzhen_tets"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingLeft="12dp"
+                android:paddingBottom="12dp"
+                android:text="认证失败,点击查看原因"
+                android:textColor="@color/zhu"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/renzhen_Lin"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:background="@color/qianlan"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/renzhen_Imdz"
+                    android:layout_width="21dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:src="@mipmap/smrz" />
+
+                <TextView
+                    android:id="@+id/renzhen_Tedz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="实名认证"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/renzhen_Tedz1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:text="(未填写)"
+                    android:textColor="@color/zhu"
+                    android:textSize="11sp"
+                    android:visibility="invisible" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/renzhen_Tedzgo"
+                    android:layout_width="91dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/zhu"
+                    android:gravity="center"
+                    android:text="去填写 >"
+                    android:textColor="@color/bai"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:id="@+id/renzhen_Lindp"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginTop="23dp"
+                android:background="@color/qianlan"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/renzhen_Imdp"
+                    android:layout_width="18dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="21dp"
+                    android:src="@mipmap/dprz" />
+
+                <TextView
+                    android:id="@+id/renzhen_Tedp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="店铺认证"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/renzhen_Tedp1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:text="(未填写)"
+                    android:textColor="@color/zhu"
+                    android:textSize="11sp"
+                    android:visibility="invisible" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/renzhen_Tedpgo"
+                    android:layout_width="91dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/zhu"
+                    android:gravity="center"
+                    android:text="去填写 >"
+                    android:textColor="@color/bai"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/renzhen_Lindplxr"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginTop="23dp"
+                android:background="@color/qianlan"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/renzhen_Imdplxr"
+                    android:layout_width="21dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:src="@mipmap/dpxx" />
+
+                <TextView
+                    android:id="@+id/renzhen_Tedplxr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
+                    android:text="店铺信息"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/renzhen_Tedplxr1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:gravity="center_vertical"
+                    android:text="(未填写)"
+                    android:textColor="@color/zhu"
+                    android:textSize="11sp"
+                    android:visibility="invisible" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/renzhen_Tedplxrgo"
+                    android:layout_width="91dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/zhu"
+                    android:gravity="center"
+                    android:text="去填写 >"
+                    android:textColor="@color/bai"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/renzhen_Lindpwz"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginTop="23dp"
+                android:background="@color/qianlan"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/renzhen_Imdpwz"
+                    android:layout_width="21dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="18dp"
+                    android:src="@mipmap/dplxr" />
+
+                <TextView
+                    android:id="@+id/renzhen_Tedpwz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="店铺联系人"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/renzhen_Tedpwz1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center_vertical"
+                    android:text="(未填写)"
+                    android:textColor="@color/zhu"
+                    android:textSize="11sp"
+                    android:visibility="invisible" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/renzhen_Tedpwzgo"
+                    android:layout_width="91dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/zhu"
+                    android:gravity="center"
+                    android:text="去填写 >"
+                    android:textColor="@color/bai"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/renzhen_Teok"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="53dp"
+                android:layout_marginTop="51dp"
+                android:layout_marginRight="53dp"
+                android:background="@color/zhu"
+                android:gravity="center"
+                android:text="提交"
+                android:textColor="@color/bai"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="53dp"
+                android:layout_marginRight="53dp"
+                android:gravity="center_vertical"
+                android:text="* 注意，资料审核中，该账户不能进行其他操作!"
+                android:textColor="@color/hon"
+                android:textSize="11sp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

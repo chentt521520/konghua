@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bai"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:id="@+id/shax_linddbh"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/shax_teddbh"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="订单编号:"
+                android:textColor="@color/hei" />
+
+            <EditText
+                android:id="@+id/shax_edbh"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="12dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="请输入订单编号"
+                android:inputType="text"
+                android:textColor="@color/hei" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/qianhei" />
+
+        <LinearLayout
+            android:id="@+id/shax_linshrxm"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/shax_teshrxm"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="收货人姓名:"
+                android:textColor="@color/hei" />
+
+            <EditText
+                android:id="@+id/shax_edshrxm"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="12dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="请输入姓名"
+                android:inputType="text"
+                android:textColor="@color/hei" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/qianhei" />
+
+        <LinearLayout
+            android:id="@+id/shax_linshrpho"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/shax_teshrpho"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="收货人电话:"
+                android:textColor="@color/hei" />
+
+            <EditText
+                android:id="@+id/shax_edshrpho"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="12dp"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="请输入收货人电话"
+                android:inputType="number"
+                android:maxLength="11"
+                android:textColor="@color/hei" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/qianhei" />
+
+        <LinearLayout
+            android:id="@+id/shax_linxzrq"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/shax_texzrq"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:gravity="center_vertical"
+                android:text="订单日期:"
+                android:textColor="@color/hei" />
+
+            <TextView
+                android:id="@+id/shax_texzrqks"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="12dp"
+                android:layout_marginBottom="3dp"
+                android:gravity="center_vertical"
+                android:text="选择开始日期"
+                android:textColor="@color/danhei" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="6dp"
+                android:layout_marginBottom="3dp"
+                android:gravity="center"
+                android:text="━━━" />
+
+            <TextView
+                android:id="@+id/shax_texzrqh"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="12dp"
+                android:layout_marginBottom="3dp"
+                android:gravity="center_vertical"
+                android:text="选择结束日期"
+                android:textColor="@color/danhei" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/qianhei" />
+
+        <LinearLayout
+            android:id="@+id/shax_linbot"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/shax_teqc"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="重置"
+                android:textColor="@color/hei" />
+
+            <TextView
+                android:id="@+id/shax_teok"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_weight="1"
+                android:background="@color/zhu"
+                android:gravity="center"
+                android:text="确定"
+                android:textColor="@color/bai" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/shax_vkb"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:alpha="0.1"
+        android:background="#000000" />
+
+</LinearLayout>

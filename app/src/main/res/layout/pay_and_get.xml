@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bai"
+    android:orientation="vertical"
+    tools:context=".main.per.payandget.payAndGet">
+
+    <com.shijiucheng.konghua.com.shijiucheng.konghua.app.DaoHang_top
+        android:id="@+id/szmx_dh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/szmx_qb"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="全部"
+            android:textColor="@color/select_te"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/szmx_sr"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="收入"
+            android:textColor="@color/select_te"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/szmx_zc"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="支出"
+            android:textColor="@color/select_te"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/szmx_clz"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="冻结中"
+            android:textColor="@color/select_te"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/szmx_tenum"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginStart="12dp"
+        android:gravity="center_vertical"
+        android:text="账户余额：46.00  =   账户总入账：100.00  -   账户总支出：54.00"
+        android:textColor="@color/zhu"
+        android:textSize="11sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/szmx_smtr"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srlAccentColor="@android:color/black"
+            app:srlEnablePreviewInEditMode="true"
+            app:srlPrimaryColor="#00000000">
+
+            <com.scwang.smartrefresh.layout.header.ClassicsHeader
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/szmx_recyc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srlAccentColor="@color/hei"
+                app:srlPrimaryColor="#00000000" />
+
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    </FrameLayout>
+
+
+</LinearLayout>

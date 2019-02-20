@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.shijiucheng.konghua">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <!-- 获取CUID，用于鉴权，请求签名等 -->
+    <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS" />
+    <!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 用于读取手机当前的状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <!-- 兼容flyme5.0以下版本-->
+    <uses-permission android:name="com.meizu.flyme.push.permission.RECEIVE" />
+    <uses-permission android:name="com.bqt.push.push.permission.MESSAGE" />
+    <!--  兼容flyme3.0配置权限-->
+    <uses-permission android:name="com.meizu.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="com.bqt.push.permission.C2D_MESSAGE" />
+
+    <!--xg-->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.RESTART_PACKAGES" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="false"
+        android:resizeable="true"
+        android:smallScreens="true" />
+
+    <!-- OpenGLES 2.0 -->
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <application
+        android:name=".com.shijiucheng.konghua.app.APP"
+        android:allowBackup="true"
+        android:icon="@mipmap/appicon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+        <activity
+            android:name=".Guide_konghua"
+            android:alwaysRetainTaskState="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppSplash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Login_konghua"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".authen_RZ"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".renzheng.DianZhu"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".renzheng.DianPu"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".renzheng.LianXiRen"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".renzheng.DPAddress"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".renzheng.BDMap"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".main.HomePage.BDMap1"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".main.MainActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="com.xg.push"
+                    android:path="/notify_detail"
+                    android:scheme="xgscheme" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="WLUXoKLIPiYnaRIafBayMldeSsh2Lb5t" />
+
+        <activity
+            android:name=".main.TestAC"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".main.order.Order_detalis"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".main.order.Check_pic"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTask"
+
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.qq.xgdemo.activity.UPDATE_LISTVIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".main.per.payandget.payAndGet"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".main.News_.newsDetials"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".main.per.payandget.per.tixian.tiXian"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".main.per.payandget.per.tixian.tiXianlishi"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".main.per.payandget.per.tixian.sqtixian"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".main.per.payandget.gongdan.mygondan"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".main.per.payandget.gongdan.gondanlist"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".main.per.payandget.gongdan.gondandetials"
+            android:screenOrientation="portrait" />
+        <activity android:name=".main.per_.Setings" />
+        <activity android:name=".main.per.payandget.gongdan.check_pic" />
+        <activity
+            android:name=".main.per.payandget.per.tixian.diagfrg.addyhk"
+            android:screenOrientation="portrait" />
+        <activity android:name=".main.HomePage.OrderTwoPage" />
+        <activity android:name=".main.HomePage.OrderTwoPage1" />
+        <activity android:name=".main.HomePage.Orderdatels" />
+        <activity android:name=".main.HomePage.order_PeiSong" />
+        <activity android:name=".main.per_.bank.banklist_guanli"></activity>
+        <activity
+            android:name=".main.per_.bank.bk_bji"
+            android:screenOrientation="portrait" />
+
+
+        <receiver
+            android:name=".com.shijiucheng.konghua.app.meizu.MZPushReceiver"
+            tools:ignore="ExportedReceiver">
+            <intent-filter>
+                <!-- 接收push消息 -->
+                <action android:name="com.meizu.flyme.push.intent.MESSAGE" />
+                <!-- 接收register消息-->
+                <action android:name="com.meizu.flyme.push.intent.REGISTER.FEEDBACK" />
+                <!-- 接收unregister消息-->
+                <action android:name="com.meizu.flyme.push.intent.UNREGISTER.FEEDBACK" />
+
+                <action android:name="com.meizu.c2dm.intent.REGISTRATION" />
+                <action android:name="com.meizu.c2dm.intent.RECEIVE" />
+
+                <category android:name="com.shijiucheng.konghua"></category>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".com.shijiucheng.konghua.app.meizu.huaweiReceiver">
+            <intent-filter>
+
+                <!-- 必须,用于接收TOKEN -->
+                <action android:name="com.huawei.android.push.intent.REGISTRATION" />
+                <!-- 必须，用于接收消息 -->
+                <action android:name="com.huawei.android.push.intent.RECEIVE" />
+                <!-- 可选，用于点击通知栏或通知栏上的按钮后触发onEvent回调 -->
+                <action android:name="com.huawei.android.push.intent.CLICK" />
+                <!-- 可选，查看PUSH通道是否连接，不查看则不需要 -->
+                <action android:name="com.huawei.intent.action.PUSH_STATE" />
+            </intent-filter>
+        </receiver>
+
+        //信鸽推送
+        <receiver
+            android:name=".com.shijiucheng.konghua.app.MessageReceiver"
+            android:exported="true">
+            <intent-filter>
+
+                <!-- 接收消息透传 -->
+                <action android:name="com.tencent.android.tpush.action.PUSH_MESSAGE" />
+                <!-- 监听注册、反注册、设置/删除标签、通知被点击等处理结果 -->
+                <action android:name="com.tencent.android.tpush.action.FEEDBACK" />
+            </intent-filter>
+        </receiver>
+
+
+        <!-- 【必须】 信鸽receiver广播接收 -->
+        <receiver
+            android:name="com.tencent.android.tpush.XGPushReceiver"
+            android:process=":xg_service_v3">
+            <intent-filter android:priority="0x7fffffff">
+
+                <!-- 【必须】 信鸽SDK的内部广播 -->
+                <action android:name="com.tencent.android.tpush.action.SDK" />
+                <action android:name="com.tencent.android.tpush.action.INTERNAL_PUSH_MESSAGE" />
+                <!-- 【必须】 系统广播：网络切换 -->
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+
+                <!-- 【可选】 系统广播：开屏 -->
+                <action android:name="android.intent.action.USER_PRESENT" />
+
+                <!-- 【可选】 一些常用的系统广播，增强信鸽service的复活机会，请根据需要选择. -->
+                <action android:name="android.bluetooth.adapter.action.STATE_CHANGED" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+            </intent-filter>
+            <!-- 【可选】 usb相关的系统广播，增强信鸽service的复活机会，请根据需要添加 -->
+            <intent-filter android:priority="0x7fffffff">
+                <action android:name="android.intent.action.MEDIA_UNMOUNTED" />
+                <action android:name="android.intent.action.MEDIA_REMOVED" />
+                <action android:name="android.intent.action.MEDIA_CHECKING" />
+                <action android:name="android.intent.action.MEDIA_EJECT" />
+
+                <data android:scheme="file" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 【必须】 信鸽service -->
+        <service
+            android:name="com.tencent.android.tpush.service.XGPushServiceV3"
+            android:exported="true"
+            android:persistent="true"
+            android:process=":xg_service_v3" />
+        <!-- 【必须】 通知service，其中android:name部分要改为当前包名 -->
+        <service
+            android:name="com.tencent.android.tpush.rpc.XGRemoteService"
+            android:exported="true">
+            <intent-filter>
+
+                <!-- 【必须】 请修改为当前APP名包.PUSH_ACTION，如demo的包名为：com.qq.xgdemo -->
+                <action android:name="com.shijiucheng.konghua.PUSH_ACTION" />
+            </intent-filter>
+        </service>
+
+        <!-- 【必须】 增强xg_service存活率 -->
+        <service
+            android:name="com.tencent.android.tpush.service.XGDaemonService"
+            android:process=":xg_service_v3" />
+
+        <!-- 【必须】 【注意】authorities修改为 包名.AUTH_XGPUSH, 如demo的包名为：com.qq.xgdemo -->
+        <provider
+            android:name="com.tencent.android.tpush.XGPushProvider"
+            android:authorities="com.shijiucheng.konghua.AUTH_XGPUSH"
+            android:exported="true" />
+
+        <!-- 【必须】 【注意】authorities修改为 包名.TPUSH_PROVIDER, 如demo的包名为：com.qq.xgdemo -->
+        <provider
+            android:name="com.tencent.android.tpush.SettingsContentProvider"
+            android:authorities="com.shijiucheng.konghua.TPUSH_PROVIDER"
+            android:exported="false" />
+
+        <!-- 【必须】 【注意】authorities修改为 包名.TENCENT.MID.V3, 如demo的包名为：com.qq.xgdemo -->
+        <provider
+            android:name="com.tencent.mid.api.MidProvider"
+            android:authorities="com.shijiucheng.konghua.TENCENT.MID.V3"
+            android:exported="true" />
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5be55bc5f1f556d293000272" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="baidu" />
+
+
+    </application>
+
+</manifest>

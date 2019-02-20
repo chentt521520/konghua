@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bai"
+    android:orientation="vertical"
+    tools:context=".main.per.payandget.gongdan.mygondan">
+
+    <com.shijiucheng.konghua.com.shijiucheng.konghua.app.DaoHang_top
+        android:id="@+id/tjgd_dh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginRight="12dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="问题类型"
+            android:textColor="@color/hei"
+            android:textSize="13sp" />
+
+        <Spinner
+            android:id="@+id/tjgd_spwtleixin"
+            android:layout_width="160dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:background="@null"
+            android:maxLength="21"
+            android:singleLine="true"
+            android:spinnerMode="dialog"
+            android:textColor="@color/hei"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginRight="12dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="问题特征"
+            android:textColor="@color/hei"
+            android:textSize="13sp" />
+
+        <Spinner
+            android:id="@+id/tjgd_spwttezhen"
+            android:layout_width="160dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:background="@color/bai"
+            android:maxLength="21"
+            android:singleLine="true"
+            android:spinnerMode="dialog"
+            android:textColor="@color/hei"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:orientation="horizontal"
+        android:paddingTop="6dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="问题描述  "
+            android:textColor="@color/hei"
+            android:textSize="13sp" />
+
+        <EditText
+            android:id="@+id/tjgd_edtxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bai"
+            android:gravity="start"
+            android:hint="请输入详细描述"
+            android:lineSpacingExtra="6dp"
+            android:maxLength="200"
+            android:minHeight="100dp"
+            android:padding="6dp"
+            android:textColor="@color/hei"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginRight="12dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="上传图片:"
+            android:textColor="@color/hei"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/tjgd_lintp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:id="@+id/tjgd_imtp1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingTop="5dp"
+            android:paddingRight="7dp"
+            android:src="@mipmap/sctpx" />
+
+
+        <ImageView
+            android:id="@+id/tjgd_imtp2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingTop="5dp"
+            android:paddingRight="7dp"
+            android:src="@mipmap/sctpx" />
+
+
+        <ImageView
+            android:id="@+id/tjgd_imtp3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingTop="5dp"
+            android:paddingRight="7dp"
+            android:src="@mipmap/sctpx" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tjgd_teok"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:background="@color/zhu"
+        android:gravity="center"
+        android:text="确认提交"
+        android:textColor="@color/bai"
+        android:textSize="13sp" />
+
+</LinearLayout>

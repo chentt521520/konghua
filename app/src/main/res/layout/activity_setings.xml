@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bai"
+    android:orientation="vertical"
+    tools:context=".main.per_.Setings">
+
+    <com.shijiucheng.konghua.com.shijiucheng.konghua.app.DaoHang_top
+        android:id="@+id/setig_dh"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="40dp"
+            android:gravity="center_vertical"
+            android:text="登录密码"
+            android:textColor="@color/hei"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:layout_marginRight="4dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|end"
+            android:text="已设置"
+            android:textColor="@color/zhu"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/setig_temm"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="40dp"
+            android:gravity="center_vertical"
+            android:text="|修改"
+            android:textColor="@color/hei"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="12dp"
+        android:background="@color/qianhei1" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:lineSpacingExtra="5dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingBottom="6dp"
+        android:text="安全性高的密码可以使账号更安全，密码长度 6-20个字符，且必须包含字母、数字。 "
+        android:textColor="@color/hei"
+        android:textSize="11sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/qianhei1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="40dp"
+            android:gravity="center_vertical"
+            android:text="支付密码"
+            android:textColor="@color/hei"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/setig_temmpay"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:layout_marginRight="4dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|end"
+            android:text="已设置"
+            android:textColor="@color/zhu"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/setig_temmpay1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="40dp"
+            android:gravity="center_vertical"
+            android:text="|修改"
+            android:textColor="@color/hei"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="12dp"
+        android:background="@color/qianhei1" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:lineSpacingExtra="5dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingBottom="6dp"
+        android:text=" 支付密码用于订单支付、结算、账户提现，账户财务管理确认，提高账号安全性。"
+        android:textColor="@color/hei"
+        android:textSize="11sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/qianhei1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="40dp"
+            android:gravity="center_vertical"
+            android:text="业务手机"
+            android:textColor="@color/hei"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/setig_teywpho"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:layout_marginRight="4dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|end"
+            android:text="已设置"
+            android:textColor="@color/zhu"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/setig_teywpho1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="40dp"
+            android:gravity="center_vertical"
+            android:text="|修改"
+            android:textColor="@color/hei"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="12dp"
+        android:background="@color/qianhei1" />
+
+    <TextView
+        android:id="@+id/setig_teywphots"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:lineSpacingExtra="5dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingBottom="6dp"
+        android:text="该手机号码用于接收日常业务消息，方便订单及时处理，当前接收手"
+        android:textColor="@color/hei"
+        android:textSize="11sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/qianhei1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="40dp"
+            android:gravity="center_vertical"
+            android:text="安全手机"
+            android:textColor="@color/hei"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/setig_teaqpho"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="12dp"
+            android:layout_marginRight="4dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|end"
+            android:text="已设置"
+            android:textColor="@color/zhu"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/setig_teaqpho1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="40dp"
+            android:gravity="center_vertical"
+            android:text="|修改"
+            android:textColor="@color/hei"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="12dp"
+        android:background="@color/qianhei1" />
+
+    <TextView
+        android:id="@+id/setig_teaqphots"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:lineSpacingExtra="5dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingBottom="6dp"
+        android:text="该手机号码用于接收资金、安全消息，防止恶意操作敏感数据，当前接收手机"
+        android:textColor="@color/hei"
+        android:textSize="11sp" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/qianhei1" />
+
+    <TextView
+        android:id="@+id/seting_quit"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/zhu"
+        android:gravity="center"
+        android:text="退出登录"
+        android:textColor="@color/bai"
+        android:textSize="14sp" />
+
+</LinearLayout>

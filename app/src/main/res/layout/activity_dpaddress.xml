@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bai"
+    android:orientation="vertical"
+    tools:context=".renzheng.DPAddress">
+
+    <com.shijiucheng.konghua.com.shijiucheng.konghua.app.DaoHang_top
+        android:id="@+id/dpdz_dh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:id="@+id/dpdz_linssq"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/biankuangxia"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/dpdz_tessq"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="选择省市区:"
+                    android:textColor="@color/hei"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/dpdz_tesq1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/bai"
+                    android:clickable="true"
+                    android:gravity="center_vertical"
+                    android:minWidth="150dp"
+                    android:paddingLeft="5sp"
+                    android:singleLine="true"
+                    android:text="请选择地址信息！"
+                    android:textColor="@color/hei"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dpdz_linxx"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/biankuangxia"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/dpdz_texx"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="详细地址:"
+                    android:textColor="@color/hei"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/dpdz_edxx"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/bai"
+                    android:gravity="center_vertical"
+                    android:hint="请填写详细地址信息！"
+                    android:maxLength="30"
+                    android:minWidth="150dp"
+                    android:paddingLeft="5dp"
+                    android:singleLine="true"
+                    android:textColor="@color/hei"
+                    android:textCursorDrawable="@drawable/guangbiao"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/dpdz_linjwd"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/biankuangxia"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/dpdz_tejwd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2dp"
+                    android:gravity="center_vertical"
+                    android:text="店铺坐标:"
+                    android:textColor="@color/hei"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/dpdz_tejwd1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/bai"
+                    android:gravity="center_vertical"
+                    android:hint="请设置经纬度信息！"
+                    android:minWidth="150dp"
+                    android:paddingLeft="5sp"
+                    android:singleLine="true"
+                    android:textColor="@color/hei"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/dpdz_tejwd2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/bai"
+                    android:gravity="center_vertical"
+                    android:minWidth="150dp"
+                    android:paddingLeft="5sp"
+                    android:singleLine="true"
+                    android:text="设置坐标"
+                    android:textColor="@color/zhu"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/dpdz_tepsqy"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:text="请选择配送区域：(可多选)"
+                android:textColor="@color/hei"
+                android:textSize="12sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/dpdz_recyc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+    <TextView
+        android:id="@+id/dpdz_teok"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/zhu"
+        android:gravity="center"
+        android:text="保存"
+        android:textColor="@color/bai" />
+
+</LinearLayout>
