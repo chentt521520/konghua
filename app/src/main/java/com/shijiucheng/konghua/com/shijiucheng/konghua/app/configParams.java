@@ -27,6 +27,7 @@ public class configParams {
     public final static String sycw = "sycw";//*首页财务
     public final static String symsg = "symsg";//*首消息
     public final static String perdizhirefr = "perdizhirefr";//*首消息
+    public final static String totherpager = "totherpager";//*首页切换其他页面
 
 
 }

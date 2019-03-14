@@ -105,6 +105,8 @@ public class Login_konghua extends com.shijiucheng.konghua.Cmvp.BaseActivity_kon
                 JSONObject jso = jsonObject.getJSONObject("data").getJSONObject("store_info");
                 sharePre("latitude", jso.getString("latitude"), Login_konghua.this);
                 sharePre("longitude", jso.getString("longitude"), Login_konghua.this);
+                sharePre("user_name", jso.getString("company_name"), Login_konghua.this);//用户名
+                sharePre("user_pic", jso.getString("facade_photo1"), Login_konghua.this);//门店照片1
 
             } catch (JSONException e) {
                 e.printStackTrace();

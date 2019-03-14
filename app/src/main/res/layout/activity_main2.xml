@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/bai"
+    android:orientation="vertical"
     tools:context=".main.MainActivity">
-<com.shijiucheng.konghua.main.Cannotscroll_viewpager
-    android:id="@+id/mainact_vp"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1" />
+
+    <com.shijiucheng.konghua.main.Cannotscroll_viewpager
+        android:id="@+id/mainact_vp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <View
         android:layout_width="match_parent"
@@ -21,8 +22,32 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
+        <LinearLayout
+            android:id="@+id/mainact_synew"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/mainact_imsynew"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:src="@drawable/selector_synew" />
+
+            <TextView
+                android:id="@+id/mainact_tesynew"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="首页"
+                android:textColor="@color/select_te"
+                android:textSize="11sp" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/mainact_fl"
@@ -30,7 +55,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/mainact_ivfl"
@@ -55,7 +80,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/mainact_ivkf"
@@ -80,7 +105,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/mainact_ivsy"
@@ -98,13 +123,14 @@
                 android:textColor="@color/select_te"
                 android:textSize="11sp" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/mainact_wd"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/mainact_ivwd"
@@ -123,5 +149,5 @@
                 android:textSize="11sp" />
         </LinearLayout>
     </LinearLayout>
-    
+
 </LinearLayout>

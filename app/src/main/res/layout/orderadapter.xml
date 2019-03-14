@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/hpadaNew_linorder"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:background="@drawable/biankuangxia2"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/hpadaNew_teorder"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="12dp"
+        android:layout_weight="1"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:text="公告："
+        android:textColor="#000000"
+        android:textSize="12sp" />
+
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="match_parent"
+        android:layout_marginRight="20dp"
+        android:src="@mipmap/qw" />
+</LinearLayout>

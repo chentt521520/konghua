@@ -126,8 +126,9 @@ public abstract class BaseActivity_konghua extends AppCompatActivity {
      * @param context 保存键值对
      */
     protected void sharePre(String key, String value, Context context) {
-
-        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        if (preferences == null) {
+            preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        }
         editor = preferences.edit();
         if (!TextUtils.isEmpty(value)) {
             editor.putString(key, value);
@@ -141,7 +142,9 @@ public abstract class BaseActivity_konghua extends AppCompatActivity {
      * @return 根据key获取值
      */
     protected String getSharePre(String key, Context context) {
-        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        if (preferences == null) {
+            preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        }
         return preferences.getString(key, "0");
     }
 

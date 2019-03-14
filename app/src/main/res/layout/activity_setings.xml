@@ -17,12 +17,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_marginTop="12dp"
         android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:src="@mipmap/dlmm" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="7dp"
             android:layout_marginEnd="12dp"
             android:layout_marginRight="40dp"
             android:gravity="center_vertical"
@@ -38,7 +45,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical|end"
             android:text="已设置"
-            android:textColor="@color/zhu"
+            android:textColor="@color/lv"
             android:textSize="12sp" />
 
         <TextView
@@ -63,9 +70,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="7dp"
         android:lineSpacingExtra="5dp"
-        android:paddingLeft="12dp"
+        android:paddingLeft="20dp"
         android:paddingRight="12dp"
         android:paddingBottom="6dp"
         android:text="安全性高的密码可以使账号更安全，密码长度 6-20个字符，且必须包含字母、数字。 "
@@ -74,18 +81,24 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="@color/qianhei1" />
+        android:layout_height="7dp"
+        android:background="@color/danzhu" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal">
 
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:src="@mipmap/zfmm" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="7dp"
             android:layout_marginEnd="12dp"
             android:layout_marginRight="40dp"
             android:gravity="center_vertical"
@@ -102,7 +115,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical|end"
             android:text="已设置"
-            android:textColor="@color/zhu"
+            android:textColor="@color/lv"
             android:textSize="12sp" />
 
         <TextView
@@ -127,9 +140,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="7dp"
         android:lineSpacingExtra="5dp"
-        android:paddingLeft="12dp"
+        android:paddingLeft="20dp"
         android:paddingRight="12dp"
         android:paddingBottom="6dp"
         android:text=" 支付密码用于订单支付、结算、账户提现，账户财务管理确认，提高账号安全性。"
@@ -138,18 +151,24 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="@color/qianhei1" />
+        android:layout_height="7dp"
+        android:background="@color/danzhu" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal">
 
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:src="@mipmap/ywsj" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="7dp"
             android:layout_marginEnd="12dp"
             android:layout_marginRight="40dp"
             android:gravity="center_vertical"
@@ -166,7 +185,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical|end"
             android:text="已设置"
-            android:textColor="@color/zhu"
+            android:textColor="@color/lv"
             android:textSize="12sp" />
 
         <TextView
@@ -192,9 +211,9 @@
         android:id="@+id/setig_teywphots"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="7dp"
         android:lineSpacingExtra="5dp"
-        android:paddingLeft="12dp"
+        android:paddingLeft="20dp"
         android:paddingRight="12dp"
         android:paddingBottom="6dp"
         android:text="该手机号码用于接收日常业务消息，方便订单及时处理，当前接收手"
@@ -203,18 +222,24 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="@color/qianhei1" />
+        android:layout_height="7dp"
+        android:background="@color/danzhu" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal">
 
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:src="@mipmap/aqsj" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="7dp"
             android:layout_marginEnd="12dp"
             android:layout_marginRight="40dp"
             android:gravity="center_vertical"
@@ -231,7 +256,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical|end"
             android:text="已设置"
-            android:textColor="@color/zhu"
+            android:textColor="@color/lv"
             android:textSize="12sp" />
 
         <TextView
@@ -257,9 +282,9 @@
         android:id="@+id/setig_teaqphots"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="7dp"
         android:lineSpacingExtra="5dp"
-        android:paddingLeft="12dp"
+        android:paddingLeft="20dp"
         android:paddingRight="12dp"
         android:paddingBottom="6dp"
         android:text="该手机号码用于接收资金、安全消息，防止恶意操作敏感数据，当前接收手机"
@@ -283,10 +308,11 @@
         android:id="@+id/seting_quit"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@color/zhu"
+        android:background="@color/lv"
         android:gravity="center"
         android:text="退出登录"
         android:textColor="@color/bai"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:visibility="gone" />
 
 </LinearLayout>

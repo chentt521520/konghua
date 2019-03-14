@@ -277,5 +277,8 @@ public interface Retro_Intf {
     @FormUrlEncoded
     Call<ResponseBody> meizu(@FieldMap Map<String, String> map);
 
+    //  新首页
+    @GET("/ApiApp-Index-index.html")
+    Call<ResponseBody> getHomePageData(@Header("Cookie") String cook, @QueryMap Map<String, String> map);
 
 }

@@ -210,8 +210,10 @@ public class gondandetials extends BaseActivity_konghua implements guanbigd.quer
                         JSONObject jso = new JSONObject(str);
                         JSONArray jsa = jso.getJSONObject("data").getJSONArray("reply_list");
                         JSONObject jsaOr = jso.getJSONObject("data").getJSONObject("work_order_info");
-                        gdxqTebhao.setText("工单编号：" + jsaOr.getString("id"));
-                        gdxqTeleibie.setText(jsaOr.getString("cate1_text") + ">" + jsaOr.getString("cate2_text"));
+                        if (gdxqTebhao != null) {
+                            gdxqTebhao.setText("工单编号：" + jsaOr.getString("id"));
+                            gdxqTeleibie.setText(jsaOr.getString("cate1_text") + ">" + jsaOr.getString("cate2_text"));
+                        }
                         type = jsaOr.getString("work_order_status");
                         getStatus();
                         if (jsa.length() >= 1) {

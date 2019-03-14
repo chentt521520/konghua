@@ -91,8 +91,6 @@ public class IsLoginOrAuthor implements Login_konghua.refresh, authen_RZ.refresh
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
-
             }
 
             @Override

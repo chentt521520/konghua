@@ -12,11 +12,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.CircleCrop;
-import com.bumptech.glide.request.RequestOptions;
 import com.shijiucheng.konghua.Banben_;
 import com.shijiucheng.konghua.Cmvp.BaseFragment_konghua;
 import com.shijiucheng.konghua.Cmvp.BasePresenter;
+import com.shijiucheng.konghua.Cmvp.BaseResult;
 import com.shijiucheng.konghua.R;
 import com.shijiucheng.konghua.authen_RZ;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.IsLoginOrAuthor;
@@ -48,6 +47,8 @@ import retrofit2.Response;
 public class Per extends BaseFragment_konghua implements IsLoginOrAuthor.refresh, authen_RZ.refresh, Banben_.fuluebanben {
     View view;
 
+    @BindView(R.id.per_name)
+    TextView te_name;
     @BindView(R.id.per_imhead)
     ImageView perImhead;
     @BindView(R.id.per_lin1)
@@ -61,6 +62,9 @@ public class Per extends BaseFragment_konghua implements IsLoginOrAuthor.refresh
     @BindView(R.id.per_lin5)
     LinearLayout perLin5;
 
+    @BindView(R.id.sper_quit)
+    TextView te_quit;
+
     @BindView(R.id.per_tebbh)
     TextView te_bbh;
 
@@ -72,7 +76,28 @@ public class Per extends BaseFragment_konghua implements IsLoginOrAuthor.refresh
         EventBus.getDefault().register(this);
         IsLoginOrAuthor.getInstence().setfr(this);
         authen_RZ.setrefrxx(this);
-        Glide.with(this).load(R.mipmap.appicon).apply(RequestOptions.bitmapTransform(new CircleCrop())).into(perImhead);
+//        Glide.with(this).load(R.mipmap.appicon).apply(RequestOptions.bitmapTransform(new CircleCrop())).into(perImhead);
+
+        getuserinfo();
+
+    }
+
+    //获取用户信息
+    private void getuserinfo() {
+        if (getSharePre("name", getActivity()).equals("0")) {
+            te_name.setText("请登录");
+            te_quit.setVisibility(View.GONE);
+
+            if (!getSharePre("name", getActivity()).equals("0")) {
+                IsLoginOrAuthor.getInstence().login(getActivity(), retrofit_Single.getInstence().getOpenid(getActivity()), getSharePre("name", getActivity()), getSharePre("pwd", getActivity()));
+            } else {
+                IsLoginOrAuthor.getInstence().goToLogin(getActivity());
+            }
+        } else {
+            Glide.with(this).load(getSharePre("user_pic", getActivity())).into(perImhead);
+            te_name.setText(getSharePre("user_name", getActivity()));
+            te_quit.setVisibility(View.VISIBLE);
+        }
 
     }
 
@@ -105,7 +130,7 @@ public class Per extends BaseFragment_konghua implements IsLoginOrAuthor.refresh
     }
 
 
-    @OnClick({R.id.per_lin1, R.id.per_lin2, R.id.per_lin3, R.id.per_lin4, R.id.per_lin5, R.id.per_lin6})
+    @OnClick({R.id.per_lin1, R.id.per_lin2, R.id.per_lin3, R.id.per_lin4, R.id.per_lin5, R.id.per_lin6, R.id.sper_quit})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.per_lin1:
@@ -147,6 +172,10 @@ public class Per extends BaseFragment_konghua implements IsLoginOrAuthor.refresh
                 break;
             case R.id.per_lin6:
                 getappvis();
+                break;
+
+            case R.id.sper_quit:
+                getquit();
                 break;
         }
     }
@@ -193,7 +222,7 @@ public class Per extends BaseFragment_konghua implements IsLoginOrAuthor.refresh
 
     @Override
     public void refresh() {
-
+        getuserinfo();
     }
 
     @Override
@@ -249,6 +278,61 @@ public class Per extends BaseFragment_konghua implements IsLoginOrAuthor.refresh
             public void onFailure(Call<ResponseBody> call, Throwable t) {
             }
         });
+    }
+
+    Retro_Intf retro_intf;
+
+    /**
+     * 退出登录从设置页面迁移到个人中心首页
+     */
+    private void getquit() {
+        retro_intf = retrofit_Single.getInstence().getserivce(2);
+        HashMap<String, String> maps = new HashMap<>();
+        maps.putAll(retrofit_Single.getInstence().retro_postParameter());//公共参数
+        Call<ResponseBody> getdata = retro_intf.quitLoigin(retrofit_Single.getInstence().getOpenid(getActivity()), maps);
+        getdata.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(
+                    Call<ResponseBody> call, Response<ResponseBody> response) {
+                String Result = null;
+                if (response.body() == null)
+                    return;
+                try {
+                    Result = response.body().string();
+                    try {
+                        if (Result != null && Result.startsWith("\ufeff")) {
+                            Result = Result.substring(1);
+                        }
+                        JSONObject jsonObject = new JSONObject(Result);
+                        BaseResult result = new BaseResult();
+
+                        if (jsonObject.getString("status").equals("1")) {
+                            toaste_ut(getActivity(), jsonObject.getString("msg"));
+                            sharePre("name", "0", getActivity());
+                            sharePre("pwd", "0", getActivity());
+
+                            IsLoginOrAuthor.getInstence().goToLogin(getActivity());
+                        } else {
+                            if (jsonObject.getString("msg").contains("未登录")) {
+                                IsLoginOrAuthor.getInstence().goToLogin(getActivity());
+                                toaste_ut(getActivity(), jsonObject.getString("msg"));
+                            } else toaste_ut(getActivity(), jsonObject.getString("msg"));
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        System.out.println(e.toString());
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+
     }
 
 

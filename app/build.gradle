@@ -110,4 +110,5 @@ dependencies {
     implementation 'com.gyf.immersionbar:immersionbar:2.3.3-beta15'
     implementation files('libs/umeng-analytics-8.0.0.jar')
     implementation files('libs/umeng-common-2.0.1.jar')
+
 }
