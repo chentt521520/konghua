@@ -49,6 +49,8 @@ import com.shijiucheng.konghua.main.per.payandget.per.tixian.tiXianlishi;
 import com.shijiucheng.konghua.main.per_.bank.banklist_guanli;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -141,6 +143,8 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
 
     String Phone = "", QQ = "";
 
+    int fristinit = 0;
+
 
     @Override
     protected void AddView() {
@@ -150,6 +154,8 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
         initPoint();
         initViewPager();
 
+        EventBus.getDefault().register(this);
+
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         manager.setOrientation(OrientationHelper.VERTICAL);
         hpNewRecycorders.setLayoutManager(manager);
@@ -157,6 +163,15 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
         hpNewRecycorders.setAdapter(orderadapter);
 
         pagePresent.getData(retrofit_Single.getInstence().getOpenid(getActivity()));
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (fristinit == 0) {
+                    pagePresent.getData(retrofit_Single.getInstence().getOpenid(getActivity()));
+                }
+            }
+        }, 3000);
     }
 
     @Override
@@ -198,13 +213,15 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
         try {
             JSONArray jso_banner = jsonObject.getJSONArray("banner_list");
             JSONArray notice_list = jsonObject.getJSONArray("notice_list");
-            if (notice_list.length() >= 1) {
-                textswitcher1(notice_list);
-            }
-
-            JSONArray message_list = jsonObject.getJSONArray("message_list");
-            if (message_list.length() >= 1) {
-                textswitcher2(message_list);
+            if (fristinit == 0) {
+                fristinit = 1;
+                if (notice_list.length() >= 1) {
+                    textswitcher1(notice_list);
+                }
+                JSONArray message_list = jsonObject.getJSONArray("message_list");
+                if (message_list.length() >= 1) {
+                    textswitcher2(message_list);
+                }
             }
             if (hpNewTemoney != null) {
                 hpNewTemoney.setText("总收入：" + jsonObject.getString("income_amount"));
@@ -239,6 +256,21 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
     public void showDataRenZhen(JSONObject jsonObject) {
 
     }
+
+    /**
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void getmess(paramsDataBean data) {
+        if (data != null) {
+            if (data.getMsg().equals(configParams.refreshhp)) {
+                if (pagePresent != null) {
+                    pagePresent.getData(retrofit_Single.getInstence().getOpenid(getActivity()));
+                }
+                return;
+            }
+        }
+    }
+
 
     @Override
     public void imageOnclIm(int pos) {

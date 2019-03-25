@@ -270,6 +270,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         switch (id) {
 
             case R.id.mainact_synew:
+                paramsDataBean datahp = new paramsDataBean();
+                datahp.setMsg(configParams.refreshhp);
+                EventBus.getDefault().post(datahp);
                 vpage.setCurrentItem(0, false);
             case 0:
                 im_syenew.setSelected(true);

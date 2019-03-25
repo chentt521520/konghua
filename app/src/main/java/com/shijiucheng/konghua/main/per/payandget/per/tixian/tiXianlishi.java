@@ -96,7 +96,7 @@ public class tiXianlishi extends BaseActivity_konghua {
                         if (jsa.length() > 0) {
                             for (int i = 0; i < jsa.length(); i++) {
                                 JSONObject jsonObject1 = jsa.getJSONObject(i);
-                                list.add(new txianlsadadatat(jsonObject1.getString("add_time_text"), jsonObject1.getString("withdraw_amount"), jsonObject1.getJSONObject("bank_info").getString("bank_type_text") + jsonObject1.getJSONObject("bank_info").getString("bank_no_last"), jsonObject1.getString("withdraw_status_text"), jsonObject1.getString("fail_reason")));
+                                list.add(new txianlsadadatat(jsonObject1.getString("add_time_text"), jsonObject1.getString("withdraw_amount"), jsonObject1.getJSONObject("bank_info").getString("bank_type_text") + jsonObject1.getJSONObject("bank_info").getString("bank_no_last"), jsonObject1.getString("withdraw_status_text"), jsonObject1.getString("fail_reason"), jsonObject1.getJSONObject("bank_info").getString("bank_type")));
                             }
                             txianlsada.notifyDataSetChanged();
                         }

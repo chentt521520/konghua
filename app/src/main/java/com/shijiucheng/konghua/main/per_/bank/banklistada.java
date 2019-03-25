@@ -1,5 +1,6 @@
 package com.shijiucheng.konghua.main.per_.bank;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -78,6 +79,8 @@ public class banklistada extends RecyclerView.Adapter<banklistada.viewholder> {
                 Intent i = new Intent(context, bk_bji.class);
                 i.putExtra("object", data.getObject());
                 context.startActivity(i);
+                ((Activity) context).overridePendingTransition(R.anim.push_left_in,
+                        R.anim.push_left_out);
             }
         });
         holder.tjyhkitTeschu.setOnClickListener(new View.OnClickListener() {

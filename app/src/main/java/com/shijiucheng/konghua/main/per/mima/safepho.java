@@ -109,7 +109,7 @@ public class safepho extends DialogFragment {
         DisplayMetrics dm = new DisplayMetrics();
         int w = dm.widthPixels;
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-        getDialog().getWindow().setLayout(dm.widthPixels, (int) (wxx * 500 / 750.0));
+        getDialog().getWindow().setLayout(dm.widthPixels, -2);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(0xff000000));
 
     }

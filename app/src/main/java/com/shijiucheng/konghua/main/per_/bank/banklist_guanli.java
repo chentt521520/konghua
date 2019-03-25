@@ -138,7 +138,6 @@ public class banklist_guanli extends BaseActivity_konghua implements banklistada
                 getBankList();
                 return;
             }
-
         }
     }
 

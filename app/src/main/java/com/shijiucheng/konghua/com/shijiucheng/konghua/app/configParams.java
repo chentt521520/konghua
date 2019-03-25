@@ -28,6 +28,7 @@ public class configParams {
     public final static String symsg = "symsg";//*首消息
     public final static String perdizhirefr = "perdizhirefr";//*首消息
     public final static String totherpager = "totherpager";//*首页切换其他页面
+    public final static String refreshhp = "refreshhp";//*首页切换其他页面
 
 
 }

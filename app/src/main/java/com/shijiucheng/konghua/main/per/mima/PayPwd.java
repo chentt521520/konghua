@@ -74,7 +74,7 @@ public class PayPwd extends DialogFragment {
         DisplayMetrics dm = new DisplayMetrics();
         int w = dm.widthPixels;
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-        getDialog().getWindow().setLayout(dm.widthPixels - 100, (int) (wxx * 500 / 750.0));
+        getDialog().getWindow().setLayout(dm.widthPixels, (int) (wxx * 500 / 750.0));
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(0xff000000));
     }
 

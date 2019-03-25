@@ -215,6 +215,7 @@ public abstract class BaseActivity_konghua extends AppCompatActivity {
         if (call != null)
             call.cancel();
     }
+
     @Override
     public void onResume() {
         super.onResume();

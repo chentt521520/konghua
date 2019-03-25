@@ -15,7 +15,6 @@ import com.shijiucheng.konghua.com.shijiucheng.konghua.app.configParams;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.paramsDataBean;
 import com.shijiucheng.konghua.main.per.mima.PayPwd;
 import com.shijiucheng.konghua.main.per.mima.ValidatePwd;
-import com.shijiucheng.konghua.main.per.payandget.per.tixian.sqtixian;
 
 import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;

@@ -200,7 +200,7 @@ public class mygondan extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua 
 
 
     public void getpermiss(int type) {
-      getpic(type);
+        getpic(type);
     }
 
     @Override

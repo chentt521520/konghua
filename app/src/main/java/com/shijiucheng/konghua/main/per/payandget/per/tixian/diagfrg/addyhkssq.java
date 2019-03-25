@@ -186,6 +186,11 @@ public class addyhkssq extends DialogFragment implements addyhkssqadapter.getSSQ
                 QuId = id;
                 ssqstr += ssqStr;
                 addyhkssqTetit.setText(ssqstr);
+            } else {
+                String[] ssq_ = ssqstr.split("-");
+                ssqstr = ssq_[0] + "-" + ssq_[1] + "-" + ssqStr;
+                QuId = id;
+                addyhkssqTetit.setText(ssqstr);
             }
         }
     }

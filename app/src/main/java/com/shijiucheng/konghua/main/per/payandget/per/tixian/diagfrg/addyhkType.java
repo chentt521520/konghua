@@ -1,6 +1,7 @@
 package com.shijiucheng.konghua.main.per.payandget.per.tixian.diagfrg;
 
 import android.app.DialogFragment;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -61,7 +63,7 @@ public class addyhkType extends DialogFragment implements addyhkssqadapter.getSS
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getDialog().getWindow().setGravity(Gravity.BOTTOM);
+        getDialog().getWindow().setGravity(Gravity.CENTER);
         view = inflater.inflate(R.layout.addyhkssq, container, false);
         unbinder = ButterKnife.bind(this, view);
         setrecycData();
@@ -144,12 +146,12 @@ public class addyhkType extends DialogFragment implements addyhkssqadapter.getSS
 
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onResume() {
+        super.onResume();
         DisplayMetrics dm = new DisplayMetrics();
         int w = dm.widthPixels;
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-        getDialog().getWindow().setLayout(dm.widthPixels, -2);
+        getDialog().getWindow().setLayout(dm.widthPixels - 200, 500);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(0xff000000));
     }
 

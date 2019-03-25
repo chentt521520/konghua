@@ -307,6 +307,8 @@ public class order_PeiSong extends BaseActivity_konghua implements TakePhoto.Tak
                     try {
                         JSONObject jsonObject = new JSONObject(str);
                         if (jsonObject.getString("status").equals("1")) {
+                            if (jdt!=null)
+                                if (jdt.isAdded())
                             jdt.dismiss();
 
                             JSONObject jso = jsonObject.getJSONObject("data");
