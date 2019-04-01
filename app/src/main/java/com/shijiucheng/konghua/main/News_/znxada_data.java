@@ -4,7 +4,7 @@ public class znxada_data {
     String status;
     String tit;
     String time;
-    String txt;
+    String txt,txtstr;
 
 
     public String getId() {
@@ -27,13 +27,22 @@ public class znxada_data {
 
     String type;//type表示是站内信还是公告 0和1
 
-    public znxada_data(String status, String tit, String time, String txt, String id,String type) {
+    public znxada_data(String status, String tit, String time, String txt, String id,String type,String txtstr) {
         this.status = status;
         this.tit = tit;
         this.time = time;
         this.txt = txt;
         this.id = id;
         this.type = type;
+        this.txtstr=txtstr;
+    }
+
+    public String getTxtstr() {
+        return txtstr;
+    }
+
+    public void setTxtstr(String txtstr) {
+        this.txtstr = txtstr;
     }
 
     public String getStatus() {

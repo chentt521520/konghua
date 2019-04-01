@@ -17,6 +17,14 @@
             android:layout_marginStart="12dp"
             android:src="@drawable/statusnews" />
 
+        <ImageView
+            android:id="@+id/znxit_imwdt"
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="3dp"
+            android:layout_marginEnd="6dp"
+            android:src="@drawable/statusnewst" />
+
         <TextView
             android:id="@+id/znxit_tetit"
             android:layout_width="match_parent"
@@ -52,10 +60,10 @@
         android:id="@+id/znxit_tetxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:layout_marginRight="12dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="12dp"
         android:gravity="start"
         android:lineSpacingExtra="6dp"
         android:maxLines="3"
@@ -72,9 +80,9 @@
         android:id="@+id/znxit_teck"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
         android:layout_marginRight="39dp"
-        android:layout_marginStart="12dp"
         android:gravity="center_vertical|end"
         android:text="查看详情 >"
         android:textColor="@color/zhu"

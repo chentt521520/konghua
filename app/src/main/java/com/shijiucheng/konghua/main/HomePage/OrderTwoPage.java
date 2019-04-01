@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
+import android.view.View;
 import android.widget.Toast;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -48,6 +50,8 @@ public class OrderTwoPage extends BaseActivity_konghua implements ordertwoAdapte
     RecyclerView ordertwoRecy;
     @BindView(R.id.ordertwo_smtr)
     SmartRefreshLayout ordertwoSmtr;
+    @BindView(R.id.ordertwo_nodata)
+    View layout;
 
     String status = "";
     int page = 1;
@@ -58,6 +62,7 @@ public class OrderTwoPage extends BaseActivity_konghua implements ordertwoAdapte
     Retro_Intf serivce;
     Call<ResponseBody> call;
     Bundle bundle;
+
     @Override
     protected void AddView() {
         serivce = retrofit_Single.getInstence().getserivce(2);
@@ -84,8 +89,8 @@ public class OrderTwoPage extends BaseActivity_konghua implements ordertwoAdapte
             public void onLoadmore(RefreshLayout refreshlayout) {
                 page++;
                 getnum();
-                if (ordertwoSmtr!=null)
-                ordertwoSmtr.finishLoadmore(100);
+                if (ordertwoSmtr != null)
+                    ordertwoSmtr.finishLoadmore(100);
             }
 
             @Override
@@ -93,8 +98,8 @@ public class OrderTwoPage extends BaseActivity_konghua implements ordertwoAdapte
                 page = 1;
                 list.removeAll(list);
                 getnum();
-                if (ordertwoSmtr!=null)
-                ordertwoSmtr.finishRefresh(500);
+                if (ordertwoSmtr != null)
+                    ordertwoSmtr.finishRefresh(500);
 
             }
         });
@@ -120,8 +125,8 @@ public class OrderTwoPage extends BaseActivity_konghua implements ordertwoAdapte
 
 
     public void getnum() {
-        if (jdt!=null)
-        jdt.show(getFragmentManager(),"xx");
+        if (jdt != null)
+            jdt.show(getFragmentManager(), "xx");
         HashMap<String, String> map = new HashMap<>();
         map.putAll(retrofit_Single.getInstence().retro_postParameter());
         map.put("page", page + "");
@@ -145,6 +150,12 @@ public class OrderTwoPage extends BaseActivity_konghua implements ordertwoAdapte
                     if (jsa.getString("status").equals("1")) {
                         JSONObject jsonObject = jsa.getJSONObject("data");
                         JSONArray jsonArray = jsonObject.getJSONArray("rows");
+                        if (page == 1 && jsonArray.length() <= 0) {
+                            if (layout!=null)
+                            layout.setVisibility(View.VISIBLE);
+                        } else{
+                            if (layout!=null)
+                            layout.setVisibility(View.GONE);}
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jso1 = jsonArray.getJSONObject(i);
                             list.add(new ordertwoData(jso1.getString("order_id"), jso1.getString("order_sn"), jso1.getString("order_status"), jso1.getString("add_time_text"), ""

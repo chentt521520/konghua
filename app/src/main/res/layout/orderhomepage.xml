@@ -81,7 +81,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="72dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginRight="12dp"
@@ -412,7 +412,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginRight="12dp"
@@ -604,12 +604,11 @@
             <RelativeLayout
                 android:id="@+id/hpNew_relat"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginRight="12dp"
-                android:background="@mipmap/dpbg">
-            </RelativeLayout>
+                android:background="@mipmap/dpbg"></RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/hpNew_relat1"

@@ -6,8 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.shijiucheng.konghua.R;
 
 import java.util.List;
@@ -38,13 +40,27 @@ public class szmxada extends RecyclerView.Adapter<szmxada.viewholider> {
     public void onBindViewHolder(@NonNull viewholider holder, int position) {
         szmxdata szmxdata = list.get(position);
         holder.szmxitType.setText(szmxdata.getTypestr());
-        if (szmxdata.getNum().contains("-"))
+        if (szmxdata.getNum().contains("-")) {
             holder.szmxitNum.setText(szmxdata.getNum());
-        else
+            if (szmxdata.getStatus().equals("处理中")) {
+                Glide.with(context).load(R.mipmap.djzz).into(holder.imt);
+            }else
+            Glide.with(context).load(R.mipmap.zcszmx).into(holder.imt);
+        } else {
             holder.szmxitNum.setText("+" + szmxdata.getNum());
+            Glide.with(context).load(R.mipmap.szszmx).into(holder.imt);
+        }
         holder.szmxitTxt.setText(szmxdata.getText());
-        holder.szmxitTime.setText(szmxdata.getTime());
+        holder.szmxitTime.setText("收支时间" + szmxdata.getTime());
         holder.szmxitZt.setText(szmxdata.getStatus());
+
+        if (szmxdata.getStatus().equals("处理完成")) {
+            holder.szmxitZt.setTextColor(context.getResources().getColor(R.color.lv));
+        } else if (szmxdata.getStatus().equals("处理失败")) {
+            holder.szmxitZt.setTextColor(context.getResources().getColor(R.color.zhu));
+        } else if (szmxdata.getStatus().equals("处理中")) {
+            holder.szmxitZt.setTextColor(context.getResources().getColor(R.color.hei));
+        }
     }
 
     @Override
@@ -63,6 +79,8 @@ public class szmxada extends RecyclerView.Adapter<szmxada.viewholider> {
         TextView szmxitTime;
         @BindView(R.id.szmxit_zt)
         TextView szmxitZt;
+        @BindView(R.id.szmxit_imt)
+        ImageView imt;
 
         public viewholider(View itemView) {
             super(itemView);

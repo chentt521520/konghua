@@ -53,10 +53,10 @@ public class txianlsada extends RecyclerView.Adapter<txianlsada.viewholder> {
         holder.txlsitZt.setText(data.getStatusstr());
         holder.te_status.setText(data.getStatusstr());
 
-        System.out.println(data.getStatusstr());
-        if (data.getStatusstr().contains("失败")) {
+        System.out.println(data.getStatuscode());
+        if (data.getStatuscode().equals("2")) {
             holder.te_status.setBackgroundResource(R.mipmap.txsb);
-        } else if (data.getStatusstr().contains("中")) {
+        } else if (data.getStatuscode().equals("0")) {
             holder.te_status.setBackgroundResource(R.mipmap.txshz);
         } else
             holder.te_status.setBackgroundResource(R.mipmap.txcg);

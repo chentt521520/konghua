@@ -21,7 +21,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -34,15 +34,16 @@
 
             <ImageView
                 android:id="@+id/mainact_imsynew"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="5dp"
                 android:background="#00000000"
                 android:src="@drawable/selector_synew" />
 
             <TextView
                 android:id="@+id/mainact_tesynew"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="首页"
                 android:textColor="@color/select_te"
@@ -59,15 +60,16 @@
 
             <ImageView
                 android:id="@+id/mainact_ivfl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="5dp"
                 android:background="#00000000"
                 android:src="@drawable/selector_dd" />
 
             <TextView
                 android:id="@+id/mainact_tefl"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="订单"
                 android:textColor="@color/select_te"
@@ -84,15 +86,16 @@
 
             <ImageView
                 android:id="@+id/mainact_ivkf"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="5dp"
                 android:background="#00000000"
                 android:src="@drawable/selector_xx" />
 
             <TextView
                 android:id="@+id/mainact_tekf"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="消息"
                 android:textColor="@color/select_te"
@@ -109,15 +112,16 @@
 
             <ImageView
                 android:id="@+id/mainact_ivsy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="5dp"
                 android:background="#00000000"
                 android:src="@drawable/selector_sy" />
 
             <TextView
                 android:id="@+id/mainact_tesy"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="财务"
                 android:textColor="@color/select_te"
@@ -134,8 +138,9 @@
 
             <ImageView
                 android:id="@+id/mainact_ivwd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="5dp"
                 android:background="#00000000"
                 android:src="@drawable/selector_per" />
 

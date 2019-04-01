@@ -1,15 +1,24 @@
 package com.shijiucheng.konghua.main.per.payandget.per.tixian;
 
 public class txianlsadadatat {
-    String time, num, bank, statusstr, yuanying,bankstr;
+    String time, num, bank, statusstr, yuanying, bankstr, statuscode;
 
-    public txianlsadadatat(String time, String num, String bank, String statusstr,String yuanying,String bankstr) {
+    public txianlsadadatat(String time, String num, String bank, String statusstr, String yuanying, String bankstr, String statuscode) {
         this.time = time;
         this.num = num;
         this.bank = bank;
         this.statusstr = statusstr;
         this.yuanying = yuanying;
-        this.bankstr=bankstr;
+        this.bankstr = bankstr;
+        this.statuscode = statuscode;
+    }
+
+    public String getStatuscode() {
+        return statuscode;
+    }
+
+    public void setStatuscode(String statuscode) {
+        this.statuscode = statuscode;
     }
 
     public String getBankstr() {

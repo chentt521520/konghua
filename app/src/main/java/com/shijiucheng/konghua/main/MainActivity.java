@@ -112,7 +112,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         EventBus.getDefault().register(this);
 
         munbinder = ButterKnife.bind(this);
-        setviewhw();
+//        setviewhw();
         setviewdata();
         //测试版本更新
     }
@@ -350,9 +350,13 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 (int) (w_screen * 98 / 750.0), (int) (w_screen * 0 / 750.0),
                 (int) (w_screen * 0 / 750.0), 0, 0);
 
-        setviewhw_lin(im_syenew, (int) (w_screen * 48 / 750.0),
-                (int) (w_screen * 48 / 750.0), (int) (w_screen * 0 / 750.0),
-                (int) (w_screen * 10 / 750.0), 0, (int) (w_screen * 6 / 750.0));
+        setviewhw_lin(im_syenew, (int) (w_screen * 55 / 750.0),
+                (int) (w_screen * 50 / 750.0), (int) (w_screen * 0 / 750.0),
+                (int) (w_screen * 10 / 750.0), 0, 0);
+
+//        setviewhw_lin(te_synew, (int) (w_screen * 150 / 750.0),
+//                (int) (w_screen * 38 / 750.0), (int) (w_screen * 0 / 750.0),
+//                (int) (w_screen * 0 / 750.0), 0, (int) (w_screen * 0 / 750.0));
         setviewhw_lin(im_sy, (int) (w_screen * 48 / 750.0),
                 (int) (w_screen * 48 / 750.0), (int) (w_screen * 0 / 750.0),
                 (int) (w_screen * 10 / 750.0), 0, (int) (w_screen * 6 / 750.0));

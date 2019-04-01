@@ -52,14 +52,6 @@ public class OrderSY extends BaseFragment_konghua implements SYContact.SYView {
     TextView ordersyTedjd;
     @BindView(R.id.ordersy_tedps)
     TextView ordersyTedps;
-    @BindView(R.id.ordersy_tejrdd1)
-    TextView ordersyTejrdd1;
-    @BindView(R.id.ordersy_temrdd1)
-    TextView ordersyTemrdd1;
-    @BindView(R.id.ordersy_tedjd1)
-    TextView ordersyTedjd1;
-    @BindView(R.id.ordersy_tedps1)
-    TextView ordersyTedps1;
     @BindView(R.id.ordersy_tedqs)
     TextView ordersyTedqs;
     @BindView(R.id.ordersy_tesqtk)
@@ -68,14 +60,6 @@ public class OrderSY extends BaseFragment_konghua implements SYContact.SYView {
     TextView ordersyTedjs;
     @BindView(R.id.ordersy_teywc)
     TextView ordersyTeywc;
-    @BindView(R.id.ordersy_tedqs1)
-    TextView ordersyTedqs1;
-    @BindView(R.id.ordersy_tesqtk1)
-    TextView ordersyTesqtk1;
-    @BindView(R.id.ordersy_tedjs1)
-    TextView ordersyTedjs1;
-    @BindView(R.id.ordersy_teywc1)
-    TextView ordersyTeywc1;
     @BindView(R.id.order_edssbh)
     EditText orderEdssbh;
     @BindView(R.id.order_edsslxr)
@@ -96,8 +80,6 @@ public class OrderSY extends BaseFragment_konghua implements SYContact.SYView {
     SYContact.SYPrestent prestent = new SYPrestent(this);
     @BindView(R.id.ordersy_teqqzj)
     TextView ordersyTeqqzj;
-    @BindView(R.id.ordersy_teqqzj1)
-    TextView ordersyTeqqzj1;
     Retro_Intf serivce = retrofit_Single.getInstence().getserivce(2);
 
     com.shijiucheng.konghua.main.HomePage.frag.rili_frag rili_frag;
@@ -165,69 +147,40 @@ public class OrderSY extends BaseFragment_konghua implements SYContact.SYView {
         super.onDestroyView();
     }
 
-    @OnClick({R.id.ordersy_linall, R.id.ordersy_tejrdd, R.id.ordersy_temrdd, R.id.ordersy_tedjd, R.id.ordersy_tedps, R.id.ordersy_tejrdd1, R.id.ordersy_temrdd1, R.id.ordersy_tedjd1, R.id.ordersy_tedps1, R.id.ordersy_tedqs, R.id.ordersy_tesqtk, R.id.ordersy_tedjs, R.id.ordersy_teywc, R.id.ordersy_tedqs1, R.id.ordersy_tesqtk1, R.id.ordersy_tedjs1, R.id.ordersy_teywc1, R.id.ordersy_tess, R.id.ordersy_teqqzj, R.id.ordersy_teqqzj1})
+    @OnClick({R.id.ordersy_linall, R.id.ordersy_linjrdd, R.id.ordersy_linmrdd, R.id.ordersy_lindjd, R.id.ordersy_lindps, R.id.ordersy_lindqs, R.id.ordersy_linsqtk, R.id.ordersy_lindjs, R.id.ordersy_linywc, R.id.ordersy_tess, R.id.ordersy_linqqzj})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ordersy_linall:
                 geotoOrder(0, "全部订单", "");
                 break;
-            case R.id.ordersy_tejrdd:
+            case R.id.ordersy_linjrdd:
                 geotoOrder(0, "今日订单", "today");
                 break;
-            case R.id.ordersy_temrdd:
+            case R.id.ordersy_linmrdd:
                 geotoOrder(0, "明日订单", "tomorrow");
                 break;
-            case R.id.ordersy_tedjd:
+            case R.id.ordersy_lindjd:
                 geotoOrder(0, "待接单", "non_receive");
                 break;
-            case R.id.ordersy_tedps:
-                geotoOrder(0, "待配送", "receive_non_delivery");
-                break;
-            case R.id.ordersy_tejrdd1:
-                geotoOrder(0, "今日订单", "today");
-                break;
-            case R.id.ordersy_temrdd1:
-                geotoOrder(0, "明日订单", "tomorrow");
-                break;
-            case R.id.ordersy_tedjd1:
-                geotoOrder(0, "待接单", "non_receive");
-                break;
-            case R.id.ordersy_tedps1:
+            case R.id.ordersy_lindps:
                 geotoOrder(0, "待配送", "receive_non_delivery");
                 break;
 
 
-            case R.id.ordersy_tedqs:
+            case R.id.ordersy_lindqs:
                 geotoOrder(0, "待签收", "delivering");
                 break;
-            case R.id.ordersy_tesqtk:
+            case R.id.ordersy_linsqtk:
                 geotoOrder(1, "申请退单", "cancel");
                 break;
-            case R.id.ordersy_tedjs:
+            case R.id.ordersy_lindjs:
                 geotoOrder(0, "待结算", "sign");
                 break;
-            case R.id.ordersy_teywc:
+            case R.id.ordersy_linywc:
                 geotoOrder(0, "已完成", "balanc");
                 break;
 
-
-            case R.id.ordersy_tedqs1:
-                geotoOrder(0, "待签收", "delivering");
-                break;
-            case R.id.ordersy_tesqtk1:
-                geotoOrder(1, "申请退单", "cancel");
-                break;
-            case R.id.ordersy_tedjs1:
-                geotoOrder(0, "待结算", "sign");
-                break;
-            case R.id.ordersy_teywc1:
-                geotoOrder(0, "已完成", "balance");
-                break;
-
-            case R.id.ordersy_teqqzj:
-                geotoOrder(0, "请求涨价", "amount_add");
-                break;
-            case R.id.ordersy_teqqzj1:
+            case R.id.ordersy_linqqzj:
                 geotoOrder(0, "请求涨价", "amount_add");
                 break;
 

@@ -33,7 +33,7 @@ public class PGPrestentIml implements Contact.IPrestent {
                 try {
                     JSONObject jsonObject = new JSONObject(result.getData());
                     if (jsonObject.getString("status").equals("1")) {
-                        String num = jsonObject.getJSONObject("data").getString("balance_amount") + "," + jsonObject.getJSONObject("data").getString("income_amount") + "," + jsonObject.getJSONObject("data").getString("expenditure_amount");
+                        String num = jsonObject.getJSONObject("data").getString("balance_amount") + "," + jsonObject.getJSONObject("data").getString("income_amount") + "," + jsonObject.getJSONObject("data").getString("expenditure_amount") + "," + jsonObject.getJSONObject("data").getString("freeze_amount");
                         JSONArray jsonArray = jsonObject.getJSONObject("data").getJSONArray("rows");
                         List<szmxdata> list = new ArrayList<>();
                         for (int i = 0; i < jsonArray.length(); i++) {

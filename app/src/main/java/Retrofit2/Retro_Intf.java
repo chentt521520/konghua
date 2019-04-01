@@ -281,4 +281,9 @@ public interface Retro_Intf {
     @GET("/ApiApp-Index-index.html")
     Call<ResponseBody> getHomePageData(@Header("Cookie") String cook, @QueryMap Map<String, String> map);
 
+    //站内信
+    @GET("/ApiApp-Message-message_station_detail.html")
+    Call<ResponseBody> news(@Header("Cookie") String cook, @QueryMap Map<String, String> map);
+
+
 }

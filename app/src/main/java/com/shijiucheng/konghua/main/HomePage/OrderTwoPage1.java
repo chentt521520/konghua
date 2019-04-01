@@ -59,6 +59,9 @@ public class OrderTwoPage1 extends BaseActivity_konghua implements ordertwoAdapt
     int page = 1;
     String status = "cancel";
 
+    @BindView(R.id.ordertwo_nodata)
+    View layout;
+
     jiesuan_frag jiesuan_frag;
     int pos_id = 0;
     Call<ResponseBody> call;
@@ -143,6 +146,13 @@ public class OrderTwoPage1 extends BaseActivity_konghua implements ordertwoAdapt
                     if (jsa.getString("status").equals("1")) {
                         JSONObject jsonObject = jsa.getJSONObject("data");
                         JSONArray jsonArray = jsonObject.getJSONArray("rows");
+                        if (page == 1 && jsonArray.length() <= 0) {
+                            if (layout != null)
+                                layout.setVisibility(View.VISIBLE);
+                        } else {
+                            if (layout != null)
+                                layout.setVisibility(View.GONE);
+                        }
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jso1 = jsonArray.getJSONObject(i);
                             list.add(new ordertwoData(jso1.getString("order_id"), jso1.getString("order_sn"), jso1.getString("order_status"), jso1.getString("add_time_text"), ""

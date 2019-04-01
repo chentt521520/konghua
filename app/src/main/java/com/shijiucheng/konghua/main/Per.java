@@ -88,11 +88,11 @@ public class Per extends BaseFragment_konghua implements IsLoginOrAuthor.refresh
             te_name.setText("请登录");
             te_quit.setVisibility(View.GONE);
 
-            if (!getSharePre("name", getActivity()).equals("0")) {
-                IsLoginOrAuthor.getInstence().login(getActivity(), retrofit_Single.getInstence().getOpenid(getActivity()), getSharePre("name", getActivity()), getSharePre("pwd", getActivity()));
-            } else {
-                IsLoginOrAuthor.getInstence().goToLogin(getActivity());
-            }
+//            if (!getSharePre("name", getActivity()).equals("0")) {
+//                IsLoginOrAuthor.getInstence().login(getActivity(), retrofit_Single.getInstence().getOpenid(getActivity()), getSharePre("name", getActivity()), getSharePre("pwd", getActivity()));
+//            } else {
+//                IsLoginOrAuthor.getInstence().goToLogin(getActivity());
+//            }
         } else {
             Glide.with(this).load(getSharePre("user_pic", getActivity())).into(perImhead);
             te_name.setText(getSharePre("user_name", getActivity()));

@@ -10,6 +10,8 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 import com.shijiucheng.konghua.R;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.BaseActivity_konghua;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.DaoHang_top;
+import com.shijiucheng.konghua.main.Utils.DataItem;
+import com.shijiucheng.konghua.main.Utils.DiscView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,6 +39,9 @@ public class tiXianlishi extends BaseActivity_konghua {
     RecyclerView txlsRecyc;
     @BindView(R.id.txls_smtr)
     SmartRefreshLayout txlsSmtr;
+
+
+
     Retro_Intf serivce;
     int page = 1;
     int smtrStatus = 1;
@@ -53,6 +58,8 @@ public class tiXianlishi extends BaseActivity_konghua {
 
         serivce = retrofit_Single.getInstence().getserivce(2);
         getList();
+
+
 
     }
 
@@ -96,7 +103,7 @@ public class tiXianlishi extends BaseActivity_konghua {
                         if (jsa.length() > 0) {
                             for (int i = 0; i < jsa.length(); i++) {
                                 JSONObject jsonObject1 = jsa.getJSONObject(i);
-                                list.add(new txianlsadadatat(jsonObject1.getString("add_time_text"), jsonObject1.getString("withdraw_amount"), jsonObject1.getJSONObject("bank_info").getString("bank_type_text") + jsonObject1.getJSONObject("bank_info").getString("bank_no_last"), jsonObject1.getString("withdraw_status_text"), jsonObject1.getString("fail_reason"), jsonObject1.getJSONObject("bank_info").getString("bank_type")));
+                                list.add(new txianlsadadatat(jsonObject1.getString("add_time_text"), jsonObject1.getString("withdraw_amount"), jsonObject1.getJSONObject("bank_info").getString("bank_type_text") + jsonObject1.getJSONObject("bank_info").getString("bank_no_last"), jsonObject1.getString("withdraw_status_text"), jsonObject1.getString("fail_reason"), jsonObject1.getJSONObject("bank_info").getString("bank_type"),jsonObject1.getString("withdraw_status")));
                             }
                             txianlsada.notifyDataSetChanged();
                         }

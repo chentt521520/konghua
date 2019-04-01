@@ -56,6 +56,9 @@ public class Home extends com.shijiucheng.konghua.Cmvp.BaseFragment_konghua impl
     @BindView(R.id.txian_teszmx)
     TextView txianTeszmx;
 
+    @BindView(R.id.hpNew_temoney1)
+    TextView te_ketixian;
+
     Retro_Intf serivce;
 
     @Override
@@ -169,9 +172,10 @@ public class Home extends com.shijiucheng.konghua.Cmvp.BaseFragment_konghua impl
                     try {
                         JSONObject jsonObject = new JSONObject(str);
                         if (jsonObject.getString("status").equals("1")) {
-                            txianTenum1.setText("￥" + jsonObject.getJSONObject("data").getString("balance_amount"));
-                            txianallnum.setText("￥" + jsonObject.getJSONObject("data").getString("income_amount"));
-                            txianTeytx.setText("￥" + jsonObject.getJSONObject("data").getString("withdraw_amount"));
+                            txianTenum1.setText(" ￥" + jsonObject.getJSONObject("data").getString("balance_amount"));
+                            txianallnum.setText(" 总收入：￥" + jsonObject.getJSONObject("data").getString("income_amount"));
+                            txianTeytx.setText(" ￥" + jsonObject.getJSONObject("data").getString("withdraw_amount"));
+                            te_ketixian.setText(jsonObject.getJSONObject("data").getString("balance_amount"));
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

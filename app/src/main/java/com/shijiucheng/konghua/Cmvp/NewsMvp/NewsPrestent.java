@@ -39,14 +39,14 @@ public class NewsPrestent implements contact.IPrestent {
                             for (int i = 0; i < jsoList.length(); i++) {
                                 JSONObject jso = jsoList.getJSONObject(i);
                                 if (type == 1)
-                                    list.add(new znxada_data(jso.getString("is_read"), "公告信息", jso.getString("add_time_text"), jso.getString("message_title"), jso.getString("m_id"), "0"));
+                                    list.add(new znxada_data(jso.getString("is_read"), "公告信息", jso.getString("add_time_text"), jso.getString("message_title"), jso.getString("m_id"), "0", jso.getString("message_content")));
                                 else if (type == 2) {
                                     if (jso.getString("is_read").equals("0")) {
-                                        list.add(new znxada_data(jso.getString("is_read"), "公告信息", jso.getString("add_time_text"), jso.getString("message_title"), jso.getString("m_id"), "0"));
+                                        list.add(new znxada_data(jso.getString("is_read"), "公告信息", jso.getString("add_time_text"), jso.getString("message_title"), jso.getString("m_id"), "0", jso.getString("message_content")));
                                     }
                                 } else if (type == 3) {
                                     if (jso.getString("is_read").equals("1")) {
-                                        list.add(new znxada_data(jso.getString("is_read"), "公告信息", jso.getString("add_time_text"), jso.getString("message_title"), jso.getString("m_id"), "0"));
+                                        list.add(new znxada_data(jso.getString("is_read"), "公告信息", jso.getString("add_time_text"), jso.getString("message_title"), jso.getString("m_id"), "0", jso.getString("message_content")));
                                     }
                                 }
                             }
@@ -85,14 +85,14 @@ public class NewsPrestent implements contact.IPrestent {
                             for (int i = 0; i < jsoList.length(); i++) {
                                 JSONObject jso = jsoList.getJSONObject(i);
                                 if (type == 4)
-                                    list.add(new znxada_data(jso.getString("notice_type"), "公告信息", jso.getString("notice_pub_time_text"), jso.getString("notice_title"), jso.getString("n_id"), "1"));
+                                    list.add(new znxada_data(jso.getString("notice_type"), "公告信息", jso.getString("notice_pub_time_text"), jso.getString("notice_title"), jso.getString("n_id"), "1", ""));
                                 else if (type == 5) {
                                     if (jso.getString("notice_type").equals("0")) {
-                                        list.add(new znxada_data(jso.getString("notice_type"), "公告信息", jso.getString("notice_pub_time_text"), jso.getString("notice_title"), jso.getString("n_id"), "1"));
+                                        list.add(new znxada_data(jso.getString("notice_type"), "公告信息", jso.getString("notice_pub_time_text"), jso.getString("notice_title"), jso.getString("n_id"), "1", ""));
                                     }
                                 } else if (type == 6) {
                                     if (jso.getString("notice_type").equals("1")) {
-                                        list.add(new znxada_data(jso.getString("notice_type"), "公告信息", jso.getString("notice_pub_time_text"), jso.getString("notice_title"), jso.getString("n_id"), "1"));
+                                        list.add(new znxada_data(jso.getString("notice_type"), "公告信息", jso.getString("notice_pub_time_text"), jso.getString("notice_title"), jso.getString("n_id"), "1", ""));
                                     }
                                 }
                             }

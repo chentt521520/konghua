@@ -18,8 +18,12 @@
     <color name="qianheilxr">#f9f9f9</color>
     <color name="lv">#02b80b</color>
     <color name="danzhu">#ffdecb</color>
+    <color name="chen">#f47a39</color>
 
     <color name="hon">#FF4081</color>
     <color name="qianlan">#d8e9f1</color>
     <color name="quan">#b1b0b0</color>
+    <color name="lan">#367cfe</color>
+    <color name="lan1">#00b775</color>
+    <color name="lan2">#ff5148</color>
 </resources>
