@@ -6,12 +6,20 @@
     android:background="@color/bai"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="@color/zhu"
+        android:gravity="center"
+        android:text="消息"
+        android:textColor="@color/bai"
+        android:textSize="15sp" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp">
+        android:layout_height="42dp"
+        android:background="@color/qianhei1"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/news_znxx"
@@ -23,15 +31,20 @@
             android:textColor="@color/select_teznx"
             android:textSize="14sp" />
 
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/danhei" />
 
         <TextView
             android:id="@+id/news_ggao"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:drawableBottom="@drawable/newsselect"
             android:gravity="center"
-            android:textColor="@color/select_teznx"
             android:text="公告"
+            android:textColor="@color/select_teznx"
             android:textSize="14sp" />
 
     </LinearLayout>
@@ -60,6 +73,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="未读"
+            android:drawableBottom="@drawable/newsselect"
             android:textColor="@color/select_te"
             android:textSize="12sp" />
 
@@ -74,10 +88,25 @@
             android:textSize="12sp" />
     </LinearLayout>
 
-    <View
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/qianhei1"></View>
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/view_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/zhu" />
+
+        <View
+            android:id="@+id/view_2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/danhei" />
+    </LinearLayout>
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/news_smartLayoutxx"

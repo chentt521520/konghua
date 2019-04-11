@@ -2,11 +2,13 @@ package com.shijiucheng.konghua.main.News_;
 
 import android.graphics.Bitmap;
 import android.os.Build;
+import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebSettings.LayoutAlgorithm;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 
 import com.shijiucheng.konghua.R;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.BaseActivity_konghua;
@@ -32,6 +34,10 @@ public class newsDetials extends BaseActivity_konghua {
     Retro_Intf service;
     @BindView(R.id.newsdet_web)
     WebView wb;
+    @BindView(R.id.progressBar1)
+    ProgressBar pbar;
+
+
     int type = 0;
 
 
@@ -59,17 +65,31 @@ public class newsDetials extends BaseActivity_konghua {
 
             @Override
             public void onPageFinished(WebView view, String url) {
-
             }
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                // TODO Auto-generated method stub
-                // 返回值是true的时候控制去WebView打开，为false调用系统浏览器或第三方浏览器
-                // view.loadUrl(url);
-                return true;
+
+
+                wb.loadUrl(url);
+                return false;
             }
         });
+        wb.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onProgressChanged(WebView view, int newProgress) {
+                // TODO 自动生成的方法存根
+
+                if (newProgress == 100) {
+                    pbar.setVisibility(View.GONE);// 加载完网页进度条消失
+                } else {
+                    pbar.setVisibility(View.VISIBLE);// 开始加载网页时显示进度条
+                    pbar.setProgress(newProgress);// 设置进度值
+                }
+
+            }
+        });
+
     }
 
     @Override
@@ -132,12 +152,6 @@ public class newsDetials extends BaseActivity_konghua {
         HashMap<String, String> map = new HashMap<>();
         map.put("cook", "PHPSESSID=864895027854338");
         wb.loadUrl(url);
-        wb.setWebChromeClient(new WebChromeClient() {
-            @Override
-            public void onProgressChanged(WebView view, int newProgress) {
-
-            }
-        });
     }
 
 }

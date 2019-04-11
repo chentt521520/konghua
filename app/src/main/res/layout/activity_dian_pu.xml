@@ -35,13 +35,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
-                    android:text="企业名称:"
+                    android:text="企    业    名   称 :  "
                     android:textColor="@color/hei"
                     android:textSize="12sp" />
 
                 <EditText
                     android:id="@+id/dianpu_edqy"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="2dp"
                     android:background="@color/bai"
@@ -74,7 +74,7 @@
 
                 <EditText
                     android:id="@+id/dianpu_edzch"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="2dp"
                     android:background="@color/bai"
@@ -94,6 +94,7 @@
                 android:id="@+id/dianpu_tesfzt"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:background="@drawable/biankuangxia"
                 android:gravity="center_vertical"
                 android:text="营业执照扫描件:"
                 android:textColor="@color/hei"
@@ -112,8 +113,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:lineSpacingExtra="4dp"
                 android:gravity="center_vertical"
+                android:lineSpacingExtra="4dp"
                 android:text="*营业执照需为jpg、png格式，且大小不超过5M，须保证营业执照扫描件完整且信息清晰可见！"
                 android:textColor="@color/zhu"
                 android:textSize="10sp" />
@@ -143,8 +144,8 @@
                         android:id="@+id/pinjia_imtp1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:paddingRight="7dp"
                         android:paddingTop="5dp"
+                        android:paddingRight="7dp"
                         android:src="@mipmap/sctpx" />
 
                     <ImageView
@@ -166,8 +167,8 @@
                         android:id="@+id/pinjia_imtp2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:paddingRight="7dp"
                         android:paddingTop="5dp"
+                        android:paddingRight="7dp"
                         android:src="@mipmap/sctpx" />
 
                     <ImageView
@@ -189,8 +190,8 @@
                         android:id="@+id/pinjia_imtp3"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:paddingRight="7dp"
                         android:paddingTop="5dp"
+                        android:paddingRight="7dp"
                         android:src="@mipmap/sctpx" />
 
                     <ImageView
@@ -212,7 +213,7 @@
         android:id="@+id/dianpu_teok"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@color/zhu"
+        android:background="@drawable/yuanjiaoall"
         android:gravity="center"
         android:text="保存"
         android:textColor="@color/bai" />

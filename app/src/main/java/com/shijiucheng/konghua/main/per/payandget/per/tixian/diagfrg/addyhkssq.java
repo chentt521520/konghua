@@ -151,7 +151,7 @@ public class addyhkssq extends DialogFragment implements addyhkssqadapter.getSSQ
         DisplayMetrics dm = new DisplayMetrics();
         int w = dm.widthPixels;
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-        getDialog().getWindow().setLayout(dm.widthPixels, 500);
+        getDialog().getWindow().setLayout(dm.widthPixels, 700);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(0xff000000));
 
     }

@@ -54,6 +54,11 @@ public class OrderTwoPage1 extends BaseActivity_konghua implements ordertwoAdapt
     @BindView(R.id.ordertwo1_smtr)
     SmartRefreshLayout ordertwo1Smtr;
 
+    @BindView(R.id.view_1)
+    View v_1;
+    @BindView(R.id.view_2)
+    View v_2;
+
     ordertwoAdapter adapter;
     List<ordertwoData> list = new ArrayList<>();
     int page = 1;
@@ -74,6 +79,10 @@ public class OrderTwoPage1 extends BaseActivity_konghua implements ordertwoAdapt
         Bundle bundle = intent.getExtras();
         ordertwo1Dh.settext_(bundle.getString("tit"));
         ordertwo1Zdsq.setSelected(true);
+
+        v_1.setBackgroundColor(getResources().getColor(R.color.zhu));
+        v_2.setBackgroundColor(getResources().getColor(R.color.danhei));
+
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(OrientationHelper.VERTICAL);
         ordertwo1Recy.setLayoutManager(manager);
@@ -146,13 +155,6 @@ public class OrderTwoPage1 extends BaseActivity_konghua implements ordertwoAdapt
                     if (jsa.getString("status").equals("1")) {
                         JSONObject jsonObject = jsa.getJSONObject("data");
                         JSONArray jsonArray = jsonObject.getJSONArray("rows");
-                        if (page == 1 && jsonArray.length() <= 0) {
-                            if (layout != null)
-                                layout.setVisibility(View.VISIBLE);
-                        } else {
-                            if (layout != null)
-                                layout.setVisibility(View.GONE);
-                        }
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jso1 = jsonArray.getJSONObject(i);
                             list.add(new ordertwoData(jso1.getString("order_id"), jso1.getString("order_sn"), jso1.getString("order_status"), jso1.getString("add_time_text"), ""
@@ -160,6 +162,9 @@ public class OrderTwoPage1 extends BaseActivity_konghua implements ordertwoAdapt
                                     jso1.getString("receiver_address"), jso1.getString("receiver"), jso1.getString("receiver_tel"), jso1.getString("is_order_balance_remind")));
                         }
                         adapter.notifyDataSetChanged();
+                        if (jsonArray.length() <= 0)
+                            if (layout != null)
+                                layout.setVisibility(View.VISIBLE);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -188,6 +193,10 @@ public class OrderTwoPage1 extends BaseActivity_konghua implements ordertwoAdapt
                 if (!ordertwo1Zdsq.isSelected()) {
                     ordertwo1Zdsq.setSelected(true);
                     ordertwo1Xdfsq.setSelected(false);
+
+                    v_1.setBackgroundColor(getResources().getColor(R.color.zhu));
+                    v_2.setBackgroundColor(getResources().getColor(R.color.danhei));
+
                     status = "cancel";
                     list.removeAll(list);
                     ordertwo1Smtr.autoRefresh();
@@ -198,6 +207,10 @@ public class OrderTwoPage1 extends BaseActivity_konghua implements ordertwoAdapt
                 if (!ordertwo1Xdfsq.isSelected()) {
                     ordertwo1Zdsq.setSelected(false);
                     ordertwo1Xdfsq.setSelected(true);
+
+                    v_2.setBackgroundColor(getResources().getColor(R.color.zhu));
+                    v_1.setBackgroundColor(getResources().getColor(R.color.danhei));
+
                     list.removeAll(list);
                     status = "admin_cancel";
                     ordertwo1Smtr.autoRefresh();

@@ -19,12 +19,12 @@ public class pagerAdapter extends PagerAdapter {
         return view == object;
     }
 
-    int[] img;
+    String[] img;
     Context context;
     imageOncl imageOncl;
 
 
-    public pagerAdapter(Context context, int[] img) {
+    public pagerAdapter(Context context, String[] img) {
         this.img = img;
         this.context = context;
     }

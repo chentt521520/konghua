@@ -151,7 +151,7 @@ public class addyhkType extends DialogFragment implements addyhkssqadapter.getSS
         DisplayMetrics dm = new DisplayMetrics();
         int w = dm.widthPixels;
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-        getDialog().getWindow().setLayout(dm.widthPixels - 200, 500);
+        getDialog().getWindow().setLayout(dm.widthPixels - 100, 600);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(0xff000000));
     }
 

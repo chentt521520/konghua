@@ -165,8 +165,6 @@ public class OrderSY extends BaseFragment_konghua implements SYContact.SYView {
             case R.id.ordersy_lindps:
                 geotoOrder(0, "待配送", "receive_non_delivery");
                 break;
-
-
             case R.id.ordersy_lindqs:
                 geotoOrder(0, "待签收", "delivering");
                 break;
@@ -177,7 +175,7 @@ public class OrderSY extends BaseFragment_konghua implements SYContact.SYView {
                 geotoOrder(0, "待结算", "sign");
                 break;
             case R.id.ordersy_linywc:
-                geotoOrder(0, "已完成", "balanc");
+                geotoOrder(0, "已完成", "balance");
                 break;
 
             case R.id.ordersy_linqqzj:
@@ -185,6 +183,17 @@ public class OrderSY extends BaseFragment_konghua implements SYContact.SYView {
                 break;
 
             case R.id.ordersy_tess:
+                //'/ssddd
+                boolean t1 = orderEdssrq1.getText().toString().contains("开");
+                boolean t2 = orderEdssrq2.getText().toString().contains("结束");
+                if (t1 && (!t2)) {
+                    toaste_ut(getActivity(), "请完成开始于结束日期填写");
+                    return;
+                }
+                if (t2 && (!t1)) {
+                    toaste_ut(getActivity(), "请完成开始于结束日期填写");
+                    return;
+                }
                 geotoOrder(2, "全部订单", "");
                 break;
         }
@@ -270,10 +279,10 @@ public class OrderSY extends BaseFragment_konghua implements SYContact.SYView {
             bundle.putString("keywords", orderEdssbh.getText().toString());
             bundle.putString("receiver", orderEdsslxr.getText().toString());
             bundle.putString("receiver_tel", orderEdsslxrph.getText().toString());
-            if (!orderEdssrq1.getText().toString().contains("请"))
+            if (!orderEdssrq1.getText().toString().contains("开始"))
                 bundle.putString("delivery_start_date", orderEdssrq1.getText().toString());
             else bundle.putString("delivery_start_date", "");
-            if (!orderEdssrq2.getText().toString().contains("请"))
+            if (!orderEdssrq2.getText().toString().contains("结束"))
                 bundle.putString("delivery_end_date", orderEdssrq2.getText().toString());
             else bundle.putString("delivery_end_date", "");
             intent = new Intent(getActivity(), OrderTwoPage.class);

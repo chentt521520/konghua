@@ -169,7 +169,7 @@
     <TextView
         android:id="@+id/ordertwoit_tetxjs"
         android:layout_width="160dp"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
         android:layout_gravity="right"
         android:layout_marginRight="12dp"
         android:layout_marginBottom="5dp"

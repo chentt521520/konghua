@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -43,31 +44,65 @@ public class znxrecyc_ada extends RecyclerView.Adapter<znxrecyc_ada.viewholder> 
         final znxada_data data = list.get(position);
         if (list.get(position).getType().equals("0")) {
             if (data.getStatus().equals("0")) {
-                holder.im_wd.setSelected(true);
-                holder.im_wdt.setSelected(true);
+                Glide.with(context).load(R.mipmap.wdu).into(holder.im_wd);
+                Glide.with(context).load(R.mipmap.wdt).into(holder.im_wdt);
             } else {
-                holder.im_wd.setSelected(false);
-                holder.im_wdt.setSelected(false);
+                Glide.with(context).load("").into(holder.im_wd);
+                Glide.with(context).load(R.mipmap.ydt).into(holder.im_wdt);
             }
+        } else {
+            Glide.with(context).load(R.mipmap.ggao).into(holder.im_wdt);
         }
 
         if (list.get(position).getType().equals("0")) {
             holder.im_wd.setVisibility(View.VISIBLE);
             holder.te_tit.setText(data.getTxt());
             holder.te_txt.setText(data.getTxtstr());
-
+            holder.lin_bot.setVisibility(View.VISIBLE);
+            holder.te_time.setVisibility(View.VISIBLE);
+            holder.te_time.setText(data.getTime());
         } else {
             holder.im_wd.setVisibility(View.INVISIBLE);
-            holder.te_tit.setText("公告");
+            holder.te_tit.setText(data.getTxt());
             holder.te_txt.setText(data.getTxt());
-            holder.im_wd.setVisibility(View.GONE);
             Glide.with(context).load(R.mipmap.ggao).into(holder.im_wdt);
+
+            holder.lin_bot.setVisibility(View.GONE);
+            holder.im_wd.setVisibility(View.GONE);
         }
 
 
-        holder.te_time.setText(data.getTime());
-
-        holder.te_ck.setOnClickListener(new View.OnClickListener() {
+        holder.lin_bot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                list.get(position).setStatus("1");
+                notifyDataSetChanged();
+                Intent i;
+                if (list.get(position).getType().equals("0")) {
+                    i = new Intent(context, Newsdetails.class);
+                    i.putExtra("m_id", list.get(position).getId());
+                    if (data.getStatus().equals("0")) {
+                        data.setStatus("1");
+                        notifyDataSetChanged();
+                    }
+                    context.startActivity(i);
+                    ((Activity) context).overridePendingTransition(R.anim.push_left_in,
+                            R.anim.push_left_out);
+                } else {
+                    i = new Intent(context, newsDetials.class);
+                    i.putExtra("tit", "公告信息");
+                    i.putExtra("id", list.get(position).getId());
+                    if (data.getStatus().equals("0")) {
+                        data.setStatus("1");
+                        notifyDataSetChanged();
+                    }
+                    context.startActivity(i);
+                    ((Activity) context).overridePendingTransition(R.anim.push_left_in,
+                            R.anim.push_left_out);
+                }
+            }
+        });
+        holder.lin_top.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 list.get(position).setStatus("1");
@@ -98,6 +133,7 @@ public class znxrecyc_ada extends RecyclerView.Adapter<znxrecyc_ada.viewholder> 
             }
         });
 
+
     }
 
     @Override
@@ -119,6 +155,10 @@ public class znxrecyc_ada extends RecyclerView.Adapter<znxrecyc_ada.viewholder> 
         TextView te_time;
         @BindView(R.id.znxit_teck)
         TextView te_ck;
+        @BindView(R.id.znxit_linbot)
+        LinearLayout lin_bot;
+        @BindView(R.id.znxit_lintop)
+        LinearLayout lin_top;
 
 
         public viewholder(View itemView) {

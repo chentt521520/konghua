@@ -14,6 +14,7 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.github.dfqin.grantor.PermissionListener;
 import com.github.dfqin.grantor.PermissionsUtil;
 import com.jph.takephoto.app.TakePhoto;
@@ -91,6 +92,12 @@ public class gondanlist extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghu
     Retro_Intf serivce;
 
 
+    @BindView(R.id.view_1)
+    View v_1;
+    @BindView(R.id.view_2)
+    View v_2;
+
+
     private TakePhoto takePhoto;
     private InvokeParam invokeParam;
     huifugd huifugdz;
@@ -106,7 +113,14 @@ public class gondanlist extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghu
         EventBus.getDefault().register(this);
         closewo = new guanbigd();
         serivce = retrofit_Single.getInstence().getserivce(2);
-        gdlistDh.settext_("工单列表");
+        gdlistDh.settext_("问题列表");
+        Glide.with(this).load(R.mipmap.wtadd).into(gdlistDh.ima_tp);
+
+        gdlistitTeqb.setSelected(true);
+        gdlistitTewwc.setSelected(false);
+        v_1.setBackgroundColor(getResources().getColor(R.color.zhu));
+        v_2.setBackgroundColor(getResources().getColor(R.color.danhei));
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(OrientationHelper.VERTICAL);
         gdlistRecyc.setLayoutManager(layoutManager);
@@ -150,6 +164,8 @@ public class gondanlist extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghu
                 if (!gdlistitTeqb.isSelected()) {
                     gdlistitTeqb.setSelected(true);
                     gdlistitTewwc.setSelected(false);
+                    v_1.setBackgroundColor(getResources().getColor(R.color.zhu));
+                    v_2.setBackgroundColor(getResources().getColor(R.color.danhei));
                     list.removeAll(list);
                     type = 0;
                     gdlistSmtr.autoRefresh();
@@ -163,6 +179,8 @@ public class gondanlist extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghu
                 if (!gdlistitTewwc.isSelected()) {
                     gdlistitTewwc.setSelected(true);
                     gdlistitTeqb.setSelected(false);
+                    v_2.setBackgroundColor(getResources().getColor(R.color.zhu));
+                    v_1.setBackgroundColor(getResources().getColor(R.color.danhei));
                     type = 1;
                     gdlistSmtr.autoRefresh();
                 }
@@ -348,19 +366,18 @@ public class gondanlist extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghu
                             public void onSuccess(File file) {
                                 if (jdt.isAdded())
                                     jdt.dismiss();
-                                    new Handler().postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            String str = "";
-                                            try {
-                                                str = encodeBase64File(file);
-                                                upLoadImgs(str);
-                                            } catch (Exception e) {
-                                                e.printStackTrace();
-                                            }
-
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        String str = "";
+                                        try {
+                                            str = encodeBase64File(file);
+                                            upLoadImgs(str);
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
                                         }
-                                    }, 500);
+                                    }
+                                }, 500);
                             }
 
                             @Override

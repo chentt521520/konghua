@@ -28,7 +28,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginRight="12dp"
         android:layout_marginBottom="12dp"
-        android:background="@color/zhu"
+        android:background="@drawable/yuanjiaoall"
         android:gravity="center"
         android:text="添加银行卡"
         android:textColor="@color/bai"

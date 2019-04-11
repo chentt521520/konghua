@@ -166,7 +166,7 @@ public class DianZhu extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua i
         setViewHw_Lin(lin_sfztp1, w_ - (int) (w_ * 28 / 750.0), (int) (w_ * 200 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 10 / 750.0), (int) (w_ * 14 / 750.0), 0);
         setViewHw_Lin(te_sfztts, w_ - (int) (w_ * 28 / 750.0), (int) (w_ * 80 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 10 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 14 / 750.0));
         setTextSize(te_sfztts, (int) (w_ * 28 / 750.0));
-        setViewHw_Lin(te_ok, w_ - (int) (w_ * 88 / 750.0), (int) (w_ * 90 / 750.0), (int) (w_ * 44 / 750.0), (int) (w_ * 0 / 750.0), (int) (w_ * 44 / 750.0), (int) (w_ * 14 / 750.0));
+        setViewHw_Lin(te_ok, w_ - (int) (w_ * 28 / 750.0), (int) (w_ * 80 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 0 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 14 / 750.0));
         setTextSize(te_ok, (int) (w_ * 45 / 750.0));
     }
 

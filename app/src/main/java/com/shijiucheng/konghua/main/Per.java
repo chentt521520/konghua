@@ -1,10 +1,14 @@
 package com.shijiucheng.konghua.main;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -61,6 +65,8 @@ public class Per extends BaseFragment_konghua implements IsLoginOrAuthor.refresh
     LinearLayout perLin4;
     @BindView(R.id.per_lin5)
     LinearLayout perLin5;
+    @BindView(R.id.per_lin7)
+    LinearLayout perLin7;
 
     @BindView(R.id.sper_quit)
     TextView te_quit;
@@ -130,7 +136,7 @@ public class Per extends BaseFragment_konghua implements IsLoginOrAuthor.refresh
     }
 
 
-    @OnClick({R.id.per_lin1, R.id.per_lin2, R.id.per_lin3, R.id.per_lin4, R.id.per_lin5, R.id.per_lin6, R.id.sper_quit})
+    @OnClick({R.id.per_lin1, R.id.per_lin2, R.id.per_lin3, R.id.per_lin4, R.id.per_lin5, R.id.per_lin6, R.id.sper_quit, R.id.per_lin7})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.per_lin1:
@@ -177,6 +183,32 @@ public class Per extends BaseFragment_konghua implements IsLoginOrAuthor.refresh
             case R.id.sper_quit:
                 getquit();
                 break;
+
+            case R.id.per_lin7:
+                if (checkApkExist(getActivity(), "com.tencent.mobileqq")) {
+                    String QQ = getSharePre("qq", getActivity());
+                    if (!QQ.equals("0")) {
+                        String urlQQ = "mqqwpa://im/chat?chat_type=wpa&uin=" + QQ + "&version=1";
+                        getActivity().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(urlQQ)));
+                        getActivity().overridePendingTransition(R.anim.push_left_in,
+                                R.anim.push_left_out);
+                    }
+                } else {
+                    toaste_ut(getActivity(), "未检测到QQ");
+                }
+                break;
+        }
+    }
+
+    public boolean checkApkExist(Context context, String packageName) {
+        if (packageName == null || "".equals(packageName))
+            return false;
+        try {
+            ApplicationInfo info = context.getPackageManager().getApplicationInfo(packageName,
+                    PackageManager.GET_UNINSTALLED_PACKAGES);
+            return true;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
         }
     }
 

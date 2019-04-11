@@ -91,9 +91,9 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".main.MainActivity"
+            android:hardwareAccelerated="false"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:hardwareAccelerated="false"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -164,6 +164,7 @@
         <activity android:name=".main.HomePage.Orderdatels" />
         <activity android:name=".main.HomePage.order_PeiSong" />
         <activity android:name=".main.per_.bank.banklist_guanli" />
+        <activity android:name=".main.HomePage.other_web1" />
         <activity
             android:name=".main.per_.bank.bk_bji"
             android:screenOrientation="portrait" />

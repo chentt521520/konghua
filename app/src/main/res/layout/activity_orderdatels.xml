@@ -181,7 +181,7 @@
                     android:id="@+id/orderddatails_tedizhi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="6dp"
+                    android:layout_marginBottom="8dp"
                     android:gravity="center_vertical|bottom"
                     android:lineSpacingExtra="5dp"
                     android:paddingLeft="12dp"

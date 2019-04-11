@@ -79,9 +79,6 @@ public class pinjiagd extends DialogFragment {
                     pjgdRtbar.setSelected(true);
                 } else
                     pjgdRtbar.setSelected(false);
-
-                Toast.makeText(getActivity().getApplication().getApplicationContext(), "11", Toast.LENGTH_SHORT).show();
-
             }
         });
         pjgdEdtxt.addTextChangedListener(new TextWatcher() {

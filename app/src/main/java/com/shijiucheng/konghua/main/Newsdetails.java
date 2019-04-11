@@ -8,7 +8,9 @@ import com.shijiucheng.konghua.Cmvp.BaseResult;
 import com.shijiucheng.konghua.R;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.BaseActivity_konghua;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.DaoHang_top;
+import com.shijiucheng.konghua.main.HomePage.Orderdatels;
 import com.shijiucheng.konghua.main.order.Order_detalis;
+import com.shijiucheng.konghua.main.per.payandget.gongdan.gondandetials;
 import com.shijiucheng.konghua.main.per.payandget.per.tixian.tiXianlishi;
 
 import org.json.JSONException;
@@ -70,7 +72,7 @@ public class Newsdetails extends BaseActivity_konghua {
                         JSONObject jso_ = jso.getJSONObject("data").getJSONObject("message_info");
                         ndetTetit.setText(jso_.getString("message_title"));
                         ndetTetime.setText("发件时间：" + jso_.getString("add_time_text"));
-                        String txt = jso_.getString("message_content").replace("&nbsp;", "  ;").replace("<br>", "");
+                        String txt = jso_.getString("message_content").replace("&nbsp;", "").replace("<br>", "");
                         ndetTetxt.setText(txt);
                         jso_data = jso_;
 
@@ -111,14 +113,24 @@ public class Newsdetails extends BaseActivity_konghua {
         if (jso_data != null) {
             try {
                 if (jso_data.getString("message_obj").equals("order_detail")) {
-                    i = new Intent(Newsdetails.this, Order_detalis.class);
+                    i = new Intent(Newsdetails.this, Orderdatels.class);
                     i.putExtra("id", jso_data.getString("message_obj_pk_id"));
+                    System.out.println(jso_data.getString("message_obj_pk_id"));
                     startActivity(i);
                     overridePendingTransition(R.anim.push_left_in,
                             R.anim.push_left_out);
                 } else if (jso_data.getString("message_obj").equals("withdraw_list")) {
                     i = new Intent(Newsdetails.this, tiXianlishi.class);
                     i.putExtra("id", jso_data.getString("message_obj_pk_id"));
+                    startActivity(i);
+                    overridePendingTransition(R.anim.push_left_in,
+                            R.anim.push_left_out);
+                } else if (jso_data.getString("message_obj").equals("work_order_detail")) {
+                    i = new Intent();
+                    i.setClass(Newsdetails.this, gondandetials.class);
+                    i.putExtra("id",  jso_data.getString("message_obj_pk_id"));
+                    i.putExtra("type", "");
+                    i.putExtra("position", 0);
                     startActivity(i);
                     overridePendingTransition(R.anim.push_left_in,
                             R.anim.push_left_out);

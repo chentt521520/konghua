@@ -367,8 +367,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 (int) (w_screen * 48 / 750.0), (int) (w_screen * 0 / 750.0),
                 (int) (w_screen * 10 / 750.0), 0, (int) (w_screen * 6 / 750.0));
         setviewhw_lin(im_per, (int) (w_screen * 48 / 750.0),
-                (int) (w_screen * 48 / 750.0), (int) (w_screen * 0 / 750.0),
-                (int) (w_screen * 10 / 750.0), 0, (int) (w_screen * 6 / 750.0));
+                (int) (w_screen * 38 / 750.0), (int) (w_screen * 0 / 750.0),
+                (int) (w_screen * 0 / 750.0), 0, (int) (w_screen * 20 / 750.0));
         te_synew.setTextSize(TypedValue.COMPLEX_UNIT_PX, (int) (w_screen * 26 / 750.0));
         te_sy.setTextSize(TypedValue.COMPLEX_UNIT_PX, (int) (w_screen * 26 / 750.0));
         te_order.setTextSize(TypedValue.COMPLEX_UNIT_PX, (int) (w_screen * 26 / 750.0));

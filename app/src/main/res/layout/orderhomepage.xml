@@ -22,13 +22,13 @@
             android:gravity="center|bottom"
             android:text="咨询电话"
             android:textColor="@color/bai"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:visibility="gone" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="122dp"
             android:gravity="center"
             android:text="首页"
             android:textColor="@color/bai"
@@ -48,7 +48,8 @@
             android:gravity="center|bottom"
             android:text="客服"
             android:textColor="@color/bai"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:visibility="gone" />
 
     </LinearLayout>
 
@@ -79,13 +80,41 @@
                     android:orientation="horizontal" />
             </RelativeLayout>
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
+                android:layout_height="63dp"
+                android:layout_marginLeft="2dp"
                 android:layout_marginTop="25dp"
-                android:layout_marginRight="12dp"
-                android:background="@mipmap/ddbj" />
+                android:layout_marginRight="2dp"
+                android:background="@mipmap/ddbgx"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="13dp"
+                    android:src="@mipmap/ddsmore" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="订单"
+                    android:textColor="@color/hei00"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@mipmap/ddsmore1" />
+
+            </LinearLayout>
 
 
             <LinearLayout
@@ -295,7 +324,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="27dp"
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="12dp"
                 android:background="@color/bai"
@@ -315,9 +344,8 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="消息中心"
-                    android:textColor="@color/hei"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
+                    android:textColor="@color/hei00"
+                    android:textSize="17sp" />
             </LinearLayout>
 
 
@@ -410,15 +438,41 @@
                 android:background="@drawable/lowerfillet" />
 
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginRight="12dp"
-                android:background="@mipmap/cwbg">
+                android:layout_height="63dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="2dp"
+                android:background="@mipmap/ddbgx"
+                android:orientation="horizontal">
 
-            </RelativeLayout>
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="13dp"
+                    android:src="@mipmap/cwsmore" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="财务"
+                    android:textColor="@color/hei00"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@mipmap/cwsmore1" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/hpNew_temoney"
@@ -430,8 +484,7 @@
                 android:gravity="center"
                 android:text="总收入："
                 android:textColor="#000000"
-                android:textSize="23sp"
-                android:textStyle="bold" />
+                android:textSize="23sp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -453,8 +506,7 @@
                         android:gravity="center"
                         android:text="可提现金额（元）"
                         android:textColor="@color/hei"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
+                        android:textSize="13sp" />
 
                     <TextView
                         android:id="@+id/hpNew_temoney1"
@@ -464,8 +516,7 @@
                         android:gravity="center"
                         android:text=""
                         android:textColor="#000000"
-                        android:textSize="23sp"
-                        android:textStyle="bold" />
+                        android:textSize="23sp" />
 
                 </RelativeLayout>
 
@@ -516,8 +567,7 @@
                     android:gravity="center_vertical"
                     android:text="已提现"
                     android:textColor="@color/hei"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/hpNew_temoney2"
@@ -527,8 +577,7 @@
                     android:gravity="center_vertical"
                     android:text=""
                     android:textColor="#5ec0ff"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/hpNew_tecashwithdrawalhostory"
@@ -576,8 +625,7 @@
                     android:gravity="center_vertical"
                     android:text="添加银行卡"
                     android:textColor="@color/hei"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -585,8 +633,7 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:textColor="#5ec0ff"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/hpNew_tebankcards"
@@ -601,14 +648,47 @@
                     android:textSize="14sp" />
             </LinearLayout>
 
-            <RelativeLayout
+
+            <LinearLayout
                 android:id="@+id/hpNew_relat"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginTop="18dp"
-                android:layout_marginRight="12dp"
-                android:background="@mipmap/dpbg"></RelativeLayout>
+                android:layout_height="63dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="2dp"
+                android:background="@mipmap/ddbgx"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="13dp"
+                    android:src="@mipmap/dpsmore" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="店铺"
+                    android:textColor="@color/hei00"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="center_vertical"
+                    android:text="立即设置"
+                    android:textColor="@color/hei"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
 
             <RelativeLayout
                 android:id="@+id/hpNew_relat1"
@@ -637,7 +717,7 @@
                     android:layout_marginTop="5dp"
                     android:background="@mipmap/gdbg"
                     android:gravity="center"
-                    android:text="进行中的工单"
+                    android:text="待处理问题"
                     android:textColor="@color/bai"
                     android:textSize="13sp" />
 

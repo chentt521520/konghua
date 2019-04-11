@@ -46,7 +46,7 @@
         android:layout_marginRight="12dp"
         android:gravity="center_vertical"
         android:singleLine="true"
-        android:text="发件人：鲜花网"
+        android:text="发  件  人：花脉"
         android:textColor="@color/hei"
         android:textSize="12sp" />
 
@@ -63,21 +63,15 @@
         android:textColor="@color/hei"
         android:textSize="12sp" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="16dp"
-        android:src="@mipmap/dsj" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/frame"
-        android:minHeight="140dp">
-
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@mipmap/newbc"
+        android:minHeight="140dp"
+        android:paddingTop="-12dp">
 
         <TextView
             android:id="@+id/ndet_tetxt"
@@ -88,6 +82,7 @@
             android:layout_marginRight="70dp"
             android:gravity="center_vertical"
             android:lineSpacingExtra="5dp"
+            android:paddingTop="7dp"
             android:textColor="@color/hei"
             android:textSize="13sp" />
 

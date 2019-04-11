@@ -16,7 +16,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="130dp">
+                android:layout_height="180dp">
 
                 <ImageView
                     android:id="@+id/per_imhead"
@@ -39,8 +39,8 @@
                     android:paddingBottom="5dp"
                     android:text="店   铺"
                     android:textColor="@color/bai"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp"
+                     />
 
             </RelativeLayout>
 
@@ -60,21 +60,21 @@
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="6dp"
                     android:background="@color/qianhei1" />
 
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="店铺基本信息"
                     android:textColor="@color/hei"
-                    android:textSize="15sp" />
+                    android:textSize="13sp" />
 
                 <ImageView
                     android:layout_width="15dp"
@@ -99,7 +99,7 @@
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="12dp"
                     android:background="@color/qianhei1" />
@@ -107,12 +107,12 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="账号安全设置"
                     android:textColor="@color/hei"
-                    android:textSize="15sp" />
+                    android:textSize="13sp" />
 
                 <ImageView
                     android:layout_width="15dp"
@@ -137,7 +137,7 @@
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="12dp"
                     android:background="@color/qianhei1" />
@@ -145,12 +145,12 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="银行卡管理"
                     android:textColor="@color/hei"
-                    android:textSize="15sp" />
+                    android:textSize="13sp" />
 
                 <ImageView
                     android:layout_width="15dp"
@@ -175,7 +175,7 @@
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="12dp"
                     android:background="@color/qianhei1" />
@@ -183,12 +183,12 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="问题订单反馈"
                     android:textColor="@color/hei"
-                    android:textSize="15sp" />
+                    android:textSize="13sp" />
 
                 <ImageView
                     android:layout_width="15dp"
@@ -214,7 +214,7 @@
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="12dp"
                     android:background="@color/qianhei1" />
@@ -222,12 +222,12 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="清除缓存"
                     android:textColor="@color/hei"
-                    android:textSize="15sp" />
+                    android:textSize="13sp" />
 
                 <ImageView
                     android:layout_width="15dp"
@@ -235,6 +235,45 @@
                     android:layout_marginRight="12dp"
                     android:src="@mipmap/fhy" />
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/per_lin7"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="27dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:src="@mipmap/kfx" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@color/qianhei1" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="联系客服"
+                    android:textColor="@color/hei"
+                    android:textSize="13sp" />
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="12dp"
+                    android:src="@mipmap/fhy" />
+            </LinearLayout>
+
 
 
             <LinearLayout
@@ -253,7 +292,7 @@
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="12dp"
                     android:layout_marginBottom="12dp"
                     android:background="@color/qianhei1" />
@@ -261,24 +300,24 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="版本更新"
                     android:textColor="@color/hei"
-                    android:textSize="15sp" />
+                    android:textSize="13sp" />
 
                 <TextView
                     android:id="@+id/per_tebbh"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:gravity="center_vertical|right"
                     android:paddingRight="6dp"
                     android:text="版本更新"
                     android:textColor="@color/hei"
-                    android:textSize="15sp" />
+                    android:textSize="13sp" />
 
 
                 <ImageView

@@ -51,6 +51,11 @@ public class News extends com.shijiucheng.konghua.Cmvp.BaseFragment_konghua impl
     @BindView(R.id.news_ggao)
     TextView newsGgao;
 
+    @BindView(R.id.view_1)
+    View v_1;
+    @BindView(R.id.view_2)
+    View v_2;
+
     znxrecyc_ada ada;
     List<znxada_data> list = new ArrayList<>();
     contact.IPrestent prestent = new NewsPrestent(this);
@@ -68,6 +73,8 @@ public class News extends com.shijiucheng.konghua.Cmvp.BaseFragment_konghua impl
         te_qb.setSelected(true);
         smartRefreshLayout.setDisableContentWhenRefresh(true);
 
+        v_1.setBackgroundColor(getResources().getColor(R.color.zhu));
+        v_2.setBackgroundColor(getResources().getColor(R.color.danhei));
 
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         manager.setOrientation(OrientationHelper.VERTICAL);
@@ -101,23 +108,39 @@ public class News extends com.shijiucheng.konghua.Cmvp.BaseFragment_konghua impl
         newsZnxx.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!newsZnxx.isSelected()) {
-                    newsZnxx.setSelected(true);
-                    newsGgao.setSelected(false);
-                    type = 1;
-                    smartRefreshLayout.autoRefresh();
-                }
+                if (fastClick())
+                    if (!newsZnxx.isSelected()) {
+                        newsZnxx.setSelected(true);
+                        newsGgao.setSelected(false);
+
+                        v_1.setBackgroundColor(getResources().getColor(R.color.zhu));
+                        v_2.setBackgroundColor(getResources().getColor(R.color.danhei));
+                        type = 1;
+                        page = 1;
+                        refreshstatus = 1;
+                        list.removeAll(list);
+                        ada.notifyDataSetChanged();
+                        getTypeValue(type);
+                    }
             }
         });
         newsGgao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!newsGgao.isSelected()) {
-                    newsGgao.setSelected(true);
-                    newsZnxx.setSelected(false);
-                    type = 4;
-                    smartRefreshLayout.autoRefresh();
-                }
+                if (fastClick())
+                    if (!newsGgao.isSelected()) {
+                        newsGgao.setSelected(true);
+                        newsZnxx.setSelected(false);
+
+                        v_2.setBackgroundColor(getResources().getColor(R.color.zhu));
+                        v_1.setBackgroundColor(getResources().getColor(R.color.danhei));
+                        type = 4;
+                        page = 1;
+                        refreshstatus = 1;
+                        list.removeAll(list);
+                        ada.notifyDataSetChanged();
+                        getTypeValue(type);
+                    }
             }
         });
 

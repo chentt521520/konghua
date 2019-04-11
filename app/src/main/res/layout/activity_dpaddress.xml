@@ -69,7 +69,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
-                    android:text="详细地址:"
+                    android:text="详 细 地 址: "
                     android:textColor="@color/hei"
                     android:textSize="12sp" />
 
@@ -104,7 +104,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginBottom="2dp"
                     android:gravity="center_vertical"
-                    android:text="店铺坐标:"
+                    android:text="店 铺 坐 标: "
                     android:textColor="@color/hei"
                     android:textSize="12sp" />
 
@@ -139,11 +139,12 @@
 
             <TextView
                 android:id="@+id/dpdz_tepsqy"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
                 android:text="请选择配送区域：(可多选)"
                 android:textColor="@color/hei"
+                android:background="@drawable/biankuangxia"
                 android:textSize="12sp" />
 
             <RelativeLayout
@@ -163,7 +164,7 @@
         android:id="@+id/dpdz_teok"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@color/zhu"
+        android:background="@drawable/yuanjiaoall"
         android:gravity="center"
         android:text="保存"
         android:textColor="@color/bai" />

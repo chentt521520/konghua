@@ -1,6 +1,7 @@
 package com.shijiucheng.konghua.main.HomePage;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -44,6 +45,7 @@ import com.shijiucheng.konghua.main.HomePage.viewPagerUtils.DensityUtil;
 import com.shijiucheng.konghua.main.HomePage.viewPagerUtils.InfiniteShufflingViewPager;
 import com.shijiucheng.konghua.main.HomePage.viewPagerUtils.pagerAdapter;
 import com.shijiucheng.konghua.main.News_.newsDetials;
+import com.shijiucheng.konghua.main.Newsdetails;
 import com.shijiucheng.konghua.main.per.payandget.per.tixian.sqtixian;
 import com.shijiucheng.konghua.main.per.payandget.per.tixian.tiXianlishi;
 import com.shijiucheng.konghua.main.per_.bank.banklist_guanli;
@@ -127,11 +129,12 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
     Unbinder unbinder;
 
     @BindView(R.id.hpNew_relat)
-    RelativeLayout relativeLayout;
+    LinearLayout relativeLayout;
     @BindView(R.id.hpNew_relat1)
     RelativeLayout relativeLayout1;
 
-    private int[] img = {R.mipmap.ban1, R.mipmap.ban2, R.mipmap.ban3};
+    private String[] img;
+    private JSONObject[] imgobj;
     private int previousSelectedPosition;
     private long startTime;
     private long endTime;
@@ -140,19 +143,14 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
 
     List<orderdata> list = new ArrayList<>();
     com.shijiucheng.konghua.Cmvp.OrderSYMVPNew.orderrecyc.orderadapter orderadapter;
-
     String Phone = "", QQ = "";
-
-    int fristinit = 0;
+    int fristinit = 0, bannersize = 0;
 
 
     @Override
     protected void AddView() {
         pagePresent = new HomePagePresent(this);
-        pagerAdapter = new pagerAdapter(getActivity(), img);
-        pagerAdapter.setImgOncl(this);
-        initPoint();
-        initViewPager();
+
 
         EventBus.getDefault().register(this);
 
@@ -212,6 +210,24 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
     public void showData(JSONObject jsonObject) {
         try {
             JSONArray jso_banner = jsonObject.getJSONArray("banner_list");
+            if (jso_banner.length() >= 1) {
+                imgobj = new JSONObject[jso_banner.length()];
+                img = new String[jso_banner.length()];
+                for (int i = 0; i < jso_banner.length(); i++) {
+                    JSONObject jsob = jso_banner.getJSONObject(i);
+                    imgobj[i] = jsob;
+                    img[i] = jsob.getString("img");
+                }
+                if (img.length >= 1 && bannersize == 0) {
+                    bannersize = 1;
+                    pagerAdapter = new pagerAdapter(getActivity(), img);
+                    pagerAdapter.setImgOncl(this);
+                    initPoint();
+                    initViewPager();
+                }
+            }
+
+
             JSONArray notice_list = jsonObject.getJSONArray("notice_list");
             if (fristinit == 0) {
                 fristinit = 1;
@@ -231,6 +247,7 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
 
             Phone = jsonObject.getString("kf_tel");
             QQ = jsonObject.getString("kf_qq");
+            sharePre("qq", QQ, getActivity());
 
             JSONArray jsa_order = jsonObject.getJSONArray("work_order_list");
             list.removeAll(list);
@@ -275,6 +292,21 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
     @Override
     public void imageOnclIm(int pos) {
 //轮播点击
+        JSONObject jso = imgobj[pos];
+        try {
+            if (jso.getString("type").equals("view")) {
+                Intent i = new Intent();
+                i.putExtra("titl", jso.getString("title"));
+                i.putExtra("url",
+                        jso.getString("url"));
+                i.setClass(getActivity(), other_web1.class);
+                startActivity(i);
+                getActivity().overridePendingTransition(
+                        R.anim.push_left_in, R.anim.push_left_out);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -455,7 +487,7 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
                 geotoOrder(0, "待结算", "sign");
                 break;
             case R.id.hpNew_imcomplete:
-                geotoOrder(0, "已完成", "balanc");
+                geotoOrder(0, "已完成", "balance");
                 break;
             case R.id.hpNew_imnews:
                 totherpage(2);
@@ -635,10 +667,8 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
                     public void onClick(View view) {
                         String id = textSwitcherAnimation.getTxtId();
                         if (!TextUtils.isEmpty(id)) {
-
-                            Intent i = new Intent(getActivity(), newsDetials.class);
-                            i.putExtra("tit", "站内信");
-                            i.putExtra("id", id);
+                            Intent i = i = new Intent(getActivity(), Newsdetails.class);
+                            i.putExtra("m_id", id);
                             getActivity().startActivity(i);
                             getActivity().overridePendingTransition(R.anim.push_left_in,
                                     R.anim.push_left_out);

@@ -322,11 +322,11 @@ public class authen_RZ extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
                 jsonAuthor = json_author;
                 refresh.refreshrz(authen_RZ.this);
                 rzzt = 3;
-                te_dzgo.setText("查看 >");
-                te_dpgo.setText("查看 >");
-                te_dpwzgo.setText("查看 >");
-                te_dplxrgo.setText("查看 >");
-                te_ok.setText("审核通过/修改");
+//                te_dzgo.setText("查看 >");
+//                te_dpgo.setText("查看 >");
+//                te_dpwzgo.setText("查看 >");
+//                te_dplxrgo.setText("查看 >");
+//                te_ok.setText("审核通过/修改");
 
                 return;
             }
@@ -341,18 +341,18 @@ public class authen_RZ extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
                 rzzt = 2;
                 te_dpts.setVisibility(View.VISIBLE);
                 failMsg = jsonObject.getString("msg");
-                te_ok.setText("重新提交");
+//                te_ok.setText("重新提交");
                 sharePre("isauther", "0", authen_RZ.this);
                 return;
             }
             if (jsonObject.getJSONObject("data").getString("authentication_status").equals("authenticating")) {
                 rzzt = 1;
                 sharePre("isauther", "0", authen_RZ.this);
-                te_ok.setText("审核中");
-                te_dzgo.setText("查看 >");
-                te_dpgo.setText("查看 >");
-                te_dpwzgo.setText("查看 >");
-                te_dplxrgo.setText("查看 >");
+//                te_ok.setText("审核中");
+//                te_dzgo.setText("查看 >");
+//                te_dpgo.setText("查看 >");
+//                te_dpwzgo.setText("查看 >");
+//                te_dplxrgo.setText("查看 >");
 
                 return;
             }

@@ -131,18 +131,19 @@ public class gondandetials extends BaseActivity_konghua implements guanbigd.quer
         gdclose = new guanbigd();
         huifugdz = new huifugd();
         gdxqDh.settext_("工单详情");
+        gdxqDh.setvis();
         id = getIntent().getStringExtra("id");
-        type = getIntent().getStringExtra("type");
-
-        if (type.equals("已关闭"))
-            gdxqTepj.setVisibility(View.GONE);
-        else if (type.equals("已评价")) {
-            gdxqLincz.setVisibility(View.GONE);
-            gdxqTepj.setVisibility(View.GONE);
-        } else {
-            gdxqLincz.setVisibility(View.VISIBLE);
-            gdxqTepj.setVisibility(View.GONE);
-        }
+//        type = getIntent().getStringExtra("type");
+//
+//        if (type.equals("已关闭"))
+//            gdxqTepj.setVisibility(View.GONE);
+//        else if (type.equals("已评价")) {
+//            gdxqLincz.setVisibility(View.GONE);
+//            gdxqTepj.setVisibility(View.GONE);
+//        } else {
+//            gdxqLincz.setVisibility(View.VISIBLE);
+//            gdxqTepj.setVisibility(View.GONE);
+//        }
 
         getStatus();
 
@@ -213,18 +214,32 @@ public class gondandetials extends BaseActivity_konghua implements guanbigd.quer
                         if (gdxqTebhao != null) {
                             gdxqTebhao.setText("工单编号：" + jsaOr.getString("id"));
                             gdxqTeleibie.setText(jsaOr.getString("cate1_text") + ">" + jsaOr.getString("cate2_text"));
+
+                            type = jsaOr.getString("work_order_status");
+
+                            if (type.equals("15"))
+                                gdxqTepj.setVisibility(View.GONE);
+                            else if (type.equals("20")) {
+                                gdxqLincz.setVisibility(View.GONE);
+                                gdxqTepj.setVisibility(View.GONE);
+                            } else {
+                                gdxqLincz.setVisibility(View.VISIBLE);
+                                gdxqTepj.setVisibility(View.GONE);
+                            }
+
                         }
                         type = jsaOr.getString("work_order_status");
                         getStatus();
+                        list.removeAll(list);
+                        list.add(new gdxqdata("0", jsaOr.getString("add_time_text"), jsaOr.getString("content_text"), jsaOr.getString("work_order_images")));
                         if (jsa.length() >= 1) {
-                            list.removeAll(list);
-                            list.add(new gdxqdata("0", jsaOr.getString("add_time_text"), jsaOr.getString("content_text"), jsaOr.getString("work_order_images")));
                             for (int i = 0; i < jsa.length(); i++) {
                                 JSONObject jsoList = jsa.getJSONObject(i);
                                 list.add(new gdxqdata(jsoList.getString("reply_type"), jsoList.getString("add_time_text"), jsoList.getString("reply_content"), jsoList.getString("reply_images")));
                             }
-                            gdxqada.notifyDataSetChanged();
+
                         }
+                        gdxqada.notifyDataSetChanged();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -243,41 +258,44 @@ public class gondandetials extends BaseActivity_konghua implements guanbigd.quer
     }
 
     public void getStatus() {
-        if (type.equals("0")) {
-            gdxqLincz.setVisibility(View.GONE);
-            gdxqTepj.setVisibility(View.GONE);
-        } else if (type.equals("5")) {
-            gdxqLincz.setVisibility(View.VISIBLE);
-            gdxqTehuifu.setVisibility(View.GONE);
-            gdxqTepj.setVisibility(View.GONE);
-            gdxqTeysl.setSelected(true);
+        if (gdxqLincz != null) {
+            if (type.equals("0")) {
 
-        } else if (type.equals("10") || type.equals("11")) {
-            gdxqLincz.setVisibility(View.VISIBLE);
-            gdxqTepj.setVisibility(View.GONE);
+                gdxqLincz.setVisibility(View.GONE);
+                gdxqTepj.setVisibility(View.GONE);
+            } else if (type.equals("5")) {
+                gdxqLincz.setVisibility(View.VISIBLE);
+                gdxqTehuifu.setVisibility(View.GONE);
+                gdxqTepj.setVisibility(View.GONE);
+                gdxqTeysl.setSelected(true);
 
-            gdxqTeysl.setSelected(true);
-            gdxqTeclz.setSelected(true);
+            } else if (type.equals("10") || type.equals("11")) {
+                gdxqLincz.setVisibility(View.VISIBLE);
+                gdxqTepj.setVisibility(View.GONE);
 
-        } else if (type.equals("15")) {
-            gdxqLincz.setVisibility(View.GONE);
-            gdxqTepj.setVisibility(View.VISIBLE);
-            gdxqTeysl.setSelected(true);
-            gdxqTeclz.setSelected(true);
-            gdxqTeyqr.setSelected(true);
+                gdxqTeysl.setSelected(true);
+                gdxqTeclz.setSelected(true);
 
-        } else if (type.equals("20")) {
-            gdxqLincz.setVisibility(View.GONE);
-            gdxqTepj.setVisibility(View.GONE);
+            } else if (type.equals("15")) {
+                gdxqLincz.setVisibility(View.GONE);
+                gdxqTepj.setVisibility(View.VISIBLE);
+                gdxqTeysl.setSelected(true);
+                gdxqTeclz.setSelected(true);
+                gdxqTeyqr.setSelected(true);
 
-            gdxqTeysl.setSelected(true);
-            gdxqTeclz.setSelected(true);
-            gdxqTeyqr.setSelected(true);
-            gdxqTedpj.setSelected(true);
+            } else if (type.equals("20")) {
+                gdxqLincz.setVisibility(View.GONE);
+                gdxqTepj.setVisibility(View.GONE);
 
-        } else {
-            gdxqLincz.setVisibility(View.VISIBLE);
-            gdxqTepj.setVisibility(View.GONE);
+                gdxqTeysl.setSelected(true);
+                gdxqTeclz.setSelected(true);
+                gdxqTeyqr.setSelected(true);
+                gdxqTedpj.setSelected(true);
+
+            } else {
+                gdxqLincz.setVisibility(View.VISIBLE);
+                gdxqTepj.setVisibility(View.GONE);
+            }
         }
     }
 

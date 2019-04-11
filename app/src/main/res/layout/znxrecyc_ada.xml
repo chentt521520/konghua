@@ -6,22 +6,24 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/znxit_lintop"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/znxit_imwd"
-            android:layout_width="20dp"
+            android:layout_width="10dp"
             android:layout_height="match_parent"
             android:layout_marginStart="12dp"
+            android:visibility="invisible"
             android:src="@drawable/statusnews" />
 
         <ImageView
             android:id="@+id/znxit_imwdt"
-            android:layout_width="25dp"
+            android:layout_width="20dp"
             android:layout_height="match_parent"
-            android:layout_marginStart="3dp"
+            android:layout_marginStart="12dp"
             android:layout_marginEnd="6dp"
             android:src="@drawable/statusnewst" />
 
@@ -51,46 +53,50 @@
             android:textSize="12sp" />
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/qianhei1"></View>
-
-    <TextView
-        android:id="@+id/znxit_tetxt"
+    <LinearLayout
+        android:id="@+id/znxit_linbot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginBottom="12dp"
-        android:gravity="start"
-        android:lineSpacingExtra="6dp"
-        android:maxLines="3"
-        android:text="全部"
-        android:textColor="@color/select_te"
-        android:textSize="12sp" />
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/znxit_tetxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="12dp"
+            android:gravity="start"
+            android:lineSpacingExtra="6dp"
+            android:maxLines="3"
+            android:text="全部"
+            android:textColor="@color/select_te"
+            android:textSize="12sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="12dp"
+            android:background="@color/qianhei1" />
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/znxit_teck"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="39dp"
+            android:gravity="center_vertical|end"
+            android:text="查看详情 >"
+            android:textColor="@color/zhu"
+            android:textSize="14sp" />
+    </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/qianhei1"></View>
-
-    <TextView
-        android:id="@+id/znxit_teck"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginRight="39dp"
-        android:gravity="center_vertical|end"
-        android:text="查看详情 >"
-        android:textColor="@color/zhu"
-        android:textSize="14sp" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="12dp"
         android:background="@color/qianhei1"></View>
 
 </LinearLayout>

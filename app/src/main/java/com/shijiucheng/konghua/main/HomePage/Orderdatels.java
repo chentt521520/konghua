@@ -11,6 +11,7 @@ import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Base64;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -44,6 +45,7 @@ import com.shijiucheng.konghua.main.HomePage.frag.ditu_frag;
 import com.shijiucheng.konghua.main.HomePage.frag.jiedan_frag;
 import com.shijiucheng.konghua.main.HomePage.frag.jiesuan_frag;
 import com.shijiucheng.konghua.main.HomePage.frag.jujue_frag;
+import com.shijiucheng.konghua.main.HomePage.frag.noorder;
 import com.shijiucheng.konghua.main.HomePage.frag.riliTime_frag;
 import com.shijiucheng.konghua.main.HomePage.frag.tuidan_frag;
 import com.shijiucheng.konghua.main.HomePage.frag.tuidanxiadanfang_frag;
@@ -75,7 +77,7 @@ import retrofit2.Response;
 import top.zibin.luban.Luban;
 import top.zibin.luban.OnCompressListener;
 
-public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jiedan, zhangjia_frag.zhangjia, jujue_frag.jujue, tuidan_frag.tuidan, ValidatePwd.yanzhenpwd, riliTime_frag.setdatetime, TakePhoto.TakeResultListener, InvokeListener, jiesuan_frag.jieshuan, tuidanxiadanfang_frag.tuidanxdf, ditu_frag.mappos {
+public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jiedan, zhangjia_frag.zhangjia, jujue_frag.jujue, tuidan_frag.tuidan, ValidatePwd.yanzhenpwd, riliTime_frag.setdatetime, TakePhoto.TakeResultListener, InvokeListener, jiesuan_frag.jieshuan, tuidanxiadanfang_frag.tuidanxdf, ditu_frag.mappos, noorder.queren {
 
     @BindView(R.id.orderddatails_dh)
     DaoHang_top orderddatailsDh;
@@ -186,6 +188,8 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
     String order_sign_personnel_type = "1", order_sign_time = "";
     String is_order_balance_remind = "0";
 
+    noorder noorder_ = new noorder();
+
     String ssq = "";//百度地图用到的省市区
     double[] jwd = {0, 0, 0, 0};
     ditu_frag ditu_frag;
@@ -204,7 +208,7 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
         serivce = retrofit_Single.getInstence().getserivce(2);
         orderddatailsDh.settext_("订单详情");
         id = getIntent().getStringExtra("id");
-
+        System.out.println(id + "  xxxx");
         jiedan_frag = new jiedan_frag();
         zhangjia = new zhangjia_frag();
         jujue_frag = new jujue_frag();
@@ -261,6 +265,7 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
                 }
             }
         });
+
     }
 
     private void getorder() {
@@ -279,15 +284,15 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
                     String str = response.body().string();
                     try {
                         JSONObject jsonObject = new JSONObject(str);
+                        System.out.println(jsonObject);
                         if (jsonObject.getString("status").equals("1")) {
                             JSONObject jso = jsonObject.getJSONObject("data");
                             order_info(jso.getJSONObject("order_info"));
                             caozuolishi(jso.getJSONArray("order_follow_list"));
                         } else {
-                            toaste_ut(Orderdatels.this, jsonObject.getString("msg"));
-                            finish();
-                            overridePendingTransition(R.anim.push_right_out,
-                                    R.anim.push_right_in);
+                            if (!noorder_.isAdded()) {
+                                noorder_.show(getSupportFragmentManager(), "nooo");
+                            }
                         }
 
                     } catch (JSONException e) {
@@ -1451,4 +1456,13 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
             goToTencentMap(jwd[0], jwd[1], jwd[2], jwd[3]);
         }
     }
+
+    @Override
+    public void queren() {
+        finish();
+        overridePendingTransition(R.anim.push_right_out,
+                R.anim.push_right_in);
+    }
+
+
 }

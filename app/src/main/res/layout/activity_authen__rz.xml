@@ -21,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:gravity="center"
-                android:text="没有店铺  申请开店"
+                android:text="店铺基本信息"
                 android:textColor="@color/zhu"
                 android:textSize="16sp" />
 
@@ -45,7 +45,7 @@
 
                 <ImageView
                     android:id="@+id/renzhen_Imdz"
-                    android:layout_width="31dp"
+                    android:layout_width="22dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="18dp"
                     android:src="@mipmap/smrz" />
@@ -65,7 +65,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="12dp"
                     android:gravity="center_vertical"
-                    android:text="实名认证"
+                    android:text="店主信息"
                     android:textSize="14dp" />
 
                 <TextView
@@ -104,7 +104,7 @@
 
                 <ImageView
                     android:id="@+id/renzhen_Imdp"
-                    android:layout_width="31dp"
+                    android:layout_width="22dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="18dp"
                     android:src="@mipmap/dprz" />
@@ -123,7 +123,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="12dp"
                     android:gravity="center_vertical"
-                    android:text="店铺认证"
+                    android:text="店铺信息"
                     android:textSize="14dp" />
 
                 <TextView
@@ -152,63 +152,6 @@
                     android:textSize="14sp" />
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/renzhen_Lindplxr"
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:layout_marginTop="23dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/renzhen_Imdplxr"
-                    android:layout_width="31dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="18dp"
-                    android:src="@mipmap/dpxx" />
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginBottom="12dp"
-                    android:background="@color/qianhei1" />
-
-                <TextView
-                    android:id="@+id/renzhen_Tedplxr"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="12dp"
-                    android:gravity="center_vertical"
-                    android:singleLine="true"
-                    android:text="店铺信息"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/renzhen_Tedplxr1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="5dp"
-                    android:gravity="center_vertical"
-                    android:text="(未填写)"
-                    android:textColor="@color/hei"
-                    android:textSize="11sp"
-                    android:visibility="invisible" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
-
-                <TextView
-                    android:id="@+id/renzhen_Tedplxrgo"
-                    android:layout_width="91dp"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="去填写 >"
-                    android:textColor="@color/hei"
-                    android:textSize="14sp" />
-            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/renzhen_Lindpwz"
@@ -219,7 +162,7 @@
 
                 <ImageView
                     android:id="@+id/renzhen_Imdpwz"
-                    android:layout_width="31dp"
+                    android:layout_width="22dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="18dp"
                     android:src="@mipmap/dplxr" />
@@ -267,15 +210,73 @@
                     android:textSize="14sp" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/renzhen_Lindplxr"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginTop="23dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/renzhen_Imdplxr"
+                    android:layout_width="22dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="18dp"
+                    android:src="@mipmap/dpxx" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@color/qianhei1" />
+
+                <TextView
+                    android:id="@+id/renzhen_Tedplxr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="12dp"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
+                    android:text="店铺位置"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/renzhen_Tedplxr1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:gravity="center_vertical"
+                    android:text="(未填写)"
+                    android:textColor="@color/hei"
+                    android:textSize="11sp"
+                    android:visibility="invisible" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/renzhen_Tedplxrgo"
+                    android:layout_width="91dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="去填写 >"
+                    android:textColor="@color/hei"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
 
             <TextView
                 android:id="@+id/renzhen_Teok"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginLeft="53dp"
+                android:layout_marginLeft="18dp"
                 android:layout_marginTop="51dp"
-                android:layout_marginRight="53dp"
-                android:background="@color/zhu"
+                android:layout_marginRight="18dp"
+                android:background="@drawable/yuanjiaoall"
                 android:gravity="center"
                 android:text="提交"
                 android:textColor="@color/bai"
@@ -284,7 +285,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginLeft="53dp"
+                android:layout_marginLeft="18dp"
                 android:layout_marginRight="53dp"
                 android:gravity="center_vertical"
                 android:text="* 注意，资料审核中，该账户不能进行其他操作!"

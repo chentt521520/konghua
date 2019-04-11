@@ -140,7 +140,7 @@
                 android:id="@+id/mainact_ivwd"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="2dp"
                 android:background="#00000000"
                 android:src="@drawable/selector_per" />
 
@@ -150,6 +150,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="店铺"
+                android:layout_marginTop="3dp"
                 android:textColor="@color/select_te"
                 android:textSize="11sp" />
         </LinearLayout>

@@ -150,12 +150,6 @@ public class OrderTwoPage extends BaseActivity_konghua implements ordertwoAdapte
                     if (jsa.getString("status").equals("1")) {
                         JSONObject jsonObject = jsa.getJSONObject("data");
                         JSONArray jsonArray = jsonObject.getJSONArray("rows");
-                        if (page == 1 && jsonArray.length() <= 0) {
-                            if (layout!=null)
-                            layout.setVisibility(View.VISIBLE);
-                        } else{
-                            if (layout!=null)
-                            layout.setVisibility(View.GONE);}
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jso1 = jsonArray.getJSONObject(i);
                             list.add(new ordertwoData(jso1.getString("order_id"), jso1.getString("order_sn"), jso1.getString("order_status"), jso1.getString("add_time_text"), ""
@@ -163,6 +157,9 @@ public class OrderTwoPage extends BaseActivity_konghua implements ordertwoAdapte
                                     jso1.getString("receiver_address"), jso1.getString("receiver"), jso1.getString("receiver_tel"), jso1.getString("is_order_balance_remind")));
                         }
                         adapter.notifyDataSetChanged();
+                        if (jsonArray.length() <= 0)
+                            if (layout != null)
+                                layout.setVisibility(View.VISIBLE);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

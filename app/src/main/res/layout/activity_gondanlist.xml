@@ -16,6 +16,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:background="@color/qianhei1"
         android:orientation="horizontal">
 
         <TextView
@@ -30,7 +31,7 @@
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="@color/qianhei1" />
+            android:background="@color/danhei" />
 
         <TextView
             android:id="@+id/gdlistit_tewwc"
@@ -42,10 +43,25 @@
             android:textColor="@color/select_te" />
     </LinearLayout>
 
-    <View
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/qianhei1" />
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/view_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/zhu" />
+
+        <View
+            android:id="@+id/view_2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/danhei" />
+    </LinearLayout>
 
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout

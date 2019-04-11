@@ -45,7 +45,6 @@
             android:text="立即接单"
             android:textColor="@color/bai"
             android:textSize="12dp" />
-
         <TextView
             android:id="@+id/jiedan_tequxiao"
             android:layout_width="match_parent"

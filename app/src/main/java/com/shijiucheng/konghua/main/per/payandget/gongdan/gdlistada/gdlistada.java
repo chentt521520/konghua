@@ -43,7 +43,6 @@ public class gdlistada extends RecyclerView.Adapter<gdlistada.viewholder> {
     @Override
     public void onBindViewHolder(@NonNull viewholder holder, final int position) {
         final gdlistdata data = list.get(position);
-        holder.gdlistitTebh.setText("工单编号:" + data.getId());
         holder.gdlistitTetime.setText(data.getTime());
         holder.gdlistitTetxt.setText(data.getContent());
         holder.gdlistitTelb.setText(data.getStatus());
@@ -53,24 +52,24 @@ public class gdlistada extends RecyclerView.Adapter<gdlistada.viewholder> {
             holder.gdlistitLincz.setVisibility(View.GONE);
             holder.gdlistitTepj.setVisibility(View.GONE);
         } else if (data.getStatus1().equals("5")) {
-            holder.gdlistitLincz.setVisibility(View.VISIBLE);
+            holder.gdlistitLincz.setVisibility(View.GONE);
             holder.gdlistitTehuifu.setVisibility(View.GONE);
             holder.gdlistitTepj.setVisibility(View.GONE);
             holder.gdlistitTestatus.setText("已受理");
         } else if (data.getStatus1().equals("10") || data.getStatus1().equals("11")) {
-            holder.gdlistitLincz.setVisibility(View.VISIBLE);
+            holder.gdlistitLincz.setVisibility(View.GONE);
             holder.gdlistitTepj.setVisibility(View.GONE);
             holder.gdlistitTestatus.setText("处理中");
         } else if (data.getStatus1().equals("15")) {
             holder.gdlistitLincz.setVisibility(View.GONE);
-            holder.gdlistitTepj.setVisibility(View.VISIBLE);
+            holder.gdlistitTepj.setVisibility(View.GONE);
             holder.gdlistitTestatus.setText("已关闭");
         } else if (data.getStatus1().equals("20")) {
             holder.gdlistitLincz.setVisibility(View.GONE);
             holder.gdlistitTepj.setVisibility(View.GONE);
             holder.gdlistitTestatus.setText("已评价");
         } else {
-            holder.gdlistitLincz.setVisibility(View.VISIBLE);
+            holder.gdlistitLincz.setVisibility(View.GONE);
             holder.gdlistitTepj.setVisibility(View.GONE);
         }
 
@@ -101,22 +100,17 @@ public class gdlistada extends RecyclerView.Adapter<gdlistada.viewholder> {
                 pinjiagd.show(((Activity) context).getFragmentManager(), "hfgd");
             }
         });
-        holder.gdlistitLinddbh.setOnClickListener(new View.OnClickListener() {
+        holder.lin_.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!data.getStatus1().equals("0")) {
-
-                    Intent i = new Intent();
-                    i.setClass(context, gondandetials.class);
-                    i.putExtra("id", data.getId());
-                    i.putExtra("type", data.getStatus1());
-                    i.putExtra("position", position);
-
-
-                    context.startActivity(i);
-                    ((Activity) context).overridePendingTransition(R.anim.push_left_in,
-                            R.anim.push_left_out);
-                }
+                Intent i = new Intent();
+                i.setClass(context, gondandetials.class);
+                i.putExtra("id", data.getId());
+                i.putExtra("type", data.getStatus1());
+                i.putExtra("position", position);
+                context.startActivity(i);
+                ((Activity) context).overridePendingTransition(R.anim.push_left_in,
+                        R.anim.push_left_out);
             }
         });
         holder.gdlistitTeguanbi.setOnClickListener(new View.OnClickListener() {
@@ -134,8 +128,6 @@ public class gdlistada extends RecyclerView.Adapter<gdlistada.viewholder> {
     }
 
     public class viewholder extends RecyclerView.ViewHolder {
-        @BindView(R.id.gdlistit_tebh)
-        TextView gdlistitTebh;
         @BindView(R.id.gdlistit_tetime)
         TextView gdlistitTetime;
         @BindView(R.id.gdlistit_linddbh)
@@ -154,6 +146,8 @@ public class gdlistada extends RecyclerView.Adapter<gdlistada.viewholder> {
         TextView gdlistitTepj;
         @BindView(R.id.gdlistit_testatus)
         TextView gdlistitTestatus;
+        @BindView(R.id.gdlistit_lintop)
+        LinearLayout lin_;
 
 
         public viewholder(View itemView) {
