@@ -13,6 +13,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <include
+        android:id="@+id/orderdet_nodata"
+        layout="@layout/nodtataorder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
     <ScrollView
         android:id="@+id/orderddatails_scroll"
         android:layout_width="match_parent"
@@ -152,7 +159,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="center_vertical|right"
+                    android:gravity="center_vertical|right|bottom"
                     android:paddingLeft="12dp"
                     android:paddingRight="12sp"
                     android:text="0"
@@ -204,7 +211,7 @@
                     android:layout_weight="2"
                     android:gravity="center_vertical|bottom"
                     android:paddingLeft="12dp"
-                    android:text="收货人："
+                    android:text="    收货人："
                     android:textColor="@color/hei"
                     android:textSize="13dp" />
 
@@ -386,7 +393,7 @@
                         android:paddingLeft="12dp"
                         android:paddingRight="12sp"
                         android:paddingBottom="3dp"
-                        android:text="签收人："
+                        android:text="    签收人："
                         android:textColor="@color/hei"
                         android:textSize="13dp" />
 
@@ -481,9 +488,9 @@
                     android:layout_marginLeft="11dp"
                     android:layout_marginBottom="6dp"
                     android:lineSpacingExtra="4dp"
-
                     android:text="*  请勿在没有送达的情况下点击签收，送达前确认签收产生的交易纠纷由接单方承担。"
-                    android:textColor="#da0000" />
+                    android:textColor="#da0000"
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <View
