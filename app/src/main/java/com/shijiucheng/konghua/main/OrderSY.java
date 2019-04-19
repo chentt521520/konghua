@@ -2,7 +2,9 @@ package com.shijiucheng.konghua.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -73,6 +75,9 @@ public class OrderSY extends BaseFragment_konghua implements SYContact.SYView {
     @BindView(R.id.ordersy_tess)
     TextView ordersyTess;
 
+    @BindView(R.id.ordersy_tecz)
+    TextView te_cz;
+
     @BindView(R.id.ordersy_smtr)
     SmartRefreshLayout refreshLayout;
 
@@ -130,7 +135,18 @@ public class OrderSY extends BaseFragment_konghua implements SYContact.SYView {
                     rili_frag.show(getChildFragmentManager(), "rili");
             }
         });
+        setczvis(orderEdssbh);//监听输入变化
+        setczvis(orderEdsslxr);
+        setczvis(orderEdsslxrph);
+        te_cz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setempettxt();
+                te_cz.setVisibility(View.GONE);
+            }
+        });
     }
+
 
     @Override
     protected int getLayout() {
@@ -194,7 +210,7 @@ public class OrderSY extends BaseFragment_konghua implements SYContact.SYView {
                     toaste_ut(getActivity(), "请完成开始于结束日期填写");
                     return;
                 }
-                geotoOrder(2, "全部订单", "");
+                geotoOrder(2, "搜索结果", "");
                 break;
         }
     }
@@ -219,6 +235,8 @@ public class OrderSY extends BaseFragment_konghua implements SYContact.SYView {
             if (data.getMsg().equals(configParams.orderSYsetdate1)) {
                 Bundle bundle = (Bundle) data.getT();
                 orderEdssrq1.setText(bundle.getString("time"));
+                if (!te_cz.isShown())
+                te_cz.setVisibility(View.VISIBLE);
             }
             return;
         }
@@ -232,6 +250,8 @@ public class OrderSY extends BaseFragment_konghua implements SYContact.SYView {
             if (data.getMsg().equals(configParams.orderSYsetdate2)) {
                 Bundle bundle = (Bundle) data.getT();
                 orderEdssrq2.setText(bundle.getString("time"));
+                if (!te_cz.isShown())
+                    te_cz.setVisibility(View.VISIBLE);
             }
             return;
         }
@@ -344,6 +364,64 @@ public class OrderSY extends BaseFragment_konghua implements SYContact.SYView {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public boolean isshowcs() {
+        boolean t = false;//true显示
+        if (!TextUtils.isEmpty(orderEdssbh.getText().toString())) {
+            t = true;
+            return t;
+        }
+        if (!TextUtils.isEmpty(orderEdsslxr.getText().toString())) {
+            t = true;
+            return t;
+        }
+        if (!TextUtils.isEmpty(orderEdsslxrph.getText().toString())) {
+            t = true;
+            return t;
+        }
+        if (!orderEdssrq1.getText().toString().equals("开始日期")) {
+            t = true;
+            return t;
+        }
+        if (!orderEdssrq2.getText().toString().equals("结束日期")) {
+            t = true;
+            return t;
+        }
+        return t;
+    }
+
+    public void setempettxt() {
+        orderEdssbh.setText("");
+        orderEdsslxr.setText("");
+        orderEdsslxrph.setText("");
+        orderEdssrq1.setText("开始日期");
+        orderEdssrq2.setText("结束日期");
+    }
+
+    public void setczvis(EditText editText) {
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (isshowcs()) {
+                    if (!te_cz.isShown())
+                        te_cz.setVisibility(View.VISIBLE);
+                } else {
+                    if (te_cz.isShown())
+                        te_cz.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
 
             }
         });

@@ -3,6 +3,7 @@ package com.shijiucheng.konghua.main.HomePage;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -79,36 +80,51 @@ public class ordertwoAdapter extends RecyclerView.Adapter<ordertwoAdapter.viewho
     @Override
     public void onBindViewHolder(@NonNull final viewholder holder, final int position) {
         final ordertwoData data = list.get(position);
-        holder.ordertwoitTebh.setText("订单编号：" + data.getDdh());
+        holder.ordertwoitTebh.setText("    订单编号 :  " + data.getDdh());
 
-        holder.ordertwoitTetime.setText("下单时间：" + data.getTime());
+        holder.ordertwoitTetime.setText("    配送时间 :  " + data.getTime());
         holder.ordertwoitTetime1.setText(data.getTime1());
-        holder.ordertwoitTeprice.setText("￥" + data.getPrice());
+        holder.ordertwoitTeprice.setText(data.getPrice() + "元");
         holder.ordertwoitTedizhi.setText(data.getAddress() + " " + data.getAddress1());
-        holder.ordertwoitTeshren.setText("收货人：" + data.getShrname());
+
+        holder.te_djd.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+        if (data.getStatus().equals("1")||data.getStatus().equals("2")||data.getStatus().equals("3")) {
+            holder.lin_djdf.setVisibility(View.GONE);
+            holder.lin_djd.setVisibility(View.VISIBLE);
+        } else {
+            holder.lin_djdf.setVisibility(View.VISIBLE);
+            holder.lin_djd.setVisibility(View.GONE);
+        }
+
+        if (position == list.size() - 1) {
+            holder.v_kb.setVisibility(View.GONE);
+        } else holder.v_kb.setVisibility(View.VISIBLE);
+        holder.ordertwoitTeshren.setText("收货人信息 :   " + data.getShrname());
         holder.ordertwoitTepho.setText(data.getShrpho());
 
-        if (data.getStatus().equals("1"))
-            holder.ordertwoitTezt.setText("待接单");
-        else if (data.getStatus().equals("2"))
-            holder.ordertwoitTezt.setText("拒绝接单");
-        else if (data.getStatus().equals("3"))
-            holder.ordertwoitTezt.setText("请求涨价");
-        else if (data.getStatus().equals("10"))
-            holder.ordertwoitTezt.setText("待配送");
-        else if (data.getStatus().equals("20"))
-            holder.ordertwoitTezt.setText("待签收");
-        else if (data.getStatus().equals("30"))
-            holder.ordertwoitTezt.setText("待结算");
-        else if (data.getStatus().equals("40"))
-            holder.ordertwoitTezt.setText("已完成");
-        else if (data.getStatus().equals("11"))
-            holder.ordertwoitTezt.setText("花店申请退单");
-        else if (data.getStatus().equals("12"))
-            holder.ordertwoitTezt.setText("下单方申请退单");
+        holder.ordertwoitTezt.setText(data.getStatustxt());
+//        if (data.getStatus().equals("1") || data.getStatus().equals("2") || data.getStatus().equals("3") || data.getStatus().equals("10"))
+//            holder.ordertwoitTezt.setText("待接单");
+//        else if (data.getStatus().equals("2"))
+//            holder.ordertwoitTezt.setText("拒绝接单");
+//        else if (data.getStatus().equals("3"))
+//            holder.ordertwoitTezt.setText("请求涨价");
+//        else if (data.getStatus().equals("10"))
+//            holder.ordertwoitTezt.setText("待配送");
+//        else if (data.getStatus().equals("20"))
+//            holder.ordertwoitTezt.setText("待签收");
+//        else if (data.getStatus().equals("30"))
+//            holder.ordertwoitTezt.setText("待结算");
+//        else if (data.getStatus().equals("40"))
+//            holder.ordertwoitTezt.setText("已完成");
+//        else if (data.getStatus().equals("11"))
+//            holder.ordertwoitTezt.setText("花店申请退单");
+//        else if (data.getStatus().equals("12"))
+//            holder.ordertwoitTezt.setText("下单方申请退单");
 
         if (data.getStatus().equals("30")) {
-            holder.tejs.setVisibility(View.VISIBLE);
+//            holder.tejs.setVisibility(View.VISIBLE);
+            holder.tejs.setVisibility(View.GONE);
             if (data.getIstixin().equals("0")) {
                 holder.tejs.setBackgroundColor(context.getResources().getColor(R.color.zhu));
             } else {
@@ -183,6 +199,16 @@ public class ordertwoAdapter extends RecyclerView.Adapter<ordertwoAdapter.viewho
 
         @BindView(R.id.ordertwoit_tetxjs)
         TextView tejs;
+
+        @BindView(R.id.ordertwoit_djdf)
+        LinearLayout lin_djdf;
+        @BindView(R.id.ordertwoit_djd)
+        LinearLayout lin_djd;
+        @BindView(R.id.ordertwoit_tedjd)
+        TextView te_djd;
+
+        @BindView(R.id.ordertwoit_viwkb)
+        View v_kb;
 
         public viewholder(View itemView) {
             super(itemView);

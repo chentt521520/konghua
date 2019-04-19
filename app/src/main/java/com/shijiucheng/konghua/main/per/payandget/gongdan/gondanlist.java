@@ -102,6 +102,9 @@ public class gondanlist extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghu
     private InvokeParam invokeParam;
     huifugd huifugdz;
 
+    @BindView(R.id.ordertwo_nodata)
+    View layout;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         getTakePhoto().onCreate(savedInstanceState);
@@ -135,6 +138,12 @@ public class gondanlist extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghu
     @Override
     protected void SetViewListen() {
         gdlistDh.ima_tp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityByIntent(gondanlist.this, mygondan.class);
+            }
+        });
+        gdlistDh.teadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivityByIntent(gondanlist.this, mygondan.class);
@@ -219,6 +228,15 @@ public class gondanlist extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghu
     public void showList(int type, List<gdlistdata> list) {
         this.list.addAll(list);
         ada.notifyDataSetChanged();
+
+        if (this.list.size() <= 0) {
+            if (layout != null)
+                layout.setVisibility(View.VISIBLE);
+        } else {
+            if (layout != null)
+                layout.setVisibility(View.GONE);
+        }
+
         if (refreshStatus == 1) {
             {
                 if (gdlistSmtr != null)
@@ -267,7 +285,7 @@ public class gondanlist extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghu
                         if (jso.getString("status").equals("1")) {
                             list.get(closegdPos).setStatus1("15");
                             ada.notifyDataSetChanged();
-                            toaste_ut(gondanlist.this, "该工单关闭成功");
+                            toaste_ut(gondanlist.this, "该问题关闭成功");
                         } else
                             toaste_ut(gondanlist.this, jso.getString("msg"));
                     } catch (JSONException e) {

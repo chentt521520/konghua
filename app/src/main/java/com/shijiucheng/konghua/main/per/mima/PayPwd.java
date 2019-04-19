@@ -108,7 +108,6 @@ public class PayPwd extends DialogFragment {
                     Toast.makeText(getActivity(), "前后密码不一致", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
                 setpwd();
                 break;
         }

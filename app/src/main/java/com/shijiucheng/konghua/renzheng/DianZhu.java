@@ -131,8 +131,8 @@ public class DianZhu extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua i
         x.view().inject(this);
 
         if (authen_RZ.jsonAuthor != null) {
-            ed_xm.setText(authen_RZ.jsonAuthor.getStore_master_uname());
-            ed_pho.setText(authen_RZ.jsonAuthor.getStore_master_tel());
+            ed_xm.setText(authen_RZ.jsonAuthor.getStore_master_tel());
+            ed_pho.setText(authen_RZ.jsonAuthor.getStore_master_uname());
             ed_qq.setText(authen_RZ.jsonAuthor.getStore_master_qq());
             ed_sfz.setText(authen_RZ.jsonAuthor.getStore_master_idcard());
             file1 = authen_RZ.jsonAuthor.getStore_master_idcard_front();

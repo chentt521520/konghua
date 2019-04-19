@@ -8,7 +8,6 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -20,9 +19,9 @@ import com.shijiucheng.konghua.Banben_;
 import com.shijiucheng.konghua.Cmvp.BaseFragment_konghua;
 import com.shijiucheng.konghua.Cmvp.BasePresenter;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
+import com.shijiucheng.konghua.Login_konghua;
 import com.shijiucheng.konghua.R;
 import com.shijiucheng.konghua.authen_RZ;
-import com.shijiucheng.konghua.com.shijiucheng.konghua.app.IsLoginOrAuthor;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.configParams;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.paramsDataBean;
 import com.shijiucheng.konghua.main.per.payandget.gongdan.gondanlist;
@@ -48,7 +47,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Per extends BaseFragment_konghua implements IsLoginOrAuthor.refresh, authen_RZ.refresh, Banben_.fuluebanben {
+public class Per extends BaseFragment_konghua implements Banben_.fuluebanben {
     View view;
 
     @BindView(R.id.per_name)
@@ -80,9 +79,6 @@ public class Per extends BaseFragment_konghua implements IsLoginOrAuthor.refresh
     protected void AddView() {
         te_bbh.setText("V" + getVersion());
         EventBus.getDefault().register(this);
-        IsLoginOrAuthor.getInstence().setfr(this);
-        authen_RZ.setrefrxx(this);
-//        Glide.with(this).load(R.mipmap.appicon).apply(RequestOptions.bitmapTransform(new CircleCrop())).into(perImhead);
 
         getuserinfo();
 
@@ -93,12 +89,6 @@ public class Per extends BaseFragment_konghua implements IsLoginOrAuthor.refresh
         if (getSharePre("name", getActivity()).equals("0")) {
             te_name.setText("请登录");
             te_quit.setVisibility(View.GONE);
-
-//            if (!getSharePre("name", getActivity()).equals("0")) {
-//                IsLoginOrAuthor.getInstence().login(getActivity(), retrofit_Single.getInstence().getOpenid(getActivity()), getSharePre("name", getActivity()), getSharePre("pwd", getActivity()));
-//            } else {
-//                IsLoginOrAuthor.getInstence().goToLogin(getActivity());
-//            }
         } else {
             Glide.with(this).load(getSharePre("user_pic", getActivity())).into(perImhead);
             te_name.setText(getSharePre("user_name", getActivity()));
@@ -124,6 +114,7 @@ public class Per extends BaseFragment_konghua implements IsLoginOrAuthor.refresh
     public void getmess(paramsDataBean data) {
         if (data != null) {
             if (data.getMsg().equals(configParams.perRrefresh)) {
+                getuserinfo();
                 return;
             }
         }
@@ -218,10 +209,7 @@ public class Per extends BaseFragment_konghua implements IsLoginOrAuthor.refresh
         else {
 
             if (!getSharePre("name", getActivity()).equals("0")) {
-
-                IsLoginOrAuthor.getInstence().login(getActivity(), retrofit_Single.getInstence().getOpenid(getActivity()), getSharePre("name", getActivity()), getSharePre("pwd", getActivity()));
-            } else {
-                IsLoginOrAuthor.getInstence().goToLogin(getActivity());
+                startActivityByIntent(getActivity(), Login_konghua.class, false);
             }
         }
     }
@@ -250,16 +238,6 @@ public class Per extends BaseFragment_konghua implements IsLoginOrAuthor.refresh
             e.printStackTrace();
             return 1;
         }
-    }
-
-    @Override
-    public void refresh() {
-        getuserinfo();
-    }
-
-    @Override
-    public void refreshrz(Context context) {
-
     }
 
     public void getappvis() {
@@ -339,14 +317,14 @@ public class Per extends BaseFragment_konghua implements IsLoginOrAuthor.refresh
                         BaseResult result = new BaseResult();
 
                         if (jsonObject.getString("status").equals("1")) {
-                            toaste_ut(getActivity(), jsonObject.getString("msg"));
+                            toaste_ut(getActivity(), "退出成功");
                             sharePre("name", "0", getActivity());
                             sharePre("pwd", "0", getActivity());
-
-                            IsLoginOrAuthor.getInstence().goToLogin(getActivity());
+                            getuserinfo();
+                            startActivityByIntent(getActivity(), Login_konghua.class, false);
                         } else {
                             if (jsonObject.getString("msg").contains("未登录")) {
-                                IsLoginOrAuthor.getInstence().goToLogin(getActivity());
+//                                IsLoginOrAuthor.getInstence().goToLogin(getActivity());
                                 toaste_ut(getActivity(), jsonObject.getString("msg"));
                             } else toaste_ut(getActivity(), jsonObject.getString("msg"));
                         }
@@ -366,8 +344,6 @@ public class Per extends BaseFragment_konghua implements IsLoginOrAuthor.refresh
         });
 
     }
-
-
     @Override
     public void fuluebanben() {
 

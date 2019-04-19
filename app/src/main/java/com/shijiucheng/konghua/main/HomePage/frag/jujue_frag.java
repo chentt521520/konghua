@@ -1,5 +1,6 @@
 package com.shijiucheng.konghua.main.HomePage.frag;
 
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -165,7 +166,7 @@ public class jujue_frag extends DialogFragment {
         int w = dm.widthPixels;
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
         getDialog().getWindow().setLayout(dm.widthPixels - 200, -2);
-        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(0xff000000));
+        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 
     public void jujueyy() {

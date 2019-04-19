@@ -60,8 +60,6 @@ public class mygondan extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua 
      * created 2018/8/21 0021 16:55
      * author ldl
      */
-
-
     @BindView(R.id.tjgd_dh)
     DaoHang_top tjgdDh;
     @BindView(R.id.tjgd_spwtleixin)
@@ -82,7 +80,7 @@ public class mygondan extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua 
     TextView tjgdTeok;
 
     int pos_tp = 0;//设置操作图片的下标
-    String pos1 = "0", pos2 = "0", pos3 = "0";
+    String pos1 = "", pos2 = "", pos3 = "";
 
     gondansctupian gondansctupian;
 
@@ -110,7 +108,7 @@ public class mygondan extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua 
 
 
         serivce = retrofit_Single.getInstence().getserivce(2);
-        tjgdDh.settext_("填写工单");
+        tjgdDh.settext_("提交问题");
         gondansctupian = new gondansctupian();
         prestent.getQustion(retrofit_Single.getInstence().getOpenid(mygondan.this));
 
@@ -175,7 +173,7 @@ public class mygondan extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua 
             @Override
             public void onClick(View v) {
                 if (TextUtils.isEmpty(tjgdEdtxt.getText().toString())) {
-                    toaste_ut(mygondan.this, "请填写工单内容");
+                    toaste_ut(mygondan.this, "请填写问题内容");
                 } else {
                     String urls = "";
                     if (!TextUtils.isEmpty(pos1))

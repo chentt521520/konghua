@@ -53,6 +53,9 @@ public class OrderTwoPage extends BaseActivity_konghua implements ordertwoAdapte
     @BindView(R.id.ordertwo_nodata)
     View layout;
 
+    @BindView(R.id.ordertwo_kb)
+    View v_kb;
+
     String status = "";
     int page = 1;
 
@@ -152,14 +155,23 @@ public class OrderTwoPage extends BaseActivity_konghua implements ordertwoAdapte
                         JSONArray jsonArray = jsonObject.getJSONArray("rows");
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jso1 = jsonArray.getJSONObject(i);
-                            list.add(new ordertwoData(jso1.getString("order_id"), jso1.getString("order_sn"), jso1.getString("order_status"), jso1.getString("add_time_text"), ""
+                            list.add(new ordertwoData(jso1.getString("order_id"), jso1.getString("order_sn"), jso1.getString("order_status"), jso1.getString("delivery_time"), ""
                                     , jso1.getString("order_amount"), jso1.getString("receiver_province_text") + jso1.getString("receiver_city_text") + jso1.getString("receiver_district_text"),
-                                    jso1.getString("receiver_address"), jso1.getString("receiver"), jso1.getString("receiver_tel"), jso1.getString("is_order_balance_remind")));
+                                    jso1.getString("receiver_address"), jso1.getString("receiver"), jso1.getString("receiver_tel"), jso1.getString("is_order_balance_remind"), jso1.getString("order_status_text")));
                         }
                         adapter.notifyDataSetChanged();
-                        if (jsonArray.length() <= 0)
-                            if (layout != null)
+                        if (list.size() <= 0) {
+                            if (layout != null) {
                                 layout.setVisibility(View.VISIBLE);
+                                v_kb.setVisibility(View.GONE);
+                            }
+                        } else {
+                            if (layout != null) {
+                                layout.setVisibility(View.GONE);
+                                v_kb.setVisibility(View.VISIBLE);
+                            }
+                        }
+
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

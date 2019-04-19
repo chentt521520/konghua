@@ -53,8 +53,6 @@ public class loginPwd extends DialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-
         getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
         getDialog().getWindow().setGravity(Gravity.CENTER);
         view = inflater.inflate(R.layout.loginpwd, container, false);

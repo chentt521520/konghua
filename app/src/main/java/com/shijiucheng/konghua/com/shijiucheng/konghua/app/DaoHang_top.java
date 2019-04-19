@@ -19,7 +19,7 @@ public class DaoHang_top extends RelativeLayout {
     RelativeLayout lin_top;
     ImageView ima_fh, im_d;
 
-    TextView te_tit;
+    TextView te_tit, teadd;
 
     public DaoHang_top(final Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -28,7 +28,9 @@ public class DaoHang_top extends RelativeLayout {
         ima_fh = view.findViewById(R.id.dh_imreturn);
         te_tit = view.findViewById(R.id.dh_tetit);
         im_d = view.findViewById(R.id.dh_im);
+        teadd = view.findViewById(R.id.dh_teadd);
         im_d.setVisibility(View.GONE);
+        teadd.setVisibility(View.GONE);
 
         DisplayMetrics dm = getResources().getDisplayMetrics();
         w_ = dm.widthPixels;

@@ -29,10 +29,22 @@
 
         <ImageView
             android:id="@+id/dh_im"
-            android:layout_width="20dp"
-            android:layout_height="match_parent"
+            android:layout_width="15dp"
+            android:layout_height="18dp"
             android:layout_alignParentRight="true"
+            android:layout_marginTop="7dp"
             android:layout_marginRight="12dp"
             android:src="@mipmap/tjpic" />
+
+        <TextView
+            android:id="@+id/dh_teadd"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dh_im"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="8dp"
+            android:text="添加"
+            android:textColor="@color/bai"
+            android:textSize="9sp" />
     </RelativeLayout>
 </LinearLayout>

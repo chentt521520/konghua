@@ -65,7 +65,7 @@ public class txianlsada extends RecyclerView.Adapter<txianlsada.viewholder> {
             holder.textyuanying.setVisibility(View.GONE);
         } else {
             holder.textyuanying.setVisibility(View.VISIBLE);
-            holder.textyuanying.setText("  原因：" + data.getYuanying());
+            holder.textyuanying.setText("  提现失败原因：" + data.getYuanying());
         }
 
         getpic(holder.ima, data.getBankstr());

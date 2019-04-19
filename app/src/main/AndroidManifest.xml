@@ -45,7 +45,16 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-        <activity android:name=".main.Newsdetails"></activity>
+        <activity android:name=".main.HomePage.refuseorder"></activity>
+        <activity android:name=".main.HomePage.qianshou" />
+        <activity android:name=".main.per.payandget.gongdan.gdlistada.evaluatequestion" />
+        <activity android:name=".main.per.payandget.gongdan.gdlistada.replayquestion" />
+        <activity android:name=".main.per_.setingact.safepho" />
+        <activity android:name=".main.per_.setingact.paymentpwd" />
+        <activity android:name=".main.per_.setingact.verifyidentity" />
+        <activity android:name=".main.per_.setingact.businesspho" />
+        <activity android:name=".main.per_.setingact.changepwd" />
+        <activity android:name=".main.Newsdetails" />
         <activity
             android:name=".Guide_konghua"
             android:alwaysRetainTaskState="true"

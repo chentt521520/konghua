@@ -144,7 +144,7 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
     List<orderdata> list = new ArrayList<>();
     com.shijiucheng.konghua.Cmvp.OrderSYMVPNew.orderrecyc.orderadapter orderadapter;
     String Phone = "", QQ = "";
-    int fristinit = 0, bannersize = 0;
+    int fristinit = 0, bannersize = 0, logincunt = 0;
 
 
     @Override
@@ -160,7 +160,7 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
         orderadapter = new com.shijiucheng.konghua.Cmvp.OrderSYMVPNew.orderrecyc.orderadapter(getActivity(), list);
         hpNewRecycorders.setAdapter(orderadapter);
 
-        pagePresent.getData(retrofit_Single.getInstence().getOpenid(getActivity()));
+//        pagePresent.getData(retrofit_Single.getInstence().getOpenid(getActivity()));
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -208,6 +208,11 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
 
     @Override
     public void showData(JSONObject jsonObject) {
+        paramsDataBean dataBean = new paramsDataBean();
+        dataBean.setMsg(configParams.sycloserenzhen);
+        dataBean.setT("");
+        EventBus.getDefault().post(dataBean);
+
         try {
             JSONArray jso_banner = jsonObject.getJSONArray("banner_list");
             if (jso_banner.length() >= 1) {
@@ -271,7 +276,31 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
 
     @Override
     public void showDataRenZhen(JSONObject jsonObject) {
+        try {
+            paramsDataBean dataBean = new paramsDataBean();
+            String msg = jsonObject.getString("msg");
+            if (msg.contains("登录")) {
+                dataBean.setMsg(configParams.sylogin);
+                EventBus.getDefault().post(dataBean);
+                return;
+            }
+            JSONObject jso = jsonObject.getJSONObject("data");
 
+            dataBean.setT(jsonObject.getString("msg"));
+
+            if (jso.getString("authentication_status").equals("unauthorized")) {
+                dataBean.setMsg(configParams.syrenzhen);
+                EventBus.getDefault().post(dataBean);
+            } else if (jso.getString("authentication_status").equals("authenticating")) {
+                dataBean.setMsg(configParams.syrenzhenzhong);
+                EventBus.getDefault().post(dataBean);
+            } else if (jso.getString("authentication_status").equals("authentication_not_pass")) {
+                dataBean.setMsg(configParams.syrenzhenfail);
+                EventBus.getDefault().post(dataBean);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -606,6 +635,8 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
             list2.add(jso.getString("n_id"));
         }
         TextSwitcherAnimation textSwitcherAnimation = new TextSwitcherAnimation(hpNewTeswit, list1, list2);
+        hpNewTeswit.removeAllViews();
+        textSwitcherAnimation.stop();
         hpNewTeswit.setFactory(() -> {
             TextView textView = new TextView(getActivity());
             textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
@@ -648,11 +679,12 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
             list2.add(jso.getString("m_id"));
         }
         TextSwitcherAnimation textSwitcherAnimation = new TextSwitcherAnimation(hpNewTeswit1, list1, list2);
+        hpNewTeswit1.removeAllViews();
+        textSwitcherAnimation.stop();
         hpNewTeswit1.setFactory(new ViewSwitcher.ViewFactory() {
             @Override
             public View makeView() {
                 TextView textView = new TextView(getActivity());
-
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
                 textView.setTextColor(Color.BLACK);
                 textView.setSingleLine();

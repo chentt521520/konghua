@@ -7,10 +7,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.shijiucheng.konghua.Cmvp.BasePresenter;
+import com.shijiucheng.konghua.Cmvp.BaseResult;
 import com.shijiucheng.konghua.Cmvp.loginmvp.LoginPresenerIml;
 import com.shijiucheng.konghua.Cmvp.loginmvp.longincontract;
+import com.shijiucheng.konghua.com.shijiucheng.konghua.app.APP;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.configParams;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.paramsDataBean;
 
@@ -18,8 +21,16 @@ import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.util.HashMap;
+
+import Retrofit2.Retro_Intf;
 import Retrofit2.retrofit_Single;
 import butterknife.BindView;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Login_konghua extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua implements longincontract.Iloginview {
 
@@ -33,11 +44,13 @@ public class Login_konghua extends com.shijiucheng.konghua.Cmvp.BaseActivity_kon
     @BindView(R.id.login_te)
     TextView loginTe;
     final longincontract.IloginPresent present = new LoginPresenerIml(this);
-    static refresh refresh;
+//    static refresh refresh;
+
+    private APP app;
 
     @Override
     protected void AddView() {
-
+        app = (APP) getApplication();
     }
 
     @Override
@@ -48,7 +61,7 @@ public class Login_konghua extends com.shijiucheng.konghua.Cmvp.BaseActivity_kon
                 if (!TextUtils.isEmpty(loginEdZHn.getText().toString())) {
                     if (!TextUtils.isEmpty(loginEdmmn.getText().toString())) {
                         if (fastClick())
-                            present.startLogin(retrofit_Single.getInstence().getOpenid(Login_konghua.this), loginEdZHn.getText().toString(), loginEdmmn.getText().toString());
+                            getquit();
                     } else
                         toaste_ut(Login_konghua.this, "请输入密码");
                 } else
@@ -85,21 +98,11 @@ public class Login_konghua extends com.shijiucheng.konghua.Cmvp.BaseActivity_kon
 
     @Override
     public void toComple(String json) {
+        sharePre("name", loginEdZHn.getText().toString(), this);
+        sharePre("pwd", "hhhhhg", this);
+//        sharePre("pwd", loginEdmmn.getText().toString(), this);
 
-        paramsDataBean databean = new paramsDataBean();
-        databean.setMsg(configParams.orderSYrefr);
-        EventBus.getDefault().post(databean);
-        if (json.contains("未") || json.contains("不")) {
-            sharePre("isauther", "0", Login_konghua.this);
-            sharePre("name", loginEdZHn.getText().toString(), Login_konghua.this);
-            sharePre("pwd", loginEdmmn.getText().toString(), Login_konghua.this);
-            startActivityByIntent(Login_konghua.this, authen_RZ.class);
-            finish();
-        } else {
-            sharePre("isauther", "1", Login_konghua.this);
-            sharePre("name", loginEdZHn.getText().toString(), Login_konghua.this);
-            sharePre("pwd", loginEdmmn.getText().toString(), Login_konghua.this);
-
+        if (!(json.contains("未") || json.contains("不"))) {
             try {
                 JSONObject jsonObject = new JSONObject(json);
                 JSONObject jso = jsonObject.getJSONObject("data").getJSONObject("store_info");
@@ -111,11 +114,72 @@ public class Login_konghua extends com.shijiucheng.konghua.Cmvp.BaseActivity_kon
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
-
-            refresh.refresh1(Login_konghua.this);
-            finish();
         }
+
+        paramsDataBean databean1 = new paramsDataBean();
+        databean1.setMsg(configParams.totherpager);
+        databean1.setT(0);
+        EventBus.getDefault().post(databean1);
+
+        paramsDataBean databean = new paramsDataBean();
+        databean.setMsg(configParams.refreshhp);
+        EventBus.getDefault().post(databean);
+        finish();
+        overridePendingTransition(R.anim.push_right_out,
+                R.anim.push_right_in);
+    }
+
+    Retro_Intf retro_intf = retrofit_Single.getInstence().getserivce(2);
+
+    private void getquit() {
+        HashMap<String, String> maps = new HashMap<>();
+        maps.putAll(retrofit_Single.getInstence().retro_postParameter());//公共参数
+        Call<ResponseBody> getdata = retro_intf.quitLoigin(retrofit_Single.getInstence().getOpenid(Login_konghua.this), maps);
+        getdata.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(
+                    Call<ResponseBody> call, Response<ResponseBody> response) {
+                String Result = null;
+                if (response.body() == null)
+                    return;
+                try {
+                    Result = response.body().string();
+                    try {
+                        if (Result != null && Result.startsWith("\ufeff")) {
+                            Result = Result.substring(1);
+                        }
+                        JSONObject jsonObject = new JSONObject(Result);
+//                        BaseResult result = new BaseResult();
+//                        if (jsonObject.getString("status").equals("1")) {
+//                            toaste_ut(Login_konghua.this, jsonObject.getString("msg"));
+//                            sharePre("name", "0", Login_konghua.this);
+//                            sharePre("pwd", "0", Login_konghua.this);
+//
+//
+//                        } else {
+//                            if (jsonObject.getString("msg").contains("未登录")) {
+//                                IsLoginOrAuthor.getInstence().goToLogin(Login_konghua.this);
+//                                toaste_ut(Login_konghua.this, jsonObject.getString("msg"));
+//                            } else toaste_ut(Login_konghua.this, jsonObject.getString("msg"));
+//                        }
+                        sharePre("name", "0", Login_konghua.this);
+                        sharePre("pwd", "0", Login_konghua.this);
+                        present.startLogin(retrofit_Single.getInstence().getOpenid(Login_konghua.this), loginEdZHn.getText().toString(), loginEdmmn.getText().toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        System.out.println(e.toString());
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+
     }
 
 
@@ -124,25 +188,38 @@ public class Login_konghua extends com.shijiucheng.konghua.Cmvp.BaseActivity_kon
         toaste_ut(this, msg);
     }
 
-    public static void setre(refresh refresh) {
-        Login_konghua.refresh = refresh;
-    }
 
-    //提供刷新状态接口
-    public interface refresh {
-        void refresh1(Context context);
-    }
-
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+//            refresh.refresh1(Login_konghua.this);
+//            finish();
+//            overridePendingTransition(R.anim.push_right_out,
+//                    R.anim.push_right_in);
+//            return false;
+//        }
+//        return false;
+//    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-            refresh.refresh1(Login_konghua.this);
-            finish();
-            overridePendingTransition(R.anim.push_right_out,
-                    R.anim.push_right_in);
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            exit();
             return false;
         }
-        return false;
+        return super.onKeyDown(keyCode, event);
+    }
+
+    private long exitTime = 0;
+
+    public void exit() {
+        if ((System.currentTimeMillis() - exitTime) > 2000) {
+            Toast.makeText(getApplicationContext(), "再按一次，退出程序",
+                    Toast.LENGTH_SHORT).show();
+            exitTime = System.currentTimeMillis();
+        } else {
+
+            app.exitApp();
+        }
     }
 }

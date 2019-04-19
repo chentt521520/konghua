@@ -43,6 +43,7 @@
                     android:id="@+id/dianzhu_edxm"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
                     android:layout_marginBottom="2dp"
                     android:background="@color/bai"
                     android:gravity="center_vertical"
@@ -76,6 +77,7 @@
                     android:id="@+id/dianzhu_edpho"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
                     android:layout_marginBottom="2dp"
                     android:background="@color/bai"
                     android:digits="0123456789"
@@ -111,6 +113,7 @@
                     android:id="@+id/dianzhu_edqq"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
                     android:layout_marginBottom="2dp"
                     android:background="@color/bai"
                     android:gravity="center_vertical"
@@ -145,6 +148,7 @@
                     android:id="@+id/dianzhu_edsfz"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
                     android:layout_marginBottom="2dp"
                     android:background="@color/bai"
                     android:digits="0123456789X"
@@ -165,10 +169,10 @@
                 android:id="@+id/dianzhu_tesfzt"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
+                android:background="@drawable/biankuangxia"
                 android:gravity="center_vertical"
                 android:text="店主身份证照:"
                 android:textColor="@color/hei"
-                android:background="@drawable/biankuangxia"
                 android:textSize="12sp" />
 
 
@@ -202,8 +206,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
                 android:orientation="horizontal">
 
                 <ImageView

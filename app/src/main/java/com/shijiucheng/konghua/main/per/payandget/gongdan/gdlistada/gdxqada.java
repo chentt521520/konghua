@@ -53,7 +53,12 @@ public class gdxqada extends RecyclerView.Adapter<gdxqada.viewholder> {
             holder.gdxqitName.setText("我");
         }
         holder.gdxqitTetime.setText(data.getTime());
-        holder.gdxqitTetxt.setText(data.getContent());
+
+
+        holder.gdxqitTetxt.setText(data.getContent().replace("<br>", "\n"));
+        if (position == list.size() - 1)
+            holder.v_kb.setVisibility(View.GONE);
+        else holder.v_kb.setVisibility(View.VISIBLE);
 
         holder.gdxqitLintp.setVisibility(View.VISIBLE);
         if (!TextUtils.isEmpty(data.getImgs())) {
@@ -140,6 +145,8 @@ public class gdxqada extends RecyclerView.Adapter<gdxqada.viewholder> {
         ImageView gdxqitImtp3;
         @BindView(R.id.gdxqit_lintp)
         LinearLayout gdxqitLintp;
+        @BindView(R.id.gdxq_view)
+        View v_kb;
 
         public viewholder(View itemView) {
             super(itemView);

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bai"
+    android:background="@drawable/biankuangyuanjiaodialog"
     android:orientation="vertical">
 
 
@@ -32,6 +32,10 @@
         android:text="目前订单金额：100.00"
         android:textColor="@color/hei"
         android:textSize="12dp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/qianhei1" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -75,7 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/zhu"
+            android:background="@drawable/biankuangyuanjiaodialogzuoxia"
             android:gravity="center"
             android:text="确定"
             android:textColor="@color/bai"
@@ -86,7 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/danhei"
+            android:background="@drawable/biankuangyuanjiaodialogyouxia"
             android:gravity="center"
             android:text="取消"
             android:textColor="@color/bai"

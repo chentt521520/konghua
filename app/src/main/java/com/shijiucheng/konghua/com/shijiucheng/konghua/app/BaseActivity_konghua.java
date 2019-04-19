@@ -14,6 +14,7 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -97,6 +98,16 @@ public abstract class BaseActivity_konghua extends AppCompatActivity {
         overridePendingTransition(R.anim.push_left_in,
                 R.anim.push_left_out);
     }
+    protected void startActivityByIntent(Context context, Class<?> cls,Bundle bundle) {
+        Intent i = new Intent();
+        i.setClass(context, cls);
+        if (bundle != null) {
+            i.putExtras(bundle);
+        }
+        startActivity(i);
+        overridePendingTransition(R.anim.push_left_in,
+                R.anim.push_left_out);
+    }
 
     long lastClick = 0;
 
@@ -117,6 +128,13 @@ public abstract class BaseActivity_konghua extends AppCompatActivity {
      * @param str     提示语显示
      */
     protected void toaste_ut(Context context, String str) {
+
+//        Toast toast = new Toast(context);
+//        toast.setGravity(Gravity.CENTER,0,0);
+//        toast.setText(str);
+//        toast.setDuration(Toast.LENGTH_SHORT);
+//        toast.show();
+
         Toast.makeText(context, str, Toast.LENGTH_SHORT).show();
     }
 

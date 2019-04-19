@@ -112,6 +112,9 @@ public class Order_detalis extends BaseActivity_konghua {
     @BindView(R.id.ddxq_tecz2)
     TextView te_cz2;
 
+    @BindView(R.id.orderdet_nodata)
+    View v_nodata;
+
     @BindView(R.id.order_recycy)
     RecyclerView recyclerView_spxx;
 

@@ -40,6 +40,7 @@
                     android:textSize="12sp" />
 
                 <EditText
+                    android:layout_marginTop="1dp"
                     android:id="@+id/dianpu_edqy"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -47,7 +48,7 @@
                     android:background="@color/bai"
                     android:gravity="center_vertical"
                     android:hint="须和营业执照上面的名称保持一致！"
-                    android:maxLength="8"
+                    android:maxLength="100"
                     android:minWidth="150dp"
                     android:paddingLeft="5sp"
                     android:singleLine="true"
@@ -60,7 +61,6 @@
                 android:id="@+id/dianpu_linzch"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/biankuangxia"
                 android:orientation="horizontal">
 
                 <TextView
@@ -77,11 +77,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="2dp"
+                    android:layout_marginTop="1dp"
                     android:background="@color/bai"
                     android:digits="01234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
                     android:gravity="center_vertical"
                     android:hint="须和营业执照上面的名称保持一致！"
-                    android:maxLength="21"
+                    android:maxLength="100"
                     android:minWidth="150dp"
                     android:paddingLeft="5sp"
                     android:singleLine="true"
@@ -94,7 +95,6 @@
                 android:id="@+id/dianpu_tesfzt"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:background="@drawable/biankuangxia"
                 android:gravity="center_vertical"
                 android:text="营业执照扫描件:"
                 android:textColor="@color/hei"
@@ -131,7 +131,7 @@
             <LinearLayout
                 android:id="@+id/pinjia_lintp"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <RelativeLayout

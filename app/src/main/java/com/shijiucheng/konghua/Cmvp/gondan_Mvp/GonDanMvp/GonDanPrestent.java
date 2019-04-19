@@ -37,7 +37,7 @@ public class GonDanPrestent implements Contact.GonDanIPrestent {
                     JSONObject jsonObject = new JSONObject(result.getData());
                     if (jsonObject.getString("status").equals("1")) {
                         iView.closeload_();
-                        iView.showMsg("工单提交成功");
+                        iView.showMsg("问题提交成功");
                         iView.finishApplay();
                     }
 

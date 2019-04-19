@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bai"
+    android:orientation="vertical"
+    tools:context=".main.per_.setingact.businesspho">
+
+    <com.shijiucheng.konghua.com.shijiucheng.konghua.app.DaoHang_top
+        android:id="@+id/business_dh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_marginTop="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginRight="12dp"
+            android:gravity="center"
+            android:paddingLeft="12dp"
+            android:text="新 业 务 手 机: "
+            android:textColor="@color/hei"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/biankuangxia1"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/paypwd_edyzm"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginBottom="3dp"
+                android:layout_weight="3"
+                android:background="@null"
+                android:digits="0123456789"
+                android:hint="请填写新的业务手机号"
+                android:inputType="number"
+                android:maxLength="11"
+                android:minWidth="140dp"
+                android:textColor="@color/hei"
+                android:textColorHint="@color/qianhei"
+                android:textSize="13sp" />
+
+            <com.shijiucheng.konghua.main.per.payandget.per.tixian.TimerTextView
+                android:id="@+id/paypwd_timerte"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/round_bkpaypwd"
+                android:text="获取验证码"
+                android:textColor="@color/bai"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginTop="12dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginRight="12dp"
+            android:gravity="center"
+            android:paddingLeft="12dp"
+            android:text="短 信 验 证 码: "
+            android:textColor="@color/hei"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/ywpho_edmmre"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="3dp"
+            android:background="@drawable/biankuangxia1"
+            android:digits="0123456789"
+            android:hint="6位数字验证码"
+            android:inputType="number"
+            android:maxLength="6"
+            android:minWidth="170dp"
+            android:textColor="@color/hei"
+            android:textColorHint="@color/qianhei"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/ywpho_teok"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/round_bkpaypwd"
+        android:gravity="center"
+        android:text="确定"
+        android:textColor="@color/bai"
+        android:textSize="13sp" />
+
+
+</LinearLayout>

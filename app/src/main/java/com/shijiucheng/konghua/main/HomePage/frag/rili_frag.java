@@ -211,7 +211,7 @@ public class rili_frag extends android.support.v4.app.DialogFragment {
         int w = dm.widthPixels;
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
         getDialog().getWindow().setLayout(dm.widthPixels, -2);
-        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(0xff000000));
+        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(0xffffff));
     }
 
 

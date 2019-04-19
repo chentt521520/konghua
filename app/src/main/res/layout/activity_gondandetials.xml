@@ -25,8 +25,9 @@
             android:layout_height="match_parent"
             android:drawableStart="@drawable/gdxq"
             android:gravity="center_vertical"
-            android:text="已受理  >   "
-            android:textColor="@color/select_te" />
+            android:text=" 已受理  >   "
+            android:textColor="@color/select_te1"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/gdxq_teclz"
@@ -34,8 +35,9 @@
             android:layout_height="match_parent"
             android:drawableStart="@drawable/gdxq"
             android:gravity="center_vertical"
-            android:text="处理中  >   "
-            android:textColor="@color/select_te" />
+            android:text=" 处理中  >   "
+            android:textColor="@color/select_te1"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/gdxq_teyqr"
@@ -43,8 +45,9 @@
             android:layout_height="match_parent"
             android:drawableStart="@drawable/gdxq"
             android:gravity="center_vertical"
-            android:text="已确认  >   "
-            android:textColor="@color/select_te" />
+            android:text=" 已确认  >   "
+            android:textColor="@color/select_te1"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/gdxq_tedpj"
@@ -52,14 +55,16 @@
             android:layout_height="match_parent"
             android:drawableStart="@drawable/gdxq"
             android:gravity="center_vertical"
-            android:text="已评价   "
-            android:textColor="@color/select_te" />
+            android:text=" 已评价   "
+            android:textColor="@color/select_te1"
+            android:textSize="12sp" />
 
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginLeft="12dp"
         android:background="@color/qianhei1" />
 
     <LinearLayout
@@ -81,8 +86,8 @@
             android:id="@+id/gdxq_teleibie"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginEnd="12dp"
             android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
             android:gravity="center_vertical|end"
             android:text="问题分类：账户类 > 店铺信息	"
             android:textColor="@color/select_te"
@@ -92,68 +97,85 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginLeft="12dp"
         android:background="@color/qianhei1" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/gdxq_recyc"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginEnd="12dp"
         android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="6dp"
         android:layout_weight="1" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginLeft="12dp"
         android:background="@color/qianhei1" />
 
     <LinearLayout
         android:id="@+id/gdxq_lincz"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
         android:orientation="horizontal">
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/gdxq_tehuifu"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginBottom="4dp"
-            android:layout_marginRight="20dp"
             android:layout_marginStart="12dp"
             android:layout_marginTop="4dp"
-            android:layout_weight="1"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/biankuangyuanjiao"
             android:gravity="center"
-            android:paddingRight="5dp"
-            android:paddingStart="5dp"
+            android:paddingStart="10dp"
+            android:paddingRight="10dp"
             android:text="回复工单"
-            android:textColor="@color/hei" />
+            android:textColor="@color/zhu"
+            android:textSize="12sp" />
+
 
         <TextView
             android:id="@+id/gdxq_teguanbi"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginBottom="4dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginRight="20dp"
             android:layout_marginTop="4dp"
-            android:layout_weight="1"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/biankuangyuanjiao1"
             android:gravity="center"
-            android:paddingRight="5dp"
-            android:paddingStart="5dp"
+            android:paddingStart="10dp"
+            android:paddingRight="10dp"
             android:text="关闭工单"
-            android:textColor="@color/hei" />
+            android:textColor="@color/hei"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/gdxq_tepj"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/biankuangyuanjiao"
+            android:gravity="center"
+            android:paddingStart="10dp"
+            android:paddingRight="10dp"
+            android:text="评价工单"
+            android:textColor="@color/zhu"
+            android:textSize="12sp" />
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/gdxq_tepj"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:gravity="center"
-        android:text="评价工单"
-        android:textColor="@color/hei" />
 
 </LinearLayout>

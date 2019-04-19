@@ -44,7 +44,7 @@ public class orderdetailsadaptersp extends RecyclerView.Adapter<orderdetailsadap
     public void onBindViewHolder(@NonNull viewholder holder, int position) {
 
         final ord_detadata data = list.get(position);
-        holder.te_num.setText(data.getNum());
+        holder.te_num.setText("数量："+data.getNum());
         holder.spxqitTehuacai.setText(data.getHuacai());
         holder.spxqitTebaozhuang.setText(data.getBaozhuang());
         Glide.with(context).load(data.getUrl()).into(holder.spxqitIm);

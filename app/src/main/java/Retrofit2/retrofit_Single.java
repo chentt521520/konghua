@@ -21,7 +21,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class retrofit_Single {
     private volatile static retrofit_Single instence;
-
+    SharedPreferences preferences;
     public static String device_push_token = "";
 
 
@@ -113,17 +113,20 @@ public class retrofit_Single {
     }
 
     public String getOpenid(Context context) {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        if (preferences == null)
+            preferences = PreferenceManager.getDefaultSharedPreferences(context);
+
+
+
         String openid = preferences.getString("openid", "000");
         if (openid.length() < 4) {
             SharedPreferences.Editor editor = preferences.edit();
-            openid = preferences.getString("openid", "000");
-            if (openid.length() < 4) {
-                openid = getopenid();
-                editor.putString("openid", openid);
-                editor.apply();
-            }
+            openid = getopenid();
+            editor.putString("openid", openid);
+            editor.apply();
         }
+
+        System.out.println(openid);
         return "PHPSESSID=" + openid;
     }
 

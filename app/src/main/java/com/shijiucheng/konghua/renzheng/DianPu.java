@@ -147,15 +147,15 @@ public class DianPu extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua im
 
 
         setViewHw_Lin(lin_qy, w_ - (int) (w_ * 28 / 750.0), (int) (w_ * 80 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 30 / 750.0), (int) (w_ * 14 / 750.0), 0);
-        setTextSize(ed_qy, (int) (w_ * 28 / 750.0));
-        setTextSize(ed_qy, (int) (w_ * 28 / 750.0));
+//        setTextSize(ed_qy, (int) (w_ * 28 / 750.0));
+//        setTextSize(ed_qy, (int) (w_ * 28 / 750.0));
 
         setViewHw_Lin(lin_zch, w_ - (int) (w_ * 28 / 750.0), (int) (w_ * 80 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 30 / 750.0), (int) (w_ * 14 / 750.0), 0);
-        setTextSize(te_zch, (int) (w_ * 28 / 750.0));
-        setTextSize(ed_zch, (int) (w_ * 28 / 750.0));
+//        setTextSize(te_zch, (int) (w_ * 28 / 750.0));
+//        setTextSize(ed_zch, (int) (w_ * 28 / 750.0));
 
         setViewHw_Lin(te_zztp, w_ - (int) (w_ * 28 / 750.0), (int) (w_ * 80 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 30 / 750.0), (int) (w_ * 14 / 750.0), 0);
-        setTextSize(te_zztp, (int) (w_ * 28 / 750.0));
+//        setTextSize(te_zztp, (int) (w_ * 28 / 750.0));
 
 
         setViewHw_Lin(re_tp1, (int) (w_ * 231 / 750.0), (int) (w_ * 231 / 750.0),
@@ -167,10 +167,10 @@ public class DianPu extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua im
         setViewHw_Lin(ima_zztp, w_, (int) (w_ * 260 / 750.0), 0, 0, 0, 0);
 
         setViewHw_Lin(te_zzts, w_ - (int) (w_ * 28 / 750.0), (int) (w_ * 80 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 10 / 750.0), (int) (w_ * 14 / 750.0), 0);
-        setTextSize(te_zzts, (int) (w_ * 28 / 750.0));
+//        setTextSize(te_zzts, (int) (w_ * 28 / 750.0));
 
         setViewHw_Lin(te_ok, w_ - (int) (w_ * 28 / 750.0), (int) (w_ * 80 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 0 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 14 / 750.0));
-        setTextSize(te_ok, (int) (w_ * 46 / 750.0));
+//        setTextSize(te_ok, (int) (w_ * 46 / 750.0));
     }
 
     @Override

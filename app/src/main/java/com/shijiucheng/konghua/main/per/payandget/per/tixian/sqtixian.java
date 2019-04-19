@@ -94,6 +94,20 @@ public class sqtixian extends BaseActivity_konghua implements tixianfs.gettxfs, 
         sqtxTegetyzm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (TextUtils.isEmpty(sqtxEdnum.getText().toString())) {
+                    toaste_ut(sqtixian.this, "请输入有效的提现金额");
+                    return;
+                }
+
+                if (Integer.parseInt(sqtxEdnum.getText().toString()) == 0) {
+                    toaste_ut(sqtixian.this, "请输入有效的提现金额");
+                    return;
+                }
+                if (Integer.valueOf(sqtxEdnum.getText().toString()).intValue() > tixiannum) {
+                    toaste_ut(sqtixian.this, "可提现金额不足");
+                    return;
+                }
                 TimerTextView.isc = true;
                 getCode();
             }
@@ -128,14 +142,19 @@ public class sqtixian extends BaseActivity_konghua implements tixianfs.gettxfs, 
                     toaste_ut(sqtixian.this, "请输入小于可提现金额的数字");
                     return;
                 }
+                if (Integer.parseInt(sqtxEdnum.getText().toString()) == 0) {
+                    toaste_ut(sqtixian.this, "请输入有效的提现金额");
+                    return;
+                }
                 if (Integer.valueOf(sqtxEdnum.getText().toString()).intValue() > tixiannum) {
                     toaste_ut(sqtixian.this, "请输入小于可提现金额的数字");
                     return;
                 }
                 if (sqtxTeyhk.getText().toString().equals("请选择提现银行卡")) {
+                    toaste_ut(sqtixian.this, "请选择银行卡");
                     return;
                 }
-                if (sqtxEdyzm.getText().toString().length() < 1) {
+                if (sqtxEdyzm.getText().toString().length() < 6) {
                     toaste_ut(sqtixian.this, "请输入店主手机号获取的验证码");
                     return;
                 }
@@ -170,7 +189,7 @@ public class sqtixian extends BaseActivity_konghua implements tixianfs.gettxfs, 
                     try {
                         JSONObject jsonObject = new JSONObject(str);
                         if (jsonObject.getString("status").equals("1")) {
-                            sqtxTenum1.setText("￥ " + jsonObject.getJSONObject("data").getString("balance_amount"));
+                            sqtxTenum1.setText(jsonObject.getJSONObject("data").getString("balance_amount")+"元");
                             tets.setText("*为保证您的资金安全，请输入" + jsonObject.getJSONObject("data").getString("safe_mobile_text") + "获取到的验证码");
                             tixiannum = jsonObject.getJSONObject("data").getDouble("balance_amount");
                             String bank = jsonObject.getJSONObject("data").getJSONObject("default_bank_info").getString("bank_type_text") +
@@ -280,7 +299,9 @@ public class sqtixian extends BaseActivity_konghua implements tixianfs.gettxfs, 
                         JSONObject jsonObject = new JSONObject(str);
                         if (jsonObject.getString("status").equals("1")) {
                             toaste_ut(sqtixian.this, "申请提交成功");
-                            getNumTX();
+                            finish();
+                            overridePendingTransition(R.anim.push_right_out,
+                                    R.anim.push_right_in);
                         } else {
                             String msg = jsonObject.getString("msg");
                             if (msg.equals("not_validate_pay_pwd"))

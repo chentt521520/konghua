@@ -18,7 +18,7 @@ public class DaoHang_top1 extends RelativeLayout {
     protected int w_, h_;
     RelativeLayout lin_top;
     public ImageView ima_fh, ima_tp;
-    TextView te_tit;
+    public TextView te_tit, teadd;
 
     public DaoHang_top1(final Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -27,12 +27,13 @@ public class DaoHang_top1 extends RelativeLayout {
         ima_fh = view.findViewById(R.id.dh_imreturn);
         ima_tp = view.findViewById(R.id.dh_im);
         te_tit = view.findViewById(R.id.dh_tetit);
+        teadd = view.findViewById(R.id.dh_teadd);
 
         DisplayMetrics dm = getResources().getDisplayMetrics();
         w_ = dm.widthPixels;
         setViewHw_Lin(lin_top, w_, (int) (w_ * 88 / 750.0), 0, 0, 0, 0);
         setViewHw_Re(ima_fh, (int) (w_ * 44 / 750.0), (int) (w_ * 44 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 22 / 750.0), 0, (int) (w_ * 22 / 750.0));
-        setViewHw_Re(ima_tp, (int) (w_ * 36 / 750.0), (int) (w_ * 44 / 750.0), (int) (w_ * 684 / 750.0), (int) (w_ * 22 / 750.0), (int) (w_ * 22 / 750.0), (int) (w_ * 22 / 750.0));
+//        setViewHw_Re(ima_tp, (int) (w_ * 36 / 750.0), (int) (w_ * 22 / 750.0), (int) (w_ * 684 / 750.0), (int) (w_ * 10 / 750.0), (int) (w_ * 22 / 750.0), (int) (w_ * 22 / 750.0));
         te_tit.setTextSize(TypedValue.COMPLEX_UNIT_PX, (int) (w_ * 36 / 750.0));
 
         te_tit.setText("ccccccc");
@@ -63,7 +64,9 @@ public class DaoHang_top1 extends RelativeLayout {
     public void settext_(String str) {
         te_tit.setText(str);
     }
+
     public void setvis() {
         ima_tp.setVisibility(GONE);
+        teadd.setVisibility(GONE);
     }
 }

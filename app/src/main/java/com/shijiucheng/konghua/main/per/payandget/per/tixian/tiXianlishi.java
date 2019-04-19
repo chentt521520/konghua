@@ -3,6 +3,7 @@ package com.shijiucheng.konghua.main.per.payandget.per.tixian;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -39,7 +40,8 @@ public class tiXianlishi extends BaseActivity_konghua {
     RecyclerView txlsRecyc;
     @BindView(R.id.txls_smtr)
     SmartRefreshLayout txlsSmtr;
-
+    @BindView(R.id.news_nodata)
+    View layout;
 
 
     Retro_Intf serivce;
@@ -58,7 +60,6 @@ public class tiXianlishi extends BaseActivity_konghua {
 
         serivce = retrofit_Single.getInstence().getserivce(2);
         getList();
-
 
 
     }
@@ -103,9 +104,16 @@ public class tiXianlishi extends BaseActivity_konghua {
                         if (jsa.length() > 0) {
                             for (int i = 0; i < jsa.length(); i++) {
                                 JSONObject jsonObject1 = jsa.getJSONObject(i);
-                                list.add(new txianlsadadatat(jsonObject1.getString("add_time_text"), jsonObject1.getString("withdraw_amount"), jsonObject1.getJSONObject("bank_info").getString("bank_type_text") + jsonObject1.getJSONObject("bank_info").getString("bank_no_last"), jsonObject1.getString("withdraw_status_text"), jsonObject1.getString("fail_reason"), jsonObject1.getJSONObject("bank_info").getString("bank_type"),jsonObject1.getString("withdraw_status")));
+                                list.add(new txianlsadadatat(jsonObject1.getString("add_time_text"), jsonObject1.getString("withdraw_amount"), jsonObject1.getJSONObject("bank_info").getString("bank_type_text") + jsonObject1.getJSONObject("bank_info").getString("bank_no_last"), jsonObject1.getString("withdraw_status_text"), jsonObject1.getString("fail_reason"), jsonObject1.getJSONObject("bank_info").getString("bank_type"), jsonObject1.getString("withdraw_status")));
                             }
                             txianlsada.notifyDataSetChanged();
+                        }
+                        if (list.size() <= 0) {
+                            if (layout != null)
+                                layout.setVisibility(View.VISIBLE);
+                        } else {
+                            if (layout != null)
+                                layout.setVisibility(View.GONE);
                         }
                     }
                     if (smtrStatus == 1) {

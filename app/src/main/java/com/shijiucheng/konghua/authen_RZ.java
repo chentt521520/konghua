@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.shijiucheng.konghua.Cmvp.BasePresenter;
 import com.shijiucheng.konghua.Cmvp.renzhenmvp.conttract;
 import com.shijiucheng.konghua.Cmvp.renzhenmvp.renZhenPresentIml;
+import com.shijiucheng.konghua.com.shijiucheng.konghua.app.DaoHang_top;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.configParams;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.paramsDataBean;
 import com.shijiucheng.konghua.main.Json_.Json_Author;
@@ -42,7 +43,7 @@ public class authen_RZ extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
 
     private static final String TAG = "authen_RZ";
     @BindView(R.id.renzhen_teTit)
-    TextView te_tit;
+    DaoHang_top te_tit;
     @BindView(R.id.renzhen_Lin)
     LinearLayout lin_dz;
     @BindView(R.id.renzhen_Imdz)
@@ -95,7 +96,6 @@ public class authen_RZ extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
 
     //    private SDKReceiver mReceiver;
     double exitTime = 0;
-    private static refresh refresh;
 
 
     conttract.irezhenPresent present = new renZhenPresentIml(this);
@@ -109,9 +109,11 @@ public class authen_RZ extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
 
     @Override
     protected void AddView() {
+        te_tit.settext_("店铺基本信息");
         autherFail = new AutherFail();
         present.getAuthorData(retrofit_Single.getInstence().getOpenid(authen_RZ.this));
         EventBus.getDefault().register(this);
+
     }
 
     @Override
@@ -299,8 +301,18 @@ public class authen_RZ extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
     public void toMainact() {
         sharePre("isauther", "0", authen_RZ.this);
         jsonAuthor = null;
-        refresh.refreshrz(authen_RZ.this);
+
+        paramsDataBean databean1 = new paramsDataBean();
+        databean1.setMsg(configParams.totherpager);
+        databean1.setT(0);
+        EventBus.getDefault().post(databean1);
+
+        paramsDataBean databean = new paramsDataBean();
+        databean.setMsg(configParams.refreshhp);
+        EventBus.getDefault().post(databean);
         finish();
+        overridePendingTransition(R.anim.push_right_out,
+                R.anim.push_right_in);
 
     }
 
@@ -320,7 +332,6 @@ public class authen_RZ extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
                 }
 
                 jsonAuthor = json_author;
-                refresh.refreshrz(authen_RZ.this);
                 rzzt = 3;
 //                te_dzgo.setText("查看 >");
 //                te_dpgo.setText("查看 >");
@@ -341,14 +352,15 @@ public class authen_RZ extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
                 rzzt = 2;
                 te_dpts.setVisibility(View.VISIBLE);
                 failMsg = jsonObject.getString("msg");
-//                te_ok.setText("重新提交");
+                te_ok.setText("重新提交");
                 sharePre("isauther", "0", authen_RZ.this);
                 return;
             }
             if (jsonObject.getJSONObject("data").getString("authentication_status").equals("authenticating")) {
                 rzzt = 1;
                 sharePre("isauther", "0", authen_RZ.this);
-//                te_ok.setText("审核中");
+                te_ok.setText("认证中，待管理员审核");
+                te_ok.setBackgroundResource(R.drawable.yuanjiaoall1);
 //                te_dzgo.setText("查看 >");
 //                te_dpgo.setText("查看 >");
 //                te_dpwzgo.setText("查看 >");
@@ -374,22 +386,12 @@ public class authen_RZ extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
         }
     }
 
-    public static void setrefrxx(refresh refresh) {
-        authen_RZ.refresh = refresh;
-    }
-
-    //提供刷新状态接口
-    public interface refresh {
-        void refreshrz(Context context);
-
-    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         // TODO Auto-generated method stub
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
             jsonAuthor = null;
-            refresh.refreshrz(authen_RZ.this);
             finish();
             overridePendingTransition(R.anim.push_right_out,
                     R.anim.push_right_in);

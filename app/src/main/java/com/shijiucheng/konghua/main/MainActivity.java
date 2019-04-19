@@ -1,23 +1,15 @@
 package com.shijiucheng.konghua.main;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.DisplayMetrics;
-import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -25,11 +17,12 @@ import android.widget.Toast;
 
 import com.gyf.barlibrary.ImmersionBar;
 import com.shijiucheng.konghua.Banben_;
+import com.shijiucheng.konghua.Login_konghua;
 import com.shijiucheng.konghua.R;
 import com.shijiucheng.konghua.authen_RZ;
-import com.shijiucheng.konghua.com.shijiucheng.konghua.app.IsLoginOrAuthor;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.configParams;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.paramsDataBean;
+import com.shijiucheng.konghua.gotoAuthen;
 import com.shijiucheng.konghua.main.HomePage.OrderHomePage;
 import com.tencent.android.tpush.XGPushClickedResult;
 import com.tencent.android.tpush.XGPushManager;
@@ -39,16 +32,13 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import Retrofit2.retrofit_Single;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class MainActivity extends FragmentActivity implements View.OnClickListener, Banben_.fuluebanben {
+public class MainActivity extends FragmentActivity implements View.OnClickListener, Banben_.fuluebanben, gotoAuthen.gotoautheninterface {
     Unbinder munbinder;
     private List<Fragment> fragment = new ArrayList<Fragment>();
     @BindView(R.id.mainact_vp)
@@ -64,8 +54,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     @BindView(R.id.mainact_synew)
     LinearLayout lin_syenew;
-
-
     @BindView(R.id.mainact_ivsy)
     ImageView im_sy;
     @BindView(R.id.mainact_ivfl)
@@ -96,6 +84,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
+    gotoAuthen gotoauthen = new gotoAuthen();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,16 +92,10 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         ImmersionBar.with(this).statusBarColor(R.color.zhu).statusBarDarkFont(false, 0.0f).fitsSystemWindows(true).init();
         setContentView(R.layout.activity_main2);
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        Map<String, Object> maps = new HashMap<>();
-        maps.put("test_zhuye", "dsd");
-        maps.put("111", 2);
-        maps.put("112", 112);
-        EventBus.getDefault().post(maps);
 
         EventBus.getDefault().register(this);
 
         munbinder = ButterKnife.bind(this);
-//        setviewhw();
         setviewdata();
         //测试版本更新
     }
@@ -138,7 +121,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         vpage.setAdapter(new FragmentPagerAdapter(MainActivity.this
                 .getSupportFragmentManager()) {
-
             @Override
             public int getCount() {
                 return fragment.size();
@@ -154,8 +136,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
             @Override
             public void onPageSelected(int arg0) {
-                if (setact())
-                    changeTab(arg0);
+//                if (setact())
+                changeTab(arg0);
             }
 
             @Override
@@ -170,6 +152,10 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
             }
         });
+
+        paramsDataBean datahp = new paramsDataBean();
+        datahp.setMsg(configParams.refreshhp);
+        EventBus.getDefault().post(datahp);
     }
 
 
@@ -238,37 +224,14 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        if (setact())
-            changeTab(v.getId());
-    }
-
-    private boolean setact() {
-        boolean t = false;
-        if (!preferences.getString("name", "0").equals("0")) {
-            if (!preferences.getString("isauther", "0").equals("0"))
-                t = true;
-            else {
-                t = false;
-                startActivity(new Intent(MainActivity.this, authen_RZ.class));
-                overridePendingTransition(R.anim.push_left_in,
-                        R.anim.push_left_out);
-            }
-        } else {
-            t = false;
-            if (!preferences.getString("name", "0").equals("0")) {
-                IsLoginOrAuthor.getInstence().login(this, retrofit_Single.getInstence().getOpenid(this), preferences.getString("name", ""), preferences.getString("pwd", ""));
-            } else {
-                IsLoginOrAuthor.getInstence().goToLogin(this);
-            }
-        }
-        return t;
+//        if (setact())
+        changeTab(v.getId());
     }
 
     private void changeTab(int id) {
         ivCurrent.setSelected(false);
         tvCurrent.setSelected(false);
         switch (id) {
-
             case R.id.mainact_synew:
                 paramsDataBean datahp = new paramsDataBean();
                 datahp.setMsg(configParams.refreshhp);
@@ -318,6 +281,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 tvCurrent = te_sy;
                 break;
             case R.id.mainact_wd:
+                paramsDataBean dataper = new paramsDataBean();
+                dataper.setMsg(configParams.perRrefresh);
+                EventBus.getDefault().post(dataper);
                 vpage.setCurrentItem(4, false);
             case 4:
                 im_per.setSelected(true);
@@ -330,61 +296,86 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         }
     }
 
-    private void setviewhw() {
-        DisplayMetrics dm = getResources().getDisplayMetrics();
-        int w_screen = dm.widthPixels;
-
-        setviewhw_lin(lin_syenew, (int) (w_screen * 150 / 750.0),
-                (int) (w_screen * 98 / 750.0), (int) (w_screen * 0 / 750.0),
-                (int) (w_screen * 0 / 750.0), 0, 0);
-        setviewhw_lin(lin_home, (int) (w_screen * 150 / 750.0),
-                (int) (w_screen * 98 / 750.0), (int) (w_screen * 0 / 750.0),
-                (int) (w_screen * 0 / 750.0), 0, 0);
-        setviewhw_lin(lin_order, (int) (w_screen * 150 / 750.0),
-                (int) (w_screen * 98 / 750.0), (int) (w_screen * 0 / 750.0),
-                (int) (w_screen * 0 / 750.0), 0, 0);
-        setviewhw_lin(lin_news, (int) (w_screen * 150 / 750.0),
-                (int) (w_screen * 98 / 750.0), (int) (w_screen * 0 / 750.0),
-                (int) (w_screen * 0 / 750.0), 0, 0);
-        setviewhw_lin(lin_per, (int) (w_screen * 150 / 750.0),
-                (int) (w_screen * 98 / 750.0), (int) (w_screen * 0 / 750.0),
-                (int) (w_screen * 0 / 750.0), 0, 0);
-
-        setviewhw_lin(im_syenew, (int) (w_screen * 55 / 750.0),
-                (int) (w_screen * 50 / 750.0), (int) (w_screen * 0 / 750.0),
-                (int) (w_screen * 10 / 750.0), 0, 0);
-
-//        setviewhw_lin(te_synew, (int) (w_screen * 150 / 750.0),
-//                (int) (w_screen * 38 / 750.0), (int) (w_screen * 0 / 750.0),
-//                (int) (w_screen * 0 / 750.0), 0, (int) (w_screen * 0 / 750.0));
-        setviewhw_lin(im_sy, (int) (w_screen * 48 / 750.0),
-                (int) (w_screen * 48 / 750.0), (int) (w_screen * 0 / 750.0),
-                (int) (w_screen * 10 / 750.0), 0, (int) (w_screen * 6 / 750.0));
-        setviewhw_lin(im_order, (int) (w_screen * 48 / 750.0),
-                (int) (w_screen * 48 / 750.0), (int) (w_screen * 0 / 750.0),
-                (int) (w_screen * 10 / 750.0), 0, (int) (w_screen * 6 / 750.0));
-        setviewhw_lin(im_news, (int) (w_screen * 48 / 750.0),
-                (int) (w_screen * 48 / 750.0), (int) (w_screen * 0 / 750.0),
-                (int) (w_screen * 10 / 750.0), 0, (int) (w_screen * 6 / 750.0));
-        setviewhw_lin(im_per, (int) (w_screen * 48 / 750.0),
-                (int) (w_screen * 38 / 750.0), (int) (w_screen * 0 / 750.0),
-                (int) (w_screen * 0 / 750.0), 0, (int) (w_screen * 20 / 750.0));
-        te_synew.setTextSize(TypedValue.COMPLEX_UNIT_PX, (int) (w_screen * 26 / 750.0));
-        te_sy.setTextSize(TypedValue.COMPLEX_UNIT_PX, (int) (w_screen * 26 / 750.0));
-        te_order.setTextSize(TypedValue.COMPLEX_UNIT_PX, (int) (w_screen * 26 / 750.0));
-        te_news.setTextSize(TypedValue.COMPLEX_UNIT_PX, (int) (w_screen * 26 / 750.0));
-        te_per.setTextSize(TypedValue.COMPLEX_UNIT_PX, (int) (w_screen * 26 / 750.0));
-    }
-
-    private void setviewhw_lin(View v, int width, int height, int left,
-                               int top, int right, int bottom) {
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(width, height);
-        lp.setMargins(left, top, right, bottom);
-        v.setLayoutParams(lp);
-    }
-
     @Override
     public void fuluebanben() {
 
     }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void getmess(paramsDataBean data) {
+        if (data != null) {
+            if (data.getMsg().equals(configParams.syrenzhen)) {
+                if (!gotoauthen.isAdded()) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("statusstr", "还未认证，为了不影响接单及提现功能需完成店铺认证。");
+                    bundle.putString("status", "0");//0未认证，1认证中，2认证失败
+                    gotoauthen.setArguments(bundle);
+                    gotoauthen.show(getSupportFragmentManager(), "sygoto");
+                }
+                return;
+            } else if (data.getMsg().equals(configParams.sylogin)) {
+                startActivity(new Intent(MainActivity.this, Login_konghua.class));
+                overridePendingTransition(R.anim.push_left_in,
+                        R.anim.push_left_out);
+                return;
+            } else if (data.getMsg().equals(configParams.sycloserenzhen)) {
+                if (gotoauthen != null)
+                    if (gotoauthen.isAdded()) {
+                        gotoauthen.dismiss();
+                    }
+                return;
+            } else if (data.getMsg().equals(configParams.syrenzhenzhong)) {
+                if (!gotoauthen.isAdded()) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("statusstr", "该账号正在认证中");
+                    bundle.putString("status", "1");//0未认证，1认证中，2认证失败
+                    gotoauthen.setArguments(bundle);
+                    gotoauthen.show(getSupportFragmentManager(), "renzhenzhong");
+                }
+                return;
+            } else if (data.getMsg().equals(configParams.syrenzhenfail)) {
+                if (!gotoauthen.isAdded()) {
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("statusstr", "很抱歉该账号认证失败了");
+                    bundle.putString("status", "2");//0未认证，1认证中，2认证失败
+                    gotoauthen.setArguments(bundle);
+
+                    gotoauthen.show(getSupportFragmentManager(), "renzhensb");
+                }
+                return;
+            }
+        }
+    }
+
+    @Override
+    public void toauthen() {
+        //弹窗去认证页面
+        Intent i = new Intent();
+        i.setClass(this, authen_RZ.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.push_left_in,
+                R.anim.push_left_out);
+    }
+
+    @Override
+    public void tologin() {
+        //弹窗去登录
+        Intent i = new Intent();
+        i.setClass(this, Login_konghua.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.push_left_in,
+                R.anim.push_left_out);
+    }
+
+    @Override
+    public void tofinishapp() {
+        finish();
+        System.exit(0);
+    }
+
+//    @Override
+//    public void refresh() {
+//
+//    }
 }

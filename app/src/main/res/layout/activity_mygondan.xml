@@ -70,7 +70,7 @@
                     android:layout_marginBottom="5dp"
                     android:drawableLeft="@mipmap/wt"
                     android:gravity="center"
-                    android:text="问题特征"
+                    android:text="  问题特征"
                     android:textColor="@color/hei"
                     android:textSize="13sp" />
 

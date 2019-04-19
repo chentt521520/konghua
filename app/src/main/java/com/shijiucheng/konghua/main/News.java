@@ -55,6 +55,8 @@ public class News extends com.shijiucheng.konghua.Cmvp.BaseFragment_konghua impl
     View v_1;
     @BindView(R.id.view_2)
     View v_2;
+    @BindView(R.id.news_nodata)
+    View layout;
 
     znxrecyc_ada ada;
     List<znxada_data> list = new ArrayList<>();
@@ -240,6 +242,16 @@ public class News extends com.shijiucheng.konghua.Cmvp.BaseFragment_konghua impl
 
         this.list.addAll(list);
         ada.notifyDataSetChanged();
+
+        if (this.list.size() <= 0) {
+            if (layout != null)
+                layout.setVisibility(View.VISIBLE);
+        } else {
+            if (layout != null)
+                layout.setVisibility(View.GONE);
+        }
+
+
         if (refreshstatus == 1) {
             smartRefreshLayout.finishRefresh();
         } else if (refreshstatus == 2) {
@@ -253,7 +265,10 @@ public class News extends com.shijiucheng.konghua.Cmvp.BaseFragment_konghua impl
     public void setenddate(paramsDataBean data) {
         if (data != null) {
             if (data.getMsg().equals(configParams.symsg)) {
-                prestent.getNews(retrofit_Single.getInstence().getOpenid(getActivity()), page, type, "");
+                this.list.removeAll(this.list);
+                page = 1;
+                ada.notifyDataSetChanged();
+                getTypeValue(type);
             }
             return;
         }

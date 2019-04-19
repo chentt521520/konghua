@@ -1,5 +1,6 @@
 package com.shijiucheng.konghua.main.HomePage.frag;
 
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -34,6 +35,7 @@ public class jiesuan_frag extends DialogFragment {
 
         getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
         getDialog().getWindow().setGravity(Gravity.CENTER);
+        getDialog().setCanceledOnTouchOutside(false);
         view = inflater.inflate(R.layout.jiesuan_frag, container, false);
         DisplayMetrics dm = getActivity().getResources().getDisplayMetrics();
         wxx = dm.widthPixels;
@@ -78,7 +80,7 @@ public class jiesuan_frag extends DialogFragment {
         int w = dm.widthPixels;
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
         getDialog().getWindow().setLayout(dm.widthPixels - 200, -2);
-        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(0xff000000));
+        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 
 

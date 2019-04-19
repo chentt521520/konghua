@@ -66,6 +66,19 @@ public class payAndGet extends BaseActivity_konghua implements Contact.IView {
     @BindView(R.id.szmx_tedj)
     TextView szmxTedj;
 
+    @BindView(R.id.view_1)
+    View v_1;
+    @BindView(R.id.view_2)
+    View v_2;
+    @BindView(R.id.view_3)
+    View v_3;
+    @BindView(R.id.view_4)
+    View v_4;
+    View v_select;
+
+    @BindView(R.id.v_5)
+    View v_5;
+
     @Override
     protected void AddView() {
         daoHang_top.settext_("收支明细");
@@ -73,6 +86,7 @@ public class payAndGet extends BaseActivity_konghua implements Contact.IView {
         te_sr.setSelected(false);
         te_zc.setSelected(false);
         te_clz.setSelected(false);
+        v_select = v_1;
 
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(OrientationHelper.VERTICAL);
@@ -116,6 +130,9 @@ public class payAndGet extends BaseActivity_konghua implements Contact.IView {
                     page = 1;
                     strStatus = "";
                     list.removeAll(list);
+                    v_1.setBackgroundColor(getResources().getColor(R.color.zhu));
+                    v_select.setBackgroundColor(getResources().getColor(R.color.danhei));
+                    v_select = v_1;
                     prestent.getList(strStatus, retrofit_Single.getInstence().getOpenid(payAndGet.this), page);
                 }
             }
@@ -130,6 +147,11 @@ public class payAndGet extends BaseActivity_konghua implements Contact.IView {
                     te_clz.setSelected(false);
                     page = 1;
                     list.removeAll(list);
+
+                    v_2.setBackgroundColor(getResources().getColor(R.color.zhu));
+                    v_select.setBackgroundColor(getResources().getColor(R.color.danhei));
+                    v_select = v_2;
+
                     strStatus = "income";
                     prestent.getList(strStatus, retrofit_Single.getInstence().getOpenid(payAndGet.this), page);
                 }
@@ -145,6 +167,11 @@ public class payAndGet extends BaseActivity_konghua implements Contact.IView {
                     te_clz.setSelected(false);
                     page = 1;
                     list.removeAll(list);
+
+                    v_3.setBackgroundColor(getResources().getColor(R.color.zhu));
+                    v_select.setBackgroundColor(getResources().getColor(R.color.danhei));
+                    v_select = v_3;
+
                     strStatus = "expenditure";
                     prestent.getList(strStatus, retrofit_Single.getInstence().getOpenid(payAndGet.this), page);
                 }
@@ -160,6 +187,11 @@ public class payAndGet extends BaseActivity_konghua implements Contact.IView {
                     te_clz.setSelected(true);
                     page = 1;
                     list.removeAll(list);
+
+                    v_4.setBackgroundColor(getResources().getColor(R.color.zhu));
+                    v_select.setBackgroundColor(getResources().getColor(R.color.danhei));
+                    v_select = v_4;
+
                     strStatus = "freeze";
                     prestent.getList(strStatus, retrofit_Single.getInstence().getOpenid(payAndGet.this), page);
                 }
@@ -203,9 +235,14 @@ public class payAndGet extends BaseActivity_konghua implements Contact.IView {
             teNum.setText("账户余额：" + str[0] + "  =   账户总入账：" + str[1] + "  -   账户总支出：" + str[2]);
 
             List<DataItem> items = new ArrayList<>();
-            items.add(new DataItem(Integer.parseInt(str[0]), "账户余额", "26.56", getResources().getColor(R.color.lan)));
-            items.add(new DataItem(Integer.parseInt(str[2]), "账户总入账", "32.45", getResources().getColor(R.color.lan1)));
-            items.add(new DataItem(Integer.parseInt(str[3]), "账户总支出", "32.45", getResources().getColor(R.color.lan2)));
+            if (str[1].equals("0")) {
+                items.add(new DataItem(100, "账户总入账", "26.56", getResources().getColor(R.color.danhei)));
+                v_5.setVisibility(View.GONE);
+            } else {
+                items.add(new DataItem(Integer.parseInt(str[0]), "账户余额", "26.56", getResources().getColor(R.color.lan)));
+                items.add(new DataItem(Integer.parseInt(str[2]), "账户总入账", "32.45", getResources().getColor(R.color.lan1)));
+                items.add(new DataItem(Integer.parseInt(str[3]), "账户总支出", "32.45", getResources().getColor(R.color.lan2)));
+            }
             discView.setItems(items);
 
             szmxZsr.setText("账户总入账\n" + str[1] + "（元）");

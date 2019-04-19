@@ -1,20 +1,21 @@
 package com.shijiucheng.konghua.main.per_;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
 import com.shijiucheng.konghua.Cmvp.BaseResult;
+import com.shijiucheng.konghua.Login_konghua;
 import com.shijiucheng.konghua.R;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.BaseActivity_konghua;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.DaoHang_top;
-import com.shijiucheng.konghua.com.shijiucheng.konghua.app.IsLoginOrAuthor;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.configParams;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.paramsDataBean;
-import com.shijiucheng.konghua.main.per.mima.PayPwd;
-import com.shijiucheng.konghua.main.per.mima.loginPwd;
-import com.shijiucheng.konghua.main.per.mima.safepho;
-import com.shijiucheng.konghua.main.per.mima.yewupho;
+import com.shijiucheng.konghua.main.per_.setingact.businesspho;
+import com.shijiucheng.konghua.main.per_.setingact.changepwd;
+import com.shijiucheng.konghua.main.per_.setingact.paymentpwd;
+import com.shijiucheng.konghua.main.per_.setingact.safepho;
 
 import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
@@ -26,13 +27,13 @@ import java.util.HashMap;
 import Retrofit2.Retro_Intf;
 import Retrofit2.retrofit_Single;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Setings extends BaseActivity_konghua implements identityAuth.yanzhensucc, IsLoginOrAuthor.refresh, PayPwd.getpwddata, loginPwd.loginmm, yewupho.yewufrag, safepho.loginmm {
+public class Setings extends BaseActivity_konghua implements
+        changepwd.loginmm, businesspho.businessphointerface, paymentpwd.paymentsuc, safepho.safephointerface {
     @BindView(R.id.setig_dh)
     DaoHang_top setigDh;
     @BindView(R.id.seting_quit)
@@ -59,24 +60,22 @@ public class Setings extends BaseActivity_konghua implements identityAuth.yanzhe
 
     identityAuth identityAuth;
     int type = 0;//0通过且是修改密码的操作，1通过是支付密码的操作,2业务手机3安全手机
-    PayPwd payPwd;
-    com.shijiucheng.konghua.main.per.mima.loginPwd loginPwd;
-    yewupho yewupho;
-    safepho safepho;
-    String pho = "";
+    String pho = "", pho1 = "";
 
 
     @Override
     protected void AddView() {
+        //把修改密码弹窗改成页面，设置页面的修改密码弹窗代码未删除
         identityAuth = new identityAuth();
-        payPwd = new PayPwd();
-        loginPwd = new loginPwd();
-        yewupho = new yewupho();
-        safepho = new safepho();
+
+        changepwd.setchangpwdinterface(this);
+        businesspho.setBusine(this);
+        paymentpwd.setPsuc(this);
+        safepho.setSafe(this);
 
         setigDh.settext_("设置中心");
         retro_intf = retrofit_Single.getInstence().getserivce(2);
-        IsLoginOrAuthor.setfr(this);
+
         getinfo(0);
     }
 
@@ -85,36 +84,40 @@ public class Setings extends BaseActivity_konghua implements identityAuth.yanzhe
         setigTemm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!loginPwd.isAdded()) {
-                    type = 0;
-                    loginPwd.show(getSupportFragmentManager(), "pwd");
+                if (!TextUtils.isEmpty(pho)) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("pho", pho);
+                    startActivityByIntent(Setings.this, changepwd.class, bundle);
                 }
             }
         });
         setigTemmpay1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!payPwd.isAdded()) {
-                    type = 1;
-                    payPwd.show(getSupportFragmentManager(), "pwd");
+                if (!TextUtils.isEmpty(pho)) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("pho", pho);
+                    startActivityByIntent(Setings.this, paymentpwd.class, bundle);
                 }
             }
         });
         setigTeywpho1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!yewupho.isAdded()) {
-                    type = 2;
-                    yewupho.show(getSupportFragmentManager(), "pwd");
+                if (!TextUtils.isEmpty(pho1)) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("pho", pho);
+                    startActivityByIntent(Setings.this, businesspho.class, bundle);
                 }
             }
         });
         setigTeaqpho1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!safepho.isAdded()) {
-                    type = 3;
-                    safepho.show(getSupportFragmentManager(), "pwd");
+                if (!TextUtils.isEmpty(pho)) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("pho", pho);
+                    startActivityByIntent(Setings.this, safepho.class, bundle);
                 }
             }
         });
@@ -136,30 +139,6 @@ public class Setings extends BaseActivity_konghua implements identityAuth.yanzhe
     }
 
 
-    @Override
-    public void getsucc() {
-        //验证身份通过
-        if (type == 0) {
-            if (loginPwd.isAdded()) {
-                loginPwd.xiugaimm();
-            }
-            return;
-        }
-        if (type == 2) {
-            if (yewupho.isAdded()) {
-                yewupho.getpho();
-            }
-            return;
-        }
-        if (type == 3) {
-            if (safepho.isAdded()) {
-                safepho.getpho();
-            }
-            return;
-        }
-    }
-
-
     private void getinfo(final int typ) {
         if (!jdt.isAdded())
             jdt.show(getFragmentManager(), "jdt");
@@ -172,7 +151,7 @@ public class Setings extends BaseActivity_konghua implements identityAuth.yanzhe
                     Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (jdt.isAdded()) jdt.dismiss();
                 String Result = null;
-                if (response.body()==null)
+                if (response.body() == null)
                     return;
                 try {
                     Result = response.body().string();
@@ -193,8 +172,9 @@ public class Setings extends BaseActivity_konghua implements identityAuth.yanzhe
                                 setigTemmpay1.setText("|修改");
                             }
                             setigTeywphots.setText(" 该手机号码用于接收日常业务消息，方便订单及时处理，当前接收手机" + data.getJSONObject("account_security_info").getString("service_mobile_text"));
-                            setigTeaqphots.setText(" 该手机号码用于接收资金、安全消息，防止恶意操作敏感数据，当前接收手机" + data.getJSONObject("account_security_info").getString("service_mobile_text"));
-                            pho = data.getJSONObject("account_security_info").getString("service_mobile_text");
+                            setigTeaqphots.setText(" 该手机号码用于接收资金、安全消息，防止恶意操作敏感数据，当前接收手机" + data.getJSONObject("account_security_info").getString("safe_mobile_text"));
+                            pho = data.getJSONObject("account_security_info").getString("safe_mobile_text");
+                            pho1 = data.getJSONObject("account_security_info").getString("service_mobile_text");
                             if (typ == 1) {
                                 if (!identityAuth.isAdded()) {
                                     if (pho.length() > 0) {
@@ -234,7 +214,7 @@ public class Setings extends BaseActivity_konghua implements identityAuth.yanzhe
             public void onResponse(
                     Call<ResponseBody> call, Response<ResponseBody> response) {
                 String Result = null;
-                if (response.body()==null)
+                if (response.body() == null)
                     return;
                 try {
                     Result = response.body().string();
@@ -246,15 +226,15 @@ public class Setings extends BaseActivity_konghua implements identityAuth.yanzhe
                         BaseResult result = new BaseResult();
 
                         if (jsonObject.getString("status").equals("1")) {
-                            toaste_ut(Setings.this, jsonObject.getString("msg"));
+//                            toaste_ut(Setings.this, jsonObject.getString("msg"));
                             sharePre("name", "0", Setings.this);
                             sharePre("pwd", "0", Setings.this);
-
-                            IsLoginOrAuthor.getInstence().goToLogin(Setings.this);
+                            finish();
+                            startActivityByIntent(Setings.this, Login_konghua.class);
                         } else {
                             if (jsonObject.getString("msg").contains("未登录")) {
-                                IsLoginOrAuthor.getInstence().goToLogin(Setings.this);
-                                toaste_ut(Setings.this, jsonObject.getString("msg"));
+                                finish();
+                                startActivityByIntent(Setings.this, Login_konghua.class);
                             } else toaste_ut(Setings.this, jsonObject.getString("msg"));
                         }
                     } catch (JSONException e) {
@@ -275,43 +255,35 @@ public class Setings extends BaseActivity_konghua implements identityAuth.yanzhe
     }
 
     @Override
-    public void refresh() {
-        if (!getSharePre("name", Setings.this).equals("0")) {
-            if (getSharePre("isauther", Setings.this).equals("0"))
-                IsLoginOrAuthor.getInstence().goToAuthor(Setings.this);
-            else {
-                IsLoginOrAuthor.refresh = null;
-                paramsDataBean databean = new paramsDataBean();
-                databean.setMsg(configParams.perRrefresh);
-                EventBus.getDefault().post(databean);
-                finish();
-                overridePendingTransition(R.anim.push_right_out,
-                        R.anim.push_right_in);
-            }
-        } else {
-
-            IsLoginOrAuthor.getInstence().goToLogin(Setings.this);
-        }
-    }
-
-    @Override
-    public void getpwddatax() {
-        getinfo(0);
-    }
-
-    @Override
-    public void loginmm() {
-        getinfo(1);
-    }
-
-    @Override
     public void loginmmsuc() {
         //修改登录密码成功
         getquit();
     }
 
+
     @Override
-    public void yewufrag() {
-        getinfo(1);
+    public void businessphoSetingSuc() {
+        //业务手机修改成功
+        getinfo(2);
+    }
+
+    @Override
+    public void paymentsucim() {
+        //支付密码设置成功
+        getinfo(2);
+    }
+
+    @Override
+    public void safephosuc() {
+        getinfo(2);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        changepwd.loginmm = null;
+        businesspho.busine = null;
+        paymentpwd.psuc = null;
+        safepho.safe = null;
     }
 }

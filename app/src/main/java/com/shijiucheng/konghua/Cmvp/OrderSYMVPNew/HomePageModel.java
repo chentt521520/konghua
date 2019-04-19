@@ -44,7 +44,7 @@ public class HomePageModel implements BaseContact.BaseModel {
                         baseResult.setData(jso.getJSONObject("data").toString());
                     } else {
                         baseResult.setCode("0");
-                        baseResult.setData("0");
+                        baseResult.setData(jso.toString());
                     }
 
                     callbackListener.onNext(baseResult);

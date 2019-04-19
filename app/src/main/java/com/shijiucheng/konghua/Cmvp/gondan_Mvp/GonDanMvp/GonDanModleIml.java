@@ -124,7 +124,5 @@ public class GonDanModleIml implements Contact.GonDanIModle {
                 baseResultBaseCallbackListener.onError(t);
             }
         });
-
-
     }
 }

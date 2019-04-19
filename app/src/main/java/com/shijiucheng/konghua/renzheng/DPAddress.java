@@ -186,7 +186,7 @@ public class DPAddress extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
                     toaste_ut(DPAddress.this, "请填写详细地址信息");
                     return;
                 }
-                if (te_jwd1.getText().equals("请设置经纬度信息!")) {
+                if (TextUtils.isEmpty(te_jwd1.getText().toString()) || te_jwd1.getText().toString().contains("请设置")) {
                     toaste_ut(DPAddress.this, "请设置店铺的经纬度");
                     return;
                 }

@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,7 +12,10 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
 import android.util.Base64;
 import android.view.View;
 import android.widget.EditText;
@@ -96,6 +100,9 @@ public class order_PeiSong extends BaseActivity_konghua implements TakePhoto.Tak
     private InvokeParam invokeParam;
     getpicdialogfragment getpicdialogfragment = new getpicdialogfragment();
 
+    @BindView(R.id.ksps_tebaozats)
+    TextView tets;
+
     int ix = 1;
 
     peisongada ada;
@@ -120,6 +127,10 @@ public class order_PeiSong extends BaseActivity_konghua implements TakePhoto.Tak
         recyclerView.setAdapter(ada);
         ada.setselectx(this);
 
+        SpannableStringBuilder builder = new SpannableStringBuilder(tets.getText().toString());
+        ForegroundColorSpan yellowSpan = new ForegroundColorSpan(getResources().getColor(R.color.danhei));
+        builder.setSpan(yellowSpan, 69, tets.getText().toString().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        tets.setText(builder);
     }
 
     @Override
@@ -159,35 +170,38 @@ public class order_PeiSong extends BaseActivity_konghua implements TakePhoto.Tak
         te_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                paramsDataBean databean = new paramsDataBean();
-                databean.setMsg(configParams.orderpeisong);
-                Bundle bundle = new Bundle();
+                if (fastClick()) {
+                    paramsDataBean databean = new paramsDataBean();
 
-                if (TextUtils.isEmpty(dataurl[0]) || TextUtils.isEmpty(dataurl[1]) || TextUtils.isEmpty(dataurl[2])) {
-                    toaste_ut(order_PeiSong.this, "请上传3张配送图片");
-                } else {
-                    bundle.putString("store_pack_images", dataurl[0] + "," + dataurl[1] + "," + dataurl[2]);
+                    Bundle bundle = new Bundle();
 
-                    if (TextUtils.isEmpty(ed_xm.getText().toString()) && TextUtils.isEmpty(ed_pho.getText().toString())) {
-                        bundle.putString("delivery_emp_uname", "");
-                        bundle.putString("delivery_emp_tel", "");
-                    } else if ((!TextUtils.isEmpty(ed_xm.getText().toString())) && (!TextUtils.isEmpty(ed_pho.getText().toString()))) {
-                        bundle.putString("delivery_emp_uname", ed_xm.getText().toString());
-                        bundle.putString("delivery_emp_tel", ed_pho.getText().toString());
-                    } else {
-                        toaste_ut(order_PeiSong.this, "配送员姓名及手机请填写完整");
+                    if (TextUtils.isEmpty(dataurl[0]) || TextUtils.isEmpty(dataurl[1]) || TextUtils.isEmpty(dataurl[2])) {
+                        toaste_ut(order_PeiSong.this, "请上传3张配送图片");
                         return;
+                    } else {
+                        bundle.putString("store_pack_images", dataurl[0] + "," + dataurl[1] + "," + dataurl[2]);
+
+                        if (TextUtils.isEmpty(ed_xm.getText().toString()) && TextUtils.isEmpty(ed_pho.getText().toString())) {
+                            bundle.putString("delivery_emp_uname", "");
+                            bundle.putString("delivery_emp_tel", "");
+                        } else if ((!TextUtils.isEmpty(ed_xm.getText().toString())) && (!TextUtils.isEmpty(ed_pho.getText().toString()))) {
+                            bundle.putString("delivery_emp_uname", ed_xm.getText().toString());
+                            bundle.putString("delivery_emp_tel", ed_pho.getText().toString());
+                        } else {
+                            toaste_ut(order_PeiSong.this, "配送员姓名及手机请填写完整");
+                            return;
+                        }
+
+                        databean.setT(bundle);
+                        databean.setMsg(configParams.orderpeisong);
+                        EventBus.getDefault().post(databean);
+                        finish();
+                        overridePendingTransition(R.anim.push_right_out,
+                                R.anim.push_right_in);
                     }
-                    databean.setT(bundle);
-                    EventBus.getDefault().post(databean);
-                    finish();
-                    overridePendingTransition(R.anim.push_right_out,
-                            R.anim.push_right_in);
                 }
             }
         });
-
-
     }
 
     @Override
@@ -281,7 +295,7 @@ public class order_PeiSong extends BaseActivity_konghua implements TakePhoto.Tak
 
     private void uploadpic(final int xx, String url) {
         if (!jdt.isAdded())
-        jdt.show(getFragmentManager(), "jdtxor");
+            jdt.show(getFragmentManager(), "jdtxor");
         Retro_Intf serivce = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> map = new HashMap<>();
         map.putAll(retrofit_Single.getInstence().retro_postParameter());
@@ -307,9 +321,9 @@ public class order_PeiSong extends BaseActivity_konghua implements TakePhoto.Tak
                     try {
                         JSONObject jsonObject = new JSONObject(str);
                         if (jsonObject.getString("status").equals("1")) {
-                            if (jdt!=null)
+                            if (jdt != null)
                                 if (jdt.isAdded())
-                            jdt.dismiss();
+                                    jdt.dismiss();
 
                             JSONObject jso = jsonObject.getJSONObject("data");
                             if (xx == 1) {
@@ -447,7 +461,7 @@ public class order_PeiSong extends BaseActivity_konghua implements TakePhoto.Tak
     }
 
     public void getpermiss(int type) {
-       getpic(type);
+        getpic(type);
     }
 
     //获取手机图片

@@ -157,14 +157,17 @@ public class OrderTwoPage1 extends BaseActivity_konghua implements ordertwoAdapt
                         JSONArray jsonArray = jsonObject.getJSONArray("rows");
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jso1 = jsonArray.getJSONObject(i);
-                            list.add(new ordertwoData(jso1.getString("order_id"), jso1.getString("order_sn"), jso1.getString("order_status"), jso1.getString("add_time_text"), ""
+                            list.add(new ordertwoData(jso1.getString("order_id"), jso1.getString("order_sn"), jso1.getString("order_status"), jso1.getString("delivery_time"), ""
                                     , jso1.getString("order_amount"), jso1.getString("receiver_province_text") + jso1.getString("receiver_city_text") + jso1.getString("receiver_district_text"),
-                                    jso1.getString("receiver_address"), jso1.getString("receiver"), jso1.getString("receiver_tel"), jso1.getString("is_order_balance_remind")));
+                                    jso1.getString("receiver_address"), jso1.getString("receiver"), jso1.getString("receiver_tel"), jso1.getString("is_order_balance_remind"), jso1.getString("order_status_text")));
                         }
                         adapter.notifyDataSetChanged();
-                        if (jsonArray.length() <= 0)
+                        if (list.size() <= 0) {
                             if (layout != null)
                                 layout.setVisibility(View.VISIBLE);
+                        } else {
+                            if (layout != null) layout.setVisibility(View.GONE);
+                        }
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

@@ -8,7 +8,6 @@ import com.shijiucheng.konghua.Cmvp.BasePresenter;
 import com.shijiucheng.konghua.Cmvp.HomePageMvp.HPContact;
 import com.shijiucheng.konghua.Cmvp.HomePageMvp.HPPrestentIml;
 import com.shijiucheng.konghua.R;
-import com.shijiucheng.konghua.com.shijiucheng.konghua.app.IsLoginOrAuthor;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.configParams;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.paramsDataBean;
 import com.shijiucheng.konghua.main.per.payandget.payAndGet;
@@ -32,10 +31,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Home extends com.shijiucheng.konghua.Cmvp.BaseFragment_konghua implements HPContact.HPView, IsLoginOrAuthor.refresh {
+public class Home extends com.shijiucheng.konghua.Cmvp.BaseFragment_konghua implements HPContact.HPView {
     //主页改成财务页面（申请提现）
-
-
     @BindView(R.id.txian_tenum1)
     TextView txianTenum1;
     @BindView(R.id.txian_tetx)
@@ -63,7 +60,6 @@ public class Home extends com.shijiucheng.konghua.Cmvp.BaseFragment_konghua impl
 
     @Override
     protected void AddView() {
-        IsLoginOrAuthor.setfr(this);
         hpPrestentIml = new HPPrestentIml(this);
         hpPrestentIml.getData(retrofit_Single.getInstence().getOpenid(getActivity()));
         serivce = retrofit_Single.getInstence().getserivce(2);
@@ -132,30 +128,18 @@ public class Home extends com.shijiucheng.konghua.Cmvp.BaseFragment_konghua impl
 
     @Override
     public void toLogin() {
-        System.out.println(getSharePre("name", getActivity()) + "  " + getSharePre("pwd", getActivity()));
-        if (!getSharePre("name", getActivity()).equals("0")) {
-
-            IsLoginOrAuthor.getInstence().login(getActivity(), retrofit_Single.getInstence().getOpenid(getActivity()), getSharePre("name", getActivity()), getSharePre("pwd", getActivity()));
-        } else {
-            IsLoginOrAuthor.getInstence().goToLogin(getActivity());
-        }
+//        if (!getSharePre("name", getActivity()).equals("0")) {
+//
+//            IsLoginOrAuthor.getInstence().login(getActivity(), retrofit_Single.getInstence().getOpenid(getActivity()), getSharePre("name", getActivity()), getSharePre("pwd", getActivity()));
+//        } else {
+//            IsLoginOrAuthor.getInstence().goToLogin(getActivity());
+//        }
     }
 
     @Override
     public void toRenZhen() {
-        IsLoginOrAuthor.getInstence().goToAuthor(getActivity());
     }
 
-    @Override
-    public void refresh() {
-        new android.os.Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                hpPrestentIml.getData(retrofit_Single.getInstence().getOpenid(getActivity()));
-            }
-        }, 10);
-
-    }
 
     public void getNumTX() {
         HashMap<String, String> map = new HashMap<>();
@@ -172,9 +156,9 @@ public class Home extends com.shijiucheng.konghua.Cmvp.BaseFragment_konghua impl
                     try {
                         JSONObject jsonObject = new JSONObject(str);
                         if (jsonObject.getString("status").equals("1")) {
-                            txianTenum1.setText(" ￥" + jsonObject.getJSONObject("data").getString("balance_amount"));
-                            txianallnum.setText(" 总收入：￥" + jsonObject.getJSONObject("data").getString("income_amount"));
-                            txianTeytx.setText(" ￥" + jsonObject.getJSONObject("data").getString("withdraw_amount"));
+                            txianTenum1.setText( jsonObject.getJSONObject("data").getString("balance_amount")+"元");
+                            txianallnum.setText(" 总收入：" + jsonObject.getJSONObject("data").getString("income_amount")+"元");
+                            txianTeytx.setText( jsonObject.getJSONObject("data").getString("withdraw_amount")+"元");
                             te_ketixian.setText(jsonObject.getJSONObject("data").getString("balance_amount"));
                         }
                     } catch (JSONException e) {
