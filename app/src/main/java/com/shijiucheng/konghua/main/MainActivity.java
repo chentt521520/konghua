@@ -89,9 +89,10 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ImmersionBar.with(this).statusBarColor(R.color.zhu).statusBarDarkFont(false, 0.0f)
-                .keyboardEnable(true)
-                .fitsSystemWindows(true).init();
+        ImmersionBar immersionBar=  ImmersionBar.with(this);
+        immersionBar.fitsSystemWindows(true).statusBarColor(R.color.zhu)
+                .statusBarDarkFont(false, 0.0f).init();
+
         setContentView(R.layout.activity_main2);
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
