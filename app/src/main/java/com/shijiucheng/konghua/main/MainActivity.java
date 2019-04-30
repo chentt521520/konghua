@@ -105,7 +105,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ImmersionBar immersionBar=  ImmersionBar.with(this);
 
         ImmersionBar immersionBar = ImmersionBar.with(this);//先初始化，不然高版本会有底部导航栏跑上去了
         immersionBar.fitsSystemWindows(true).statusBarColor(R.color.zhu)
