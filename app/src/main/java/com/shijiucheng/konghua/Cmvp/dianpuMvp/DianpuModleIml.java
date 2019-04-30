@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.dianpuMvp;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
 
@@ -20,12 +22,12 @@ public class DianpuModleIml implements Contact.IdianPuModle {
     Retro_Intf service;
 
     @Override
-    public void uploadPic(int pos, String cook, String filestr, final BaseCallbackListener<BaseResult> baseResultBaseCallbackListener) {
+    public void uploadPic(Context context,int pos, String cook, String filestr, final BaseCallbackListener<BaseResult> baseResultBaseCallbackListener) {
         baseResultBaseCallbackListener.onStart();
         service = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> maps = new HashMap<>();
         maps.put("file_content", filestr);
-        maps.putAll(retrofit_Single.getInstence().retro_postParameter());//公共参数
+        maps.putAll(retrofit_Single.getInstence().retro_postParameter(context));//公共参数
         Call<ResponseBody> call = service.uploadPic(cook, maps);
         call.enqueue(new Callback<ResponseBody>() {
             @Override

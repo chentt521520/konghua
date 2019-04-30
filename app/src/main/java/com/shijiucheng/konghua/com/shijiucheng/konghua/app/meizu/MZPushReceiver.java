@@ -40,7 +40,7 @@ public class MZPushReceiver extends MzPushMessageReceiver {
 		System.out.println("魅族【onUpdateNotificationBuilder】" + builder.getmNotificationsound() + "  "
 				+ builder.getmLargIcon() + "  " + builder.getmNotificationDefaults() + "  " + builder.getmNotificationFlags() + "  "
 				+ builder.getmStatusbarIcon() + "  " + Arrays.toString(builder.getmVibratePattern()));
-		builder.setmStatusbarIcon(R.mipmap.icon_markf);
+		builder.setmStatusbarIcon(R.mipmap.appicon);
 	}
 	
 	@Override
@@ -53,7 +53,6 @@ public class MZPushReceiver extends MzPushMessageReceiver {
 	//调用新版订阅PushManager.register(context,appId,appKey)回调
 	public void onRegisterStatus(Context context, RegisterStatus registerStatus) {
 		Log.i("bqt", "魅族【onRegisterStatus】" + registerStatus.toString());
-
 	}
 
 

@@ -125,7 +125,7 @@ public class evaluatequestion extends BaseActivity_konghua {
 
     public void pinjia(String evaluate_star, String evaluate_content) {
         Map<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("id", id);
         map.put("evaluate_star", evaluate_star);
         map.put("evaluate_content", evaluate_content);

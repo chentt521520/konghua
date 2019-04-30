@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.HomePageMvp;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BasePresenter;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
@@ -21,12 +23,12 @@ public class HPContact {
 
     //Modle
     public interface HPModle {
-        void getData(String cookie, BaseCallbackListener<BaseResult> callbackListener);
+        void getData(Context context, String cookie, BaseCallbackListener<BaseResult> callbackListener);
 
     }
 
     //Prestent
     public interface HPPrestent extends BasePresenter {
-        void getData(String cookie);
+        void getData(Context context,String cookie);
     }
 }

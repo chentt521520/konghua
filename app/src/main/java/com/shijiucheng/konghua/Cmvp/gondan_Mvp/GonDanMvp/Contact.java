@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.gondan_Mvp.GonDanMvp;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BasePresenter;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
@@ -27,19 +29,19 @@ public class Contact {
 
     //Modle
     public interface GonDanIModle {
-        void applayMsg(String cook, String cate1, String cate2, String work_order_images, String work_order_content, BaseCallbackListener<BaseResult> baseResultBaseCallbackListener);
+        void applayMsg(Context context, String cook, String cate1, String cate2, String work_order_images, String work_order_content, BaseCallbackListener<BaseResult> baseResultBaseCallbackListener);
 
-        void getQustion(String cook, BaseCallbackListener<BaseResult> baseResultBaseCallbackListener);
+        void getQustion(Context context,String cook, BaseCallbackListener<BaseResult> baseResultBaseCallbackListener);
 
-        void upLoadimg(String cook, String urlEnc, BaseCallbackListener<BaseResult> baseResultBaseCallbackListener);
+        void upLoadimg(Context context,String cook, String urlEnc, BaseCallbackListener<BaseResult> baseResultBaseCallbackListener);
     }
 
     //Prestent
     public interface GonDanIPrestent extends BasePresenter {
-        void applayMsg(String cook, String cate1, String cate2, String work_order_images, String work_order_content);
+        void applayMsg(Context context,String cook, String cate1, String cate2, String work_order_images, String work_order_content);
 
-        void getQustion(String cook);
+        void getQustion(Context context,String cook);
 
-        void upLoadimg(String cook, String urlEnc);
+        void upLoadimg(Context context,String cook, String urlEnc);
     }
 }

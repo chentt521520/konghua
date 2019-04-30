@@ -141,10 +141,10 @@
                 android:id="@+id/dpdz_tepsqy"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:background="@drawable/biankuangxia"
                 android:gravity="center_vertical"
                 android:text="请选择配送区域：(可多选)"
                 android:textColor="@color/hei"
-                android:background="@drawable/biankuangxia"
                 android:textSize="12sp" />
 
             <RelativeLayout
@@ -164,6 +164,9 @@
         android:id="@+id/dpdz_teok"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="6dp"
         android:background="@drawable/yuanjiaoall"
         android:gravity="center"
         android:text="保存"

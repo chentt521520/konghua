@@ -87,7 +87,7 @@ public class banklist_guanli extends BaseActivity_konghua implements banklistada
         }
         Retro_Intf serivce = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         retrofit2.Call<ResponseBody> call = serivce.getBankist(retrofit_Single.getInstence().getOpenid(banklist_guanli.this), map);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -166,7 +166,7 @@ public class banklist_guanli extends BaseActivity_konghua implements banklistada
         }
         Retro_Intf serivce = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("bank_id", bkid);
         retrofit2.Call<ResponseBody> call = serivce.bkdetel(retrofit_Single.getInstence().getOpenid(banklist_guanli.this), map);
         call.enqueue(new Callback<ResponseBody>() {

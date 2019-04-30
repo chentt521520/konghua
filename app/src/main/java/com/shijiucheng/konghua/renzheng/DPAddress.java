@@ -132,7 +132,7 @@ public class DPAddress extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
 
         view_window = LayoutInflater.from(DPAddress.this).inflate(R.layout.dizhi_popwindow, null);
 
-        prestent.getSSQ(retrofit_Single.getInstence().getOpenid(DPAddress.this), 3, authen_RZ.jsonAuthor.getCity_id());
+        prestent.getSSQ(DPAddress.this,retrofit_Single.getInstence().getOpenid(DPAddress.this), 3, authen_RZ.jsonAuthor.getCity_id());
 
 
     }
@@ -340,7 +340,7 @@ public class DPAddress extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
                 set_npView();
             }
         } else
-            prestent.getSSQ(retrofit_Single.getInstence().getOpenid(DPAddress.this), 0, "0");
+            prestent.getSSQ(DPAddress.this,retrofit_Single.getInstence().getOpenid(DPAddress.this), 0, "0");
     }
 
     private void getshi() {
@@ -359,7 +359,7 @@ public class DPAddress extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
                 qnp2.setVisibility(View.VISIBLE);
             }
         } else {
-            prestent.getSSQ(retrofit_Single.getInstence().getOpenid(DPAddress.this), 1, shen1.get(qnp1.getValue()));
+            prestent.getSSQ(DPAddress.this,retrofit_Single.getInstence().getOpenid(DPAddress.this), 1, shen1.get(qnp1.getValue()));
         }
     }
 
@@ -380,7 +380,7 @@ public class DPAddress extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
                 qnp3.setVisibility(View.VISIBLE);
             }
         } else {
-            prestent.getSSQ(retrofit_Single.getInstence().getOpenid(DPAddress.this), 2, shi1.get(qnp2.getValue()));
+            prestent.getSSQ(DPAddress.this,retrofit_Single.getInstence().getOpenid(DPAddress.this), 2, shi1.get(qnp2.getValue()));
         }
     }
 
@@ -402,7 +402,7 @@ public class DPAddress extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
                 qnp3.setVisibility(View.VISIBLE);
             }
         } else {
-            prestent.getSSQ(retrofit_Single.getInstence().getOpenid(DPAddress.this), 3, shi1.get(qnp2.getValue()));
+            prestent.getSSQ(DPAddress.this,retrofit_Single.getInstence().getOpenid(DPAddress.this), 3, shi1.get(qnp2.getValue()));
         }
     }
 

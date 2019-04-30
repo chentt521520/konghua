@@ -14,104 +14,117 @@
         android:layout_height="wrap_content" />
 
 
-    <TextView
-        android:id="@+id/jujue_tebc"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginStart="12dp"
-        android:gravity="center_vertical"
-        android:text="申请退单可能会影响您的店铺接单信誉，请慎重操作！"
-        android:textColor="@color/zhu"
-        android:textSize="12sp"
-        android:visibility="visible" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
-        android:background="#f4f4f4" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="6dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/jujue_yuany"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="6dp"
-            android:gravity="center"
-            android:text="拒绝原因："
-            android:textColor="@color/hei"
-            android:textSize="12sp" />
-
-        <ListView
-            android:id="@+id/jujue_yuany1"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:divider="@null" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
-        android:background="@color/qianhei1" />
-
-    <LinearLayout
-        android:id="@+id/jujue_linms"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:orientation="horizontal"
-        android:visibility="visible">
-
-        <TextView
-            android:id="@+id/jujue_miaos"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="12dp"
-            android:gravity="top"
-            android:text="具体描述："
-            android:textColor="@color/hei"
-            android:textSize="12sp" />
-
-        <EditText
-            android:id="@+id/jujue_miaos1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="6dp"
-            android:layout_marginRight="12dp"
-            android:layout_marginBottom="6dp"
-            android:background="@color/bai"
-            android:gravity="start"
-            android:hint="请填写具体描述"
-            android:lineSpacingExtra="5dp"
-            android:maxLength="200"
-            android:paddingStart="12dp"
-            android:paddingTop="6dp"
-            android:textColor="@color/hei"
-            android:textColorHint="@color/danhei"
-            android:textSize="12sp" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
-        android:background="@color/qianhei1" />
-
-
-    <View
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/jujue_tebc"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="12dp"
+                android:gravity="center_vertical"
+                android:text="申请退单可能会影响您的店铺接单信誉，请慎重操作！"
+                android:textColor="@color/zhu"
+                android:textSize="12sp"
+                android:visibility="invisible" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:background="#f4f4f4" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/jujue_yuany"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center"
+                    android:text="拒绝原因："
+                    android:textColor="@color/hei"
+                    android:textSize="12sp" />
+
+                <com.shijiucheng.konghua.main.HomePage.ListViewForScrollView
+                    android:id="@+id/jujue_yuany1"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:divider="@null" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:background="@color/qianhei1" />
+
+            <LinearLayout
+                android:id="@+id/jujue_linms"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/jujue_miaos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="12dp"
+                    android:gravity="top"
+                    android:text="具体描述："
+                    android:textColor="@color/hei"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/jujue_miaos1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/bai"
+                    android:gravity="start"
+                    android:hint="请填写具体描述"
+                    android:lineSpacingExtra="5dp"
+                    android:maxLength="600"
+                    android:paddingStart="12dp"
+                    android:paddingTop="6dp"
+                    android:textColor="@color/hei"
+                    android:textColorHint="@color/danhei"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:background="@color/qianhei1" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </ScrollView>
 
     <TextView
         android:id="@+id/jujue_jdteok"

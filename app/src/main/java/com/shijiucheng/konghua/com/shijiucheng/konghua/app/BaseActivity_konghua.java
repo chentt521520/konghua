@@ -44,7 +44,9 @@ public abstract class BaseActivity_konghua extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ImmersionBar.with(this).statusBarColor(R.color.zhu).statusBarDarkFont(false, 0.0f).fitsSystemWindows(true).init();
+        ImmersionBar immersionBar = ImmersionBar.with(this);//要先初始化
+        immersionBar.fitsSystemWindows(true).statusBarColor(R.color.zhu)
+                .statusBarDarkFont(false, 0.0f).init();
         setContentView(getLayout());
         DaoHangLan(this);
 
@@ -98,7 +100,8 @@ public abstract class BaseActivity_konghua extends AppCompatActivity {
         overridePendingTransition(R.anim.push_left_in,
                 R.anim.push_left_out);
     }
-    protected void startActivityByIntent(Context context, Class<?> cls,Bundle bundle) {
+
+    protected void startActivityByIntent(Context context, Class<?> cls, Bundle bundle) {
         Intent i = new Intent();
         i.setClass(context, cls);
         if (bundle != null) {

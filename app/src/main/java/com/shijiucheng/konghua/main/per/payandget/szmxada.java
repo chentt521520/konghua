@@ -41,13 +41,13 @@ public class szmxada extends RecyclerView.Adapter<szmxada.viewholider> {
         szmxdata szmxdata = list.get(position);
         holder.szmxitType.setText(szmxdata.getTypestr());
         if (szmxdata.getNum().contains("-")) {
-            holder.szmxitNum.setText(szmxdata.getNum());
+            holder.szmxitNum.setText(szmxdata.getNum() + "元");
             if (szmxdata.getStatus().equals("处理中")) {
                 Glide.with(context).load(R.mipmap.djzz).into(holder.imt);
             }else
             Glide.with(context).load(R.mipmap.zcszmx).into(holder.imt);
         } else {
-            holder.szmxitNum.setText("+" + szmxdata.getNum());
+            holder.szmxitNum.setText("+" + szmxdata.getNum() + "元");
             Glide.with(context).load(R.mipmap.szszmx).into(holder.imt);
         }
         holder.szmxitTxt.setText(szmxdata.getText());

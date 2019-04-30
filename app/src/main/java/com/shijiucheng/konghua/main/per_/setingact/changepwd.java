@@ -87,7 +87,7 @@ public class changepwd extends BaseActivity_konghua implements verifyidentity.ve
     public void xiugaimm() {
         serivce = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("old_pwd", xgmmEdjmm.getText().toString());
         map.put("new_pwd", xgmmEdmmre.getText().toString());
         Call<ResponseBody> call = serivce.xiugaimm(retrofit_Single.getInstence().getOpenid(changepwd.this), map);

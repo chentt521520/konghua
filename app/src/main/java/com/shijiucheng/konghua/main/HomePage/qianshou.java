@@ -172,7 +172,7 @@ public class qianshou extends BaseActivity_konghua implements TakePhoto.TakeResu
         jdt.show(getFragmentManager(), "jdt");
         Retro_Intf serivce = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("order_id", getIntent().getStringExtra("id"));
         map.put("order_sign_personnel_type", order_sign_personnel_type);
         map.put("order_sign_images", url);
@@ -313,7 +313,7 @@ public class qianshou extends BaseActivity_konghua implements TakePhoto.TakeResu
             jdt.show(getFragmentManager(), "qstp");
         Retro_Intf serivce = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("file_content", url);
         Call<ResponseBody> call = serivce.uploadpeisongtp(retrofit_Single.getInstence().getOpenid(this), map);
         call.enqueue(new Callback<ResponseBody>() {

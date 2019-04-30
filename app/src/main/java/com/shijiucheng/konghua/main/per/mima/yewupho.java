@@ -121,7 +121,7 @@ public class yewupho extends DialogFragment {
 
     public void getpho() {
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(getActivity()));
         map.put("service_mobile", paypho.getText().toString());
         map.put("code", paypwdTimerte.getText().toString());
         Call<ResponseBody> call = serivce.yewu_pho(retrofit_Single.getInstence().getOpenid(getActivity()), map);
@@ -165,7 +165,7 @@ public class yewupho extends DialogFragment {
 
     public void getCode() {
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(getActivity()));
         map.put("service_mobile", paypho.getText().toString());
         Call<ResponseBody> call = serivce.yewu_getcode(retrofit_Single.getInstence().getOpenid(getActivity()), map);
         call.enqueue(new Callback<ResponseBody>() {

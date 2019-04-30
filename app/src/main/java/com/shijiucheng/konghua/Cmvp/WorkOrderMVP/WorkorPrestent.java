@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.WorkOrderMVP;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
 import com.shijiucheng.konghua.main.per.payandget.gongdan.gdlistada.gdlistdata;
@@ -21,8 +23,8 @@ public class WorkorPrestent implements WorkorContact.Prestent {
     }
 
     @Override
-    public void getList(String keyword, String cook, final int type, int page) {
-        modle.getList(keyword, cook, type, page, new BaseCallbackListener<BaseResult>() {
+    public void getList(Context context, String keyword, String cook, final int type, int page) {
+        modle.getList(context,keyword, cook, type, page, new BaseCallbackListener<BaseResult>() {
             @Override
             public void onStart() {
                 view.showloading();

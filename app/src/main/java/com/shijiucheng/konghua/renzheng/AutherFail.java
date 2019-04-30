@@ -2,6 +2,8 @@ package com.shijiucheng.konghua.renzheng;
 
 import android.app.DialogFragment;
 import android.app.FragmentManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
@@ -29,6 +31,7 @@ public class AutherFail extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getDialog().setCanceledOnTouchOutside(false);
         view = inflater.inflate(R.layout.autherfail, container, false);
         unbinder = ButterKnife.bind(this, view);
         String msg = getArguments().getString("msg");
@@ -47,7 +50,8 @@ public class AutherFail extends DialogFragment {
         super.onResume();
         DisplayMetrics dm = getActivity().getResources().getDisplayMetrics();
         int w = dm.widthPixels;
-        getDialog().getWindow().setLayout(w * 4 / 5, ViewGroup.LayoutParams.WRAP_CONTENT);
+        getDialog().getWindow().setLayout(w * 4 / 5, -2);
+        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 
     @Override

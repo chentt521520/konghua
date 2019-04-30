@@ -3,6 +3,7 @@ package com.shijiucheng.konghua;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.text.Layout;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -94,6 +95,9 @@ public class authen_RZ extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
     @BindView(R.id.renzhen_Teok)
     TextView te_ok;
 
+    @BindView(R.id.renzhen_shenheiz)
+    View v_shenheiz;
+
     //    private SDKReceiver mReceiver;
     double exitTime = 0;
 
@@ -111,7 +115,7 @@ public class authen_RZ extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
     protected void AddView() {
         te_tit.settext_("店铺基本信息");
         autherFail = new AutherFail();
-        present.getAuthorData(retrofit_Single.getInstence().getOpenid(authen_RZ.this));
+        present.getAuthorData(this, retrofit_Single.getInstence().getOpenid(this));
         EventBus.getDefault().register(this);
 
     }
@@ -151,10 +155,12 @@ public class authen_RZ extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
         te_dpts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putString("msg", failMsg);
-                autherFail.setArguments(bundle);
-                autherFail.show(getFragmentManager(), "authen");
+                if (!autherFail.isAdded()) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("msg", failMsg);
+                    autherFail.setArguments(bundle);
+                    autherFail.show(getFragmentManager(), "authen");
+                }
             }
         });
 
@@ -211,12 +217,12 @@ public class authen_RZ extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
                             }
                         }
                         if (all) {
-                            present.applayRZ(retrofit_Single.getInstence().getOpenid(authen_RZ.this), map);
+                            present.applayRZ(authen_RZ.this, retrofit_Single.getInstence().getOpenid(authen_RZ.this), map);
                         } else {
                             toaste_ut(authen_RZ.this, "请填写完整认证信息");
                         }
                     } else if (rzzt == 2 || rzzt == 3) {
-                        present.applayRZ(retrofit_Single.getInstence().getOpenid(authen_RZ.this), map);
+                        present.applayRZ(authen_RZ.this, retrofit_Single.getInstence().getOpenid(authen_RZ.this), map);
                     }
 
                 }
@@ -322,6 +328,9 @@ public class authen_RZ extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
 
         try {
             if (jsonObject.getString("status").equals("1")) {
+                if (v_shenheiz != null)
+                    if (v_shenheiz.isShown())
+                        v_shenheiz.setVisibility(View.GONE);
                 try {
                     JSONObject jso = jsonObject.getJSONObject("data").getJSONObject("store_info");
                     sharePre("latitude", jso.getString("latitude"), authen_RZ.this);
@@ -354,6 +363,14 @@ public class authen_RZ extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
                 failMsg = jsonObject.getString("msg");
                 te_ok.setText("重新提交");
                 sharePre("isauther", "0", authen_RZ.this);
+
+                if (!autherFail.isAdded()) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("msg", failMsg);
+                    autherFail.setArguments(bundle);
+                    autherFail.show(getFragmentManager(), "authen");
+                }
+
                 return;
             }
             if (jsonObject.getJSONObject("data").getString("authentication_status").equals("authenticating")) {
@@ -366,6 +383,7 @@ public class authen_RZ extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
 //                te_dpwzgo.setText("查看 >");
 //                te_dplxrgo.setText("查看 >");
 
+                v_shenheiz.setVisibility(View.VISIBLE);
                 return;
             }
 

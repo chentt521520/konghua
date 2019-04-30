@@ -169,7 +169,6 @@ public class DianPu extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua im
         setViewHw_Lin(te_zzts, w_ - (int) (w_ * 28 / 750.0), (int) (w_ * 80 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 10 / 750.0), (int) (w_ * 14 / 750.0), 0);
 //        setTextSize(te_zzts, (int) (w_ * 28 / 750.0));
 
-        setViewHw_Lin(te_ok, w_ - (int) (w_ * 28 / 750.0), (int) (w_ * 80 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 0 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 14 / 750.0));
 //        setTextSize(te_ok, (int) (w_ * 46 / 750.0));
     }
 
@@ -431,7 +430,7 @@ public class DianPu extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua im
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
-                            puPresent.uploadPic(pos, retrofit_Single.getInstence().getOpenid(DianPu.this), str);
+                            puPresent.uploadPic(DianPu.this,pos, retrofit_Single.getInstence().getOpenid(DianPu.this), str);
                         }
 
                         @Override

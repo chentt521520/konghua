@@ -93,7 +93,7 @@ public class safepho extends BaseActivity_konghua implements verifyidentity.veri
 
     public void getpho() {
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("safe_mobile", paypwdEdyzm.getText().toString());
         map.put("code", ywphoEdmmre.getText().toString());
         Call<ResponseBody> call = serivce.safe_pho(retrofit_Single.getInstence().getOpenid(safepho.this), map);
@@ -144,7 +144,7 @@ public class safepho extends BaseActivity_konghua implements verifyidentity.veri
 
     public void getCode() {
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("safe_mobile", paypwdEdyzm.getText().toString());
         Call<ResponseBody> call = serivce.safe_getcode(retrofit_Single.getInstence().getOpenid(safepho.this), map);
         call.enqueue(new Callback<ResponseBody>() {

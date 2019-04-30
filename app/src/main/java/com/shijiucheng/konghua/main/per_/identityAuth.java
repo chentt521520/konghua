@@ -2,6 +2,8 @@ package com.shijiucheng.konghua.main.per_;
 
 import android.app.DialogFragment;
 import android.app.FragmentManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -56,7 +58,7 @@ public class identityAuth extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        getDialog().setCanceledOnTouchOutside(false);
+        getDialog().setCanceledOnTouchOutside(false);
 //        setCancelable(false);//控制点击屏幕外和返回键，点击不消失
         View view = inflater.inflate(R.layout.identityauth, container, false);
         unbinder = ButterKnife.bind(this, view);
@@ -96,7 +98,7 @@ public class identityAuth extends DialogFragment {
     private void sfyz() {
         Retro_Intf serivce = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> maps = new HashMap<>();
-        maps.putAll(retrofit_Single.getInstence().retro_postParameter());//公共参数
+        maps.putAll(retrofit_Single.getInstence().retro_postParameter(getActivity()));//公共参数
         Bundle bundle = getArguments();
         if (bundle.getInt("type") == 0)
             maps.put("act", "modify_login_pwd");
@@ -153,7 +155,7 @@ public class identityAuth extends DialogFragment {
     private void getcode() {
         Retro_Intf serivce = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> maps = new HashMap<>();
-        maps.putAll(retrofit_Single.getInstence().retro_postParameter());//公共参数
+        maps.putAll(retrofit_Single.getInstence().retro_postParameter(getActivity()));//公共参数
         Bundle bundle = getArguments();
         if (bundle.getInt("type") == 0)
             maps.put("act", "modify_login_pwd");
@@ -218,7 +220,7 @@ public class identityAuth extends DialogFragment {
         DisplayMetrics dm = getActivity().getResources().getDisplayMetrics();
         int w = dm.widthPixels;
         getDialog().getWindow().setLayout(w - 50, -2);
-
+        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         Bundle bundle = getArguments();
         sfyzTepho.setText(bundle.getString("pho"));
         sfyzEdcode.setText("");

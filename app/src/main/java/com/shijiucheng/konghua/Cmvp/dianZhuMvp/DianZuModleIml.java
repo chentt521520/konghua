@@ -1,5 +1,6 @@
 package com.shijiucheng.konghua.Cmvp.dianZhuMvp;
 
+import android.content.Context;
 import android.os.Handler;
 
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
@@ -39,12 +40,12 @@ public class DianZuModleIml implements Contact.IDianZuModle {
     }
 
     @Override
-    public void uploadPic(String key, String cook, String urlStr, final BaseCallbackListener<BaseResult> baseResultBaseCallbackListener) {
+    public void uploadPic(Context context, String key, String cook, String urlStr, final BaseCallbackListener<BaseResult> baseResultBaseCallbackListener) {
         baseResultBaseCallbackListener.onStart();
         service = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> maps = new HashMap<>();
         maps.put("file_content", urlStr);
-        maps.putAll(retrofit_Single.getInstence().retro_postParameter());//公共参数
+        maps.putAll(retrofit_Single.getInstence().retro_postParameter(context));//公共参数
         Call<ResponseBody> call = service.uploadPic(cook, maps);
         call.enqueue(new Callback<ResponseBody>() {
             @Override

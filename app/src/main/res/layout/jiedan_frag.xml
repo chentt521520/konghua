@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/tetit"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:gravity="center"
@@ -21,6 +22,7 @@
         android:background="@color/qianhei1" />
 
     <TextView
+        android:id="@+id/tetxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="12dp"
@@ -47,6 +49,7 @@
             android:text="立即接单"
             android:textColor="@color/bai"
             android:textSize="12dp" />
+
         <TextView
             android:id="@+id/jiedan_tequxiao"
             android:layout_width="match_parent"

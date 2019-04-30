@@ -1,6 +1,7 @@
 package com.shijiucheng.konghua.main.per.mima;
 
 import android.app.DialogFragment;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -43,6 +44,9 @@ public class ValidatePwd extends DialogFragment {
     TextView paypwdTeforget;
     @BindView(R.id.yz_yz)
     TextView paypwdYz;
+
+    @BindView(R.id.zhangjia_tequxiao)
+    TextView te_qx;
     Unbinder unbinder;
 
 
@@ -51,12 +55,12 @@ public class ValidatePwd extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
         getDialog().getWindow().setGravity(Gravity.CENTER);
+        getDialog().setCanceledOnTouchOutside(false);
         view = inflater.inflate(R.layout.validatepwd, container, false);
         unbinder = ButterKnife.bind(this, view);
         serivce = retrofit_Single.getInstence().getserivce(2);
         DisplayMetrics dm = getActivity().getResources().getDisplayMetrics();
         wxx = dm.widthPixels;
-
         return view;
     }
 
@@ -66,8 +70,8 @@ public class ValidatePwd extends DialogFragment {
         DisplayMetrics dm = new DisplayMetrics();
         int w = dm.widthPixels;
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-        getDialog().getWindow().setLayout(dm.widthPixels, (int) (wxx * 300 / 750.0));
-        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(0xff000000));
+        getDialog().getWindow().setLayout(dm.widthPixels - 60, -2);
+        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 
     @Override
@@ -76,7 +80,7 @@ public class ValidatePwd extends DialogFragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.yz_yz, R.id.yz_teforget})
+    @OnClick({R.id.yz_yz, R.id.yz_teforget, R.id.zhangjia_tequxiao})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.yz_yz:
@@ -92,12 +96,15 @@ public class ValidatePwd extends DialogFragment {
                 yanzhenpwd pwd = (yanzhenpwd) getActivity();
                 pwd.showpaypwd();
                 break;
+            case R.id.zhangjia_tequxiao:
+                dismiss();
+                break;
         }
     }
 
     public void valitpwd() {
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(getActivity()));
         map.put("pay_pwd", paypwdEdmm.getText().toString());
         Call<ResponseBody> call = serivce.valitpwd(retrofit_Single.getInstence().getOpenid(getActivity()), map);
         call.enqueue(new Callback<ResponseBody>() {

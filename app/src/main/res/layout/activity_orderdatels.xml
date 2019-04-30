@@ -111,6 +111,7 @@
                     android:id="@+id/orderddatails_tekkyy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
                     android:gravity="center_vertical"
                     android:paddingLeft="12dp"
                     android:text="* "
@@ -652,6 +653,101 @@
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
                 android:background="#ffdecb" />
+
+            <LinearLayout
+                android:id="@+id/orderddatails_linxdf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/orderddatails_texdfname"
+                    android:layout_width="match_parent"
+                    android:layout_height="33dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="12dp"
+                    android:text="下单方姓名:   "
+                    android:textColor="@color/hei"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="33dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="33dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="12dp"
+                        android:text="下单方Q Q :   "
+                        android:textColor="@color/hei"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/orderddatails_texdfqq"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="137234234234"
+                        android:textColor="@color/hei"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:id="@+id/orderddatails_imxdfqq"
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_marginLeft="8dp"
+                        android:src="@mipmap/qqtp"
+                        android:textColor="@color/hei"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="33dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="12dp"
+                        android:text="下单方电话： "
+                        android:textColor="@color/hei"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/orderddatails_texdfpho"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="137234234234"
+                        android:textColor="@color/hei"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:id="@+id/orderddatails_imxdfpho"
+                        android:layout_width="15dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="right"
+                        android:layout_marginLeft="8dp"
+                        android:src="@mipmap/ordertwopho"
+                        android:textColor="@color/hei"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/orderddatails_henxdf"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="#ffdecb" />
+
 
             <TextView
                 android:layout_width="match_parent"

@@ -1,6 +1,7 @@
 package com.shijiucheng.konghua.renzheng;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -56,6 +57,7 @@ public class authen_cannotfrag extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
         getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getDialog().setCanceledOnTouchOutside(false);
         getDialog().getWindow().setGravity(Gravity.CENTER);
         view = inflater.inflate(R.layout.authen_cannotfrag, container, false);
         DisplayMetrics dm = getActivity().getResources().getDisplayMetrics();
@@ -172,8 +174,13 @@ public class authen_cannotfrag extends DialogFragment {
         bundle.putString("tit", tit);
         bundle.putString("status", status);
         Intent intent;
-        if (type == 0)
-            intent = new Intent(getActivity(), OrderTwoPage.class);
+        if (type == 0){
+            bundle.putString("keywords", "");
+            bundle.putString("receiver", "");
+            bundle.putString("receiver_tel", "");
+            bundle.putString("delivery_start_date", "");
+            bundle.putString("delivery_end_date", "");
+            intent = new Intent(getActivity(), OrderTwoPage.class);}
         else
             intent = new Intent(getActivity(), OrderTwoPage1.class);
         intent.putExtras(bundle);
@@ -195,7 +202,7 @@ public class authen_cannotfrag extends DialogFragment {
         int w = dm.widthPixels;
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
         getDialog().getWindow().setLayout(dm.widthPixels - 200, -2);
-        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(0xff000000));
+        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         setdata();
 
     }

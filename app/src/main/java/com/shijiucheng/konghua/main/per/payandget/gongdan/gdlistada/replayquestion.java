@@ -298,7 +298,7 @@ public class replayquestion extends BaseActivity_konghua implements TakePhoto.Ta
 
     public void upLoadimg(String cook, String urlEnc) {
         Map<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("file_content", urlEnc);
         Call<ResponseBody> call = serivce.WOuploadimg(cook, map);
         call.enqueue(new Callback<ResponseBody>() {
@@ -343,7 +343,7 @@ public class replayquestion extends BaseActivity_konghua implements TakePhoto.Ta
 
     private void uploadReplay(String id, String urls, String str) {
         Map<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("id", id);
         map.put("reply_images", urls);
         map.put("reply_content", str);

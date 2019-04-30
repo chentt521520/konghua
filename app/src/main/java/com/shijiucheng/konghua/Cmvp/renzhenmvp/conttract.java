@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.renzhenmvp;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BasePresenter;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
@@ -27,16 +29,16 @@ public class conttract {
 
     //M
     public interface IrenzhenModle {
-        void applayRZ(String cook, HashMap<String, String> map, BaseCallbackListener<BaseResult> resultBaseCallbackListener);
+        void applayRZ(Context context, String cook, HashMap<String, String> map, BaseCallbackListener<BaseResult> resultBaseCallbackListener);
 
-        void getAuthorData(String cook, BaseCallbackListener<BaseResult> callbackListener);
+        void getAuthorData(Context context,String cook, BaseCallbackListener<BaseResult> callbackListener);
     }
 
     //P
     public interface irezhenPresent extends BasePresenter {
-        void applayRZ(String cook, HashMap<String, String> map);
+        void applayRZ(Context context,String cook, HashMap<String, String> map);
 
-        void getAuthorData(String cook);
+        void getAuthorData(Context context,String cook);
     }
 
 }

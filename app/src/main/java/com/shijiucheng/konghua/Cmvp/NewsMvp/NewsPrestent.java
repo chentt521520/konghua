@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.NewsMvp;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
 import com.shijiucheng.konghua.main.News_.znxada_data;
@@ -21,8 +23,8 @@ public class NewsPrestent implements contact.IPrestent {
     }
 
     @Override
-    public void getNews(String cook, int page, final int type, String is_read) {
-        modle.getNews(cook, page, type, is_read, new BaseCallbackListener<BaseResult>() {
+    public void getNews(Context context, String cook, int page, final int type, String is_read) {
+        modle.getNews(context,cook, page, type, is_read, new BaseCallbackListener<BaseResult>() {
             @Override
             public void onStart() {
                 view.showloading();
@@ -67,8 +69,8 @@ public class NewsPrestent implements contact.IPrestent {
     }
 
     @Override
-    public void getNotice(String cook, int page, final int type, String is_read) {
-        modle.getNotice(cook, page, type, is_read, new BaseCallbackListener<BaseResult>() {
+    public void getNotice(Context context,String cook, int page, final int type, String is_read) {
+        modle.getNotice(context,cook, page, type, is_read, new BaseCallbackListener<BaseResult>() {
             @Override
             public void onStart() {
                 view.showloading();

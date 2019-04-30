@@ -148,7 +148,7 @@ public class gondandetials extends BaseActivity_konghua implements guanbigd.quer
     public void getDetails() {
         HashMap<String, String> map = new HashMap<>();
         map.put("id", id);
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         retrofit2.Call<ResponseBody> call = serivce.getWorkOrderDetils(retrofit_Single.getInstence().getOpenid(gondandetials.this), map);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -276,7 +276,7 @@ public class gondandetials extends BaseActivity_konghua implements guanbigd.quer
     @Override
     public void querenclose() {
         Map<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("id", id);
         Call<ResponseBody> call = serivce.closeWorkorder(retrofit_Single.getInstence().getOpenid(gondandetials.this), map);
         call.enqueue(new Callback<ResponseBody>() {

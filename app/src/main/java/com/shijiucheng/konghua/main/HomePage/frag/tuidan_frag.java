@@ -1,5 +1,6 @@
 package com.shijiucheng.konghua.main.HomePage.frag;
 
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -76,6 +77,7 @@ public class tuidan_frag extends DialogFragment {
 
         getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
         getDialog().getWindow().setGravity(Gravity.CENTER);
+        getDialog().setCanceledOnTouchOutside(false);
         view = inflater.inflate(R.layout.jujue, container, false);
         DisplayMetrics dm = getActivity().getResources().getDisplayMetrics();
         wxx = dm.widthPixels;
@@ -165,13 +167,13 @@ public class tuidan_frag extends DialogFragment {
         int w = dm.widthPixels;
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
         getDialog().getWindow().setLayout(dm.widthPixels - 200, -2);
-        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(0xff000000));
+        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 
     public void jujueyy() {
         Retro_Intf serivce = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(getActivity()));
         map.put("order_id", order_id);
         Call<ResponseBody> call = serivce.tuidanym(retrofit_Single.getInstence().getOpenid(getActivity()), map);
         call.enqueue(new Callback<ResponseBody>() {

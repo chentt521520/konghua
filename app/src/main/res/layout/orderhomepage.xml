@@ -504,7 +504,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="58dp"
                         android:gravity="center"
-                        android:text="可提现金额（元）"
+                        android:text="可提现金额"
                         android:textColor="@color/hei"
                         android:textSize="13sp" />
 

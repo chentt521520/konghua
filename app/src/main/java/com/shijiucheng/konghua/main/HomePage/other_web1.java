@@ -1,8 +1,10 @@
 package com.shijiucheng.konghua.main.HomePage;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -45,12 +47,20 @@ public class other_web1 extends Activity {
     ProgressBar pbar;
 
     String url = "", titl = "";
+    AudioManager mAudioManager;//音量管理
+    int num = 0;
+    int nummax = 0;
 
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.other_web1);
         ImmersionBar.with(this).statusBarColor(R.color.zhu).statusBarDarkFont(false, 0.0f).fitsSystemWindows(true).init();
+
+        mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        num = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+        nummax = mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+
         x.view().inject(this);
         setviewdata();
         setviewweb();
@@ -151,8 +161,19 @@ public class other_web1 extends Activity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
+
         if (keyCode == KeyEvent.KEYCODE_BACK && wb.canGoBack()) {
             wb.goBack();
+            return true;
+        } else if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
+            if (num >= 1)
+                num--;
+            mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, num, AudioManager.FLAG_SHOW_UI);
+            return true;
+        } else if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
+            if (num < nummax)
+                num++;
+            mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, num, AudioManager.FLAG_SHOW_UI);
             return true;
         } else {
             finish();
@@ -160,14 +181,6 @@ public class other_web1 extends Activity {
                     R.anim.push_right_in);
             return false;
         }
-        // TODO Auto-generated method stub
-        // if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0)
-        // {
-        // finish();
-        // overridePendingTransition(R.anim.push_right_out,
-        // R.anim.push_right_in);
-        // return false;
-        // }
     }
 
     private void setviewweb() {

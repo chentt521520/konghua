@@ -1,5 +1,6 @@
 package com.shijiucheng.konghua.main.HomePage.frag;
 
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -27,6 +28,11 @@ public class tuidanxiadanfang_frag extends DialogFragment {
     TextView jiedanTequxiao;
     Unbinder unbinder;
 
+    @BindView(R.id.tetit)
+    TextView te_tit;
+    @BindView(R.id.tetxt)
+    TextView te_txt;
+
 
     @Nullable
     @Override
@@ -34,10 +40,15 @@ public class tuidanxiadanfang_frag extends DialogFragment {
 
         getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
         getDialog().getWindow().setGravity(Gravity.CENTER);
+        getDialog().setCanceledOnTouchOutside(false);
         view = inflater.inflate(R.layout.jiedan_frag, container, false);
+
         DisplayMetrics dm = getActivity().getResources().getDisplayMetrics();
         wxx = dm.widthPixels;
         unbinder = ButterKnife.bind(this, view);
+        te_tit.setText("下单方申请退单");
+        te_txt.setText("您确认同意退单吗，确认继续？");
+        jiedanTeok.setText("同意退单");
         setdata();
         setviewlisten();
 
@@ -78,7 +89,7 @@ public class tuidanxiadanfang_frag extends DialogFragment {
         int w = dm.widthPixels;
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
         getDialog().getWindow().setLayout(dm.widthPixels - 200, -2);
-        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(0xff000000));
+        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 
 

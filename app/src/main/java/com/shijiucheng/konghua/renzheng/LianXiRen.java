@@ -140,7 +140,6 @@ public class LianXiRen extends BaseActivity_konghua implements Contact.IDPLxrVie
         setTextSize(te_qq3, (int) (w_ * 28 / 750.0));
         setTextSize(ed_qq3, (int) (w_ * 28 / 750.0));
 
-        setTextSize(te_ok, (int) (w_ * 46 / 750.0));
 
         JSONArray jsonArray = new JSONArray(authen_RZ.jsonAuthor.getStore_contact());
         if (jsonArray.length() > 0) {

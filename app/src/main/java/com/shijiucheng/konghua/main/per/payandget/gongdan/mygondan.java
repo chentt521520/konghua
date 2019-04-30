@@ -1,9 +1,6 @@
 package com.shijiucheng.konghua.main.per.payandget.gongdan;
 
-import android.Manifest;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,11 +15,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.github.dfqin.grantor.PermissionListener;
-import com.github.dfqin.grantor.PermissionsUtil;
 import com.jph.takephoto.app.TakePhoto;
 import com.jph.takephoto.app.TakePhotoImpl;
-import com.jph.takephoto.compress.CompressConfig;
 import com.jph.takephoto.model.CropOptions;
 import com.jph.takephoto.model.InvokeParam;
 import com.jph.takephoto.model.TContextWrap;
@@ -42,10 +36,8 @@ import com.shijiucheng.konghua.renzheng.getpicdialogfragment;
 
 import org.greenrobot.eventbus.EventBus;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -110,7 +102,7 @@ public class mygondan extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua 
         serivce = retrofit_Single.getInstence().getserivce(2);
         tjgdDh.settext_("提交问题");
         gondansctupian = new gondansctupian();
-        prestent.getQustion(retrofit_Single.getInstence().getOpenid(mygondan.this));
+        prestent.getQustion(this,retrofit_Single.getInstence().getOpenid(mygondan.this));
 
     }
 
@@ -185,7 +177,7 @@ public class mygondan extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua 
                     if (urls.contains(".")) {
                         urls = urls.substring(0, urls.length() - 1);
                     }
-                    prestent.applayMsg(retrofit_Single.getInstence().getOpenid(mygondan.this), question1, queston2, urls, tjgdEdtxt.getText().toString());
+                    prestent.applayMsg(mygondan.this,retrofit_Single.getInstence().getOpenid(mygondan.this), question1, queston2, urls, tjgdEdtxt.getText().toString());
                 }
 
             }
@@ -283,7 +275,7 @@ public class mygondan extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua 
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
-                            prestent.upLoadimg(retrofit_Single.getInstence().getOpenid(mygondan.this), str);
+                            prestent.upLoadimg(mygondan.this,retrofit_Single.getInstence().getOpenid(mygondan.this), str);
                         }
 
                         @Override

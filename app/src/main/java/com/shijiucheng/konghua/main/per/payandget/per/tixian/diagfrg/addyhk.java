@@ -170,7 +170,7 @@ public class addyhk extends BaseActivity_konghua implements addyhkssq.setSSq, ad
         map.put("bank_name", addyhkEdkhh.getText().toString());
         map.put("bank_no", addyhkEdyhk.getText().toString());
         map.put("bank_username", addyhkEdname.getText().toString());
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         Call<ResponseBody> call = serivcce.AddYhk(retrofit_Single.getInstence().getOpenid(addyhk.this), map);
         call.enqueue(new Callback<ResponseBody>() {
             @Override

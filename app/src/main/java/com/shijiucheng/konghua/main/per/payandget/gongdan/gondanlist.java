@@ -130,7 +130,7 @@ public class gondanlist extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghu
         ada = new gdlistada(this, list);
         ada.setclosewoI(this);
         gdlistRecyc.setAdapter(ada);
-        prestent.getList(keyWord, retrofit_Single.getInstence().getOpenid(gondanlist.this), type, page);
+        prestent.getList(this,keyWord, retrofit_Single.getInstence().getOpenid(gondanlist.this), type, page);
         huifugdz = new huifugd();
 
     }
@@ -154,7 +154,7 @@ public class gondanlist extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghu
             public void onLoadmore(RefreshLayout refreshlayout) {
                 refreshStatus = 2;
                 page++;
-                prestent.getList(keyWord, retrofit_Single.getInstence().getOpenid(gondanlist.this), type, page);
+                prestent.getList(gondanlist.this,keyWord, retrofit_Single.getInstence().getOpenid(gondanlist.this), type, page);
 
             }
 
@@ -163,7 +163,7 @@ public class gondanlist extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghu
                 refreshStatus = 1;
                 page = 1;
                 list.removeAll(list);
-                prestent.getList(keyWord, retrofit_Single.getInstence().getOpenid(gondanlist.this), type, page);
+                prestent.getList(gondanlist.this,keyWord, retrofit_Single.getInstence().getOpenid(gondanlist.this), type, page);
             }
         });
 
@@ -272,7 +272,7 @@ public class gondanlist extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghu
     @Override
     public void querenclose() {
         Map<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("id", closegdId);
         Call<ResponseBody> call = serivce.closeWorkorder(retrofit_Single.getInstence().getOpenid(gondanlist.this), map);
         call.enqueue(new Callback<ResponseBody>() {
@@ -458,7 +458,7 @@ public class gondanlist extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghu
         if (!jdt.isAdded())
             jdt.show(getFragmentManager(), "jdt");
         Map<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("file_content", urlEncode);
         Call<ResponseBody> call = serivce.WOuploadimg(retrofit_Single.getInstence().getOpenid(gondanlist.this), map);
         call.enqueue(new Callback<ResponseBody>() {

@@ -63,7 +63,7 @@ public class tiXian extends BaseActivity_konghua {
 
     public void getNumTX() {
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         retrofit2.Call<ResponseBody> call = serivce.getNumTX(retrofit_Single.getInstence().getOpenid(this), map);
         call.enqueue(new Callback<ResponseBody>() {
             @Override

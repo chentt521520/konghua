@@ -1,6 +1,5 @@
 package com.shijiucheng.konghua;
 
-import android.content.Context;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.shijiucheng.konghua.Cmvp.BasePresenter;
-import com.shijiucheng.konghua.Cmvp.BaseResult;
 import com.shijiucheng.konghua.Cmvp.loginmvp.LoginPresenerIml;
 import com.shijiucheng.konghua.Cmvp.loginmvp.longincontract;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.APP;
@@ -44,7 +42,6 @@ public class Login_konghua extends com.shijiucheng.konghua.Cmvp.BaseActivity_kon
     @BindView(R.id.login_te)
     TextView loginTe;
     final longincontract.IloginPresent present = new LoginPresenerIml(this);
-//    static refresh refresh;
 
     private APP app;
 
@@ -99,7 +96,7 @@ public class Login_konghua extends com.shijiucheng.konghua.Cmvp.BaseActivity_kon
     @Override
     public void toComple(String json) {
         sharePre("name", loginEdZHn.getText().toString(), this);
-        sharePre("pwd", "hhhhhg", this);
+        sharePre("pwd", loginEdmmn.getText().toString(), this);
 //        sharePre("pwd", loginEdmmn.getText().toString(), this);
 
         if (!(json.contains("未") || json.contains("不"))) {
@@ -133,7 +130,7 @@ public class Login_konghua extends com.shijiucheng.konghua.Cmvp.BaseActivity_kon
 
     private void getquit() {
         HashMap<String, String> maps = new HashMap<>();
-        maps.putAll(retrofit_Single.getInstence().retro_postParameter());//公共参数
+        maps.putAll(retrofit_Single.getInstence().retro_postParameter(this));//公共参数
         Call<ResponseBody> getdata = retro_intf.quitLoigin(retrofit_Single.getInstence().getOpenid(Login_konghua.this), maps);
         getdata.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -149,22 +146,9 @@ public class Login_konghua extends com.shijiucheng.konghua.Cmvp.BaseActivity_kon
                             Result = Result.substring(1);
                         }
                         JSONObject jsonObject = new JSONObject(Result);
-//                        BaseResult result = new BaseResult();
-//                        if (jsonObject.getString("status").equals("1")) {
-//                            toaste_ut(Login_konghua.this, jsonObject.getString("msg"));
-//                            sharePre("name", "0", Login_konghua.this);
-//                            sharePre("pwd", "0", Login_konghua.this);
-//
-//
-//                        } else {
-//                            if (jsonObject.getString("msg").contains("未登录")) {
-//                                IsLoginOrAuthor.getInstence().goToLogin(Login_konghua.this);
-//                                toaste_ut(Login_konghua.this, jsonObject.getString("msg"));
-//                            } else toaste_ut(Login_konghua.this, jsonObject.getString("msg"));
-//                        }
                         sharePre("name", "0", Login_konghua.this);
                         sharePre("pwd", "0", Login_konghua.this);
-                        present.startLogin(retrofit_Single.getInstence().getOpenid(Login_konghua.this), loginEdZHn.getText().toString(), loginEdmmn.getText().toString());
+                        present.startLogin(Login_konghua.this, retrofit_Single.getInstence().getOpenid(Login_konghua.this), loginEdZHn.getText().toString(), loginEdmmn.getText().toString());
                     } catch (JSONException e) {
                         e.printStackTrace();
                         System.out.println(e.toString());

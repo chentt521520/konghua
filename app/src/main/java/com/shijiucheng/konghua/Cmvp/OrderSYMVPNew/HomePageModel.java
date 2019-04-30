@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.OrderSYMVPNew;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BaseContact;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
@@ -19,10 +21,10 @@ import retrofit2.Response;
 
 public class HomePageModel implements BaseContact.BaseModel {
     @Override
-    public void getData(String cook, BaseCallbackListener<BaseResult> callbackListener) {
+    public void getData(Context context, String cook, BaseCallbackListener<BaseResult> callbackListener) {
         Retro_Intf serivce = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> maps = new HashMap<>();
-        maps.putAll(retrofit_Single.getInstence().retro_postParameter());//公共参数
+        maps.putAll(retrofit_Single.getInstence().retro_postParameter(context));//公共参数
         Call<ResponseBody> call = serivce.getHomePageData(cook, maps);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -46,9 +48,7 @@ public class HomePageModel implements BaseContact.BaseModel {
                         baseResult.setCode("0");
                         baseResult.setData(jso.toString());
                     }
-
                     callbackListener.onNext(baseResult);
-
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (JSONException e) {

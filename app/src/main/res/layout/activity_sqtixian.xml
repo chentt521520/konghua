@@ -15,7 +15,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,37 +52,50 @@
             </LinearLayout>
 
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="12dp"
+                android:gravity="center"
+                android:lineSpacingExtra="7dp"
+                android:text="提现金额"
+                android:textColor="@color/hei00"
+                android:textSize="15sp" />
+
             <LinearLayout
                 android:id="@+id/sqtx_num"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="12dp"
-                    android:gravity="center"
-                    android:lineSpacingExtra="7dp"
-                    android:text="提现金额"
-                    android:textColor="@color/hei00"
-                    android:textSize="15sp" />
-
+                android:layout_height="40dp"
+                android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/sqtx_ednum"
-                    android:layout_width="wrap_content"
+                    android:layout_width="140dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="12dp"
                     android:background="@color/bai"
                     android:digits="0123456789"
                     android:gravity="center_vertical"
                     android:hint="请输入提现金额"
+                    android:inputType="number"
                     android:maxLength="7"
                     android:maxLines="1"
-                    android:minWidth="140dp"
                     android:textColor="@color/zhu"
                     android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/sqtx_ednum1"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="12dp"
+                    android:background="@color/bai"
+                    android:digits="0123456789"
+                    android:gravity="center_vertical|end"
+                    android:maxLines="1"
+                    android:paddingRight="12dp"
+                    android:text="*提现最小额度为100元"
+                    android:textColor="@color/danhei"
+                    android:textSize="11sp" />
 
             </LinearLayout>
 
@@ -94,10 +108,10 @@
                 android:background="@color/qianhei1" />
 
             <LinearLayout
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -121,13 +135,13 @@
             </LinearLayout>
 
             <View
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="12dp"
                 android:layout_marginBottom="20dp"
-                android:background="@color/qianhei1" />
+                android:background="@color/qianhei1"
+                android:visibility="gone" />
 
             <LinearLayout
                 android:id="@+id/sqtx_yhk"
@@ -158,11 +172,9 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="12dp"
                         android:layout_marginBottom="5dp"
-                        android:background="@drawable/biankuang"
                         android:gravity="center_vertical"
                         android:maxLines="2"
                         android:minWidth="200dp"
-                        android:paddingLeft="12dp"
                         android:text="请选择银行卡"
                         android:textColor="@color/hei"
                         android:textSize="12sp" />
@@ -271,28 +283,144 @@
             <TextView
                 android:id="@+id/sqtx_tets"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_marginLeft="12dp"
-                android:layout_marginTop="12dp"
                 android:layout_marginRight="12dp"
                 android:text="*为保证您的资金安全，请输入店主手机号获取到的验证码"
                 android:textColor="@color/hon"
                 android:textSize="11sp" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/qianhei1" />
+
             <TextView
-                android:id="@+id/sqtx_teok"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="12dp"
+                android:gravity="center"
+                android:lineSpacingExtra="7dp"
+                android:text="服务费:"
+                android:textColor="@color/hei00"
+                android:textSize="15sp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/sqtx_edfwf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@color/bai"
+                    android:digits="0123456789"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:text="2元   "
+                    android:textColor="@color/zhu"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/sqtx_edfwf1"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="12dp"
+                    android:background="@color/bai"
+                    android:digits="0123456789"
+                    android:gravity="center_vertical|end"
+                    android:maxLines="1"
+                    android:paddingRight="12dp"
+                    android:text="*每笔提现收取2元服务费用"
+                    android:textColor="@color/danhei"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/qianhei1" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="12dp"
+                android:gravity="center"
+                android:lineSpacingExtra="7dp"
+                android:text="实际到账:"
+                android:textColor="@color/hei00"
+                android:textSize="15sp" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginBottom="12dp"
-                android:background="@drawable/biankuangtjyhk"
-                android:gravity="center"
-                android:text="确定申请提现"
-                android:textColor="@color/bai"
-                android:textSize="12sp" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/sqtx_ednumt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="12dp"
+                    android:background="@color/bai"
+                    android:digits="0123456789"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:text="."
+                    android:textColor="@color/zhu"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@color/bai"
+                    android:digits="0123456789"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:text="元"
+                    android:textColor="@color/hei"
+                    android:textSize="9sp"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/qianhei1" />
+
+
         </LinearLayout>
     </ScrollView>
 
+    <TextView
+        android:id="@+id/sqtx_teok"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/yuanjiaoall"
+        android:gravity="center"
+        android:text="确定申请提现"
+        android:textColor="@color/bai"
+        android:textSize="12sp" />
 </LinearLayout>

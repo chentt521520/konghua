@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.dianZhuMvp;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BasePresenter;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
@@ -27,7 +29,7 @@ public class Contact {
         void saveData(String name, String pho, String qq, String idcar, String pic1, String pic2);
 
         //上传图片 key表示存储的图片key值
-        void uploadPic(String key, String cook, String urlStr);
+        void uploadPic(Context context,String key, String cook, String urlStr);
     }
 
     //M
@@ -35,6 +37,6 @@ public class Contact {
 
         void saveData(String name, String pho, String qq, String idcar, String pic1, String pic2, BaseCallbackListener<BaseResult> baseResultBaseCallbackListener);
 
-        void uploadPic(String key, String cook, String urlStr, BaseCallbackListener<BaseResult> baseResultBaseCallbackListener);
+        void uploadPic(Context context, String key, String cook, String urlStr, BaseCallbackListener<BaseResult> baseResultBaseCallbackListener);
     }
 }

@@ -96,6 +96,46 @@
 
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="12dp"
+        android:background="@color/qianhei1" />
+
+    <LinearLayout
+        android:id="@+id/ordertwoit_qiwang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="12dp"
+            android:text="    期望金额 :  "
+            android:textColor="@color/hei"
+            android:textSize="13dp" />
+
+        <TextView
+            android:id="@+id/ordertwoit_teqiwang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="4dp"
+            android:minHeight="30dp"
+            android:paddingRight="12sp"
+            android:paddingBottom="5dp"
+            android:text="100"
+            android:textColor="@color/zhu"
+            android:textSize="13dp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="12dp"
+        android:background="@color/qianhei1" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

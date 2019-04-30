@@ -143,7 +143,7 @@ public class Setings extends BaseActivity_konghua implements
         if (!jdt.isAdded())
             jdt.show(getFragmentManager(), "jdt");
         HashMap<String, String> maps = new HashMap<>();
-        maps.putAll(retrofit_Single.getInstence().retro_postParameter());//公共参数
+        maps.putAll(retrofit_Single.getInstence().retro_postParameter(this));//公共参数
         Call<ResponseBody> getdata = retro_intf.setinginter(retrofit_Single.getInstence().getOpenid(Setings.this), maps);
         getdata.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -207,7 +207,7 @@ public class Setings extends BaseActivity_konghua implements
 
     private void getquit() {
         HashMap<String, String> maps = new HashMap<>();
-        maps.putAll(retrofit_Single.getInstence().retro_postParameter());//公共参数
+        maps.putAll(retrofit_Single.getInstence().retro_postParameter(this));//公共参数
         Call<ResponseBody> getdata = retro_intf.quitLoigin(retrofit_Single.getInstence().getOpenid(Setings.this), maps);
         getdata.enqueue(new Callback<ResponseBody>() {
             @Override

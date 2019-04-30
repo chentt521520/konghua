@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.renzhenmvp;
 
+import android.content.Context;
+
 import com.google.gson.Gson;
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
@@ -21,8 +23,8 @@ public class renZhenPresentIml implements conttract.irezhenPresent {
 
 
     @Override
-    public void applayRZ(String cook, HashMap<String, String> map) {
-        irenzhenModle.applayRZ(cook, map, new BaseCallbackListener<BaseResult>() {
+    public void applayRZ(Context context, String cook, HashMap<String, String> map) {
+        irenzhenModle.applayRZ(context,cook, map, new BaseCallbackListener<BaseResult>() {
             @Override
             public void onStart() {
                 irezhenView.showload();
@@ -56,8 +58,8 @@ public class renZhenPresentIml implements conttract.irezhenPresent {
     }
 
     @Override
-    public void getAuthorData(String cook) {
-        irenzhenModle.getAuthorData(cook, new BaseCallbackListener<BaseResult>() {
+    public void getAuthorData(Context context,String cook) {
+        irenzhenModle.getAuthorData(context,cook, new BaseCallbackListener<BaseResult>() {
             @Override
             public void onStart() {
                 irezhenView.showload();

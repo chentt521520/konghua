@@ -201,7 +201,7 @@
                             android:gravity="center"
                             android:text="22"
                             android:textColor="@color/hei"
-                            android:textSize="14sp" />
+                            android:textSize="12sp" />
 
                     </LinearLayout>
 
@@ -233,7 +233,7 @@
                             android:gravity="center"
                             android:text="22"
                             android:textColor="@color/hei"
-                            android:textSize="14sp" />
+                            android:textSize="12sp" />
 
                     </LinearLayout>
 
@@ -266,7 +266,7 @@
                             android:gravity="center"
                             android:text="22"
                             android:textColor="@color/hei"
-                            android:textSize="14sp" />
+                            android:textSize="12sp" />
 
                     </LinearLayout>
 

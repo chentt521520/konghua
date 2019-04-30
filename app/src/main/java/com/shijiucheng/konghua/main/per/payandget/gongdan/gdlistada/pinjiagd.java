@@ -118,7 +118,7 @@ public class pinjiagd extends DialogFragment {
 
     public void pinjia(String evaluate_star, String evaluate_content) {
         Map<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(getActivity()));
         map.put("id", itid);
         map.put("evaluate_star", evaluate_star);
         map.put("evaluate_content", evaluate_content);

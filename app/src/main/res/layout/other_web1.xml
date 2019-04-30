@@ -24,7 +24,7 @@
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/ddanxq_imreturn"
             android:scaleType="fitCenter"
-            android:src="@mipmap/xx" />
+            android:src="@mipmap/xxbai" />
 
         <TextView
             android:id="@+id/ddanxq_tetit"
@@ -33,7 +33,7 @@
             android:layout_centerInParent="true"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="生日提醒"
+            android:text=""
             android:textColor="@color/bai"
             android:textSize="18sp"
             android:textStyle="bold" />

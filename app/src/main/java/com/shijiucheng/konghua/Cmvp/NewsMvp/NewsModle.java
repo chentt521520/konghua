@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.NewsMvp;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
 
@@ -17,13 +19,13 @@ public class NewsModle implements contact.IModle {
     Retro_Intf service;
 
     @Override
-    public void getNews(String cook, int page, int type, String is_read, final BaseCallbackListener<BaseResult> callbackListener) {
+    public void getNews(Context context, String cook, int page, int type, String is_read, final BaseCallbackListener<BaseResult> callbackListener) {
         callbackListener.onStart();
         service = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> map = new HashMap<>();
         map.put("page", page + "");
         map.put("is_read", is_read);
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(context));
         Call<ResponseBody> call = service.getNews(cook, map);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -51,13 +53,13 @@ public class NewsModle implements contact.IModle {
     }
 
     @Override
-    public void getNotice(String cook, int page, int type, String is_read, final BaseCallbackListener<BaseResult> callbackListener) {
+    public void getNotice(Context context,String cook, int page, int type, String is_read, final BaseCallbackListener<BaseResult> callbackListener) {
         callbackListener.onStart();
         service = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> map = new HashMap<>();
         map.put("page", page + "");
         map.put("is_read", is_read);
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(context));
         Call<ResponseBody> call = service.getNotice(cook, map);
         call.enqueue(new Callback<ResponseBody>() {
             @Override

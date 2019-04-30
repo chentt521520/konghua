@@ -115,7 +115,7 @@ public class loginPwd extends DialogFragment {
 
     public void xiugaimm() {
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(getActivity()));
         map.put("old_pwd", xgmmEdjmm.getText().toString());
         map.put("new_pwd", xgmmEdmmre.getText().toString());
         Call<ResponseBody> call = serivce.xiugaimm(retrofit_Single.getInstence().getOpenid(getActivity()), map);

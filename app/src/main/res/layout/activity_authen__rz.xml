@@ -7,6 +7,18 @@
     android:orientation="vertical"
     tools:context=".authen_RZ">
 
+    <com.shijiucheng.konghua.com.shijiucheng.konghua.app.DaoHang_top
+        android:id="@+id/renzhen_teTit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <include
+        android:id="@+id/renzhen_shenheiz"
+        layout="@layout/inaudit"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -16,15 +28,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.shijiucheng.konghua.com.shijiucheng.konghua.app.DaoHang_top
-                android:id="@+id/renzhen_teTit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
 
             <TextView
                 android:id="@+id/renzhen_tets"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:gravity="center_vertical"
                 android:paddingLeft="12dp"
                 android:paddingBottom="12dp"

@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.gondan_Mvp.GonDanMvp;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
 import com.shijiucheng.konghua.main.per.payandget.gongdan.mygondandatabean;
@@ -23,8 +25,8 @@ public class GonDanPrestent implements Contact.GonDanIPrestent {
 
 
     @Override
-    public void applayMsg(String cook, String cate1, String cate2, String work_order_images, String work_order_content) {
-        iModle.applayMsg(cook, cate1, cate2, work_order_images, work_order_content, new BaseCallbackListener<BaseResult>() {
+    public void applayMsg(Context context, String cook, String cate1, String cate2, String work_order_images, String work_order_content) {
+        iModle.applayMsg(context,cook, cate1, cate2, work_order_images, work_order_content, new BaseCallbackListener<BaseResult>() {
             @Override
             public void onStart() {
                 iView.shouwload();
@@ -57,8 +59,8 @@ public class GonDanPrestent implements Contact.GonDanIPrestent {
     }
 
     @Override
-    public void getQustion(String cook) {
-        iModle.getQustion(cook, new BaseCallbackListener<BaseResult>() {
+    public void getQustion(Context context,String cook) {
+        iModle.getQustion(context,cook, new BaseCallbackListener<BaseResult>() {
             @Override
             public void onStart() {
                 iView.shouwload();
@@ -105,8 +107,8 @@ public class GonDanPrestent implements Contact.GonDanIPrestent {
     }
 
     @Override
-    public void upLoadimg(String cook, String urlEnc) {
-        iModle.upLoadimg(cook, urlEnc, new BaseCallbackListener<BaseResult>() {
+    public void upLoadimg(Context context,String cook, String urlEnc) {
+        iModle.upLoadimg(context,cook, urlEnc, new BaseCallbackListener<BaseResult>() {
             @Override
             public void onStart() {
                 iView.shouwload();

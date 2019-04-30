@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.loginmvp;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
 
@@ -21,14 +23,14 @@ public class LoginModeliml implements longincontract.IloginModel {
     Retro_Intf service1;
 
     @Override
-    public void login(final String cookie, final String username, String password, final BaseCallbackListener<BaseResult> callbackListener) {
+    public void login(Context context, final String cookie, final String username, String password, final BaseCallbackListener<BaseResult> callbackListener) {
         this.callbackListener = callbackListener;
         callbackListener.onStart();
         service1 = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> maps = new HashMap<>();
         maps.put("user_name", username);
         maps.put("user_pwd", password);
-        maps.putAll(retrofit_Single.getInstence().retro_postParameter());//公共参数
+        maps.putAll(retrofit_Single.getInstence().retro_postParameter(context));//公共参数
         Call<ResponseBody> login = service1.getLogin(cookie, maps);
         login.enqueue(new Callback<ResponseBody>() {
             @Override

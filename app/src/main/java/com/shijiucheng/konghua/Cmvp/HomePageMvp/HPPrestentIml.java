@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.HomePageMvp;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
 
@@ -16,8 +18,8 @@ public class HPPrestentIml implements HPContact.HPPrestent {
     }
 
     @Override
-    public void getData(String cookie) {
-        modle.getData(cookie, new BaseCallbackListener<BaseResult>() {
+    public void getData(Context context, String cookie) {
+        modle.getData(context,cookie, new BaseCallbackListener<BaseResult>() {
             @Override
             public void onStart() {
                 view.showLoading();

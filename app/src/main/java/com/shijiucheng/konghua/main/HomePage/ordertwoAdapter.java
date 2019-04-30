@@ -88,7 +88,7 @@ public class ordertwoAdapter extends RecyclerView.Adapter<ordertwoAdapter.viewho
         holder.ordertwoitTedizhi.setText(data.getAddress() + " " + data.getAddress1());
 
         holder.te_djd.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-        if (data.getStatus().equals("1")||data.getStatus().equals("2")||data.getStatus().equals("3")) {
+        if (data.getStatus().equals("1") || data.getStatus().equals("2") || data.getStatus().equals("3")) {
             holder.lin_djdf.setVisibility(View.GONE);
             holder.lin_djd.setVisibility(View.VISIBLE);
         } else {
@@ -122,8 +122,15 @@ public class ordertwoAdapter extends RecyclerView.Adapter<ordertwoAdapter.viewho
 //        else if (data.getStatus().equals("12"))
 //            holder.ordertwoitTezt.setText("下单方申请退单");
 
+
+        if (data.getStatus().equals("3")) {
+            holder.lin_qw.setVisibility(View.VISIBLE);
+            holder.te_qw.setText(data.getQiwang() + "元");
+        } else {
+            holder.lin_qw.setVisibility(View.GONE);
+        }
+
         if (data.getStatus().equals("30")) {
-//            holder.tejs.setVisibility(View.VISIBLE);
             holder.tejs.setVisibility(View.GONE);
             if (data.getIstixin().equals("0")) {
                 holder.tejs.setBackgroundColor(context.getResources().getColor(R.color.zhu));
@@ -209,6 +216,12 @@ public class ordertwoAdapter extends RecyclerView.Adapter<ordertwoAdapter.viewho
 
         @BindView(R.id.ordertwoit_viwkb)
         View v_kb;
+
+        @BindView(R.id.ordertwoit_qiwang)
+        LinearLayout lin_qw;
+        @BindView(R.id.ordertwoit_teqiwang)
+        TextView te_qw;
+
 
         public viewholder(View itemView) {
             super(itemView);

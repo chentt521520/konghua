@@ -3,6 +3,7 @@ package com.shijiucheng.konghua;
 import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
@@ -14,6 +15,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.shijiucheng.konghua.main.MainActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,6 +33,10 @@ public class gotoAuthen extends DialogFragment {
     @BindView(R.id.goto_teauthen)
     TextView gotoTeauthen;
     Unbinder unbinder;
+
+    boolean isshowdia = true;
+
+    private long exitTime = 0;
 
     @Nullable
     @Override
@@ -55,9 +63,13 @@ public class gotoAuthen extends DialogFragment {
             @Override
             public boolean onKey(DialogInterface arg0, int keyCode, KeyEvent arg2) {
                 if (keyCode == KeyEvent.KEYCODE_BACK) {
-                    gotoautheninterface gotoautheninterface = (gotoAuthen.gotoautheninterface) getActivity();
-                    gotoautheninterface.tofinishapp();
-                    return true;
+                    if (getDialog().isShowing()) {
+                        if (isshowdia) {
+                            gotoautheninterface gotoautheninterface = (gotoAuthen.gotoautheninterface) getActivity();
+                            gotoautheninterface.tofinishapp();
+                            return true;
+                        }
+                    }
                 } else if (keyCode == KeyEvent.KEYCODE_MENU) {
                     return true;
                 }
@@ -107,4 +119,26 @@ public class gotoAuthen extends DialogFragment {
         void tofinishapp();
 
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        isshowdia = false;
+
+        System.out.println("不可见了");
+    }
+
+    @Override
+    public void onResume() {
+// TODO Auto-generated method stub
+        super.onResume();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                isshowdia = true;
+            }
+        }, 1000);
+        System.out.println("可见了");
+    }
+
 }

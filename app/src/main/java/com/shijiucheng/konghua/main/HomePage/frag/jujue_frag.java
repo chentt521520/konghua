@@ -172,7 +172,7 @@ public class jujue_frag extends DialogFragment {
     public void jujueyy() {
         Retro_Intf serivce = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(getActivity()));
         map.put("order_id", order_id);
         Call<ResponseBody> call = serivce.jujueyy(retrofit_Single.getInstence().getOpenid(getActivity()), map);
         call.enqueue(new Callback<ResponseBody>() {

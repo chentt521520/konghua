@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bai"
+    android:background="@drawable/biankuangyuanjiaodialog"
     android:orientation="vertical">
 
     <TextView
@@ -50,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/zhu"
+            android:background="@drawable/biankuangyuanjiaodialogzuoxia"
             android:gravity="center"
             android:minHeight="40dp"
             android:paddingLeft="12dp"
@@ -64,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/qianhei"
+            android:background="@drawable/biankuangyuanjiaodialogyouxia"
             android:gravity="center"
             android:minHeight="40dp"
             android:paddingLeft="12dp"
@@ -87,6 +87,7 @@
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
+            android:background="@drawable/biankuangyuanjiaodialogzuoxia"
             android:progressDrawable="@drawable/progressbar_preview" />
 
         <TextView

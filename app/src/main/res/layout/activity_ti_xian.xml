@@ -64,7 +64,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="58dp"
                         android:gravity="center"
-                        android:text="可提现金额（元）"
+                        android:text="可提现金额"
                         android:textColor="@color/hei"
                         android:textSize="13sp"
                         android:textStyle="bold" />
@@ -75,7 +75,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="85dp"
                         android:gravity="center"
-                        android:text="11111"
                         android:textColor="#000000"
                         android:textSize="23sp"
                         android:textStyle="bold" />
@@ -113,7 +112,7 @@
                     android:gravity="center_vertical"
                     android:text="已提现"
                     android:textColor="@color/hei"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/txian_teyitx"
@@ -124,7 +123,7 @@
                     android:paddingLeft="6dp"
                     android:text="  "
                     android:textColor="@color/hei"
-                    android:textSize="20sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/txian_tetxls"
@@ -149,9 +148,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
-                    android:text="可提现"
+                    android:text="总入账"
                     android:textColor="@color/hei"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/txian_tenum1"
@@ -161,7 +160,7 @@
                     android:gravity="center_vertical"
                     android:text="   "
                     android:textColor="@color/hei"
-                    android:textSize="20sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/txian_teszmx"
@@ -176,15 +175,6 @@
             </LinearLayout>
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
-                android:layout_marginEnd="14dp"
-                android:gravity="center_vertical"
-                android:text="\n您可将余额提现到绑定的银行卡，单笔提现金额不低于1元"
-                android:textColor="@color/hei"
-                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/txian_tesm"

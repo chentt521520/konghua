@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.loginmvp;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BasePresenter;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
@@ -7,7 +9,7 @@ import com.shijiucheng.konghua.Cmvp.BaseResult;
 public class longincontract {
     //M
     public interface IloginModel {
-        void login(String cookie, String username, String password, BaseCallbackListener<BaseResult> callbackListener);
+        void login(Context context,String cookie, String username, String password, BaseCallbackListener<BaseResult> callbackListener);
     }
 
     //V
@@ -24,7 +26,7 @@ public class longincontract {
 
     //P
     public interface IloginPresent extends BasePresenter {
-        void startLogin(String cookie, String username, String password);
+        void startLogin(Context context, String cookie, String username, String password);
     }
 
 }

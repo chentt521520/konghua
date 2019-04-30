@@ -111,7 +111,7 @@ public interface Retro_Intf {
     Call<ResponseBody> getListTX(@Header("Cookie") String cook, @QueryMap Map<String, String> map);
 
     //提现验证码
-    @GET("/Home-Account-send_sms_code.html")
+    @GET("/ApiApp-Account-send_sms_code.html")
     Call<ResponseBody> getCode(@Header("Cookie") String cook, @QueryMap Map<String, String> map);
 
     //银行卡列表
@@ -239,7 +239,7 @@ public interface Retro_Intf {
     Call<ResponseBody> xiugaimm(@Header("Cookie") String cook, @FieldMap Map<String, String> map);
 
     //身份验证短信验证码
-    @POST("/Home-Account-send_sms_code.html")
+    @POST("/ApiApp-Account-send_sms_code.html")
     @FormUrlEncoded
     Call<ResponseBody> sfyz_getcode(@Header("Cookie") String cook, @FieldMap Map<String, String> map);
 
@@ -285,5 +285,12 @@ public interface Retro_Intf {
     @GET("/ApiApp-Message-message_station_detail.html")
     Call<ResponseBody> news(@Header("Cookie") String cook, @QueryMap Map<String, String> map);
 
+    //同意部分结算
+    @GET("/ApiApp-Order-order_agree_balance_communicate_do.html")
+    Call<ResponseBody> tyjs(@Header("Cookie") String cook, @QueryMap Map<String, String> map);
+
+    //拒绝部分结算
+    @GET("/ApiApp-Order-order_refuse_balance_communicate_do.html")
+    Call<ResponseBody> jujuejs(@Header("Cookie") String cook, @QueryMap Map<String, String> map);
 
 }

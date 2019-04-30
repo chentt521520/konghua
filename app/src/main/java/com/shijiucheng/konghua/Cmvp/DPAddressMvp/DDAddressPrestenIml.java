@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.DPAddressMvp;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
 
@@ -20,8 +22,8 @@ public class DDAddressPrestenIml implements Contact.IdpAddressPrestent {
     }
 
     @Override
-    public void getSSQ(String cook, final int pos, final String id) {
-        idpAddressModle.getSSQ(cook, pos, id, new BaseCallbackListener<BaseResult>() {
+    public void getSSQ(Context context, String cook, final int pos, final String id) {
+        idpAddressModle.getSSQ(context,cook, pos, id, new BaseCallbackListener<BaseResult>() {
             @Override
             public void onStart() {
                 idpAddressView.showload();

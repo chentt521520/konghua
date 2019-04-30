@@ -30,7 +30,8 @@ public class configParams {
     public final static String symsg = "symsg";//*首消息
     public final static String perdizhirefr = "perdizhirefr";//*首消息
     public final static String totherpager = "totherpager";//*首页切换其他页面
-    public final static String refreshhp = "refreshhp";//*首页切换其他页面
+    public final static String refreshhp = "refreshhp";//*刷新首页数据
+    public final static String refreshhpxx = "refreshhpxx";//*首页切换其他页面
 
     public final static String syrenzhen = "syrenzhen";//*首页认证弹窗
     public final static String sylogin = "sylogin";//*首页去登录

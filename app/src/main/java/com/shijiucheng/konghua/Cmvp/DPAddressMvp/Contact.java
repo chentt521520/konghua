@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.DPAddressMvp;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BasePresenter;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
@@ -23,14 +25,14 @@ public class Contact {
     //M
     public interface IdpAddressModle {
         //省市区谢信息
-        void getSSQ(String cook, int pos, String id, BaseCallbackListener<BaseResult> callbackListener);
+        void getSSQ(Context context,String cook, int pos, String id, BaseCallbackListener<BaseResult> callbackListener);
 
         void saveData(String ssq, String address, String zuobiao, List<String> listArea, BaseCallbackListener<BaseResult> callbackListener);
     }
 
     //P
     public interface IdpAddressPrestent extends BasePresenter {
-        void getSSQ(String cook, int pos, String id);
+        void getSSQ(Context context, String cook, int pos, String id);
 
         void saveData(String ssq, String address, String zuobiao, List<String> listArea);
     }

@@ -298,7 +298,7 @@ public class order_PeiSong extends BaseActivity_konghua implements TakePhoto.Tak
             jdt.show(getFragmentManager(), "jdtxor");
         Retro_Intf serivce = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("file_content", url);
         Call<ResponseBody> call = serivce.uploadpeisongtp(retrofit_Single.getInstence().getOpenid(this), map);
         call.enqueue(new Callback<ResponseBody>() {
@@ -369,7 +369,7 @@ public class order_PeiSong extends BaseActivity_konghua implements TakePhoto.Tak
         jdt.show(getFragmentManager(), "jdt");
         Retro_Intf serivce = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("order_id", order_id);
         Call<ResponseBody> call = serivce.peisonglxr(retrofit_Single.getInstence().getOpenid(this), map);
         call.enqueue(new Callback<ResponseBody>() {

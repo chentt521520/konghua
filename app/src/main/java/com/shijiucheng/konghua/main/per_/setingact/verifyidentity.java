@@ -27,7 +27,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class verifyidentity extends BaseActivity_konghua {
+public class verifyidentity extends BaseActivity_konghua  {
     @BindView(R.id.verify_dh)
     DaoHang_top verifyDh;
     @BindView(R.id.sfyz_tepho)
@@ -78,7 +78,7 @@ public class verifyidentity extends BaseActivity_konghua {
     private void sfyz() {
         Retro_Intf serivce = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> maps = new HashMap<>();
-        maps.putAll(retrofit_Single.getInstence().retro_postParameter());//公共参数
+        maps.putAll(retrofit_Single.getInstence().retro_postParameter(this));//公共参数
         int bundle = getIntent().getExtras().getInt("type");
         if (bundle == 0)
             maps.put("act", "modify_login_pwd");
@@ -138,7 +138,7 @@ public class verifyidentity extends BaseActivity_konghua {
     private void getcode() {
         Retro_Intf serivce = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> maps = new HashMap<>();
-        maps.putAll(retrofit_Single.getInstence().retro_postParameter());//公共参数
+        maps.putAll(retrofit_Single.getInstence().retro_postParameter(this));//公共参数
         int bundle = getIntent().getIntExtra("type", 0);
         if (bundle == 0)
             maps.put("act", "modify_login_pwd");

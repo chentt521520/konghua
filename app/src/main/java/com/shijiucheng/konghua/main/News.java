@@ -83,7 +83,7 @@ public class News extends com.shijiucheng.konghua.Cmvp.BaseFragment_konghua impl
         recyc.setLayoutManager(manager);
         ada = new znxrecyc_ada(getActivity(), list);
         recyc.setAdapter(ada);
-        prestent.getNews(retrofit_Single.getInstence().getOpenid(getActivity()), page, type, "");
+//        prestent.getNews(getActivity(),retrofit_Single.getInstence().getOpenid(getActivity()), page, type, "");
         newsZnxx.setSelected(true);
         SetViewListen();
     }
@@ -196,17 +196,17 @@ public class News extends com.shijiucheng.konghua.Cmvp.BaseFragment_konghua impl
 
     private void getTypeValue(int type) {
         if (type == 1)
-            prestent.getNews(retrofit_Single.getInstence().getOpenid(getActivity()), page, type, "");
+            prestent.getNews(getActivity(), retrofit_Single.getInstence().getOpenid(getActivity()), page, type, "");
         else if (type == 2)
-            prestent.getNews(retrofit_Single.getInstence().getOpenid(getActivity()), page, type, "0");
+            prestent.getNews(getActivity(), retrofit_Single.getInstence().getOpenid(getActivity()), page, type, "0");
         else if (type == 3)
-            prestent.getNews(retrofit_Single.getInstence().getOpenid(getActivity()), page, type, "1");
+            prestent.getNews(getActivity(), retrofit_Single.getInstence().getOpenid(getActivity()), page, type, "1");
         else if (type == 4)
-            prestent.getNotice(retrofit_Single.getInstence().getOpenid(getActivity()), page, type, "");
+            prestent.getNotice(getActivity(), retrofit_Single.getInstence().getOpenid(getActivity()), page, type, "");
         else if (type == 5)
-            prestent.getNotice(retrofit_Single.getInstence().getOpenid(getActivity()), page, type, "0");
+            prestent.getNotice(getActivity(), retrofit_Single.getInstence().getOpenid(getActivity()), page, type, "0");
         else if (type == 6)
-            prestent.getNotice(retrofit_Single.getInstence().getOpenid(getActivity()), page, type, "1");
+            prestent.getNotice(getActivity(), retrofit_Single.getInstence().getOpenid(getActivity()), page, type, "1");
 
     }
 

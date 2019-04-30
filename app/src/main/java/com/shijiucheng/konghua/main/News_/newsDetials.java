@@ -104,7 +104,7 @@ public class newsDetials extends BaseActivity_konghua {
         } else {
             maps.put("n_id", id);
         }
-        maps.putAll(retrofit_Single.getInstence().retro_postParameter());
+        maps.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         Call<ResponseBody> call;
         if (type == 0) {
             call = service.getNeswDetils(retrofit_Single.getInstence().getOpenid(this), maps);

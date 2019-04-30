@@ -82,7 +82,7 @@
             android:layout_marginRight="70dp"
             android:gravity="center_vertical"
             android:lineSpacingExtra="5dp"
-            android:paddingTop="7dp"
+            android:paddingTop="12dp"
             android:textColor="@color/hei"
             android:textSize="13sp" />
 
@@ -100,7 +100,8 @@
             android:singleLine="true"
             android:text="立即点击查看"
             android:textColor="@color/bai"
-            android:textSize="13sp" />
+            android:textSize="13sp"
+            android:visibility="invisible" />
 
     </RelativeLayout>
 

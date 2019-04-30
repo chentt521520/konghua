@@ -1,5 +1,6 @@
 package com.shijiucheng.konghua.main;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -17,6 +19,8 @@ import android.widget.Toast;
 
 import com.gyf.barlibrary.ImmersionBar;
 import com.shijiucheng.konghua.Banben_;
+import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
+import com.shijiucheng.konghua.Cmvp.BaseResult;
 import com.shijiucheng.konghua.Login_konghua;
 import com.shijiucheng.konghua.R;
 import com.shijiucheng.konghua.authen_RZ;
@@ -30,13 +34,24 @@ import com.tencent.android.tpush.XGPushManager;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import Retrofit2.Retro_Intf;
+import Retrofit2.retrofit_Single;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener, Banben_.fuluebanben, gotoAuthen.gotoautheninterface {
     Unbinder munbinder;
@@ -86,14 +101,18 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     SharedPreferences.Editor editor;
     gotoAuthen gotoauthen = new gotoAuthen();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ImmersionBar immersionBar=  ImmersionBar.with(this);
+
+        ImmersionBar immersionBar = ImmersionBar.with(this);//先初始化，不然高版本会有底部导航栏跑上去了
         immersionBar.fitsSystemWindows(true).statusBarColor(R.color.zhu)
                 .statusBarDarkFont(false, 0.0f).init();
 
         setContentView(R.layout.activity_main2);
+
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         EventBus.getDefault().register(this);
@@ -156,9 +175,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             }
         });
 
-        paramsDataBean datahp = new paramsDataBean();
-        datahp.setMsg(configParams.refreshhp);
-        EventBus.getDefault().post(datahp);
     }
 
 
@@ -197,15 +213,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         }
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-    }
 
     @Override
     protected void onDestroy() {
@@ -304,6 +311,11 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     }
 
+    @Override
+    public void installapk(File file) {
+
+    }
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void getmess(paramsDataBean data) {
         if (data != null) {
@@ -317,9 +329,14 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 }
                 return;
             } else if (data.getMsg().equals(configParams.sylogin)) {
-                startActivity(new Intent(MainActivity.this, Login_konghua.class));
-                overridePendingTransition(R.anim.push_left_in,
-                        R.anim.push_left_out);
+
+                if (preferences.getString("name", "0").equals("0")) {
+                    startActivity(new Intent(MainActivity.this, Login_konghua.class));
+                    overridePendingTransition(R.anim.push_left_in,
+                            R.anim.push_left_out);
+                } else {
+                    login();
+                }
                 return;
             } else if (data.getMsg().equals(configParams.sycloserenzhen)) {
                 if (gotoauthen != null)
@@ -377,8 +394,53 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         System.exit(0);
     }
 
-//    @Override
-//    public void refresh() {
-//
-//    }
+    public void login() {
+        Retro_Intf service1 = retrofit_Single.getInstence().getserivce(2);
+        HashMap<String, String> maps = new HashMap<>();
+        maps.put("user_name", preferences.getString("name", "0"));
+        maps.put("user_pwd", preferences.getString("pwd", "0"));
+        maps.putAll(retrofit_Single.getInstence().retro_postParameter(this));//公共参数
+        Call<ResponseBody> login = service1.getLogin(retrofit_Single.getInstence().getOpenid(this), maps);
+        login.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(
+                    Call<ResponseBody> call, Response<ResponseBody> response) {
+                String Result = null;
+                if (response.body() == null)
+                    return;
+                try {
+                    Result = response.body().string();
+                    try {
+                        if (Result != null && Result.startsWith("\ufeff")) {
+                            Result = Result.substring(1);
+                        }
+                        JSONObject jsonObject = new JSONObject(Result);
+                        if (jsonObject.getString("status").equals("1")) {
+                            paramsDataBean datahp = new paramsDataBean();
+                            datahp.setMsg(configParams.refreshhp);
+                            EventBus.getDefault().post(datahp);
+                        } else {
+                            startActivity(new Intent(MainActivity.this, Login_konghua.class));
+                            overridePendingTransition(R.anim.push_left_in,
+                                    R.anim.push_left_out);
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        System.out.println(e.toString());
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
+
+    }
+
 }

@@ -105,7 +105,7 @@ public class addyhkType extends DialogFragment implements addyhkssqadapter.getSS
         serivce = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> maps = new HashMap<>();
         maps.put("bank_id", "");
-        maps.putAll(retrofit_Single.getInstence().retro_postParameter());
+        maps.putAll(retrofit_Single.getInstence().retro_postParameter(getActivity()));
         Call<ResponseBody> call = serivce.getBankistType(retrofit_Single.getInstence().getOpenid(getActivity()), maps);
         call.enqueue(new Callback<ResponseBody>() {
             @Override

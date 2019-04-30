@@ -61,11 +61,11 @@ public class Home extends com.shijiucheng.konghua.Cmvp.BaseFragment_konghua impl
     @Override
     protected void AddView() {
         hpPrestentIml = new HPPrestentIml(this);
-        hpPrestentIml.getData(retrofit_Single.getInstence().getOpenid(getActivity()));
+        hpPrestentIml.getData(getActivity(), retrofit_Single.getInstence().getOpenid(getActivity()));
         serivce = retrofit_Single.getInstence().getserivce(2);
 
         EventBus.getDefault().register(this);
-        getNumTX();
+//        getNumTX();
     }
 
     @Override
@@ -143,7 +143,7 @@ public class Home extends com.shijiucheng.konghua.Cmvp.BaseFragment_konghua impl
 
     public void getNumTX() {
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(getActivity()));
         retrofit2.Call<ResponseBody> call = serivce.getNumTX(retrofit_Single.getInstence().getOpenid(getActivity()), map);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -156,10 +156,10 @@ public class Home extends com.shijiucheng.konghua.Cmvp.BaseFragment_konghua impl
                     try {
                         JSONObject jsonObject = new JSONObject(str);
                         if (jsonObject.getString("status").equals("1")) {
-                            txianTenum1.setText( jsonObject.getJSONObject("data").getString("balance_amount")+"元");
-                            txianallnum.setText(" 总收入：" + jsonObject.getJSONObject("data").getString("income_amount")+"元");
-                            txianTeytx.setText( jsonObject.getJSONObject("data").getString("withdraw_amount")+"元");
-                            te_ketixian.setText(jsonObject.getJSONObject("data").getString("balance_amount"));
+                            txianTenum1.setText("  " + jsonObject.getJSONObject("data").getString("income_amount") + "元");
+                            txianallnum.setText(" 总收入：" + jsonObject.getJSONObject("data").getString("income_amount") + "元");
+                            txianTeytx.setText(jsonObject.getJSONObject("data").getString("withdraw_amount") + "元");
+                            te_ketixian.setText(jsonObject.getJSONObject("data").getString("balance_amount") + "元");
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

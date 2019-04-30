@@ -32,7 +32,8 @@ public class DaoHang_top1 extends RelativeLayout {
         DisplayMetrics dm = getResources().getDisplayMetrics();
         w_ = dm.widthPixels;
         setViewHw_Lin(lin_top, w_, (int) (w_ * 88 / 750.0), 0, 0, 0, 0);
-        setViewHw_Re(ima_fh, (int) (w_ * 44 / 750.0), (int) (w_ * 44 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 22 / 750.0), 0, (int) (w_ * 22 / 750.0));
+        setViewHw_Re(ima_fh, (int) (w_ * 58 / 750.0), (int) (w_ * 44 / 750.0), 0, (int) (w_ * 22 / 750.0), 0, (int) (w_ * 22 / 750.0));
+        ima_fh.setPadding((int) (w_ * 14 / 750.0),0,0,0);
 //        setViewHw_Re(ima_tp, (int) (w_ * 36 / 750.0), (int) (w_ * 22 / 750.0), (int) (w_ * 684 / 750.0), (int) (w_ * 10 / 750.0), (int) (w_ * 22 / 750.0), (int) (w_ * 22 / 750.0));
         te_tit.setTextSize(TypedValue.COMPLEX_UNIT_PX, (int) (w_ * 36 / 750.0));
 

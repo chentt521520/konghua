@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.DPAddressMvp;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
 
@@ -21,12 +23,12 @@ public class DDAddressModelIml implements Contact.IdpAddressModle {
     Retro_Intf retro_intf;
 
     @Override
-    public void getSSQ(String cook, int pos, String id, final BaseCallbackListener<BaseResult> callbackListener) {
+    public void getSSQ(Context context, String cook, int pos, String id, final BaseCallbackListener<BaseResult> callbackListener) {
         callbackListener.onStart();
         retro_intf = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> maps = new HashMap<>();
         maps.put("parent_id", id);
-        maps.putAll(retrofit_Single.getInstence().retro_postParameter());
+        maps.putAll(retrofit_Single.getInstence().retro_postParameter(context));
         Call<ResponseBody> call = retro_intf.getAddress(cook, maps);
         call.enqueue(new Callback<ResponseBody>() {
             @Override

@@ -102,7 +102,7 @@ public class addyhkssq extends DialogFragment implements addyhkssqadapter.getSSQ
         serivce = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> maps = new HashMap<>();
         maps.put("parent_id", id);
-        maps.putAll(retrofit_Single.getInstence().retro_postParameter());
+        maps.putAll(retrofit_Single.getInstence().retro_postParameter(getActivity()));
         Call<ResponseBody> call = serivce.getAddress(retrofit_Single.getInstence().getOpenid(getActivity()), maps);
         call.enqueue(new Callback<ResponseBody>() {
             @Override

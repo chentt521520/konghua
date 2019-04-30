@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.OrderSYMVPNew;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BaseContact;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
@@ -17,8 +19,8 @@ public class HomePagePresent implements BaseContact.BasePresent {
     }
 
     @Override
-    public void getData(String cook) {
-        model.getData(cook, new BaseCallbackListener<BaseResult>() {
+    public void getData(Context context, String cook) {
+        model.getData(context,cook, new BaseCallbackListener<BaseResult>() {
             @Override
             public void onStart() {
                 baseview.showLoad();

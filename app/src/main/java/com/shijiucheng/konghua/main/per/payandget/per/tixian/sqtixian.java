@@ -1,7 +1,10 @@
 package com.shijiucheng.konghua.main.per.payandget.per.tixian;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -20,17 +23,18 @@ import com.shijiucheng.konghua.main.per.payandget.per.tixian.diagfrg.tixianfs;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Map;
 
 import Retrofit2.Retro_Intf;
 import Retrofit2.retrofit_Single;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -52,6 +56,8 @@ public class sqtixian extends BaseActivity_konghua implements tixianfs.gettxfs, 
     LinearLayout sqtxYhk;
     @BindView(R.id.sqtx_ednum)
     EditText sqtxEdnum;
+    @BindView(R.id.sqtx_ednum1)
+    TextView te_minnum;
     @BindView(R.id.sqtx_num)
     LinearLayout sqtxNum;
     @BindView(R.id.sqtx_teok)
@@ -77,11 +83,22 @@ public class sqtixian extends BaseActivity_konghua implements tixianfs.gettxfs, 
 
     PayPwd pwd;
     ValidatePwd yanzhenpwd;
+    @BindView(R.id.sqtx_edfwf)
+    TextView sqtxEdfwf;
+    @BindView(R.id.sqtx_edfwf1)
+    TextView sqtxEdfwf1;
+    @BindView(R.id.sqtx_ednumt)
+    TextView sqtxEdnumt;
+
+
+    int fwf = 0, minnum = 0;
+
 
     @Override
     protected void AddView() {
         sqtxDh.settext_("申请提现");
         serivce = retrofit_Single.getInstence().getserivce(2);
+        EventBus.getDefault().register(this);
         pwd = new PayPwd();
         yanzhenpwd = new ValidatePwd();
         getNumTX();
@@ -94,22 +111,22 @@ public class sqtixian extends BaseActivity_konghua implements tixianfs.gettxfs, 
         sqtxTegetyzm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                TimerTextView.isc = false;
                 if (TextUtils.isEmpty(sqtxEdnum.getText().toString())) {
-                    toaste_ut(sqtixian.this, "请输入有效的提现金额");
+                    toaste_ut(sqtixian.this, "请输入提现金额");
                     return;
                 }
-
-                if (Integer.parseInt(sqtxEdnum.getText().toString()) == 0) {
-                    toaste_ut(sqtixian.this, "请输入有效的提现金额");
+                if (Integer.valueOf(sqtxEdnum.getText().toString()).intValue() < minnum) {
+                    toaste_ut(sqtixian.this, "提现最小额度为" + minnum + "元");
                     return;
                 }
                 if (Integer.valueOf(sqtxEdnum.getText().toString()).intValue() > tixiannum) {
-                    toaste_ut(sqtixian.this, "可提现金额不足");
+                    toaste_ut(sqtixian.this, "输入金额超过可提现金额");
                     return;
                 }
                 TimerTextView.isc = true;
                 getCode();
+
             }
         });
         sqtxTeyhk.setOnClickListener(new View.OnClickListener() {
@@ -120,7 +137,7 @@ public class sqtixian extends BaseActivity_konghua implements tixianfs.gettxfs, 
                     tjyhk.show(getFragmentManager(), "tjyhk");
                 } else {
                     Intent i = new Intent(sqtixian.this, addyhk.class);
-                    i.putExtra("type", "1");
+                    i.putExtra("type", "0");
                     startActivity(i);
 
                 }
@@ -139,26 +156,45 @@ public class sqtixian extends BaseActivity_konghua implements tixianfs.gettxfs, 
             @Override
             public void onClick(View view) {
                 if (TextUtils.isEmpty(sqtxEdnum.getText().toString())) {
-                    toaste_ut(sqtixian.this, "请输入小于可提现金额的数字");
+                    toaste_ut(sqtixian.this, "请输入提现金额");
                     return;
-                }
-                if (Integer.parseInt(sqtxEdnum.getText().toString()) == 0) {
-                    toaste_ut(sqtixian.this, "请输入有效的提现金额");
+                } else if (Integer.valueOf(sqtxEdnum.getText().toString()).intValue() < minnum) {
+                    toaste_ut(sqtixian.this, "提现最小额度为" + minnum + "元");
                     return;
-                }
-                if (Integer.valueOf(sqtxEdnum.getText().toString()).intValue() > tixiannum) {
-                    toaste_ut(sqtixian.this, "请输入小于可提现金额的数字");
+                } else if (Integer.valueOf(sqtxEdnum.getText().toString()).intValue() > tixiannum) {
+                    toaste_ut(sqtixian.this, "输入金额超过可提现金额");
                     return;
-                }
-                if (sqtxTeyhk.getText().toString().equals("请选择提现银行卡")) {
+                } else if (sqtxTeyhk.getText().toString().equals("请选择提现银行卡")) {
                     toaste_ut(sqtixian.this, "请选择银行卡");
                     return;
-                }
-                if (sqtxEdyzm.getText().toString().length() < 6) {
-                    toaste_ut(sqtixian.this, "请输入店主手机号获取的验证码");
+                } else if (sqtxEdyzm.getText().toString().length() < 6) {
+                    toaste_ut(sqtixian.this, "请输入6位短信验证码");
                     return;
-                }
-                sqtx();
+                } else
+                    sqtx();
+            }
+        });
+
+        sqtxEdnum.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                System.out.println(minnum);
+                if (sqtxEdnum.getText().toString().length() <= 0) {
+                    sqtxEdnumt.setText(".");
+                } else if (Integer.valueOf(sqtxEdnum.getText().toString()).intValue() < minnum) {
+                    sqtxEdnumt.setText(".");
+                } else
+                    sqtxEdnumt.setText((Integer.valueOf(sqtxEdnum.getText().toString()).intValue() - fwf) + "元");
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
     }
@@ -176,10 +212,21 @@ public class sqtixian extends BaseActivity_konghua implements tixianfs.gettxfs, 
     }
 
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void getmess(paramsDataBean data) {
+        if (data != null) {
+            if (data.getMsg().equals(configParams.addyhktosqtx)) {
+                getBankList();
+                return;
+            }
+        }
+    }
+
+
     public void getNumTX() {
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
-        retrofit2.Call<ResponseBody> call = serivce.getNumTX(retrofit_Single.getInstence().getOpenid(sqtixian.this), map);
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
+        Call<ResponseBody> call = serivce.getNumTX(retrofit_Single.getInstence().getOpenid(sqtixian.this), map);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -189,15 +236,25 @@ public class sqtixian extends BaseActivity_konghua implements tixianfs.gettxfs, 
                     try {
                         JSONObject jsonObject = new JSONObject(str);
                         if (jsonObject.getString("status").equals("1")) {
-                            sqtxTenum1.setText(jsonObject.getJSONObject("data").getString("balance_amount")+"元");
+                            sqtxTenum1.setText(jsonObject.getJSONObject("data").getString("balance_amount") + "元");
                             tets.setText("*为保证您的资金安全，请输入" + jsonObject.getJSONObject("data").getString("safe_mobile_text") + "获取到的验证码");
                             tixiannum = jsonObject.getJSONObject("data").getDouble("balance_amount");
                             String bank = jsonObject.getJSONObject("data").getJSONObject("default_bank_info").getString("bank_type_text") +
                                     jsonObject.getJSONObject("data").getJSONObject("default_bank_info").getString("bank_no_last");
-                            if (!TextUtils.isEmpty(bank))
+                            if (!TextUtils.isEmpty(bank)) {
                                 sqtxTeyhk.setText(bank);
-                            else sqtxTeyhk.setText("请选择提现银行卡");
-                            bankid = jsonObject.getJSONObject("data").getJSONObject("default_bank_info").getString("bank_id");
+                                bankid = jsonObject.getJSONObject("data").getJSONObject("default_bank_info").getString("bank_id");
+                            } else {
+                                sqtxTeyhk.setText("请选择提现银行卡");
+
+                            }
+                            sqtxEdfwf.setText(jsonObject.getJSONObject("data").getString("withdraw_service_fee") + "元");
+                            sqtxEdfwf1.setText("*每笔提现收取" + jsonObject.getJSONObject("data").getString("withdraw_service_fee") + "元服务费用");
+                            fwf = Integer.valueOf(jsonObject.getJSONObject("data").getString("withdraw_service_fee")).intValue();
+                            minnum = Integer.valueOf(jsonObject.getJSONObject("data").getString("withdraw_min_amount")).intValue();
+
+                            System.out.println(fwf + "  " + minnum);
+                            te_minnum.setText("*提现最小额度为" + jsonObject.getJSONObject("data").getString("withdraw_min_amount") + "元");
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -217,8 +274,8 @@ public class sqtixian extends BaseActivity_konghua implements tixianfs.gettxfs, 
 
     public void getBankList() {
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
-        retrofit2.Call<ResponseBody> call = serivce.getBankist(retrofit_Single.getInstence().getOpenid(sqtixian.this), map);
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
+        Call<ResponseBody> call = serivce.getBankist(retrofit_Single.getInstence().getOpenid(sqtixian.this), map);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -250,9 +307,9 @@ public class sqtixian extends BaseActivity_konghua implements tixianfs.gettxfs, 
 
     public void getCode() {
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("act", "finance_withdraw");
-        retrofit2.Call<ResponseBody> call = serivce.getCode(retrofit_Single.getInstence().getOpenid(sqtixian.this), map);
+        Call<ResponseBody> call = serivce.getCode(retrofit_Single.getInstence().getOpenid(sqtixian.this), map);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -283,12 +340,12 @@ public class sqtixian extends BaseActivity_konghua implements tixianfs.gettxfs, 
 
     public void sqtx() {
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("bank_id", bankid);
         map.put("amount", sqtxEdnum.getText().toString());
         map.put("code", sqtxEdyzm.getText().toString());
 
-        retrofit2.Call<ResponseBody> call = serivce.shenqingtixian(retrofit_Single.getInstence().getOpenid(sqtixian.this), map);
+        Call<ResponseBody> call = serivce.shenqingtixian(retrofit_Single.getInstence().getOpenid(sqtixian.this), map);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -354,4 +411,5 @@ public class sqtixian extends BaseActivity_konghua implements tixianfs.gettxfs, 
         databean2.setMsg(configParams.sycw);
         EventBus.getDefault().post(databean2);
     }
+
 }

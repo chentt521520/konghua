@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.dianZhuMvp;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
 
@@ -17,7 +19,7 @@ public class DianZuPresentIml implements Contact.IDianZuPresent {
 
 
     @Override
-    public void saveData(final String name, final String pho, final String qq, final String idcar, final String pic1, final String pic2) {
+    public void saveData( final String name, final String pho, final String qq, final String idcar, final String pic1, final String pic2) {
         iDianZuModle.saveData(name, pho, qq, idcar, pic1, pic2, new BaseCallbackListener<BaseResult>() {
             @Override
             public void onStart() {
@@ -41,8 +43,8 @@ public class DianZuPresentIml implements Contact.IDianZuPresent {
     }
 
     @Override
-    public void uploadPic(final String key, String cook, final String urlStr) {
-        iDianZuModle.uploadPic(key, cook, urlStr, new BaseCallbackListener<BaseResult>() {
+    public void uploadPic(Context context,final String key, String cook, final String urlStr) {
+        iDianZuModle.uploadPic(context,key, cook, urlStr, new BaseCallbackListener<BaseResult>() {
             @Override
             public void onStart() {
                 iDianZuView.showload();

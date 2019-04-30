@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.loginmvp;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
 
@@ -13,8 +15,8 @@ public class LoginPresenerIml implements longincontract.IloginPresent {
     }
 
     @Override
-    public void startLogin(String cookie, String username, String password) {
-        iloginModel.login(cookie, username, password, new BaseCallbackListener<BaseResult>() {
+    public void startLogin(Context context, String cookie, String username, String password) {
+        iloginModel.login(context,cookie, username, password, new BaseCallbackListener<BaseResult>() {
             @Override
             public void onStart() {
                 if (iloginview == null) {

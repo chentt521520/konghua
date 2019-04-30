@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.dianpuMvp;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BasePresenter;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
@@ -23,14 +25,14 @@ public class Contact {
     //M
     public interface IdianPuModle {
 
-        void uploadPic(int pos, String cook, String filestr, BaseCallbackListener<BaseResult> baseResultBaseCallbackListener);
+        void uploadPic(Context context,int pos, String cook, String filestr, BaseCallbackListener<BaseResult> baseResultBaseCallbackListener);
 
     }
 
     //P
     public interface IdianPuPresent extends BasePresenter {
 
-        void uploadPic(int pos, String cook, String filestr);
+        void uploadPic(Context context,int pos, String cook, String filestr);
 
 
     }

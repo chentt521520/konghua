@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.dianpuMvp;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
 
@@ -17,8 +19,8 @@ public class DianpuPresentIml implements Contact.IdianPuPresent {
 
 
     @Override
-    public void uploadPic(final int pos, String cook, final String filestr) {
-        idianPuModle.uploadPic(pos,cook, filestr, new BaseCallbackListener<BaseResult>() {
+    public void uploadPic(Context context,final int pos, String cook, final String filestr) {
+        idianPuModle.uploadPic(context,pos,cook, filestr, new BaseCallbackListener<BaseResult>() {
             @Override
             public void onStart() {
                 idianPuView.shouload();

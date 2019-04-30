@@ -1,25 +1,36 @@
 package com.shijiucheng.konghua.com.shijiucheng.konghua.app;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.baidu.mapapi.CoordType;
 import com.baidu.mapapi.SDKInitializer;
+import com.shijiucheng.konghua.R;
 import com.tencent.android.tpush.XGIOperateCallback;
 import com.tencent.android.tpush.XGPushConfig;
 import com.tencent.android.tpush.XGPushManager;
+import com.tencent.smtt.sdk.QbSdk;
 
 import org.xutils.x;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.LinkedList;
+import java.util.Random;
 
 import Retrofit2.retrofit_Single;
+
+import static org.xutils.common.util.MD5.md5;
 
 
 public class APP extends MultiDexApplication {
@@ -28,36 +39,39 @@ public class APP extends MultiDexApplication {
     private static final String APP_KEY = "3081bb58b188412abee00b2eb4d7d5aa";
     public static LinkedList<Activity> activityLinkedList;
 
+
     @Override
     public void onCreate() {
         super.onCreate();
+
         x.Ext.init(this);
         MultiDex.install(this);
         SDKInitializer.initialize(this);
         SDKInitializer.setCoordType(CoordType.BD09LL);
 
         String phone_chan = Build.BRAND.toLowerCase();
-        XGPushConfig.enableOtherPush(this, true);
-        if (phone_chan.contains("meizu")) {
+        System.out.println(phone_chan);
 
-            XGPushConfig.setMzPushAppId(this, APP_ID);
-            XGPushConfig.setMzPushAppKey(this, APP_KEY);
-        } else if (phone_chan.contains("xiaomi")) {
-            XGPushConfig.setMiPushAppId(getApplicationContext(), "2882303761517890832");
-            XGPushConfig.setMiPushAppKey(getApplicationContext(), "5531789089832");
-        } else if (phone_chan.contains("huawei")) {
-            XGPushConfig.setHuaweiDebug(true);
-        }
+//        if (phone_chan.contains("meizu")) {
+
+        XGPushConfig.enableOtherPush(this, true);
+        XGPushConfig.setMzPushAppId(this, APP_ID);
+        XGPushConfig.setMzPushAppKey(this, APP_KEY);
+//        } else if (phone_chan.contains("xiaomi")) {
+
+//        } else if (phone_chan.contains("huawei")) {
+        XGPushConfig.setHuaweiDebug(true);
+//        }
+        XGPushConfig.setMiPushAppId(getApplicationContext(), "2882303761517890832");
+        XGPushConfig.setMiPushAppKey(getApplicationContext(), "5531789089832");
 
 
         XGPushManager.registerPush(this, new XGIOperateCallback() {
             @Override
             public void onSuccess(Object data, int flag) {
                 //token在设备卸载重装的时候有可能会变
-
                 System.out.println("注册成功，设备token为：" + data);
                 retrofit_Single.device_push_token = data.toString();
-
             }
 
             @Override
@@ -120,6 +134,11 @@ public class APP extends MultiDexApplication {
 
     }
 
+//    @Override
+//    protected void attachBaseContext(Context base) {
+//        super.attachBaseContext(base);
+//        StubAppUtils.attachBaseContext(this);
+//    }
 
     public void exitApp() {
         Log.d("app", "容器内的Activity列表如下 ");
@@ -146,4 +165,22 @@ public class APP extends MultiDexApplication {
         }
         return resources;
     }
+
+    private void initX5WebView() {
+        //搜集本地tbs内核信息并上报服务器，服务器返回结果决定使用哪个内核。
+        QbSdk.PreInitCallback cb = new QbSdk.PreInitCallback() {
+            @Override
+            public void onViewInitFinished(boolean arg0) {
+                //x5內核初始化完成的回调，为true表示x5内核加载成功，否则表示x5内核加载失败，会自动切换到系统内核。
+                Log.d("app", " onViewInitFinished is " + arg0);
+            }
+
+            @Override
+            public void onCoreInitFinished() {
+            }
+        };
+        //x5内核初始化接口
+        QbSdk.initX5Environment(getApplicationContext(), cb);
+    }
+
 }

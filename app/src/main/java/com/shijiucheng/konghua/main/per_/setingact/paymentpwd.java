@@ -95,7 +95,7 @@ public class paymentpwd extends BaseActivity_konghua implements verifyidentity.v
 
     public void getCode() {
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("act", "modify_pay_pwd");
         retrofit2.Call<ResponseBody> call = serivce.getCode(retrofit_Single.getInstence().getOpenid(paymentpwd.this), map);
         call.enqueue(new Callback<ResponseBody>() {
@@ -127,7 +127,7 @@ public class paymentpwd extends BaseActivity_konghua implements verifyidentity.v
 
     public void setpwd() {
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("code", paypwdEdyzm.getText().toString());
         map.put("new_pwd", paypwdEdmm.getText().toString());
         retrofit2.Call<ResponseBody> call = serivce.setpwd(retrofit_Single.getInstence().getOpenid(paymentpwd.this), map);

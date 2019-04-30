@@ -135,7 +135,7 @@ public class OrderTwoPage1 extends BaseActivity_konghua implements ordertwoAdapt
     public void getnum() {
         Retro_Intf serivce = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("page", page + "");
         map.put("order_status", status);
         map.put("keywords", "");
@@ -159,7 +159,8 @@ public class OrderTwoPage1 extends BaseActivity_konghua implements ordertwoAdapt
                             JSONObject jso1 = jsonArray.getJSONObject(i);
                             list.add(new ordertwoData(jso1.getString("order_id"), jso1.getString("order_sn"), jso1.getString("order_status"), jso1.getString("delivery_time"), ""
                                     , jso1.getString("order_amount"), jso1.getString("receiver_province_text") + jso1.getString("receiver_city_text") + jso1.getString("receiver_district_text"),
-                                    jso1.getString("receiver_address"), jso1.getString("receiver"), jso1.getString("receiver_tel"), jso1.getString("is_order_balance_remind"), jso1.getString("order_status_text")));
+                                    jso1.getString("receiver_address"), jso1.getString("receiver"), jso1.getString("receiver_tel"), jso1.getString("is_order_balance_remind")
+                                    , jso1.getString("order_status_text"), jso1.getString("order_amount_add")));
                         }
                         adapter.notifyDataSetChanged();
                         if (list.size() <= 0) {
@@ -244,7 +245,7 @@ public class OrderTwoPage1 extends BaseActivity_konghua implements ordertwoAdapt
         Retro_Intf serivce = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> map = new HashMap<>();
         map.put("order_id", id);
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         Call<ResponseBody> call = serivce.jiesuan(retrofit_Single.getInstence().getOpenid(OrderTwoPage1.this), map);
         call.enqueue(new Callback<ResponseBody>() {
             @Override

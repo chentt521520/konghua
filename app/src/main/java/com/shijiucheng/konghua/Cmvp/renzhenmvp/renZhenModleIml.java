@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.renzhenmvp;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
 
@@ -22,12 +24,12 @@ public class renZhenModleIml implements conttract.IrenzhenModle {
 
 
     @Override
-    public void applayRZ(String cook, final HashMap<String, String> map, final BaseCallbackListener<BaseResult> resultBaseCallbackListener) {
+    public void applayRZ(Context context, String cook, final HashMap<String, String> map, final BaseCallbackListener<BaseResult> resultBaseCallbackListener) {
         this.resultBaseCallbackListener = resultBaseCallbackListener;
         resultBaseCallbackListener.onStart();
         service = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> maps = new HashMap<>();
-        maps.putAll(retrofit_Single.getInstence().retro_postParameter());//公共参数
+        maps.putAll(retrofit_Single.getInstence().retro_postParameter(context));//公共参数
         maps.putAll(map);
         Call<ResponseBody> call = service.AutherCommit(cook, maps);
         call.enqueue(new Callback<ResponseBody>() {
@@ -63,11 +65,11 @@ public class renZhenModleIml implements conttract.IrenzhenModle {
     }
 
     @Override
-    public void getAuthorData(String cook, final BaseCallbackListener<BaseResult> callbackListener) {
+    public void getAuthorData(Context context,String cook, final BaseCallbackListener<BaseResult> callbackListener) {
         callbackListener.onStart();
         service = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> maps = new HashMap<>();
-        maps.putAll(retrofit_Single.getInstence().retro_postParameter());//公共参数
+        maps.putAll(retrofit_Single.getInstence().retro_postParameter(context));//公共参数
         Call<ResponseBody> call = service.getAuthorData(cook, maps);
         call.enqueue(new Callback<ResponseBody>() {
             @Override

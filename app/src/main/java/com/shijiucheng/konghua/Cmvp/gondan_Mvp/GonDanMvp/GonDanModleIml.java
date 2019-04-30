@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.gondan_Mvp.GonDanMvp;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
 
@@ -19,7 +21,7 @@ public class GonDanModleIml implements Contact.GonDanIModle {
 
 
     @Override
-    public void applayMsg(String cook, String cate1, String cate2, String work_order_images, String work_order_content, final BaseCallbackListener<BaseResult> baseResultBaseCallbackListener) {
+    public void applayMsg(Context context, String cook, String cate1, String cate2, String work_order_images, String work_order_content, final BaseCallbackListener<BaseResult> baseResultBaseCallbackListener) {
         baseResultBaseCallbackListener.onStart();
         serivce = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> map = new HashMap();
@@ -27,7 +29,7 @@ public class GonDanModleIml implements Contact.GonDanIModle {
         map.put("cate2", cate2);
         map.put("work_order_images", work_order_images);
         map.put("work_order_content", work_order_content);
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(context));
         Call<ResponseBody> call = serivce.WOuploadwork(cook, map);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -56,11 +58,11 @@ public class GonDanModleIml implements Contact.GonDanIModle {
     }
 
     @Override
-    public void getQustion(String cook, final BaseCallbackListener<BaseResult> baseResultBaseCallbackListener) {
+    public void getQustion(Context context, String cook, final BaseCallbackListener<BaseResult> baseResultBaseCallbackListener) {
         baseResultBaseCallbackListener.onStart();
         serivce = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> map = new HashMap();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(context));
         Call<ResponseBody> call = serivce.getWoQuestion(cook, map);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -90,10 +92,10 @@ public class GonDanModleIml implements Contact.GonDanIModle {
     }
 
     @Override
-    public void upLoadimg(String cook, String urlEnc, final BaseCallbackListener<BaseResult> baseResultBaseCallbackListener) {
+    public void upLoadimg(Context context, String cook, String urlEnc, final BaseCallbackListener<BaseResult> baseResultBaseCallbackListener) {
         baseResultBaseCallbackListener.onStart();
         Map<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(context));
         map.put("file_content", urlEnc);
         Call<ResponseBody> call = serivce.WOuploadimg(cook, map);
         call.enqueue(new Callback<ResponseBody>() {
@@ -102,12 +104,13 @@ public class GonDanModleIml implements Contact.GonDanIModle {
                 if (response.body() == null) {
                     return;
                 }
-                if (response.body() == null){
+                if (response.body() == null) {
                     BaseResult result = new BaseResult();
                     result.setCode("0");
                     result.setData("");
                     baseResultBaseCallbackListener.onNext(result);
-                    return;}
+                    return;
+                }
                 try {
                     String str = response.body().string();
                     BaseResult result = new BaseResult();

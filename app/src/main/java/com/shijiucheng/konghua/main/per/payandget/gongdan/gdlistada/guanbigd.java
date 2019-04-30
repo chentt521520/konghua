@@ -1,6 +1,8 @@
 package com.shijiucheng.konghua.main.per.payandget.gongdan.gdlistada;
 
 import android.app.DialogFragment;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
@@ -66,7 +68,8 @@ public class guanbigd extends DialogFragment {
         super.onResume();
         DisplayMetrics dm = getActivity().getResources().getDisplayMetrics();
         int w = dm.widthPixels;
-        getDialog().getWindow().setLayout((int) (w * 600 / 750.0), ViewGroup.LayoutParams.WRAP_CONTENT);
+        getDialog().getWindow().setLayout((int) (w * 600 / 750.0), -2);
+        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 
     public interface querenClose {

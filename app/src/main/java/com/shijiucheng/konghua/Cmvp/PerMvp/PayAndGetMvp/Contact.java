@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.PerMvp.PayAndGetMvp;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BasePresenter;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
@@ -21,13 +23,13 @@ public class Contact extends com.shijiucheng.konghua.Cmvp.payAndGet.Contact {
 
     //Prestent
     public interface IPrestent extends BasePresenter{
-        void getList(String search_modification_status,String cook, int page);
+        void getList(Context context,String search_modification_status,String cook, int page);
 
     }
 
     //Model
     public interface IModel {
-        void getList(String search_modification_status,String cook, int page, BaseCallbackListener<BaseResult> callbackListener);
+        void getList(Context context, String search_modification_status, String cook, int page, BaseCallbackListener<BaseResult> callbackListener);
 
     }
 

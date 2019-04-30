@@ -1,6 +1,5 @@
 package com.shijiucheng.konghua.renzheng;
 
-import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,11 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.github.dfqin.grantor.PermissionListener;
-import com.github.dfqin.grantor.PermissionsUtil;
 import com.jph.takephoto.app.TakePhoto;
 import com.jph.takephoto.app.TakePhotoImpl;
-import com.jph.takephoto.compress.CompressConfig;
 import com.jph.takephoto.model.CropOptions;
 import com.jph.takephoto.model.InvokeParam;
 import com.jph.takephoto.model.TContextWrap;
@@ -41,10 +37,8 @@ import com.shijiucheng.konghua.com.shijiucheng.konghua.app.paramsDataBean;
 import org.greenrobot.eventbus.EventBus;
 import org.xutils.x;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -131,8 +125,8 @@ public class DianZhu extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua i
         x.view().inject(this);
 
         if (authen_RZ.jsonAuthor != null) {
-            ed_xm.setText(authen_RZ.jsonAuthor.getStore_master_tel());
-            ed_pho.setText(authen_RZ.jsonAuthor.getStore_master_uname());
+            ed_xm.setText(authen_RZ.jsonAuthor.getStore_master_uname());
+            ed_pho.setText(authen_RZ.jsonAuthor.getStore_master_tel());
             ed_qq.setText(authen_RZ.jsonAuthor.getStore_master_qq());
             ed_sfz.setText(authen_RZ.jsonAuthor.getStore_master_idcard());
             file1 = authen_RZ.jsonAuthor.getStore_master_idcard_front();
@@ -166,8 +160,6 @@ public class DianZhu extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua i
         setViewHw_Lin(lin_sfztp1, w_ - (int) (w_ * 28 / 750.0), (int) (w_ * 200 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 10 / 750.0), (int) (w_ * 14 / 750.0), 0);
         setViewHw_Lin(te_sfztts, w_ - (int) (w_ * 28 / 750.0), (int) (w_ * 80 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 10 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 14 / 750.0));
         setTextSize(te_sfztts, (int) (w_ * 28 / 750.0));
-        setViewHw_Lin(te_ok, w_ - (int) (w_ * 28 / 750.0), (int) (w_ * 80 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 0 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 14 / 750.0));
-        setTextSize(te_ok, (int) (w_ * 45 / 750.0));
     }
 
     @Override
@@ -340,10 +332,10 @@ public class DianZhu extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua i
                                 e.printStackTrace();
                             }
                             if (picpos == 1) {
-                                present.uploadPic("sfz1", retrofit_Single.getInstence().getOpenid(DianZhu.this), str);
+                                present.uploadPic(DianZhu.this,"sfz1", retrofit_Single.getInstence().getOpenid(DianZhu.this), str);
                                 file1 = file.toString();
                             } else if (picpos == 2) {
-                                present.uploadPic("sfz2", retrofit_Single.getInstence().getOpenid(DianZhu.this), str);
+                                present.uploadPic(DianZhu.this,"sfz2", retrofit_Single.getInstence().getOpenid(DianZhu.this), str);
                                 file2 = file.toString();
                             }
                         }

@@ -34,6 +34,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -243,7 +244,7 @@ public class Per extends BaseFragment_konghua implements Banben_.fuluebanben {
     public void getappvis() {
         Retro_Intf serivce = retrofit_Single.getInstence().getserivce(2);
         Map<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(getActivity()));
         Call<ResponseBody> call = serivce.appverison(retrofit_Single.getInstence().getOpenid(getActivity()), map);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -298,7 +299,7 @@ public class Per extends BaseFragment_konghua implements Banben_.fuluebanben {
     private void getquit() {
         retro_intf = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> maps = new HashMap<>();
-        maps.putAll(retrofit_Single.getInstence().retro_postParameter());//公共参数
+        maps.putAll(retrofit_Single.getInstence().retro_postParameter(getActivity()));//公共参数
         Call<ResponseBody> getdata = retro_intf.quitLoigin(retrofit_Single.getInstence().getOpenid(getActivity()), maps);
         getdata.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -346,6 +347,11 @@ public class Per extends BaseFragment_konghua implements Banben_.fuluebanben {
     }
     @Override
     public void fuluebanben() {
+
+    }
+
+    @Override
+    public void installapk(File file) {
 
     }
 }

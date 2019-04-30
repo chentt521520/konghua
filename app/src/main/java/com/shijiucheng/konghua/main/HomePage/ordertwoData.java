@@ -2,9 +2,9 @@ package com.shijiucheng.konghua.main.HomePage;
 
 public class ordertwoData {
 
-    String id, ddh, status, time, time1, price, address, address1, shrname, shrpho,istixin,statustxt;
+    String id, ddh, status, time, time1, price, address, address1, shrname, shrpho,istixin,statustxt,qiwang;
 
-    public ordertwoData(String id, String ddh, String status, String time, String time1, String price, String address, String address1, String shrname, String shrpho, String istixin,String statustxt) {
+    public ordertwoData(String id, String ddh, String status, String time, String time1, String price, String address, String address1, String shrname, String shrpho, String istixin,String statustxt,String qiwang) {
         this.id = id;
         this.ddh = ddh;
         this.status = status;
@@ -17,6 +17,15 @@ public class ordertwoData {
         this.shrpho = shrpho;
         this.istixin = istixin;
         this.statustxt = statustxt;
+        this.qiwang = qiwang;
+    }
+
+    public String getQiwang() {
+        return qiwang;
+    }
+
+    public void setQiwang(String qiwang) {
+        this.qiwang = qiwang;
     }
 
     public String getStatustxt() {

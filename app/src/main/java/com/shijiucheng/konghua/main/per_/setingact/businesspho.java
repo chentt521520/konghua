@@ -108,7 +108,7 @@ public class businesspho extends BaseActivity_konghua implements verifyidentity.
 
     public void getpho() {
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("service_mobile", paypwdEdyzm.getText().toString());
         map.put("code", paypwdTimerte.getText().toString());
         Call<ResponseBody> call = serivce.yewu_pho(retrofit_Single.getInstence().getOpenid(businesspho.this), map);
@@ -158,7 +158,7 @@ public class businesspho extends BaseActivity_konghua implements verifyidentity.
 
     public void getCode() {
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("service_mobile", paypwdEdyzm.getText().toString());
         Call<ResponseBody> call = serivce.yewu_getcode(retrofit_Single.getInstence().getOpenid(businesspho.this), map);
         call.enqueue(new Callback<ResponseBody>() {

@@ -98,7 +98,7 @@ public class safepho extends DialogFragment {
                     return;
                 }
 
-            getpho();
+                getpho();
             }
         });
     }
@@ -129,7 +129,7 @@ public class safepho extends DialogFragment {
 
     public void getpho() {
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(getActivity()));
         map.put("safe_mobile", safepho.getText().toString());
         map.put("code", ywphoyzm.getText().toString());
         Call<ResponseBody> call = serivce.safe_pho(retrofit_Single.getInstence().getOpenid(getActivity()), map);
@@ -146,10 +146,9 @@ public class safepho extends DialogFragment {
                             dismiss();
                         } else {
                             String msgx = jsonObject.getString("msg");
-                            if ((msgx.equals("validate_code_is_error") )) {
+                            if ((msgx.equals("validate_code_is_error"))) {
                                 Toast.makeText(getActivity(), "验证码错误", Toast.LENGTH_SHORT).show();
-                            }else
-                            if ((msgx.equals("validate_code_is_null") )) {
+                            } else if ((msgx.equals("validate_code_is_null"))) {
                                 yewupho.yewufrag yewufrag = (yewupho.yewufrag) getActivity();
                                 yewufrag.yewufrag();
                             } else
@@ -172,7 +171,7 @@ public class safepho extends DialogFragment {
 
     public void getCode() {
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(getActivity()));
         map.put("safe_mobile", safepho.getText().toString());
         Call<ResponseBody> call = serivce.safe_getcode(retrofit_Single.getInstence().getOpenid(getActivity()), map);
         call.enqueue(new Callback<ResponseBody>() {

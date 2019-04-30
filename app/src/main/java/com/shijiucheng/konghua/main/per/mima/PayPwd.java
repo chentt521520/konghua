@@ -1,5 +1,6 @@
 package com.shijiucheng.konghua.main.per.mima;
 
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -50,6 +51,8 @@ public class PayPwd extends DialogFragment {
     EditText paypwdEdmmre;
     @BindView(R.id.paypwd_teok)
     TextView paypwdTeok;
+    @BindView(R.id.zhangjia_tequxiao)
+    TextView te_qx;
     Unbinder unbinder;
 
 
@@ -60,6 +63,7 @@ public class PayPwd extends DialogFragment {
 
         getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
         getDialog().getWindow().setGravity(Gravity.CENTER);
+        getDialog().setCanceledOnTouchOutside(false);
         view = inflater.inflate(R.layout.paypwd, container, false);
         serivce = retrofit_Single.getInstence().getserivce(2);
         DisplayMetrics dm = getActivity().getResources().getDisplayMetrics();
@@ -74,8 +78,8 @@ public class PayPwd extends DialogFragment {
         DisplayMetrics dm = new DisplayMetrics();
         int w = dm.widthPixels;
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-        getDialog().getWindow().setLayout(dm.widthPixels, (int) (wxx * 500 / 750.0));
-        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(0xff000000));
+        getDialog().getWindow().setLayout(dm.widthPixels-60, -2);
+        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 
     @Override
@@ -84,7 +88,7 @@ public class PayPwd extends DialogFragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.paypwd_timerte, R.id.paypwd_teok})
+    @OnClick({R.id.paypwd_timerte, R.id.paypwd_teok, R.id.zhangjia_tequxiao})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.paypwd_timerte:
@@ -110,6 +114,10 @@ public class PayPwd extends DialogFragment {
                 }
                 setpwd();
                 break;
+
+            case R.id.zhangjia_tequxiao:
+                dismiss();
+                break;
         }
     }
 
@@ -120,13 +128,16 @@ public class PayPwd extends DialogFragment {
 
     public void getCode() {
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(getActivity()));
         map.put("act", "modify_pay_pwd");
         retrofit2.Call<ResponseBody> call = serivce.getCode(retrofit_Single.getInstence().getOpenid(getActivity()), map);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
+                    if (response.body() == null) {
+                        return;
+                    }
                     String str = response.body().string();
                     try {
                         JSONObject jsonObject = new JSONObject(str);
@@ -152,7 +163,7 @@ public class PayPwd extends DialogFragment {
 
     public void setpwd() {
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(getActivity()));
         map.put("code", paypwdEdyzm.getText().toString());
         map.put("new_pwd", paypwdEdmm.getText().toString());
         retrofit2.Call<ResponseBody> call = serivce.setpwd(retrofit_Single.getInstence().getOpenid(getActivity()), map);

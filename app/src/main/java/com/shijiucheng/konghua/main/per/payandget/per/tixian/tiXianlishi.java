@@ -91,7 +91,7 @@ public class tiXianlishi extends BaseActivity_konghua {
 
     public void getList() {
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("page", page + "");
         Call<ResponseBody> call = serivce.getListTX(retrofit_Single.getInstence().getOpenid(tiXianlishi.this), map);
         call.enqueue(new Callback<ResponseBody>() {

@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.WorkOrderMVP;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BasePresenter;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
@@ -21,13 +23,13 @@ public class WorkorContact {
 
     //Modle
     public interface Modle {
-        void getList(String keyword, String cook, int type, int page, BaseCallbackListener<BaseResult> callbackListener);
+        void getList(Context context, String keyword, String cook, int type, int page, BaseCallbackListener<BaseResult> callbackListener);
 
     }
 
     //Prestent
     public interface Prestent extends BasePresenter {
-        void getList(String keyword, String cook, int type, int page);
+        void getList(Context context,String keyword, String cook, int type, int page);
 
     }
 }

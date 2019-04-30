@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.WorkOrderMVP;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
 
@@ -18,7 +20,7 @@ public class WorkorModle implements WorkorContact.Modle {
     Retro_Intf serivcce;
 
     @Override
-    public void getList(String keyword, String cook, int type, final int page, final BaseCallbackListener<BaseResult> callbackListener) {
+    public void getList(Context context, String keyword, String cook, int type, final int page, final BaseCallbackListener<BaseResult> callbackListener) {
 
         callbackListener.onStart();
         serivcce = retrofit_Single.getInstence().getserivce(2);
@@ -29,7 +31,7 @@ public class WorkorModle implements WorkorContact.Modle {
             maps.put("search_work_order_status", "wait_reply");
         maps.put("page", page + "");
         maps.put("keywords", keyword);
-        maps.putAll(retrofit_Single.getInstence().retro_postParameter());
+        maps.putAll(retrofit_Single.getInstence().retro_postParameter(context));
 
         Call<ResponseBody> call = serivcce.getWorkOrderList(cook, maps);
         call.enqueue(new Callback<ResponseBody>() {

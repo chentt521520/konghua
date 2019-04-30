@@ -160,16 +160,7 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
         orderadapter = new com.shijiucheng.konghua.Cmvp.OrderSYMVPNew.orderrecyc.orderadapter(getActivity(), list);
         hpNewRecycorders.setAdapter(orderadapter);
 
-//        pagePresent.getData(retrofit_Single.getInstence().getOpenid(getActivity()));
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (fristinit == 0) {
-                    pagePresent.getData(retrofit_Single.getInstence().getOpenid(getActivity()));
-                }
-            }
-        }, 3000);
+        pagePresent.getData(getActivity(), retrofit_Single.getInstence().getOpenid(getActivity()));
     }
 
     @Override
@@ -215,24 +206,6 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
 
         try {
             JSONArray jso_banner = jsonObject.getJSONArray("banner_list");
-            if (jso_banner.length() >= 1) {
-                imgobj = new JSONObject[jso_banner.length()];
-                img = new String[jso_banner.length()];
-                for (int i = 0; i < jso_banner.length(); i++) {
-                    JSONObject jsob = jso_banner.getJSONObject(i);
-                    imgobj[i] = jsob;
-                    img[i] = jsob.getString("img");
-                }
-                if (img.length >= 1 && bannersize == 0) {
-                    bannersize = 1;
-                    pagerAdapter = new pagerAdapter(getActivity(), img);
-                    pagerAdapter.setImgOncl(this);
-                    initPoint();
-                    initViewPager();
-                }
-            }
-
-
             JSONArray notice_list = jsonObject.getJSONArray("notice_list");
             if (fristinit == 0) {
                 fristinit = 1;
@@ -245,9 +218,9 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
                 }
             }
             if (hpNewTemoney != null) {
-                hpNewTemoney.setText("总收入：" + jsonObject.getString("income_amount"));
-                hpNewTemoney1.setText(jsonObject.getString("balance_amount"));
-                hpNewTemoney2.setText(jsonObject.getString("expenditure_amount"));
+                hpNewTemoney.setText("总收入：" + jsonObject.getString("income_amount") + "元");
+                hpNewTemoney1.setText(jsonObject.getString("balance_amount") + "元");
+                hpNewTemoney2.setText(jsonObject.getString("expenditure_amount") + "元");
             }
 
             Phone = jsonObject.getString("kf_tel");
@@ -267,6 +240,23 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
             } else {
                 relativeLayout1.setVisibility(View.VISIBLE);
                 relativeLayout.setVisibility(View.VISIBLE);
+            }
+
+            if (jso_banner.length() >= 1) {
+                imgobj = new JSONObject[jso_banner.length()];
+                img = new String[jso_banner.length()];
+                for (int i = 0; i < jso_banner.length(); i++) {
+                    JSONObject jsob = jso_banner.getJSONObject(i);
+                    imgobj[i] = jsob;
+                    img[i] = jsob.getString("img");
+                }
+                if (img.length >= 1 && bannersize == 0) {
+                    bannersize = 1;
+                    pagerAdapter = new pagerAdapter(getActivity(), img);
+                    pagerAdapter.setImgOncl(this);
+                    initPoint();
+                    initViewPager();
+                }
             }
 
         } catch (JSONException e) {
@@ -310,7 +300,8 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
         if (data != null) {
             if (data.getMsg().equals(configParams.refreshhp)) {
                 if (pagePresent != null) {
-                    pagePresent.getData(retrofit_Single.getInstence().getOpenid(getActivity()));
+                    System.out.println("hh11xx");
+                    pagePresent.getData(getActivity(), retrofit_Single.getInstence().getOpenid(getActivity()));
                 }
                 return;
             }
@@ -519,6 +510,10 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
                 geotoOrder(0, "已完成", "balance");
                 break;
             case R.id.hpNew_imnews:
+
+                paramsDataBean databean1 = new paramsDataBean();
+                databean1.setMsg(configParams.symsg);
+                EventBus.getDefault().post(databean1);
                 totherpage(2);
                 break;
             case R.id.hpNew_terefund:
@@ -528,9 +523,13 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
                 geotoOrder(0, "待结算", "sign");
                 break;
             case R.id.hpNew_tecomplete:
-                geotoOrder(0, "已完成", "balanc");
+                geotoOrder(0, "已完成", "balance");
                 break;
             case R.id.hpNew_tenews:
+
+                paramsDataBean databean2 = new paramsDataBean();
+                databean2.setMsg(configParams.symsg);
+                EventBus.getDefault().post(databean2);
                 totherpage(2);
                 break;
 
@@ -714,5 +713,6 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
 
         textSwitcherAnimation.create();
     }
+
 
 }

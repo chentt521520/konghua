@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.PerMvp.PayAndGetMvp;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
 
@@ -17,11 +19,11 @@ public class PGModelIml implements Contact.IModel {
     Retro_Intf serivce;
 
     @Override
-    public void getList(String search_modification_status,String cook, int page, final BaseCallbackListener<BaseResult> callbackListener) {
+    public void getList(Context context, String search_modification_status, String cook, int page, final BaseCallbackListener<BaseResult> callbackListener) {
         callbackListener.onStart();
         serivce = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(context));
         map.put("page", page + "");
         map.put("search_modification_status", search_modification_status);
         Call<ResponseBody> call = serivce.getPGList(cook, map);

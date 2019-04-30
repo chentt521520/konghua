@@ -174,7 +174,7 @@ public class huifugd extends DialogFragment {
 
     private void uploadReplay(String id, String urls, String str) {
         Map<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(getActivity()));
         map.put("id", id);
         map.put("reply_images", urls);
         map.put("reply_content", str);

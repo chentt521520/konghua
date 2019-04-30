@@ -1,6 +1,8 @@
 package com.shijiucheng.konghua.main.HomePage;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Paint;
@@ -44,6 +46,7 @@ import com.shijiucheng.konghua.com.shijiucheng.konghua.app.paramsDataBean;
 import com.shijiucheng.konghua.main.HomePage.frag.ditu_frag;
 import com.shijiucheng.konghua.main.HomePage.frag.jiedan_frag;
 import com.shijiucheng.konghua.main.HomePage.frag.jiesuan_frag;
+import com.shijiucheng.konghua.main.HomePage.frag.jiesuan_fragagreerefuse;
 import com.shijiucheng.konghua.main.HomePage.frag.jujue_frag;
 import com.shijiucheng.konghua.main.HomePage.frag.riliTime_frag;
 import com.shijiucheng.konghua.main.HomePage.frag.tuidan_frag;
@@ -79,7 +82,7 @@ import top.zibin.luban.OnCompressListener;
 
 public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jiedan, zhangjia_frag.zhangjia,
         jujue_frag.jujue, tuidan_frag.tuidan, ValidatePwd.yanzhenpwd, riliTime_frag.setdatetime, TakePhoto.TakeResultListener,
-        InvokeListener, jiesuan_frag.jieshuan, tuidanxiadanfang_frag.tuidanxdf, ditu_frag.mappos {
+        InvokeListener, jiesuan_frag.jieshuan, tuidanxiadanfang_frag.tuidanxdf, ditu_frag.mappos, jiesuan_fragagreerefuse.jieshuanbf {
 
     @BindView(R.id.orderddatails_dh)
     DaoHang_top orderddatailsDh;
@@ -205,7 +208,6 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
     jiedan_frag jiedan_frag;
     zhangjia_frag zhangjia;
     jujue_frag jujue_frag;
-    tuidan_frag tuidan_frag;
     riliTime_frag riliTime_frag;
     jiesuan_frag jiesuan_frag;
     tuidanxiadanfang_frag xdf_tuidan;
@@ -216,6 +218,22 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
     String orderstatus = "";
 
     String[] dataurl = {"", "", ""};//签收信息
+
+
+    @BindView(R.id.orderddatails_texdfname)
+    TextView orderddatailsTexdfname;
+    @BindView(R.id.orderddatails_texdfqq)
+    TextView orderddatailsTexdfqq;
+    @BindView(R.id.orderddatails_imxdfqq)
+    ImageView orderddatailsImxdfqq;
+    @BindView(R.id.orderddatails_texdfpho)
+    TextView orderddatailsTexdfpho;
+    @BindView(R.id.orderddatails_imxdfpho)
+    ImageView orderddatailsImxdfpho;
+    @BindView(R.id.orderddatails_linxdf)
+    LinearLayout orderddatailsLinxdf;
+    @BindView(R.id.orderddatails_henxdf)
+    View orderddatailsHenxdf;
     private TakePhoto takePhoto;
     private InvokeParam invokeParam;
     int ix = 1;
@@ -229,7 +247,11 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
     double[] jwd = {0, 0, 0, 0};
     ditu_frag ditu_frag;
 
+    String QQ = "", phoxdf = "", jiesuannum = "";
     GeoCoder mSearch = GeoCoder.newInstance();
+
+    jiesuan_fragagreerefuse js_bufen = new jiesuan_fragagreerefuse();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -248,7 +270,6 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
         zhangjia = new zhangjia_frag();
         jujue_frag = new jujue_frag();
         EventBus.getDefault().register(this);
-        tuidan_frag = new tuidan_frag();
         pwd = new PayPwd();
         yanzhenpwd = new ValidatePwd();
         riliTime_frag = new riliTime_frag();
@@ -304,12 +325,85 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
             }
         });
 
+        orderddatailsTexdfqq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (checkApkExist(Orderdatels.this, "com.tencent.mobileqq")) {
+
+                    if (!TextUtils.isEmpty(QQ)) {
+                        String urlQQ = "mqqwpa://im/chat?chat_type=wpa&uin=" + QQ + "&version=1";
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(urlQQ)));
+                        overridePendingTransition(R.anim.push_left_in,
+                                R.anim.push_left_out);
+                    }
+                } else {
+                    toaste_ut(Orderdatels.this, "未检测到QQ");
+                }
+            }
+        });
+        orderddatailsImxdfqq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (checkApkExist(Orderdatels.this, "com.tencent.mobileqq")) {
+
+                    if (!TextUtils.isEmpty(QQ)) {
+                        String urlQQ = "mqqwpa://im/chat?chat_type=wpa&uin=" + QQ + "&version=1";
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(urlQQ)));
+                        overridePendingTransition(R.anim.push_left_in,
+                                R.anim.push_left_out);
+                    }
+                } else {
+                    toaste_ut(Orderdatels.this, "未检测到QQ");
+                }
+            }
+        });
+
+        orderddatailsImxdfpho.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!TextUtils.isEmpty(phoxdf)) {
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"
+                            + phoxdf));
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.push_left_in,
+                            R.anim.push_left_out);
+                }
+            }
+        });
+        orderddatailsTexdfpho.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!TextUtils.isEmpty(phoxdf)) {
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"
+                            + phoxdf));
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.push_left_in,
+                            R.anim.push_left_out);
+                }
+            }
+        });
+
     }
+
+    public boolean checkApkExist(Context context, String packageName) {
+        if (packageName == null || "".equals(packageName))
+            return false;
+        try {
+            ApplicationInfo info = context.getPackageManager().getApplicationInfo(packageName,
+                    PackageManager.GET_UNINSTALLED_PACKAGES);
+            return true;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
+    }
+
 
     private void getorder() {
         jdt.show(getFragmentManager(), "jdt");
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("order_id", id);
         Call<ResponseBody> call = serivce.getOrderDetail(retrofit_Single.getInstence().getOpenid(this), map);
         call.enqueue(new Callback<ResponseBody>() {
@@ -365,14 +459,18 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
             orderddatailsTetime.setText("配送时间：" + jso.getString("delivery_time_text"));
 
             orderddatailsTespprice1.setText("结算金额：" + jso.getString("order_balance_amount") + "元");
+            jiesuannum = jso.getString("order_balance_amount");
 
             orderstatus = jso.getString("order_status");
             orderddatailsTezt.setText(jso.getString("order_status_text"));
-            if (orderstatus.equals("40")) {
+            if (orderstatus.equals("40") || orderstatus.equals("31")) {
                 orderddatailsTespprice1.setVisibility(View.VISIBLE);
             } else orderddatailsTespprice1.setVisibility(View.GONE);
 
-            orderddatailsTespprice.setText("订单金额：" + jso.getString("order_amount") + "元");
+
+            if (orderstatus.equals("3")) {
+                orderddatailsTespprice.setText("订单金额：" + jso.getString("order_amount") + "元" + "        期望金额 :" + jso.getString("order_amount_add") + "元");
+            } else orderddatailsTespprice.setText("订单金额：" + jso.getString("order_amount") + "元");
             price_order = jso.getString("order_amount");
 
             orderddatailsTedizhi.setText(jso.getString("receiver_province_text") + jso.getString("receiver_city_text") + jso.getString("receiver_district_text") + " " + jso.getString("receiver_address"));
@@ -412,7 +510,7 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
             String orderstatus = jso.getString("order_status");
 
             if (!TextUtils.isEmpty(jso.getString("order_balance_communicate_content")))
-                orderddatailsTekkyy.setText(jso.getString("order_balance_communicate_content"));
+                orderddatailsTekkyy.setText("部分结算说明：" + jso.getString("order_balance_communicate_content"));
             else orderddatailsTekkyy.setVisibility(View.GONE);
 
             if (orderstatus.equals("40") || orderstatus.equals("30")) {
@@ -543,6 +641,24 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
                 lin_bza.setVisibility(View.GONE);
                 v_kb.setVisibility(View.GONE);
             }
+            String xdfname = jso.getString("delivery_uname");
+            QQ = jso.getString("delivery_qq");
+            phoxdf = jso.getString("delivery_tel");
+
+            if (!TextUtils.isEmpty(xdfname))
+                if (!TextUtils.isEmpty(QQ))
+                    if (!TextUtils.isEmpty(phoxdf)) {
+                        orderddatailsLinxdf.setVisibility(View.VISIBLE);
+                        orderddatailsHenxdf.setVisibility(View.VISIBLE);
+                        orderddatailsTexdfname.setText("下单方姓名:   " + xdfname);
+                        orderddatailsTexdfqq.setText(QQ);
+                        orderddatailsTexdfpho.setText(phoxdf);
+
+                    } else {
+                        orderddatailsLinxdf.setVisibility(View.GONE);
+                        orderddatailsHenxdf.setVisibility(View.GONE);
+                    }
+
 
             status(orderstatus);
         } catch (JSONException e) {
@@ -595,6 +711,7 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
                     if (fastClick()) {
                         Bundle bundle = new Bundle();
                         bundle.putString("id", id);
+                        bundle.putString("type", "jujue");//拒绝jujue，tuidan退单
                         startActivityByIntent(Orderdatels.this, refuseorder.class, bundle);
                     }
                 }
@@ -636,13 +753,11 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
             tecz3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (!jujue_frag.isAdded()) {
-                        if (!TextUtils.isEmpty(price_order)) {
-                            Bundle bundle = new Bundle();
-                            bundle.putString("id", id);
-                            jujue_frag.setArguments(bundle);
-                            jujue_frag.show(getSupportFragmentManager(), "zj");
-                        }
+                    if (fastClick()) {
+                        Bundle bundle = new Bundle();
+                        bundle.putString("id", id);
+                        bundle.putString("type", "jujue");//拒绝jujue，tuidan退单
+                        startActivityByIntent(Orderdatels.this, refuseorder.class, bundle);
                     }
                 }
             });
@@ -673,13 +788,11 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
             tecz3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (!tuidan_frag.isAdded()) {
-                        if (!TextUtils.isEmpty(price_order)) {
-                            Bundle bundle = new Bundle();
-                            bundle.putString("id", id);
-                            tuidan_frag.setArguments(bundle);
-                            tuidan_frag.show(getSupportFragmentManager(), "zj");
-                        }
+                    if (fastClick()) {
+                        Bundle bundle = new Bundle();
+                        bundle.putString("id", id);
+                        bundle.putString("type", "tuidan");//拒绝jujue，tuidan退单
+                        startActivityByIntent(Orderdatels.this, refuseorder.class, bundle);
                     }
 
                 }
@@ -807,6 +920,56 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
 //                    }
                 }
             });
+        } else if (status.equals("31")) {
+            lin_bot.setVisibility(View.VISIBLE);
+            tecz1.setVisibility(View.INVISIBLE);
+            tecz2.setVisibility(View.VISIBLE);
+            tecz2.setBackgroundResource(R.drawable.biankuangyuanjiao);
+            tecz2.setTextColor(getResources().getColor(R.color.zhu));
+            tecz3.setVisibility(View.VISIBLE);
+            tecz2.setText("同意结算");
+            tecz3.setText("拒绝结算");
+
+            tecz1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+            tecz2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Bundle b = new Bundle();
+                    b.putString("orderid", id);
+                    b.putString("tit", "同意结算");
+                    b.putString("txt", "确认同意部分结算金额:" + jiesuannum + "吗，确认继续？");
+                    b.putString("type", "0");
+                    if (!js_bufen.isAdded()) {
+                        js_bufen.setArguments(b);
+                        js_bufen.show(getSupportFragmentManager(), "ty");
+                    }
+                }
+            });
+            tecz3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (fastClick()) {
+                        Bundle b = new Bundle();
+                        b.putString("orderid", id);
+                        b.putString("tit", "拒绝结算");
+                        b.putString("txt", "确认拒绝部分结算金额:" + jiesuannum + "吗,拒绝后订单将回到待结算状态，确认继续？");
+                        b.putString("type", "1");
+                        if (!js_bufen.isAdded()) {
+                            js_bufen.setArguments(b);
+                            js_bufen.show(getSupportFragmentManager(), "jjue");
+                        }
+
+
+                    }
+
+                }
+            });
+
         } else if (status.equals("40")) {
             lin_bot.setVisibility(View.GONE);
 
@@ -868,7 +1031,7 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
     private void jiedan1() {
         jdt.show(getFragmentManager(), "jdt");
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("order_id", id);
         Call<ResponseBody> call = serivce.jiedan(retrofit_Single.getInstence().getOpenid(this), map);
         call.enqueue(new Callback<ResponseBody>() {
@@ -914,7 +1077,7 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
     public void zhangjia1(String price) {
         jdt.show(getFragmentManager(), "jdt");
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("order_id", id);
         map.put("order_amount_add", price);
         Call<ResponseBody> call = serivce.zhangjia(retrofit_Single.getInstence().getOpenid(this), map);
@@ -961,7 +1124,7 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
     public void jujue1(String yy_type, String txt) {
         jdt.show(getFragmentManager(), "jdt");
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("order_id", id);
         map.put("order_refuse_reason", yy_type);
         map.put("order_refuse_reason_content", txt);
@@ -1023,7 +1186,7 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
     public void peisong1(String store_pack_images, String delivery_emp_uname, String delivery_emp_tel) {
         jdt.show(getFragmentManager(), "jdt");
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("order_id", id);
         map.put("store_pack_images", store_pack_images);
         map.put("delivery_emp_uname", delivery_emp_uname);
@@ -1073,7 +1236,7 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
         yy_typex = yy_type;
         txtx = txt;
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("order_id", id);
         map.put("order_cancel_reason", yy_type);
         map.put("order_cancel_reason_content", txt);
@@ -1241,7 +1404,7 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
     private void uploadpic(final int xx, String url) {
         Retro_Intf serivce = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("file_content", url);
         Call<ResponseBody> call = serivce.qianshoupic(retrofit_Single.getInstence().getOpenid(this), map);
         call.enqueue(new Callback<ResponseBody>() {
@@ -1297,7 +1460,7 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
         jdt.show(getFragmentManager(), "jdt");
         Retro_Intf serivce = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         map.put("order_id", id);
         map.put("order_sign_personnel_type", order_sign_personnel_type);
         map.put("order_sign_images", url);
@@ -1366,7 +1529,7 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
         Retro_Intf serivce = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> map = new HashMap<>();
         map.put("order_id", id);
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         Call<ResponseBody> call = serivce.jiesuan(retrofit_Single.getInstence().getOpenid(Orderdatels.this), map);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -1413,7 +1576,7 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
         Retro_Intf serivce = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> map = new HashMap<>();
         map.put("order_id", id);
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         Call<ResponseBody> call = serivce.tuidanxdf(retrofit_Single.getInstence().getOpenid(Orderdatels.this), map);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -1427,7 +1590,7 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
                         JSONObject jso = new JSONObject(str);
                         jdt.dismiss();
                         if (jso.getString("status").equals("1")) {
-                            Toast.makeText(Orderdatels.this, "提醒成功", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Orderdatels.this, "操作成功", Toast.LENGTH_SHORT).show();
                         }
                         getorder();
 
@@ -1596,5 +1759,10 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
         } else {
             goToTencentMap(jwd[0], jwd[1], jwd[2], jwd[3]);
         }
+    }
+
+    @Override
+    public void jieshuan_bufen() {
+        getorder();
     }
 }

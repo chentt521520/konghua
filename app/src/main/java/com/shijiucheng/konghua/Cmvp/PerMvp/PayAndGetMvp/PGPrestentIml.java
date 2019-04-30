@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.PerMvp.PayAndGetMvp;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
 import com.shijiucheng.konghua.main.per.payandget.szmxdata;
@@ -21,8 +23,8 @@ public class PGPrestentIml implements Contact.IPrestent {
     }
 
     @Override
-    public void getList(String search_modification_status, String cook, int page) {
-        model.getList(search_modification_status, cook, page, new BaseCallbackListener<BaseResult>() {
+    public void getList(Context context, String search_modification_status, String cook, int page) {
+        model.getList(context,search_modification_status, cook, page, new BaseCallbackListener<BaseResult>() {
             @Override
             public void onStart() {
                 view.showLoad();

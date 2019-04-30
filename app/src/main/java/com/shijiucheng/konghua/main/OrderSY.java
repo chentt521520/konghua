@@ -94,7 +94,7 @@ public class OrderSY extends BaseFragment_konghua implements SYContact.SYView {
     protected void AddView() {
         rili_frag = new rili_frag();
         EventBus.getDefault().register(this);
-        getnum();
+//        getnum();
     }
 
     @Override
@@ -316,7 +316,7 @@ public class OrderSY extends BaseFragment_konghua implements SYContact.SYView {
 
     public void getnum() {
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(getActivity()));
         Call<ResponseBody> call = serivce.getOrderNumList(retrofit_Single.getInstence().getOpenid(getActivity()), map);
         call.enqueue(new Callback<ResponseBody>() {
             @Override

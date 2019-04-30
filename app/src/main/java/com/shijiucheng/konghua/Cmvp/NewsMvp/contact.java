@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.NewsMvp;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BasePresenter;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
@@ -21,15 +23,15 @@ public class contact {
 
     //Modle
     public interface IModle {
-        void getNews(String cook, int page, int type, String is_read, BaseCallbackListener<BaseResult> callbackListener);
+        void getNews(Context context, String cook, int page, int type, String is_read, BaseCallbackListener<BaseResult> callbackListener);
 
-        void getNotice(String cook, int page, int type, String is_read, BaseCallbackListener<BaseResult> callbackListener);
+        void getNotice(Context context,String cook, int page, int type, String is_read, BaseCallbackListener<BaseResult> callbackListener);
     }
 
     //Present
     public interface IPrestent extends BasePresenter {
-        void getNews(String cook, int page, int type, String is_read);
+        void getNews(Context context,String cook, int page, int type, String is_read);
 
-        void getNotice(String cook, int page, int type, String is_read);
+        void getNotice(Context context,String cook, int page, int type, String is_read);
     }
 }

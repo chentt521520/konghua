@@ -1,5 +1,7 @@
 package com.shijiucheng.konghua.Cmvp.HomePageMvp;
 
+import android.content.Context;
+
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
 
@@ -20,11 +22,11 @@ public class HPModelIml implements HPContact.HPModle {
     Retro_Intf service1;
 
     @Override
-    public void getData(String cookie, final BaseCallbackListener<BaseResult> callbackListener) {
+    public void getData(Context context, String cookie, final BaseCallbackListener<BaseResult> callbackListener) {
         callbackListener.onStart();
         service1 = retrofit_Single.getInstence().getserivce(2);
         HashMap<String, String> maps = new HashMap<>();
-        maps.putAll(retrofit_Single.getInstence().retro_postParameter());//公共参数
+        maps.putAll(retrofit_Single.getInstence().retro_postParameter(context));//公共参数
         Call<ResponseBody> getdata = service1.homePage(cookie, maps);
         getdata.enqueue(new Callback<ResponseBody>() {
             @Override

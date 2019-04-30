@@ -47,9 +47,9 @@ public class txianlsada extends RecyclerView.Adapter<txianlsada.viewholder> {
         } else
             holder.v_hen.setVisibility(View.VISIBLE);
         if (data.getNum().contains("-"))
-            holder.txlsitTenum.setText(data.getNum());
+            holder.txlsitTenum.setText(data.getNum() + "元");
         else
-            holder.txlsitTenum.setText("+" + data.getNum());
+            holder.txlsitTenum.setText("+" + data.getNum() + "元");
         holder.txlsitZt.setText(data.getStatusstr());
         holder.te_status.setText(data.getStatusstr());
 

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bai"
+    android:background="@drawable/biankuangyuanjiaodialog"
     android:orientation="vertical">
 
     <TextView
@@ -37,9 +37,9 @@
         android:id="@+id/aufail_teok"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@color/zhu"
+        android:background="@drawable/biankuangyuanjiaodialogxia"
         android:gravity="center"
-        android:text="确认"
+        android:text="我知道了"
         android:textColor="@color/bai"
         android:textSize="14sp" />
 

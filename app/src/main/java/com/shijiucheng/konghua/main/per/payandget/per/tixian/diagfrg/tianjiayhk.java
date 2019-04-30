@@ -118,7 +118,7 @@ public class tianjiayhk extends DialogFragment implements tjyhkada.getBank {
 
     public void getBankList() {
         HashMap<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(getActivity()));
         retrofit2.Call<ResponseBody> call = serivce.getBankist(retrofit_Single.getInstence().getOpenid(getActivity()), map);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -154,7 +154,7 @@ public class tianjiayhk extends DialogFragment implements tjyhkada.getBank {
     public void setmoren(final String bankid, final String name) {
         HashMap<String, String> map = new HashMap<>();
         map.put("bank_id", bankid);
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(getActivity()));
         retrofit2.Call<ResponseBody> call = serivce.setMoRen(retrofit_Single.getInstence().getOpenid(getActivity()), map);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
