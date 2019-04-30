@@ -5,20 +5,29 @@ import android.app.Application;
 import android.app.FragmentManager;
 import android.content.ComponentCallbacks;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
 import android.util.DisplayMetrics;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.github.dfqin.grantor.PermissionListener;
+import com.github.dfqin.grantor.PermissionsUtil;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.BaseActivity_konghua;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.internate_if;
 import com.shijiucheng.konghua.main.MainActivity;
@@ -29,6 +38,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.xutils.common.util.MD5;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -47,15 +57,13 @@ public class Guide_konghua extends BaseActivity_konghua implements Banben_.fulue
     Banben_ banben_ = new Banben_();
     internate_if internate_if = new internate_if();
 
+    int INSTALL_PACKAGES_REQUEST_CODE = 0x001;
+
     @Override
     protected void AddView() {
         setCustomDensity(this, getApplication());
         DaoHangLan(this);
-        if (isNetworkConnected(this)) {
-            getappvis();
-        } else {
-            internate_if.show(getFragmentManager(), "xx");
-        }
+
         XGPushClickedResult click = XGPushManager.onActivityStarted(this);
         if (click != null) {
             //从推送通知栏打开-Service打开Activity会重新执行Laucher流程
@@ -65,12 +73,13 @@ public class Guide_konghua extends BaseActivity_konghua implements Banben_.fulue
             }
             finish();
         }
+        requestorge();
     }
 
     public void getappvis() {
         Retro_Intf serivce = retrofit_Single.getInstence().getserivce(2);
         Map<String, String> map = new HashMap<>();
-        map.putAll(retrofit_Single.getInstence().retro_postParameter());
+        map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
         Call<ResponseBody> call = serivce.appverison(retrofit_Single.getInstence().getOpenid(Guide_konghua.this), map);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -256,19 +265,89 @@ public class Guide_konghua extends BaseActivity_konghua implements Banben_.fulue
         return MD5.md5(basestring.toString());
     }
 
-    /**
-     * @param context 定制状态栏样色
-     */
-    public void DaoHangLan(Context context) {
-        if (Build.VERSION.SDK_INT >= 21) {
-            Window window = ((Activity) context).getWindow();
-            // 取消设置透明状态栏,使 ContentView 内容不再沉浸到状态栏下
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            // 需要设置这个 flag 才能调用 setStatusBarColor 来设置状态栏颜色
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            // 设置状态栏颜色
-            window.setStatusBarColor(Color.parseColor("#ee6e2d"));
+    private void requestorge() {
+        if (PermissionsUtil.hasPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            //读写权限
+            toaste_ut(Guide_konghua.this, "允许111");
+
+            if (isNetworkConnected(this)) {
+                getappvis();
+            } else {
+                internate_if.show(getFragmentManager(), "xx");
+            }
+
+        } else {
+            PermissionsUtil.requestPermission(this, new PermissionListener() {
+                @Override
+                public void permissionGranted(@NonNull String[] permissions) {
+                    //读写权限
+                    toaste_ut(Guide_konghua.this, "允许");
+                    if (isNetworkConnected(Guide_konghua.this)) {
+                        getappvis();
+                    } else {
+                        internate_if.show(getFragmentManager(), "xx");
+                    }
+
+                }
+
+
+                @Override
+                public void permissionDenied(@NonNull String[] permissions) {
+                    //用户拒绝了访问摄像头的申请
+                    toaste_ut(Guide_konghua.this, "拒绝");
+                }
+            }, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE});
         }
     }
 
+
+    public void getinstalapk(File file) {
+        System.out.println("xxxxxx");
+        if (Build.VERSION.SDK_INT >= 26) {
+            boolean b = getPackageManager().canRequestPackageInstalls();
+
+            System.out.println(b + "  xx");
+            if (b) {
+                installapkfile(file);
+            } else {
+                //请求安装未知应用来源的权限
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.REQUEST_INSTALL_PACKAGES}, INSTALL_PACKAGES_REQUEST_CODE);
+            }
+        } else {
+            installapkfile(file);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == INSTALL_PACKAGES_REQUEST_CODE) {
+
+        }
+    }
+
+    @Override
+    public void installapk(File file) {
+        getinstalapk(file);
+    }
+
+    public void installapkfile(File file) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            //参数1 上下文, 参数2 Provider主机地址 和配置文件中保持一致   参数3  共享的文件
+            Uri apkUri =
+                    FileProvider.getUriForFile(Guide_konghua.this, "com.shijiucheng.konghua.fileprovider", file);
+            //添加这一句表示对目标应用临时授权该Uri所代表的文件
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+            intent.setDataAndType(apkUri, "application/vnd.android.package-archive");
+        } else {
+            intent.setDataAndType(Uri.fromFile(new File(Environment
+                            .getExternalStorageDirectory(), "JuanDie.apk")),
+                    "application/vnd.android.package-archive");
+        }
+
+        startActivity(intent);
+    }
 }
