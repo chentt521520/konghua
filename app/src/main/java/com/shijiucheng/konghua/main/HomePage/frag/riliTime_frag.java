@@ -31,6 +31,7 @@ import org.greenrobot.eventbus.EventBus;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -181,6 +182,14 @@ public class riliTime_frag extends DialogFragment {
         list.add(20160816);
         riliDate.setTextView(dateText);
         riliDate.setDaysHasThingList(list);
+
+        Calendar calendar = Calendar.getInstance();
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+
+        int minute = calendar.get(Calendar.MINUTE);
+        qianshouEdxiaos.setText(hour + "");
+        qianshouEdfen.setText(minute + "");
+
     }
 
     public interface setdatetime {

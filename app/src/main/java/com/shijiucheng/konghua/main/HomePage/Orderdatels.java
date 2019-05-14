@@ -52,6 +52,8 @@ import com.shijiucheng.konghua.main.HomePage.frag.riliTime_frag;
 import com.shijiucheng.konghua.main.HomePage.frag.tuidan_frag;
 import com.shijiucheng.konghua.main.HomePage.frag.tuidanxiadanfang_frag;
 import com.shijiucheng.konghua.main.HomePage.frag.zhangjia_frag;
+import com.shijiucheng.konghua.main.HomePage.viewPagerUtils.CopyButtonLibrary;
+import com.shijiucheng.konghua.main.order.Order_detalis;
 import com.shijiucheng.konghua.main.per.mima.PayPwd;
 import com.shijiucheng.konghua.main.per.mima.ValidatePwd;
 import com.shijiucheng.konghua.main.per.payandget.gongdan.check_pic;
@@ -215,7 +217,7 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
     PayPwd pwd;
     ValidatePwd yanzhenpwd;
     String yy_typex = "", txtx = "";//用在申请退单的参数
-    String orderstatus = "";
+    String orderstatus = "0";
 
     String[] dataurl = {"", "", ""};//签收信息
 
@@ -243,6 +245,14 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
     @BindView(R.id.orderdet_nodata)
     View v_nodata;
 
+    @BindView(R.id.orderddatails_tepsfz)
+    TextView te_fzps;
+    @BindView(R.id.orderddatails_thkfz)
+    TextView te_fzhk;
+
+    @BindView(R.id.orderddatails_tejsts)
+    TextView te_jsts;//提醒7日自动结算
+
     String ssq = "";//百度地图用到的省市区
     double[] jwd = {0, 0, 0, 0};
     ditu_frag ditu_frag;
@@ -252,6 +262,7 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
 
     jiesuan_fragagreerefuse js_bufen = new jiesuan_fragagreerefuse();
 
+    CopyButtonLibrary copyButtonLibrary;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -261,11 +272,11 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
 
     @Override
     protected void AddView() {
+        copyButtonLibrary = new CopyButtonLibrary(Orderdatels.this);
         mSearch.setOnGetGeoCodeResultListener(listener);
         serivce = retrofit_Single.getInstence().getserivce(2);
         orderddatailsDh.settext_("订单详情");
         id = getIntent().getStringExtra("id");
-        System.out.println(id + "  xxxx");
         jiedan_frag = new jiedan_frag();
         zhangjia = new zhangjia_frag();
         jujue_frag = new jujue_frag();
@@ -385,6 +396,28 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
             }
         });
 
+        te_fzps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int statu = Integer.valueOf(orderstatus).byteValue();//包扎图
+
+                String xx = "";
+                if (statu >= 10)
+                    xx = orderddatailsTetime.getText().toString() + "\n配送地址：" +
+                            orderddatailsTedizhi.getText().toString() + "\n收货人：" + orderddatailsTeshren.getText().toString() + "  " + orderddatailsTepho.getText().toString();
+                else xx = orderddatailsTetime.getText().toString() + "\n配送地址：" +
+                        orderddatailsTedizhi.getText().toString();
+                copyButtonLibrary.init(xx);
+            }
+        });
+        te_fzhk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!TextUtils.isEmpty(orderddatailsTeheka.getText().toString()))
+                    copyButtonLibrary.init("贺卡:" + orderddatailsTeheka.getText().toString());
+                else toaste_ut(Orderdatels.this, "贺卡内容为空");
+            }
+        });
     }
 
     public boolean checkApkExist(Context context, String packageName) {
@@ -416,7 +449,6 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
                     String str = response.body().string();
                     try {
                         JSONObject jsonObject = new JSONObject(str);
-                        System.out.println(jsonObject);
                         if (jsonObject.getString("status").equals("1")) {
                             JSONObject jso = jsonObject.getJSONObject("data");
                             order_info(jso.getJSONObject("order_info"));
@@ -467,6 +499,11 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
                 orderddatailsTespprice1.setVisibility(View.VISIBLE);
             } else orderddatailsTespprice1.setVisibility(View.GONE);
 
+            if (orderstatus.equals("30")) {
+                te_jsts.setVisibility(View.VISIBLE);
+                te_jsts.setText("如7天内未收到下单方主动确认结算，系统将会在 " + jso.getString("auto_balance_time_text") + " 后自动为您结算。");
+            } else
+                te_jsts.setVisibility(View.GONE);
 
             if (orderstatus.equals("3")) {
                 orderddatailsTespprice.setText("订单金额：" + jso.getString("order_amount") + "元" + "        期望金额 :" + jso.getString("order_amount_add") + "元");
@@ -496,6 +533,11 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
             }
             pho = jso.getString("receiver_tel");
             orderddatailsTeheka.setText(jso.getString("card_message"));
+
+            if (!TextUtils.isEmpty(jso.getString("card_message"))) {
+                te_fzhk.setVisibility(View.VISIBLE);
+            } else te_fzhk.setVisibility(View.GONE);
+
             orderddatailsTebeizu.setText(jso.getString("order_remark"));
             orderddatailsTeprice1.setText("￥" + jso.getString("order_amount"));
             is_order_balance_remind = jso.getString("is_order_balance_remind");
@@ -593,11 +635,22 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
                 v_kb.setVisibility(View.VISIBLE);
                 String bz = jso.getString("store_pack_images");
                 if (bz.contains(",")) {
-                    Glide.with(this).load(bz.split(",")[0]).into(bz1);
-                    Glide.with(this).load(bz.split(",")[1]).into(bz2);
-                    Glide.with(this).load(bz.split(",")[2]).into(bz3);
+                    String[] tp = {"", "", ""};
+                    for (int i = 0; i < bz.split(",").length; i++) {
+                        tp[i] = bz.split(",")[i];
+                    }
+                    if (!TextUtils.isEmpty(tp[0]))
+                        Glide.with(this).load(bz.split(",")[0]).into(bz1);
+                    if (!TextUtils.isEmpty(tp[1]))
+                        Glide.with(this).load(bz.split(",")[1]).into(bz2);
+                    else lin_bz2.setVisibility(View.GONE);
+                    if (!TextUtils.isEmpty(tp[2]))
+                        Glide.with(this).load(bz.split(",")[2]).into(bz3);
+                    else lin_bz3.setVisibility(View.GONE);
                 } else {
                     Glide.with(this).load(bz).into(bz1);
+                    lin_bz2.setVisibility(View.GONE);
+                    lin_bz3.setVisibility(View.GONE);
                 }
 
                 lin_bz1.setOnClickListener(new View.OnClickListener() {
@@ -1184,6 +1237,8 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
     }
 
     public void peisong1(String store_pack_images, String delivery_emp_uname, String delivery_emp_tel) {
+
+
         jdt.show(getFragmentManager(), "jdt");
         HashMap<String, String> map = new HashMap<>();
         map.putAll(retrofit_Single.getInstence().retro_postParameter(this));
@@ -1657,6 +1712,7 @@ public class Orderdatels extends BaseActivity_konghua implements jiedan_frag.jie
 
     public double DistanceOfTwoPoints(final double lat1, final double lng1,
                                       final double lat2, final double lng2) {
+
         double radLat1 = rad(lat1);
         double radLat2 = rad(lat2);
         double a = radLat1 - radLat2;

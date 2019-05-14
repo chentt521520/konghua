@@ -28,6 +28,8 @@ import com.gyf.barlibrary.ImmersionBar;
 import com.shijiucheng.konghua.R;
 import com.umeng.analytics.MobclickAgent;
 
+import org.greenrobot.eventbus.EventBus;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import retrofit2.Call;
@@ -215,6 +217,7 @@ public abstract class BaseActivity_konghua extends AppCompatActivity {
         setContentView(R.layout.view_null);
         ImmersionBar.with(this).destroy();
         mubinder.unbind();
+        EventBus.getDefault().unregister(this);
     }
 
     /**

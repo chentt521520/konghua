@@ -2,7 +2,6 @@ package com.shijiucheng.konghua.renzheng;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -33,6 +32,7 @@ import com.shijiucheng.konghua.authen_RZ;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.DaoHang_top;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.configParams;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.paramsDataBean;
+import com.shijiucheng.konghua.renzheng.data.dianzhufra;
 
 import org.greenrobot.eventbus.EventBus;
 import org.xutils.x;
@@ -47,8 +47,7 @@ import butterknife.BindView;
 import top.zibin.luban.Luban;
 import top.zibin.luban.OnCompressListener;
 
-public class DianZhu extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua implements TakePhoto.TakeResultListener, InvokeListener, Contact.IDianZuView, getpicdialogfragment.paizao {
-    private static final String TAG = "DianZhu";
+public class DianZhu extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua implements TakePhoto.TakeResultListener, InvokeListener, Contact.IDianZuView, getpicdialogfragment.paizao, dianzhufra.openorfulueGps {
 
     @BindView(R.id.dianzu_dh)
     DaoHang_top dh;
@@ -111,7 +110,8 @@ public class DianZhu extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua i
     String file1 = "", file2 = "";
     int picpos = 0;//判断上传图片位置
     String PHONE_PATTERN = "^(1)\\d{10}$";
-
+    String namestr = "";
+    dianzhufra dzfra = new dianzhufra();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,6 +125,17 @@ public class DianZhu extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua i
         x.view().inject(this);
 
         if (authen_RZ.jsonAuthor != null) {
+
+            namestr = getIntent().getStringExtra("status");
+            if (namestr.equals("3")) {
+                ed_xm.setEnabled(false);
+                ed_pho.setEnabled(false);
+                ed_qq.setEnabled(false);
+                ed_sfz.setEnabled(false);
+                im_sfz1.setEnabled(false);
+                im_sfz2.setEnabled(false);
+            }
+
             ed_xm.setText(authen_RZ.jsonAuthor.getStore_master_uname());
             ed_pho.setText(authen_RZ.jsonAuthor.getStore_master_tel());
             ed_qq.setText(authen_RZ.jsonAuthor.getStore_master_qq());
@@ -191,29 +202,35 @@ public class DianZhu extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua i
             @Override
             public void onClick(View v) {
                 if (fastClick()) {
-                    if (TextUtils.isEmpty(ed_xm.getText().toString()))
-                        toaste_ut(DianZhu.this, "请输入店主姓名");
-                    else {
-                        if (!isMatchered(PHONE_PATTERN, ed_pho.getText().toString()))
-                            toaste_ut(DianZhu.this, "请输入正确的店主手机号");
+                    if (namestr.equals("3")) {
+                        if (!dzfra.isAdded()) {
+                            dzfra.show(getSupportFragmentManager(), "dzhu");
+                        }
+                    } else {
+                        if (TextUtils.isEmpty(ed_xm.getText().toString()))
+                            toaste_ut(DianZhu.this, "请输入店主姓名");
                         else {
-                            if (TextUtils.isEmpty(ed_qq.getText().toString()))
-                                toaste_ut(DianZhu.this, "请输入店主QQ");
+                            if (!isMatchered(PHONE_PATTERN, ed_pho.getText().toString()))
+                                toaste_ut(DianZhu.this, "请输入正确的店主手机号");
                             else {
-                                if (TextUtils.isEmpty(ed_sfz.getText().toString()))
-                                    toaste_ut(DianZhu.this, "请输入店主身份证");
+                                if (TextUtils.isEmpty(ed_qq.getText().toString()))
+                                    toaste_ut(DianZhu.this, "请输入店主QQ");
                                 else {
-                                    if (TextUtils.isEmpty(file1))
-                                        toaste_ut(DianZhu.this, "请上传身份证正面照");
+                                    if (TextUtils.isEmpty(ed_sfz.getText().toString()))
+                                        toaste_ut(DianZhu.this, "请输入店主身份证");
                                     else {
-                                        if (TextUtils.isEmpty(file2))
-                                            toaste_ut(DianZhu.this, "请上传身份证背面照");
+                                        if (TextUtils.isEmpty(file1))
+                                            toaste_ut(DianZhu.this, "请上传身份证正面照");
                                         else {
-                                            authen_RZ.jsonAuthor.setStore_master_uname(ed_xm.getText().toString());
-                                            authen_RZ.jsonAuthor.setStore_master_tel(ed_pho.getText().toString());
-                                            authen_RZ.jsonAuthor.setStore_master_qq(ed_qq.getText().toString());
-                                            authen_RZ.jsonAuthor.setStore_master_idcard(ed_sfz.getText().toString());
-                                            present.saveData(ed_xm.getText().toString(), ed_pho.getText().toString(), ed_qq.getText().toString(), ed_sfz.getText().toString(), file1, file2);
+                                            if (TextUtils.isEmpty(file2))
+                                                toaste_ut(DianZhu.this, "请上传身份证背面照");
+                                            else {
+                                                authen_RZ.jsonAuthor.setStore_master_uname(ed_xm.getText().toString());
+                                                authen_RZ.jsonAuthor.setStore_master_tel(ed_pho.getText().toString());
+                                                authen_RZ.jsonAuthor.setStore_master_qq(ed_qq.getText().toString());
+                                                authen_RZ.jsonAuthor.setStore_master_idcard(ed_sfz.getText().toString());
+                                                present.saveData(ed_xm.getText().toString(), ed_pho.getText().toString(), ed_qq.getText().toString(), ed_sfz.getText().toString(), file1, file2);
+                                            }
                                         }
                                     }
                                 }
@@ -304,9 +321,6 @@ public class DianZhu extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua i
         File test = new File(result.getImage().getOriginalPath());
 
         if (test.exists()) {
-            Bitmap bitmap = BitmapFactory.decodeFile(result.getImage().getOriginalPath());
-
-
             Luban.with(this).load(test)
                     .ignoreBy(100)
                     .setTargetDir("")
@@ -332,10 +346,10 @@ public class DianZhu extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua i
                                 e.printStackTrace();
                             }
                             if (picpos == 1) {
-                                present.uploadPic(DianZhu.this,"sfz1", retrofit_Single.getInstence().getOpenid(DianZhu.this), str);
+                                present.uploadPic(DianZhu.this, "sfz1", retrofit_Single.getInstence().getOpenid(DianZhu.this), str);
                                 file1 = file.toString();
                             } else if (picpos == 2) {
-                                present.uploadPic(DianZhu.this,"sfz2", retrofit_Single.getInstence().getOpenid(DianZhu.this), str);
+                                present.uploadPic(DianZhu.this, "sfz2", retrofit_Single.getInstence().getOpenid(DianZhu.this), str);
                                 file2 = file.toString();
                             }
                         }
@@ -445,4 +459,18 @@ public class DianZhu extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua i
         return false;
     }
 
+    @Override
+    public void opengps() {
+        if (dzfra.isAdded())
+            dzfra.dismiss();
+        finish();
+        overridePendingTransition(R.anim.push_right_out,
+                R.anim.push_right_in);
+    }
+
+    @Override
+    public void fuluegps() {
+        if (dzfra.isAdded())
+            dzfra.dismiss();
+    }
 }

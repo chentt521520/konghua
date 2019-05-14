@@ -130,7 +130,9 @@ public class authen_RZ extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
         lin_dz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivityByIntent(authen_RZ.this, DianZhu.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("status", rzzt + "");
+                startActivityByIntent(authen_RZ.this, DianZhu.class,bundle);
             }
         });
         lin_dp.setOnClickListener(new View.OnClickListener() {

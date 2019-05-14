@@ -1,4 +1,4 @@
-package com.shijiucheng.konghua.Cmvp;
+package com.shijiucheng.konghua.com.shijiucheng.konghua.app;
 
 import android.app.Activity;
 import android.content.Context;
@@ -25,28 +25,49 @@ import android.widget.Toast;
 
 import com.gyf.barlibrary.ImmersionBar;
 import com.shijiucheng.konghua.R;
-import com.shijiucheng.konghua.com.shijiucheng.konghua.app.progressbar_;
+import com.tencent.android.tpush.XGPushClickedResult;
+import com.tencent.android.tpush.XGPushManager;
+import com.umeng.analytics.MobclickAgent;
+
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import retrofit2.Call;
 
-public abstract class BaseActivity_konghua extends AppCompatActivity {
+public abstract class BaseActivity_konghua_ extends AppCompatActivity {
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     protected int w_, h_;
 
     Unbinder mubinder;
     public progressbar_ jdt;
-    BasePresenter presenter = null;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        System.out.println("000");
+        XGPushClickedResult click = XGPushManager.onActivityStarted(this);
+        if (click != null) {
+            //从推送通知栏打开-Service打开Activity会重新执行Laucher流程
+            //查看是不是全新打开的面板
 
+            System.out.println("111");
+            if (isTaskRoot()) {
+                System.out.println("222");
+                return;
+            }
+            System.out.println("333");
+            finish();
+        }else {
+            System.out.println("00011");
+        }
+        ImmersionBar immersionBar = ImmersionBar.with(this);//要先初始化
+        immersionBar.fitsSystemWindows(true).statusBarColor(R.color.zhu)
+                .statusBarDarkFont(false, 0.0f).init();
         setContentView(getLayout());
         DaoHangLan(this);
-        ImmersionBar.with(this).statusBarColor(R.color.zhu).statusBarDarkFont(false, 0.0f).fitsSystemWindows(true).init();
+
         mubinder = ButterKnife.bind(this);
         SetViewListen();
         DisplayMetrics dm = getResources().getDisplayMetrics();
@@ -89,17 +110,21 @@ public abstract class BaseActivity_konghua extends AppCompatActivity {
             finish();
         }
     }
-    protected void startActivityByIntent(Context context, Class<?> cls,  Bundle data) {
+
+    protected void startActivityByIntent(Context context, Class<?> cls) {
         Intent i = new Intent();
         i.setClass(context, cls);
-        i.putExtras(data);
         startActivity(i);
         overridePendingTransition(R.anim.push_left_in,
                 R.anim.push_left_out);
     }
-    protected void startActivityByIntent(Context context, Class<?> cls) {
+
+    protected void startActivityByIntent(Context context, Class<?> cls, Bundle bundle) {
         Intent i = new Intent();
         i.setClass(context, cls);
+        if (bundle != null) {
+            i.putExtras(bundle);
+        }
         startActivity(i);
         overridePendingTransition(R.anim.push_left_in,
                 R.anim.push_left_out);
@@ -124,6 +149,13 @@ public abstract class BaseActivity_konghua extends AppCompatActivity {
      * @param str     提示语显示
      */
     protected void toaste_ut(Context context, String str) {
+
+//        Toast toast = new Toast(context);
+//        toast.setGravity(Gravity.CENTER,0,0);
+//        toast.setText(str);
+//        toast.setDuration(Toast.LENGTH_SHORT);
+//        toast.show();
+
         Toast.makeText(context, str, Toast.LENGTH_SHORT).show();
     }
 
@@ -133,9 +165,8 @@ public abstract class BaseActivity_konghua extends AppCompatActivity {
      * @param context 保存键值对
      */
     protected void sharePre(String key, String value, Context context) {
-        if (preferences == null) {
-            preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        }
+
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
         editor = preferences.edit();
         if (!TextUtils.isEmpty(value)) {
             editor.putString(key, value);
@@ -149,9 +180,7 @@ public abstract class BaseActivity_konghua extends AppCompatActivity {
      * @return 根据key获取值
      */
     protected String getSharePre(String key, Context context) {
-        if (preferences == null) {
-            preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        }
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
         return preferences.getString(key, "0");
     }
 
@@ -201,20 +230,17 @@ public abstract class BaseActivity_konghua extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ImmersionBar.with(this).destroy();
-        if (presenter != null) {
-            presenter.onDestroy();
-            presenter = null;
-        }
-
         setContentView(R.layout.view_null);
+        ImmersionBar.with(this).destroy();
         mubinder.unbind();
+        EventBus.getDefault().unregister(this);
     }
 
     /**
      * 抽象加载view
      */
     protected abstract void AddView();
+
 
     /**
      * 抽象设置view点击事件
@@ -226,6 +252,20 @@ public abstract class BaseActivity_konghua extends AppCompatActivity {
      */
     protected abstract int getLayout();
 
-    protected abstract BasePresenter bindPresent();
+    public void cancelinter(Call call) {
+        if (call != null)
+            call.cancel();
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
+    }
 }

@@ -66,12 +66,13 @@
             android:src="@mipmap/fhy" />
 
         <LinearLayout
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
             android:id="@+id/date_operator_ll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignStart="@+id/iv_left"
             android:layout_gravity="center_vertical"
-            android:layout_marginStart="0dp"
             android:gravity="center"
             android:orientation="horizontal">
 

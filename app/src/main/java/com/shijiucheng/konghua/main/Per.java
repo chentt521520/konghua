@@ -15,11 +15,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.github.dfqin.grantor.PermissionsUtil;
 import com.shijiucheng.konghua.Banben_;
 import com.shijiucheng.konghua.Cmvp.BaseFragment_konghua;
 import com.shijiucheng.konghua.Cmvp.BasePresenter;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
+import com.shijiucheng.konghua.Guide_konghua;
 import com.shijiucheng.konghua.Login_konghua;
+import com.shijiucheng.konghua.Manifest;
 import com.shijiucheng.konghua.R;
 import com.shijiucheng.konghua.authen_RZ;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.configParams;
@@ -266,13 +269,17 @@ public class Per extends BaseFragment_konghua implements Banben_.fuluebanben {
                             if (getVersion1() >= data.getInt("versionCode")) {
                                 toaste_ut(getActivity(), "当前版本是最新版本");
                             } else {
-                                if (!banben_.isAdded()) {
-                                    Bundle bundle = new Bundle();
-                                    bundle.putString("txt", str);
-                                    bundle.putString("type", type);
-                                    bundle.putString("url", android_url);
-                                    banben_.setArguments(bundle);
-                                    banben_.show(getActivity().getFragmentManager(), "bb");
+                                if (PermissionsUtil.hasPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                                    if (!banben_.isAdded()) {
+                                        Bundle bundle = new Bundle();
+                                        bundle.putString("txt", str);
+                                        bundle.putString("type", type);
+                                        bundle.putString("url", android_url);
+                                        banben_.setArguments(bundle);
+                                        banben_.show(getActivity().getFragmentManager(), "bb");
+                                    }
+                                } else {
+                                    toaste_ut(getActivity(), "app没有读写权限无法下载，请在设置里面允许读写权限");
                                 }
                             }
                         } else
@@ -345,6 +352,7 @@ public class Per extends BaseFragment_konghua implements Banben_.fuluebanben {
         });
 
     }
+
     @Override
     public void fuluebanben() {
 

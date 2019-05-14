@@ -29,9 +29,9 @@
 
             <ImageView
                 android:id="@+id/spxqit_im"
-                android:scaleType="fitXY"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:scaleType="fitXY"
                 android:src="@mipmap/sctpx" />
 
             <TextView
@@ -58,6 +58,22 @@
             android:text="X 23"
             android:textColor="@color/hei"
             android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/spxqit_tepsfz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/biankuangyuanjiaofz"
+            android:gravity="center"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="复制"
+            android:textColor="@color/hei"
+            android:textSize="12sp" />
 
     </LinearLayout>
 
@@ -116,9 +132,9 @@
     </LinearLayout>
 
     <View
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="6dp"
-        android:background="#ffdecb" />
+        android:background="#ffdecb"
+        android:visibility="gone" />
 
 </LinearLayout>

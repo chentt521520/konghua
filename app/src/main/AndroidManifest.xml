@@ -29,7 +29,7 @@
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
-    <permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <permission
         android:name="com.shijiucheng.konghua.permission.MIPUSH_RECEIVE"
@@ -37,6 +37,17 @@
     <!-- 这里com.example.mipushtest改成app的包名 -->
     <uses-permission android:name="ccom.shijiucheng.konghua.permission.MIPUSH_RECEIVE" />
     <!-- 这里com.example.mipushtest改成app的包名 -->
+
+
+    <!--   百度定位 权限-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+    <!-- 这个权限用于访问GPS定位-->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
+    <!-- 用于读取手机当前的状态-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <!-- SD卡读取权限，用户写入离线定位数据-->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
 
     <supports-screens
         android:anyDensity="true"
@@ -65,6 +76,11 @@
         <activity android:name=".main.per_.setingact.businesspho" />
         <activity android:name=".main.per_.setingact.changepwd" />
         <activity android:name=".main.Newsdetails" />
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote"></service>
 
         <meta-data
             android:name="android.max_aspect"
@@ -125,8 +141,8 @@
         <activity
             android:name=".main.MainActivity"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="adjustPan"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -138,7 +154,6 @@
                     android:scheme="xgscheme" />
             </intent-filter>
         </activity>
-
 
 
         <meta-data
@@ -154,16 +169,6 @@
         <activity
             android:name=".main.order.Check_pic"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".MainActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="com.qq.xgdemo.activity.UPDATE_LISTVIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".main.per.payandget.payAndGet"
             android:screenOrientation="portrait" />
@@ -220,22 +225,20 @@
                 <category android:name="com.shijiucheng.konghua" />
             </intent-filter>
         </receiver>
-        <receiver
-            android:name=".com.shijiucheng.konghua.app.meizu.huaweiReceiver"
-            android:exported="true"
-            tools:ignore="ExportedReceiver">
-            <intent-filter>
+        <!--<receiver android:name=".com.shijiucheng.konghua.app.meizu.hwreceiver"-->
+        <!--android:exported="true">-->
+        <!--<intent-filter>-->
 
-                <!-- 必须,用于接收TOKEN -->
-                <action android:name="com.huawei.android.push.intent.REGISTRATION" />
-                <!-- 必须，用于接收消息 -->
-                <action android:name="com.huawei.android.push.intent.RECEIVE" />
-                <!-- 可选，用于点击通知栏或通知栏上的按钮后触发onEvent回调 -->
-                <action android:name="com.huawei.android.push.intent.CLICK" />
-                <!-- 可选，查看PUSH通道是否连接，不查看则不需要 -->
-                <action android:name="com.huawei.intent.action.PUSH_STATE" />
-            </intent-filter>
-        </receiver>
+        <!--&lt;!&ndash; 必须,用于接收TOKEN &ndash;&gt;-->
+        <!--<action android:name="com.huawei.android.push.intent.REGISTRATION" />-->
+        <!--&lt;!&ndash; 必须，用于接收消息 &ndash;&gt;-->
+        <!--<action android:name="com.huawei.android.push.intent.RECEIVE" />-->
+        <!--&lt;!&ndash; 可选，用于点击通知栏或通知栏上的按钮后触发onEvent回调 &ndash;&gt;-->
+        <!--<action android:name="com.huawei.android.push.intent.CLICK" />-->
+        <!--&lt;!&ndash; 可选，查看PUSH通道是否连接，不查看则不需要 &ndash;&gt;-->
+        <!--<action android:name="com.huawei.intent.action.PUSH_STATE" />-->
+        <!--</intent-filter>-->
+        <!--</receiver>-->
         <receiver
             android:name=".com.shijiucheng.konghua.app.MessageReceiver"
             android:exported="true">

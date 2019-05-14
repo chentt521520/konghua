@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/bai"
+    android:orientation="vertical"
     tools:context=".renzheng.BDMap">
 
     <RelativeLayout
@@ -29,25 +29,127 @@
             android:gravity="center"
             android:text="选择经纬度"
             android:textColor="#ffffff"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
 
         <TextView
-            android:paddingRight="12dp"
             android:id="@+id/map_teok"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:gravity="center"
+            android:paddingRight="12dp"
             android:text="确定"
             android:textColor="#ffffff"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
     </RelativeLayout>
 
-    <com.baidu.mapapi.map.MapView
-        android:visibility="invisible"
-        android:id="@+id/bmapViewxx"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+        <com.baidu.mapapi.map.MapView
+            android:id="@+id/bmapViewxx"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible" />
+
+        <RelativeLayout
+            android:id="@+id/map_re"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="24dp">
+
+            <EditText
+                android:id="@+id/map_ed"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:background="@drawable/yuanjiaoalldt"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:hint="请输入具体地址"
+                android:imeOptions="actionSearch"
+                android:inputType="textNoSuggestions"
+                android:maxLines="1"
+                android:paddingLeft="20dp"
+                android:paddingRight="90dp"
+                android:singleLine="true"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/map_imclose"
+                android:layout_width="27dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="70dp"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:src="@mipmap/cha1"
+                android:visibility="gone" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="62dp"
+                android:layout_marginBottom="4dp"
+                android:background="#f4f4f4" />
+
+            <TextView
+                android:id="@+id/map_tesearch"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:text="搜索"
+                android:textColor="@color/hei"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/map_recyc"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@id/map_re"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp" />
+
+
+        <ImageView
+            android:id="@+id/ma_imdw"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="255dp"
+            android:src="@mipmap/curposition" />
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/news_smartLayoutxx"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:srlAccentColor="@color/hei"
+            android:visibility="gone"
+            app:srlEnablePreviewInEditMode="true"
+            app:srlPrimaryColor="#ffffff">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/map_recychuadian"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:visibility="visible" />
+
+            <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:srlAccentColor="@color/hei"
+                app:srlPrimaryColor="#ffffff" />
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    </RelativeLayout>
 
 
 </LinearLayout>

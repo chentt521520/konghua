@@ -99,11 +99,13 @@ public class DPAddress extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
         dh.setFocusable(true);
         dh.setFocusableInTouchMode(true);
 
-        ed_xx1.setText(authen_RZ.jsonAuthor.getAddress());
-        if (authen_RZ.jsonAuthor.getLongitude().length() >= 1)
-            te_jwd1.setText(authen_RZ.jsonAuthor.getLongitude() + "," + authen_RZ.jsonAuthor.getLatitude());
-        if (authen_RZ.jsonAuthor.getCity_id_text().length() >= 1)
-            te_ssq1.setText(authen_RZ.jsonAuthor.getProvince_id_text() + "-" + authen_RZ.jsonAuthor.getCity_id_text() + "-" + authen_RZ.jsonAuthor.getDistrict_id_text());
+        if (authen_RZ.jsonAuthor != null) {
+            ed_xx1.setText(authen_RZ.jsonAuthor.getAddress());
+            if (authen_RZ.jsonAuthor.getLongitude().length() >= 1)
+                te_jwd1.setText(authen_RZ.jsonAuthor.getLongitude() + "," + authen_RZ.jsonAuthor.getLatitude());
+            if (authen_RZ.jsonAuthor.getCity_id_text().length() >= 1)
+                te_ssq1.setText(authen_RZ.jsonAuthor.getProvince_id_text() + "-" + authen_RZ.jsonAuthor.getCity_id_text() + "-" + authen_RZ.jsonAuthor.getDistrict_id_text());
+        }
 
 
         setViewHw_Lin(lin_ssq, w_ - (int) (w_ * 28 / 750.0), (int) (w_ * 80 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 30 / 750.0), (int) (w_ * 14 / 750.0), 0);
@@ -132,7 +134,7 @@ public class DPAddress extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
 
         view_window = LayoutInflater.from(DPAddress.this).inflate(R.layout.dizhi_popwindow, null);
 
-        prestent.getSSQ(DPAddress.this,retrofit_Single.getInstence().getOpenid(DPAddress.this), 3, authen_RZ.jsonAuthor.getCity_id());
+        prestent.getSSQ(DPAddress.this, retrofit_Single.getInstence().getOpenid(DPAddress.this), 3, authen_RZ.jsonAuthor.getCity_id());
 
 
     }
@@ -154,8 +156,9 @@ public class DPAddress extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
             @Override
             public void onClick(View v) {
                 Intent i = new Intent();
-                i.putExtra("jd", authen_RZ.jsonAuthor.getLongitude().length() == 0 ? "0" : authen_RZ.jsonAuthor.getLatitude());
-                i.putExtra("wd", authen_RZ.jsonAuthor.getLatitude().length() == 0 ? "0" : authen_RZ.jsonAuthor.getLongitude());
+                i.putExtra("jd", authen_RZ.jsonAuthor.getLatitude().length() == 0 ? "0" : authen_RZ.jsonAuthor.getLatitude());
+                i.putExtra("wd", authen_RZ.jsonAuthor.getLongitude().length() == 0 ? "0" : authen_RZ.jsonAuthor.getLongitude());
+                i.putExtra("shi", authen_RZ.jsonAuthor.getCity_id_text());
                 i.setClass(DPAddress.this, BDMap.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.push_left_in,
@@ -166,8 +169,12 @@ public class DPAddress extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
             @Override
             public void onClick(View v) {
                 Intent i = new Intent();
-                i.putExtra("jd", authen_RZ.jsonAuthor.getLongitude().length() == 0 ? "0" : authen_RZ.jsonAuthor.getLatitude());
-                i.putExtra("wd", authen_RZ.jsonAuthor.getLatitude().length() == 0 ? "0" : authen_RZ.jsonAuthor.getLongitude());
+                i.putExtra("jd", authen_RZ.jsonAuthor.getLatitude().length() == 0 ? "0" : authen_RZ.jsonAuthor.getLatitude());
+                i.putExtra("wd", authen_RZ.jsonAuthor.getLongitude().length() == 0 ? "0" : authen_RZ.jsonAuthor.getLongitude());
+
+                System.out.println("jd " + authen_RZ.jsonAuthor.getLatitude() + "  wd   " + authen_RZ.jsonAuthor.getLongitude());
+
+                i.putExtra("shi", authen_RZ.jsonAuthor.getCity_id_text());
                 i.setClass(DPAddress.this, BDMap.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.push_left_in,
@@ -340,7 +347,7 @@ public class DPAddress extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
                 set_npView();
             }
         } else
-            prestent.getSSQ(DPAddress.this,retrofit_Single.getInstence().getOpenid(DPAddress.this), 0, "0");
+            prestent.getSSQ(DPAddress.this, retrofit_Single.getInstence().getOpenid(DPAddress.this), 0, "0");
     }
 
     private void getshi() {
@@ -359,7 +366,7 @@ public class DPAddress extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
                 qnp2.setVisibility(View.VISIBLE);
             }
         } else {
-            prestent.getSSQ(DPAddress.this,retrofit_Single.getInstence().getOpenid(DPAddress.this), 1, shen1.get(qnp1.getValue()));
+            prestent.getSSQ(DPAddress.this, retrofit_Single.getInstence().getOpenid(DPAddress.this), 1, shen1.get(qnp1.getValue()));
         }
     }
 
@@ -380,7 +387,7 @@ public class DPAddress extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
                 qnp3.setVisibility(View.VISIBLE);
             }
         } else {
-            prestent.getSSQ(DPAddress.this,retrofit_Single.getInstence().getOpenid(DPAddress.this), 2, shi1.get(qnp2.getValue()));
+            prestent.getSSQ(DPAddress.this, retrofit_Single.getInstence().getOpenid(DPAddress.this), 2, shi1.get(qnp2.getValue()));
         }
     }
 
@@ -402,7 +409,7 @@ public class DPAddress extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
                 qnp3.setVisibility(View.VISIBLE);
             }
         } else {
-            prestent.getSSQ(DPAddress.this,retrofit_Single.getInstence().getOpenid(DPAddress.this), 3, shi1.get(qnp2.getValue()));
+            prestent.getSSQ(DPAddress.this, retrofit_Single.getInstence().getOpenid(DPAddress.this), 3, shi1.get(qnp2.getValue()));
         }
     }
 

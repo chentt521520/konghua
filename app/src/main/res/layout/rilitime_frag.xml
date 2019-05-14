@@ -51,7 +51,7 @@
             android:contentDescription="@null"
             android:paddingTop="9dp"
             android:paddingBottom="9dp"
-            android:src="@mipmap/fh" />
+            android:src="@mipmap/fhz" />
 
         <ImageView
             android:id="@+id/iv_right"

@@ -1,8 +1,8 @@
 package com.shijiucheng.konghua.main;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -11,7 +11,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,8 +18,6 @@ import android.widget.Toast;
 
 import com.gyf.barlibrary.ImmersionBar;
 import com.shijiucheng.konghua.Banben_;
-import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
-import com.shijiucheng.konghua.Cmvp.BaseResult;
 import com.shijiucheng.konghua.Login_konghua;
 import com.shijiucheng.konghua.R;
 import com.shijiucheng.konghua.authen_RZ;
@@ -100,12 +97,11 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     gotoAuthen gotoauthen = new gotoAuthen();
-
+    MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         ImmersionBar immersionBar = ImmersionBar.with(this);//先初始化，不然高版本会有底部导航栏跑上去了
         immersionBar.fitsSystemWindows(true).statusBarColor(R.color.zhu)
                 .statusBarDarkFont(false, 0.0f).init();
@@ -118,7 +114,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         munbinder = ButterKnife.bind(this);
         setviewdata();
-        //测试版本更新
     }
 
     private void setviewdata() {
@@ -362,6 +357,14 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
                     gotoauthen.show(getSupportFragmentManager(), "renzhensb");
                 }
+                return;
+            } else if (data.getMsg().equals(configParams.playmuc1)) {
+                mediaPlayer = MediaPlayer.create(this, R.raw.order_add);
+                mediaPlayer.start();
+                return;
+            } else if (data.getMsg().equals(configParams.playmuc2)) {
+                mediaPlayer = MediaPlayer.create(this, R.raw.message_add);
+                mediaPlayer.start();
                 return;
             }
         }

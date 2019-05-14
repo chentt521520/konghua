@@ -38,6 +38,8 @@ public class configParams {
     public final static String sycloserenzhen = "sycloserenzhen";//*首页关闭认证弹窗
     public final static String syrenzhenzhong = "sycloserenzhenzhong";//*首页认证中
     public final static String syrenzhenfail = "sycloserenzhenfail";//*首页认证失败
+    public final static String playmuc1 = "playmuc1";//*首页播放音频1
+    public final static String playmuc2 = "playmuc2";//*首页播放音频2
 
 
 }

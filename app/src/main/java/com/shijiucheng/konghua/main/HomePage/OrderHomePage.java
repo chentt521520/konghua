@@ -32,6 +32,7 @@ import android.widget.ViewSwitcher;
 
 import com.github.dfqin.grantor.PermissionListener;
 import com.github.dfqin.grantor.PermissionsUtil;
+import com.jauker.widget.BadgeView;
 import com.shijiucheng.konghua.Cmvp.BaseContact;
 import com.shijiucheng.konghua.Cmvp.BaseFragment_konghua;
 import com.shijiucheng.konghua.Cmvp.BasePresenter;
@@ -146,10 +147,29 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
     String Phone = "", QQ = "";
     int fristinit = 0, bannersize = 0, logincunt = 0;
 
+    BadgeView bdv_jr, bdv_djd, bdv_qqzj, bdv_dps, bdv_dqs, bdv_sqtd, bdv_djs, bdv_ywc;
+
 
     @Override
     protected void AddView() {
         pagePresent = new HomePagePresent(this);
+        bdv_jr = new BadgeView(getActivity());
+        bdv_djd = new BadgeView(getActivity());
+        bdv_qqzj = new BadgeView(getActivity());
+        bdv_dps = new BadgeView(getActivity());
+        bdv_dqs = new BadgeView(getActivity());
+        bdv_sqtd = new BadgeView(getActivity());
+        bdv_djs = new BadgeView(getActivity());
+        bdv_djs = new BadgeView(getActivity());
+        bdv_ywc = new BadgeView(getActivity());
+        bdv_jr.setTargetView(hpNewImtodayoders);
+        bdv_djd.setTargetView(hpNewImWaitingfoders);
+        bdv_qqzj.setTargetView(hpNewImnews);
+        bdv_dps.setTargetView(hpNewImtobedelivered);
+        bdv_dqs.setTargetView(hpNewImsign);
+        bdv_sqtd.setTargetView(hpNewImrefund);
+        bdv_djs.setTargetView(hpNewImbalance);
+        bdv_ywc.setTargetView(hpNewImcomplete);
 
 
         EventBus.getDefault().register(this);
@@ -205,6 +225,22 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
         EventBus.getDefault().post(dataBean);
 
         try {
+
+            int jr = Integer.valueOf(jsonObject.getString("today_and_tomorrow_date_count")).intValue();
+
+            bdv_jr.setBadgeCount(jr);
+            bdv_djd.setBadgeCount(Integer.valueOf(jsonObject.getString("non_receive_count")).intValue());
+            bdv_qqzj.setBadgeCount(Integer.valueOf(jsonObject.getString("amount_add_count")).intValue());
+            bdv_dps.setBadgeCount(Integer.valueOf(jsonObject.getString("receive_non_delivery_count")).intValue());
+            bdv_dqs.setBadgeCount(Integer.valueOf(jsonObject.getString("delivering_count")).intValue());
+
+            String x1 = jsonObject.getString("admin_cancel_count");
+            String x2 = jsonObject.getString("cancel_count");
+            int numtk = Integer.valueOf(x1).intValue() + Integer.valueOf(x2).intValue();
+            bdv_sqtd.setBadgeCount(numtk);
+            bdv_djs.setBadgeCount(Integer.valueOf(jsonObject.getString("sign_count")));
+            bdv_ywc.setBadgeCount(Integer.valueOf(jsonObject.getString("balance_count")));
+
             JSONArray jso_banner = jsonObject.getJSONArray("banner_list");
             JSONArray notice_list = jsonObject.getJSONArray("notice_list");
             if (fristinit == 0) {
@@ -474,8 +510,7 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
 
                 break;
             case R.id.hpNew_imtodayoders:
-
-                geotoOrder(0, "今日订单", "today");
+                geotoOrder(0, "今日/明日订单", "today_and_tomorrow");
                 break;
             case R.id.hpNew_imWaitingfoders:
                 geotoOrder(0, "待接单", "non_receive");
@@ -487,7 +522,7 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
                 geotoOrder(0, "待签收", "delivering");
                 break;
             case R.id.hpNew_tetodayoders:
-                geotoOrder(0, "今日订单", "today");
+                geotoOrder(0, "今日/明日订单", "today_and_tomorrow");
                 break;
             case R.id.hpNew_teWaitingfoders:
                 geotoOrder(0, "待接单", "non_receive");
@@ -510,11 +545,11 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
                 geotoOrder(0, "已完成", "balance");
                 break;
             case R.id.hpNew_imnews:
-
-                paramsDataBean databean1 = new paramsDataBean();
-                databean1.setMsg(configParams.symsg);
-                EventBus.getDefault().post(databean1);
-                totherpage(2);
+                geotoOrder(0, "请求涨价", "amount_add");
+//                paramsDataBean databean1 = new paramsDataBean();
+//                databean1.setMsg(configParams.symsg);
+//                EventBus.getDefault().post(databean1);
+//                totherpage(2);
                 break;
             case R.id.hpNew_terefund:
                 geotoOrder(1, "申请退单", "cancel");
@@ -525,12 +560,12 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
             case R.id.hpNew_tecomplete:
                 geotoOrder(0, "已完成", "balance");
                 break;
-            case R.id.hpNew_tenews:
-
-                paramsDataBean databean2 = new paramsDataBean();
-                databean2.setMsg(configParams.symsg);
-                EventBus.getDefault().post(databean2);
-                totherpage(2);
+            case R.id.hpNew_tenews://消息改成了请求涨价
+                geotoOrder(0, "请求涨价", "amount_add");
+//                paramsDataBean databean2 = new paramsDataBean();
+//                databean2.setMsg(configParams.symsg);
+//                EventBus.getDefault().post(databean2);
+//                totherpage(2);
                 break;
 
             case R.id.hpNew_teswit:

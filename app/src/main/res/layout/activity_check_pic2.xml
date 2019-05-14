@@ -9,16 +9,18 @@
     tools:context=".main.per.payandget.gongdan.check_pic">
 
     <RelativeLayout
-        android:id="@+id/check_retop"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="#ffffff">
+        android:background="@color/zhu">
 
         <ImageView
             android:id="@+id/check_imreturn"
             android:layout_width="30dp"
-            android:layout_height="17dp"
+            android:layout_height="30dp"
             android:layout_centerVertical="true"
+            android:layout_marginTop="5dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:scaleType="fitCenter"
             android:src="@mipmap/fh" />
 
@@ -30,9 +32,33 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:text="1/6"
-            android:textColor="#666666"
+            android:textColor="@color/bai"
             android:textSize="18sp"
             android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/check_imdowload"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="12dp"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/xzpic" />
+
+        <TextView
+            android:id="@+id/check_tedowload"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_below="@id/check_imdowload"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_marginRight="17dp"
+            android:gravity="center"
+            android:text="下载"
+            android:textColor="@color/bai"
+            android:textSize="11sp" />
     </RelativeLayout>
 
     <android.support.v4.view.ViewPager

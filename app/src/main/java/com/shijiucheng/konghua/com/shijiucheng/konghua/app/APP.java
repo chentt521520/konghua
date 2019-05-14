@@ -48,23 +48,12 @@ public class APP extends MultiDexApplication {
         MultiDex.install(this);
         SDKInitializer.initialize(this);
         SDKInitializer.setCoordType(CoordType.BD09LL);
-
-        String phone_chan = Build.BRAND.toLowerCase();
-        System.out.println(phone_chan);
-
-//        if (phone_chan.contains("meizu")) {
-
         XGPushConfig.enableOtherPush(this, true);
         XGPushConfig.setMzPushAppId(this, APP_ID);
         XGPushConfig.setMzPushAppKey(this, APP_KEY);
-//        } else if (phone_chan.contains("xiaomi")) {
-
-//        } else if (phone_chan.contains("huawei")) {
-        XGPushConfig.setHuaweiDebug(true);
-//        }
+//        XGPushConfig.setHuaweiDebug(true);
         XGPushConfig.setMiPushAppId(getApplicationContext(), "2882303761517890832");
         XGPushConfig.setMiPushAppKey(getApplicationContext(), "5531789089832");
-
 
         XGPushManager.registerPush(this, new XGIOperateCallback() {
             @Override

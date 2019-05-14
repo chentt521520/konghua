@@ -95,7 +95,7 @@ public class payAndGet extends BaseActivity_konghua implements Contact.IView {
         recyclerView.setAdapter(ada);
         recyclerView.setHasFixedSize(true);
         recyclerView.setNestedScrollingEnabled(false);
-        prestent.getList(payAndGet.this,strStatus, retrofit_Single.getInstence().getOpenid(payAndGet.this), page);
+        prestent.getList(payAndGet.this, strStatus, retrofit_Single.getInstence().getOpenid(payAndGet.this), page);
 
 
     }
@@ -107,7 +107,7 @@ public class payAndGet extends BaseActivity_konghua implements Contact.IView {
             public void onLoadmore(RefreshLayout refreshlayout) {
                 page++;
                 refrsh = 1;
-                prestent.getList(payAndGet.this,strStatus, retrofit_Single.getInstence().getOpenid(payAndGet.this), page);
+                prestent.getList(payAndGet.this, strStatus, retrofit_Single.getInstence().getOpenid(payAndGet.this), page);
             }
 
             @Override
@@ -115,7 +115,7 @@ public class payAndGet extends BaseActivity_konghua implements Contact.IView {
                 refrsh = 0;
                 page = 1;
                 list.removeAll(list);
-                prestent.getList(payAndGet.this,strStatus, retrofit_Single.getInstence().getOpenid(payAndGet.this), page);
+                prestent.getList(payAndGet.this, strStatus, retrofit_Single.getInstence().getOpenid(payAndGet.this), page);
             }
         });
 
@@ -133,7 +133,7 @@ public class payAndGet extends BaseActivity_konghua implements Contact.IView {
                     v_1.setBackgroundColor(getResources().getColor(R.color.zhu));
                     v_select.setBackgroundColor(getResources().getColor(R.color.danhei));
                     v_select = v_1;
-                    prestent.getList(payAndGet.this,strStatus, retrofit_Single.getInstence().getOpenid(payAndGet.this), page);
+                    prestent.getList(payAndGet.this, strStatus, retrofit_Single.getInstence().getOpenid(payAndGet.this), page);
                 }
             }
         });
@@ -153,7 +153,7 @@ public class payAndGet extends BaseActivity_konghua implements Contact.IView {
                     v_select = v_2;
 
                     strStatus = "income";
-                    prestent.getList(payAndGet.this,strStatus, retrofit_Single.getInstence().getOpenid(payAndGet.this), page);
+                    prestent.getList(payAndGet.this, strStatus, retrofit_Single.getInstence().getOpenid(payAndGet.this), page);
                 }
             }
         });
@@ -173,7 +173,7 @@ public class payAndGet extends BaseActivity_konghua implements Contact.IView {
                     v_select = v_3;
 
                     strStatus = "expenditure";
-                    prestent.getList(payAndGet.this,strStatus, retrofit_Single.getInstence().getOpenid(payAndGet.this), page);
+                    prestent.getList(payAndGet.this, strStatus, retrofit_Single.getInstence().getOpenid(payAndGet.this), page);
                 }
             }
         });
@@ -193,7 +193,7 @@ public class payAndGet extends BaseActivity_konghua implements Contact.IView {
                     v_select = v_4;
 
                     strStatus = "freeze";
-                    prestent.getList(payAndGet.this,strStatus, retrofit_Single.getInstence().getOpenid(payAndGet.this), page);
+                    prestent.getList(payAndGet.this, strStatus, retrofit_Single.getInstence().getOpenid(payAndGet.this), page);
                 }
             }
         });
@@ -246,14 +246,13 @@ public class payAndGet extends BaseActivity_konghua implements Contact.IView {
             discView.setItems(items);
 
             szmxZsr.setText("账户总入账\n" + str[1] + "元");
-            szmxTeye.setText(str[0]+ "元");
-            szmxTezc.setText(str[2]+ "元");
-            szmxTedj.setText(str[3]+ "元");
+            szmxTeye.setText(str[0] + "元");
+            szmxTezc.setText(str[2] + "元");
+            szmxTedj.setText(str[3] + "元");
         }
-        if (list.size() >= 1) {
+        this.list.removeAll(this.list);
             this.list.addAll(list);
             ada.notifyDataSetChanged();
-        }
         if (refrsh == 0) {
             if (smartRefreshLayout != null)
                 smartRefreshLayout.finishRefresh();

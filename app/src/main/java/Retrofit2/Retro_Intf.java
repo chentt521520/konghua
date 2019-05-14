@@ -28,7 +28,7 @@ public interface Retro_Intf {
     @GET("/ApiApp-Index-logout.html")
     Call<ResponseBody> quitLoigin(@Header("Cookie") String cook, @QueryMap Map<String, String> map);
 
-    //上传图片
+    //上传图片认证模块
     @POST("/ApiApp-Store-upload_image_do.html")
     @FormUrlEncoded
     Call<ResponseBody> uploadPic(@Header("Cookie") String cook, @FieldMap Map<String, String> Map);

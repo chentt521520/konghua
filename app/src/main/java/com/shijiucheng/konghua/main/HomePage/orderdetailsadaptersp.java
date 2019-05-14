@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.shijiucheng.konghua.R;
+import com.shijiucheng.konghua.main.HomePage.viewPagerUtils.CopyButtonLibrary;
 import com.shijiucheng.konghua.main.per.payandget.gongdan.check_pic;
 
 import java.util.List;
@@ -23,7 +24,7 @@ import butterknife.ButterKnife;
 public class orderdetailsadaptersp extends RecyclerView.Adapter<orderdetailsadaptersp.viewholder> {
     Context context;
     List<ord_detadata> list;
-
+    CopyButtonLibrary copyButtonLibrary;
 
     public orderdetailsadaptersp(Context context,
                                  List<ord_detadata> list) {
@@ -44,7 +45,7 @@ public class orderdetailsadaptersp extends RecyclerView.Adapter<orderdetailsadap
     public void onBindViewHolder(@NonNull viewholder holder, int position) {
 
         final ord_detadata data = list.get(position);
-        holder.te_num.setText("数量："+data.getNum());
+        holder.te_num.setText("数量：" + data.getNum());
         holder.spxqitTehuacai.setText(data.getHuacai());
         holder.spxqitTebaozhuang.setText(data.getBaozhuang());
         Glide.with(context).load(data.getUrl()).into(holder.spxqitIm);
@@ -74,6 +75,14 @@ public class orderdetailsadaptersp extends RecyclerView.Adapter<orderdetailsadap
             }
         });
 
+        holder.te_fz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                copyButtonLibrary = new CopyButtonLibrary(context);
+                copyButtonLibrary.init("花材：  " + holder.spxqitTehuacai.getText().toString() + "\n" + "包装：  " +
+                        holder.spxqitTebaozhuang.getText().toString() + "\n数量：" + data.getNum());
+            }
+        });
     }
 
     @Override
@@ -93,6 +102,8 @@ public class orderdetailsadaptersp extends RecyclerView.Adapter<orderdetailsadap
 
         @BindView(R.id.spxqit_tefd)
         TextView te_fd;
+        @BindView(R.id.spxqit_tepsfz)
+        TextView te_fz;
 
 
         public viewholder(View itemView) {

@@ -1,10 +1,6 @@
 package com.shijiucheng.konghua.main.HomePage;
 
-import android.Manifest;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,11 +19,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.github.dfqin.grantor.PermissionListener;
-import com.github.dfqin.grantor.PermissionsUtil;
 import com.jph.takephoto.app.TakePhoto;
 import com.jph.takephoto.app.TakePhotoImpl;
-import com.jph.takephoto.compress.CompressConfig;
 import com.jph.takephoto.model.CropOptions;
 import com.jph.takephoto.model.InvokeParam;
 import com.jph.takephoto.model.TContextWrap;
@@ -42,17 +35,13 @@ import com.shijiucheng.konghua.com.shijiucheng.konghua.app.configParams;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.paramsDataBean;
 import com.shijiucheng.konghua.main.order.popwindow_.peisonadadata;
 import com.shijiucheng.konghua.main.order.popwindow_.peisongada;
-import com.shijiucheng.konghua.main.per.payandget.gongdan.mygondan;
 import com.shijiucheng.konghua.renzheng.getpicdialogfragment;
 
 import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -161,7 +150,6 @@ public class order_PeiSong extends BaseActivity_konghua implements TakePhoto.Tak
                 if (fastClick()) {
                     ix = 3;
                     getpicdialogfragment.show(getFragmentManager(), "pzdzp");
-//                    startToPhoto();
                 }
             }
         });
@@ -175,11 +163,19 @@ public class order_PeiSong extends BaseActivity_konghua implements TakePhoto.Tak
 
                     Bundle bundle = new Bundle();
 
-                    if (TextUtils.isEmpty(dataurl[0]) || TextUtils.isEmpty(dataurl[1]) || TextUtils.isEmpty(dataurl[2])) {
-                        toaste_ut(order_PeiSong.this, "请上传3张配送图片");
+                    if (TextUtils.isEmpty(dataurl[0]) & TextUtils.isEmpty(dataurl[1]) & TextUtils.isEmpty(dataurl[2])) {
+                        toaste_ut(order_PeiSong.this, "请至少上传1张配送图片");
                         return;
                     } else {
-                        bundle.putString("store_pack_images", dataurl[0] + "," + dataurl[1] + "," + dataurl[2]);
+                        String tp = "";
+                        if (!TextUtils.isEmpty(dataurl[0]))
+                            tp += dataurl[0] + ",";
+                        if (!TextUtils.isEmpty(dataurl[1]))
+                            tp += dataurl[1] + ",";
+                        if (!TextUtils.isEmpty(dataurl[2]))
+                            tp += dataurl[2] + ",";
+                        tp = tp.substring(0, tp.length() - 1);
+                        bundle.putString("store_pack_images", tp);
 
                         if (TextUtils.isEmpty(ed_xm.getText().toString()) && TextUtils.isEmpty(ed_pho.getText().toString())) {
                             bundle.putString("delivery_emp_uname", "");
@@ -191,6 +187,7 @@ public class order_PeiSong extends BaseActivity_konghua implements TakePhoto.Tak
                             toaste_ut(order_PeiSong.this, "配送员姓名及手机请填写完整");
                             return;
                         }
+
 
                         databean.setT(bundle);
                         databean.setMsg(configParams.orderpeisong);

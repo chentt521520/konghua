@@ -2,33 +2,21 @@ package com.shijiucheng.konghua;
 
 import android.app.Activity;
 import android.app.Application;
-import android.app.FragmentManager;
 import android.content.ComponentCallbacks;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.content.FileProvider;
 import android.util.DisplayMetrics;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.github.dfqin.grantor.PermissionListener;
 import com.github.dfqin.grantor.PermissionsUtil;
-import com.shijiucheng.konghua.com.shijiucheng.konghua.app.BaseActivity_konghua;
+import com.shijiucheng.konghua.com.shijiucheng.konghua.app.BaseActivity_konghua_;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.internate_if;
 import com.shijiucheng.konghua.main.MainActivity;
 import com.tencent.android.tpush.XGPushClickedResult;
@@ -52,7 +40,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Guide_konghua extends BaseActivity_konghua implements Banben_.fuluebanben, internate_if.internetagain {
+public class Guide_konghua extends BaseActivity_konghua_ implements Banben_.fuluebanben, internate_if.internetagain {
 
     Banben_ banben_ = new Banben_();
     internate_if internate_if = new internate_if();
@@ -63,18 +51,9 @@ public class Guide_konghua extends BaseActivity_konghua implements Banben_.fulue
     protected void AddView() {
         setCustomDensity(this, getApplication());
         DaoHangLan(this);
-
-        XGPushClickedResult click = XGPushManager.onActivityStarted(this);
-        if (click != null) {
-            //从推送通知栏打开-Service打开Activity会重新执行Laucher流程
-            //查看是不是全新打开的面板
-            if (isTaskRoot()) {
-                return;
-            }
-            finish();
-        }
         requestorge();
     }
+
 
     public void getappvis() {
         Retro_Intf serivce = retrofit_Single.getInstence().getserivce(2);
@@ -268,8 +247,6 @@ public class Guide_konghua extends BaseActivity_konghua implements Banben_.fulue
     private void requestorge() {
         if (PermissionsUtil.hasPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             //读写权限
-            toaste_ut(Guide_konghua.this, "允许111");
-
             if (isNetworkConnected(this)) {
                 getappvis();
             } else {
@@ -281,7 +258,6 @@ public class Guide_konghua extends BaseActivity_konghua implements Banben_.fulue
                 @Override
                 public void permissionGranted(@NonNull String[] permissions) {
                     //读写权限
-                    toaste_ut(Guide_konghua.this, "允许");
                     if (isNetworkConnected(Guide_konghua.this)) {
                         getappvis();
                     } else {
@@ -294,7 +270,7 @@ public class Guide_konghua extends BaseActivity_konghua implements Banben_.fulue
                 @Override
                 public void permissionDenied(@NonNull String[] permissions) {
                     //用户拒绝了访问摄像头的申请
-                    toaste_ut(Guide_konghua.this, "拒绝");
+                    toaste_ut(Guide_konghua.this, "app没有读写权限无法下载，请在设置里面允许读写权限");
                 }
             }, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE});
         }
@@ -302,20 +278,6 @@ public class Guide_konghua extends BaseActivity_konghua implements Banben_.fulue
 
 
     public void getinstalapk(File file) {
-        System.out.println("xxxxxx");
-        if (Build.VERSION.SDK_INT >= 26) {
-            boolean b = getPackageManager().canRequestPackageInstalls();
-
-            System.out.println(b + "  xx");
-            if (b) {
-                installapkfile(file);
-            } else {
-                //请求安装未知应用来源的权限
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.REQUEST_INSTALL_PACKAGES}, INSTALL_PACKAGES_REQUEST_CODE);
-            }
-        } else {
-            installapkfile(file);
-        }
     }
 
     @Override
@@ -331,23 +293,4 @@ public class Guide_konghua extends BaseActivity_konghua implements Banben_.fulue
         getinstalapk(file);
     }
 
-    public void installapkfile(File file) {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            //参数1 上下文, 参数2 Provider主机地址 和配置文件中保持一致   参数3  共享的文件
-            Uri apkUri =
-                    FileProvider.getUriForFile(Guide_konghua.this, "com.shijiucheng.konghua.fileprovider", file);
-            //添加这一句表示对目标应用临时授权该Uri所代表的文件
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-            intent.setDataAndType(apkUri, "application/vnd.android.package-archive");
-        } else {
-            intent.setDataAndType(Uri.fromFile(new File(Environment
-                            .getExternalStorageDirectory(), "JuanDie.apk")),
-                    "application/vnd.android.package-archive");
-        }
-
-        startActivity(intent);
-    }
 }

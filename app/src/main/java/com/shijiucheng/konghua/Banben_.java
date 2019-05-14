@@ -1,7 +1,7 @@
 package com.shijiucheng.konghua;
 
-import android.Manifest;
 import android.app.DialogFragment;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -9,7 +9,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.FileProvider;
 import android.util.DisplayMetrics;
@@ -17,13 +16,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.github.dfqin.grantor.PermissionListener;
-import com.github.dfqin.grantor.PermissionsUtil;
 
 import org.xutils.http.RequestParams;
 import org.xutils.x;
@@ -49,7 +45,7 @@ public class Banben_ extends DialogFragment {
     @BindView(R.id.bbgx_tejd)
     TextView bbgxTejd;
     @BindView(R.id.bbgx_linjdt)
-    LinearLayout bbgxLinjdt;
+    RelativeLayout bbgxLinjdt;
 
     String txt = "", type_ = "", url = "";
 
@@ -75,11 +71,6 @@ public class Banben_ extends DialogFragment {
             public void onClick(View v) {
                 bbgxLinjdt.setVisibility(View.VISIBLE);
                 dowload(url);
-
-//                Uri uri = Uri.parse(url);
-//                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-//                startActivity(intent);
-
             }
         });
         bbgxFl.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +86,8 @@ public class Banben_ extends DialogFragment {
     public void dowload(String url) {
         RequestParams params = new RequestParams(url);
         params.setAutoRename(true);// 断点下载
-        params.setSaveFilePath(Environment.getExternalStorageDirectory() + "/JuanDie.apk");
+        params.setSaveFilePath(Environment.getExternalStorageDirectory() + "/Driver" + "/HuaMai.apk");
+        System.out.println(Environment.getExternalStorageDirectory() + "/Driver" + "/HuaMai.apk");
         x.http().get(params, new org.xutils.common.Callback.ProgressCallback<File>() {
             @Override
             public void onCancelled(org.xutils.common.Callback.CancelledException arg0) {
@@ -112,26 +104,10 @@ public class Banben_ extends DialogFragment {
 
             @Override
             public void onSuccess(File arg0) {
-                Toast.makeText(getActivity(), "下载成功" + arg0.getTotalSpace(), Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(Intent.ACTION_VIEW);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-//                    //参数1 上下文, 参数2 Provider主机地址 和配置文件中保持一致   参数3  共享的文件
-//                    Uri apkUri =
-//                            FileProvider.getUriForFile(getActivity(), "com.shijiucheng.konghua.fileprovider", arg0);
-//                    //添加这一句表示对目标应用临时授权该Uri所代表的文件
-//                    intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-//                    intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-//                    intent.setDataAndType(apkUri, "application/vnd.android.package-archive");
-//                } else {
-//                    intent.setDataAndType(Uri.fromFile(new File(Environment
-//                                    .getExternalStorageDirectory(), "JuanDie.apk")),
-//                            "application/vnd.android.package-archive");
-//                }
-//                startActivity(intent);
 
-                fuluebanben fl = (fuluebanben) getActivity();
-                fl.installapk(arg0);
+                Toast.makeText(getActivity(), "下载成功,开始安装", Toast.LENGTH_SHORT).show();
+
+                installApk(getActivity(), arg0);
             }
 
             @Override
@@ -180,6 +156,26 @@ public class Banben_ extends DialogFragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    public void installApk(Context context, File file) {
+
+
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+
+        //判读版本是否在7.0以上
+        if (Build.VERSION.SDK_INT >= 24) {
+            //provider authorities
+            Uri apkUri = FileProvider.getUriForFile(context, "com.shijiucheng.konghua.fileprovider", file);
+            //Granting Temporary Permissions to a URI
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            intent.setDataAndType(apkUri, "application/vnd.android.package-archive");
+        } else {
+            intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
+        }
+
+        context.startActivity(intent);
+
     }
 
 

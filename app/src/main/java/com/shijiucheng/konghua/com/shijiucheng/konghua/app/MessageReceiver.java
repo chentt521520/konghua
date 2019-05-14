@@ -14,6 +14,7 @@ import com.tencent.android.tpush.XGPushRegisterResult;
 import com.tencent.android.tpush.XGPushShowedResult;
 import com.tencent.android.tpush.XGPushTextMessage;
 
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -32,6 +33,7 @@ public class MessageReceiver extends XGPushBaseReceiver {
     @Override
     public void onNotifactionShowedResult(Context context,
                                           XGPushShowedResult notifiShowedRlt) {
+        System.out.println("+++++++++++++++ 通知lail");
         if (context == null || notifiShowedRlt == null) {
             return;
         }
@@ -48,9 +50,13 @@ public class MessageReceiver extends XGPushBaseReceiver {
                 .format(Calendar.getInstance().getTime()));
         NotificationService.getInstance(context).save(notific);
         context.sendBroadcast(intent);
-        Log.d("LC", "+++++++++++++++++++++++++++++展示通知的回调");
+        System.out.println("+++++++++++++++++++++++++++++展示通知的回调" + notifiShowedRlt.getContent());
 
-
+        paramsDataBean databean = new paramsDataBean();
+        if (notifiShowedRlt.getContent().contains("进行了订单指派"))
+            databean.setMsg(configParams.playmuc1);
+        else databean.setMsg(configParams.playmuc2);
+        EventBus.getDefault().post(databean);
     }
 
     //反注册的回调
@@ -65,7 +71,6 @@ public class MessageReceiver extends XGPushBaseReceiver {
         } else {
             text = "反注册失败" + errorCode;
         }
-        Log.d(LogTag, text);
 
     }
 
@@ -81,7 +86,6 @@ public class MessageReceiver extends XGPushBaseReceiver {
         } else {
             text = "\"" + tagName + "\"设置失败,错误码：" + errorCode;
         }
-        Log.d(LogTag, text);
 
     }
 
@@ -97,7 +101,6 @@ public class MessageReceiver extends XGPushBaseReceiver {
         } else {
             text = "\"" + tagName + "\"删除失败,错误码：" + errorCode;
         }
-        Log.d(LogTag, text);
 
     }
 
@@ -105,7 +108,7 @@ public class MessageReceiver extends XGPushBaseReceiver {
     @Override
     public void onNotifactionClickedResult(Context context,
                                            XGPushClickedResult message) {
-        Log.e("LC", "+++++++++++++++ 通知被点击 跳转到指定页面。");
+        System.out.println("+++++++++++++++ 通知被点击 跳转到指定页面。");
         NotificationManager notificationManager = (NotificationManager) context
                 .getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancelAll();
@@ -123,6 +126,7 @@ public class MessageReceiver extends XGPushBaseReceiver {
             // APP自己处理通知被清除后的相关动作
             text = "通知被清除 :" + message;
         }
+        System.out.println(text);
         // 获取自定义key-value
         String customContent = message.getCustomContent();
         if (customContent != null && customContent.length() != 0) {
@@ -167,6 +171,7 @@ public class MessageReceiver extends XGPushBaseReceiver {
     public void onTextMessage(Context context, XGPushTextMessage message) {
         // TODO Auto-generated method stub
         String text = "收到消息:" + message.toString();
+        System.out.println(text);
         // 获取自定义key-value
         String customContent = message.getCustomContent();
         if (customContent != null && customContent.length() != 0) {

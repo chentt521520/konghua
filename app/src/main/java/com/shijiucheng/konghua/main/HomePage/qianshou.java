@@ -154,10 +154,10 @@ public class qianshou extends BaseActivity_konghua implements TakePhoto.TakeResu
                     }
                     return;
                 }
-                if (TextUtils.isEmpty(dataurl)) {
-                    toaste_ut(qianshou.this, "请上传配送图片");
-                    return;
-                }
+//                if (TextUtils.isEmpty(dataurl)) {
+//                    toaste_ut(qianshou.this, "请上传配送图片");
+//                    return;
+//                }
                 qianshoup(dataurl);
                 break;
             case R.id.qs_tp1:

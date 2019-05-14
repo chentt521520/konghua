@@ -197,6 +197,12 @@ public class OrderTwoPage extends BaseActivity_konghua implements ordertwoAdapte
         paramsDataBean databean = new paramsDataBean();
         databean.setMsg(configParams.orderSYrefr);
         EventBus.getDefault().post(databean);
+
+        //refreshhp
+
+        paramsDataBean databean1 = new paramsDataBean();
+        databean1.setMsg(configParams.refreshhp);
+        EventBus.getDefault().post(databean1);
     }
 
     @Override
