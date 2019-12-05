@@ -1,9 +1,6 @@
 package com.shijiucheng.konghua.renzheng;
 
-import android.Manifest;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,18 +9,18 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.github.dfqin.grantor.PermissionListener;
-import com.github.dfqin.grantor.PermissionsUtil;
 import com.jph.takephoto.app.TakePhoto;
 import com.jph.takephoto.app.TakePhotoImpl;
-import com.jph.takephoto.compress.CompressConfig;
 import com.jph.takephoto.model.CropOptions;
 import com.jph.takephoto.model.InvokeParam;
 import com.jph.takephoto.model.TContextWrap;
@@ -42,10 +39,8 @@ import com.shijiucheng.konghua.com.shijiucheng.konghua.app.paramsDataBean;
 
 import org.greenrobot.eventbus.EventBus;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -106,6 +101,20 @@ public class DianPu extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua im
     @BindView(R.id.dianpu_teok)
     TextView te_ok;
 
+    @BindView(R.id.bill_radio_group)
+    RadioGroup radio_group_bill;
+    @BindView(R.id.radio_not_bill)
+    RadioButton radio_not_bill;
+    @BindView(R.id.radio_bill)
+    RadioButton radio_bill;
+
+    @BindView(R.id.flower)
+    CheckBox flower;
+    @BindView(R.id.cake)
+    CheckBox cake;
+    @BindView(R.id.plant)
+    CheckBox plant;
+
     List<String> url = new ArrayList<>();
 
     Contact.IdianPuPresent puPresent = new DianpuPresentIml(this);
@@ -114,6 +123,7 @@ public class DianPu extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua im
     private TakePhoto takePhoto;
     private InvokeParam invokeParam;
     String file0 = "", file1 = "", file2 = "", file3 = "";
+    private int bill = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -143,6 +153,22 @@ public class DianPu extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua im
             file1 = authen_RZ.jsonAuthor.getFacade_photo1();
             file2 = authen_RZ.jsonAuthor.getFacade_photo2();
             file3 = authen_RZ.jsonAuthor.getFacade_photo3();
+
+            bill = authen_RZ.jsonAuthor.getIs_support_invoice();
+
+            if (bill == 0) {
+                radio_bill.setChecked(false);
+                radio_not_bill.setChecked(false);
+            } else if (bill == 1) {
+                radio_bill.setChecked(true);
+                radio_not_bill.setChecked(false);
+            } else if (bill == 2) {
+                radio_bill.setChecked(false);
+                radio_not_bill.setChecked(true);
+            }
+            flower.setChecked(authen_RZ.jsonAuthor.getIs_support_flower() == 1);
+            cake.setChecked(authen_RZ.jsonAuthor.getIs_support_cake() == 1);
+            plant.setChecked(authen_RZ.jsonAuthor.getIs_support_green_plants() == 1);
         }
 
 
@@ -208,6 +234,21 @@ public class DianPu extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua im
                         }
                         authen_RZ.jsonAuthor.setCompany_name(ed_qy.getText().toString());
                         authen_RZ.jsonAuthor.setCompany_resigter_number(ed_zch.getText().toString());
+
+                        if (bill == 0) {
+                            toaste_ut(DianPu.this, "请设置能否开具发票");
+                            return;
+                        }
+                        authen_RZ.jsonAuthor.setIs_support_invoice(bill);
+
+                        if (!flower.isChecked() && !cake.isChecked() && !plant.isChecked()) {
+                            toaste_ut(DianPu.this, "请设置产品经营范围");
+                            return;
+                        }
+                        authen_RZ.jsonAuthor.setIs_support_flower(flower.isChecked() ? 1 : 2);
+                        authen_RZ.jsonAuthor.setIs_support_cake(cake.isChecked() ? 1 : 2);
+                        authen_RZ.jsonAuthor.setIs_support_green_plants(plant.isChecked() ? 1 : 2);
+
                         paramsDataBean databean = new paramsDataBean();
                         databean.setMsg(configParams.dprzStep2);
                         EventBus.getDefault().post(databean);
@@ -246,6 +287,17 @@ public class DianPu extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua im
                 if (fastClick()) {
                     getpicdialogfragment getpicdialogfragment = new getpicdialogfragment();
                     getpicdialogfragment.show(getFragmentManager(), "pzdzp");
+                }
+            }
+        });
+
+        radio_group_bill.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.radio_bill) {
+                    bill = 1;
+                } else if (checkedId == R.id.radio_not_bill) {
+                    bill = 2;
                 }
             }
         });
@@ -430,7 +482,7 @@ public class DianPu extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua im
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
-                            puPresent.uploadPic(DianPu.this,pos, retrofit_Single.getInstence().getOpenid(DianPu.this), str);
+                            puPresent.uploadPic(DianPu.this, pos, retrofit_Single.getInstence().getOpenid(DianPu.this), str);
                         }
 
                         @Override

@@ -26,4 +26,9 @@
     <color name="lan">#367cfe</color>
     <color name="lan1">#00b775</color>
     <color name="lan2">#ff5148</color>
+
+    <color name="lucencyColor">#00000000</color>
+    <color name="transparent_color">#00000000</color>
+
+
 </resources>

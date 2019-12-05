@@ -27,8 +27,7 @@ public class QNumberPicker extends NumberPicker {
     }
 
     @Override
-    public void addView(View child, int index,
-                        android.view.ViewGroup.LayoutParams params) {
+    public void addView(View child, int index, android.view.ViewGroup.LayoutParams params) {
         super.addView(child, index, params);
         updateView(child);
     }

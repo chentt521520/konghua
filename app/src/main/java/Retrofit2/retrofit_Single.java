@@ -71,7 +71,7 @@ public class retrofit_Single {
             service = retrofit.create(Retro_Intf.class);
         } else {
             //http://zd_store.konghua.com   http://test_zd_store.konghua.com
-            Retrofit retrofit = new Retrofit.Builder().baseUrl("http://test_zd_store.konghua.com") //增加返回值为Gson的支持(以实体类返回)
+            Retrofit retrofit = new Retrofit.Builder().baseUrl("http://zd_store.konghua.com") //增加返回值为Gson的支持(以实体类返回)
                     .addConverterFactory(ScalarsConverterFactory.create()) //增加返回值为Gson的支持(以实体类返回)
                     .client(okHttpClient)
                     .addConverterFactory(GsonConverterFactory.create()).build();

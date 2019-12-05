@@ -52,11 +52,11 @@ public class MessageReceiver extends XGPushBaseReceiver {
         context.sendBroadcast(intent);
         System.out.println("+++++++++++++++++++++++++++++展示通知的回调" + notifiShowedRlt.getContent());
 
-        paramsDataBean databean = new paramsDataBean();
-        if (notifiShowedRlt.getContent().contains("进行了订单指派"))
-            databean.setMsg(configParams.playmuc1);
-        else databean.setMsg(configParams.playmuc2);
-        EventBus.getDefault().post(databean);
+//        paramsDataBean databean = new paramsDataBean();
+//        if (notifiShowedRlt.getContent().contains("进行了订单指派"))
+//            databean.setMsg(configParams.playmuc1);
+//        else databean.setMsg(configParams.playmuc2);
+//        EventBus.getDefault().post(databean);//改为自定义获取接口
     }
 
     //反注册的回调

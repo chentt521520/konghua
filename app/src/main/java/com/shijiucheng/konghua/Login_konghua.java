@@ -41,6 +41,10 @@ public class Login_konghua extends com.shijiucheng.konghua.Cmvp.BaseActivity_kon
     EditText loginEdmmn;
     @BindView(R.id.login_te)
     TextView loginTe;
+    @BindView(R.id.login_register)
+    TextView btnRegister;
+    @BindView(R.id.login_forget_pwd)
+    TextView login_forget_pwd;
     final longincontract.IloginPresent present = new LoginPresenerIml(this);
 
     private APP app;
@@ -64,6 +68,19 @@ public class Login_konghua extends com.shijiucheng.konghua.Cmvp.BaseActivity_kon
                 } else
                     toaste_ut(Login_konghua.this, "请输入正确的账号");
 
+            }
+        });
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivityByIntent(Login_konghua.this, Register_konghua.class);
+            }
+        });
+        login_forget_pwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivityByIntent(Login_konghua.this, ForgetPwd_konghua.class);
             }
         });
     }

@@ -96,7 +96,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp" />
 
-
             <include
                 android:id="@+id/ordertwo_nodata"
                 layout="@layout/nodtata"

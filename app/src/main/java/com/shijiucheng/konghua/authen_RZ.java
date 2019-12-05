@@ -262,7 +262,6 @@ public class authen_RZ extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
     public void getmess(paramsDataBean data) {
         if (data != null) {
             if (data.getMsg().equals(configParams.dprzStep1)) {
-                toaste_ut(authen_RZ.this, "11111");
                 te_dz1.setText("已填写");
                 te_dzgo.setText("查看 >");
                 return;

@@ -13,14 +13,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
+import android.util.Log;
 
 import com.github.dfqin.grantor.PermissionListener;
 import com.github.dfqin.grantor.PermissionsUtil;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.BaseActivity_konghua_;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.internate_if;
 import com.shijiucheng.konghua.main.MainActivity;
-import com.tencent.android.tpush.XGPushClickedResult;
-import com.tencent.android.tpush.XGPushManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -77,6 +76,8 @@ public class Guide_konghua extends BaseActivity_konghua_ implements Banben_.fulu
                             String type = data.getString("type");// 1:不用强制更新，2：需要强制更新
 
                             String android_url = data.getString("android_url");
+                            int version=data.getInt("versionCode");
+                            Log.e("~~~~~~~~~~~~~~",getVersion1()+"，，"+data.getInt("versionCode"));
                             if (getVersion1() >= data.getInt("versionCode")) {
                                 new Handler().postDelayed(new Runnable() {
                                     @Override
@@ -292,5 +293,4 @@ public class Guide_konghua extends BaseActivity_konghua_ implements Banben_.fulu
     public void installapk(File file) {
         getinstalapk(file);
     }
-
 }

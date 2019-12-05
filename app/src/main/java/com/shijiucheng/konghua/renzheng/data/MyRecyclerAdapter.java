@@ -12,18 +12,24 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.shijiucheng.konghua.R;
+import com.shijiucheng.konghua.main.entity.CityInfo;
 
 import java.util.List;
 
 public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.MyViewHolder> {
 
-    List<Recyc_data> list;
-    Context context;
+    private List<CityInfo> list;
+    private Context context;
 
-    public MyRecyclerAdapter(List<Recyc_data> list,
+    public MyRecyclerAdapter(List<CityInfo> list,
                              Context context) {
         this.list = list;
         this.context = context;
+    }
+
+    public void refresh(List<CityInfo> list){
+        this.list = list;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -36,18 +42,18 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
 
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
-        holder.tv.setText(list.get(position).getTxt());
-        holder.tv.setSelected(list.get(position).isselect);
+        holder.tv.setText(list.get(position).getCity());
+        holder.tv.setSelected(list.get(position).isCheck());
 
         holder.tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!holder.tv.isSelected()) {
                     holder.tv.setSelected(true);
-                    list.get(position).setIsselect(true);
+                    list.get(position).setCheek(true);
                 } else {
                     holder.tv.setSelected(false);
-                    list.get(position).setIsselect(false);
+                    list.get(position).setCheek(false);
                 }
             }
         });
@@ -64,12 +70,7 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
         public MyViewHolder(View view) {
             super(view);
             tv = (TextView) view.findViewById(R.id.psqy_itte);
-            DisplayMetrics dm = context.getResources().getDisplayMetrics();
-            int w_ = dm.widthPixels;
-            tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, (int) (w_ * 28 / 750.0));
-            setViewHw_Lin(tv, (int) (w_ * 200 / 750.0), (int) (w_ * 80 / 750.0), (int) (w_ * 25 / 750.0), (int) (w_ * 5 / 750.0), (int) (w_ * 25 / 750.0), (int) (w_ * 20 / 750.0));
         }
-
     }
 
     protected void setViewHw_Lin(View v, int width, int height, int left,

@@ -1,18 +1,13 @@
 package com.shijiucheng.konghua.renzheng;
 
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import com.shijiucheng.konghua.Cmvp.BasePresenter;
@@ -20,19 +15,17 @@ import com.shijiucheng.konghua.Cmvp.DPAddressMvp.Contact;
 import com.shijiucheng.konghua.Cmvp.DPAddressMvp.DDAddressPrestenIml;
 import com.shijiucheng.konghua.R;
 import com.shijiucheng.konghua.authen_RZ;
+import com.shijiucheng.konghua.main.widget.CityPickerView;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.DaoHang_top;
-import com.shijiucheng.konghua.com.shijiucheng.konghua.app.PopWindow_;
-import com.shijiucheng.konghua.com.shijiucheng.konghua.app.QNumberPicker;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.configParams;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.paramsDataBean;
+import com.shijiucheng.konghua.main.entity.CityInfo;
 import com.shijiucheng.konghua.renzheng.data.MyRecyclerAdapter;
-import com.shijiucheng.konghua.renzheng.data.Recyc_data;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.xutils.x;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -73,20 +66,16 @@ public class DPAddress extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
     @BindView(R.id.dpdz_teok)
     TextView te_ok;
 
-    View view_window;
-    PopWindow_ window_;
-
-    List<Recyc_data> list = new ArrayList<>();
     MyRecyclerAdapter ada;
 
-    QNumberPicker qnp1, qnp2, qnp3;
-    TextView te_dzok, te_dzqx;
-    int position_ssq = 0;//0表示省1表示市2表示区
-
     Contact.IdpAddressPrestent prestent = new DDAddressPrestenIml(this);
-    List<String> shen, shi, qu;//省市区
-    List<String> shen1, shi1, qu1;//省市区id
-
+    private CityPickerView pickerView;
+    List<CityInfo> cityList;//省市区
+    List<CityInfo> districtList;//省市区
+    boolean initDistrict = true;
+    private String provinceId;
+    private String cityId;
+    private String districtId;
 
     @Override
     protected void AddView() {
@@ -101,10 +90,21 @@ public class DPAddress extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
 
         if (authen_RZ.jsonAuthor != null) {
             ed_xx1.setText(authen_RZ.jsonAuthor.getAddress());
-            if (authen_RZ.jsonAuthor.getLongitude().length() >= 1)
+            if (authen_RZ.jsonAuthor.getLongitude().length() >= 1) {
                 te_jwd1.setText(authen_RZ.jsonAuthor.getLongitude() + "," + authen_RZ.jsonAuthor.getLatitude());
-            if (authen_RZ.jsonAuthor.getCity_id_text().length() >= 1)
-                te_ssq1.setText(authen_RZ.jsonAuthor.getProvince_id_text() + "-" + authen_RZ.jsonAuthor.getCity_id_text() + "-" + authen_RZ.jsonAuthor.getDistrict_id_text());
+            }
+            if (!TextUtils.isEmpty(authen_RZ.jsonAuthor.getProvince_id_text())
+                    && !TextUtils.isEmpty(authen_RZ.jsonAuthor.getCity_id_text())
+                    && !TextUtils.isEmpty(authen_RZ.jsonAuthor.getDistrict_id_text())) {
+                te_ssq1.setText(authen_RZ.jsonAuthor.getProvince_id_text() + " " + authen_RZ.jsonAuthor.getCity_id_text() + " " + authen_RZ.jsonAuthor.getDistrict_id_text());
+                provinceId = authen_RZ.jsonAuthor.getProvince_id();
+                cityId = authen_RZ.jsonAuthor.getCity_id();
+                districtId = authen_RZ.jsonAuthor.getDistrict_id();
+            }
+            //获取配送区域
+            if (!TextUtils.isEmpty(authen_RZ.jsonAuthor.getCity_id_text())) {
+                getAddress(2, cityId);
+            }
         }
 
 
@@ -129,13 +129,8 @@ public class DPAddress extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
         GridLayoutManager layoutManager = new GridLayoutManager(this, 3);
         layoutManager.setOrientation(OrientationHelper.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
-        ada = new MyRecyclerAdapter(list, DPAddress.this);
+        ada = new MyRecyclerAdapter(districtList, DPAddress.this);
         recyclerView.setAdapter(ada);
-
-        view_window = LayoutInflater.from(DPAddress.this).inflate(R.layout.dizhi_popwindow, null);
-
-        prestent.getSSQ(DPAddress.this, retrofit_Single.getInstence().getOpenid(DPAddress.this), 3, authen_RZ.jsonAuthor.getCity_id());
-
 
     }
 
@@ -146,8 +141,7 @@ public class DPAddress extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
             public void onClick(View view) {
                 System.out.println("sdfsdf111");
                 if (fastClick()) {
-                    window_ = new PopWindow_(DPAddress.this, view_window, view, w_, (int) (w_ * 400 / 750.0), true);
-                    getshen(view);
+                    getAddress(0, "0");
                 }
 
             }
@@ -161,8 +155,7 @@ public class DPAddress extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
                 i.putExtra("shi", authen_RZ.jsonAuthor.getCity_id_text());
                 i.setClass(DPAddress.this, BDMap.class);
                 startActivity(i);
-                overridePendingTransition(R.anim.push_left_in,
-                        R.anim.push_left_out);
+                overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
             }
         });
         te_jwd1.setOnClickListener(new View.OnClickListener() {
@@ -177,33 +170,40 @@ public class DPAddress extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
                 i.putExtra("shi", authen_RZ.jsonAuthor.getCity_id_text());
                 i.setClass(DPAddress.this, BDMap.class);
                 startActivity(i);
-                overridePendingTransition(R.anim.push_left_in,
-                        R.anim.push_left_out);
+                overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
             }
         });
         te_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (te_ssq1.getText().equals("请选择地址信息!")) {
+                if (TextUtils.isEmpty(te_ssq1.getText().toString())) {
                     toaste_ut(DPAddress.this, "请选择地址信息");
                     return;
                 }
+                String[] citys = te_ssq1.getText().toString().split(" ");
+                authen_RZ.jsonAuthor.setProvince_id(provinceId);
+                authen_RZ.jsonAuthor.setProvince_id_text(citys[0]);
+                authen_RZ.jsonAuthor.setCity_id(cityId);
+                authen_RZ.jsonAuthor.setCity_id_text(citys[1]);
+                authen_RZ.jsonAuthor.setDistrict_id(districtId);
+                authen_RZ.jsonAuthor.setDistrict_id_text(citys[2]);
+
                 if (TextUtils.isEmpty(ed_xx1.getText().toString())) {
                     toaste_ut(DPAddress.this, "请填写详细地址信息");
                     return;
                 }
+                authen_RZ.jsonAuthor.setAddress(ed_xx1.getText().toString());
+
                 if (TextUtils.isEmpty(te_jwd1.getText().toString()) || te_jwd1.getText().toString().contains("请设置")) {
                     toaste_ut(DPAddress.this, "请设置店铺的经纬度");
                     return;
                 }
-                String ids = "";
-                for (int i = 0; i < list.size(); i++) {
-                    if (list.get(i).isIsselect())
-                        ids += qu1.get(i) + ",";
+                if (TextUtils.isEmpty(getIds())) {
+                    toaste_ut(DPAddress.this, "请选择配送地址");
+                    return;
                 }
-                ids = ids.substring(0, ids.length() - 1);
-                authen_RZ.jsonAuthor.setDelivery_district_ids(ids);
+                authen_RZ.jsonAuthor.setDelivery_district_ids(getIds());
 
                 paramsDataBean databean = new paramsDataBean();
                 databean.setMsg(configParams.dprzStep3);
@@ -215,6 +215,23 @@ public class DPAddress extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
         });
     }
 
+    private String getIds() {
+        StringBuilder deliveryIds = new StringBuilder();
+        if (districtList == null || districtList.isEmpty()) {
+            return "";
+        }
+        for (CityInfo info : districtList) {
+            if (info.isCheck()) {
+                deliveryIds.append(info.getCityId()).append(",");
+            }
+        }
+        if (TextUtils.isEmpty(deliveryIds)) {
+            return "";
+        } else {
+            return deliveryIds.substring(0, deliveryIds.length() - 1);
+        }
+    }
+
     @Override
     protected int getLayout() {
         return R.layout.activity_dpaddress;
@@ -223,88 +240,6 @@ public class DPAddress extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
     @Override
     protected BasePresenter bindPresent() {
         return prestent;
-    }
-
-    private void set_npView() {
-        qnp1 = view_window.findViewById(R.id.adddzpic1);
-        qnp2 = view_window.findViewById(R.id.adddzpic2);
-        qnp3 = view_window.findViewById(R.id.adddzpic3);
-        te_dzok = view_window.findViewById(R.id.adddz_teok);
-        te_dzqx = view_window.findViewById(R.id.adddz_tequxiao);
-
-        String[] data = new String[shen.size()];
-        for (int i = 0; i < shen.size(); i++) {
-            data[i] = shen.get(i);
-        }
-
-        qnp1.setDisplayedValues(data);
-        setNumberPickerDividerColor(qnp1);
-        qnp1.setMinValue(0);
-        qnp1.setMaxValue(data.length - 1);
-        qnp1.setValue(0);
-
-        te_dzqx.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                window_.disssmiss_window();
-                position_ssq = 0;
-            }
-        });
-        te_dzok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (position_ssq == 0) {
-                    position_ssq = 1;
-                    getshi();
-                } else if (position_ssq == 1) {
-                    position_ssq = 2;
-                    getqu();
-                } else if (position_ssq == 2) {
-
-                    te_ssq1.setText(shen.get(qnp1.getValue()) + "-" + shi.get(qnp2.getValue()) + "-" + qu.get(qnp3.getValue()));
-                    authen_RZ.jsonAuthor.setProvince_id(shen1.get(qnp1.getValue()) + "");
-                    authen_RZ.jsonAuthor.setCity_id(shi1.get(qnp2.getValue()) + "");
-                    authen_RZ.jsonAuthor.setCity_id(qu1.get(qnp3.getValue()) + "");
-
-                    list.removeAll(list);
-                    for (int i = 0; i < qu.size(); i++) {
-                        if (qu.get(i).equals(qu.get(qnp3.getValue())))
-                            list.add(new Recyc_data(true, qu.get(i), qu1.get(i)));
-                        else list.add(new Recyc_data(false, qu.get(i), qu1.get(i)));
-                    }
-                    ada.notifyDataSetChanged();
-
-                    window_.disssmiss_window();
-                    position_ssq = 0;
-
-
-                }
-            }
-        });
-    }
-
-
-    private void setNumberPickerDividerColor(NumberPicker numberPicker) {
-        NumberPicker picker = numberPicker;
-        java.lang.reflect.Field[] pickerFields = NumberPicker.class
-                .getDeclaredFields();
-        for (java.lang.reflect.Field pf : pickerFields) {
-            if (pf.getName().equals("mSelectionDivider")) {
-                pf.setAccessible(true);
-                try {
-                    // 设置分割线的颜色值 透明
-                    pf.set(picker,
-                            new ColorDrawable(Color.parseColor("#0894ec")));
-                } catch (IllegalArgumentException e) {
-                    e.printStackTrace();
-                } catch (Resources.NotFoundException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
-                break;
-            }
-        }
     }
 
     @Subscribe
@@ -340,104 +275,67 @@ public class DPAddress extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua
         toaste_ut(getApplicationContext(), msg);
     }
 
+    private void createCityDialog() {
+        initDistrict = false;
+        pickerView = new CityPickerView.Builder(DPAddress.this)
+                .setList(cityList)
+                .setListener(new CityPickerView.OnCitySelectListener() {
+                    @Override
+                    public void onConfirmListener(int pos, String id, String addressStr) {
+                        if (pos == 1) {
+                            provinceId = id;
+                            getAddress(1, id);
+                        } else if (pos == 2) {
+                            cityId = id;
+                            getAddress(2, id);
+                        } else if (pos == 3) {
+                            districtId = id;
+                            te_ssq1.setText(addressStr);
+                            ada.refresh(districtList);
+                        }
+                    }
+                })
+                .build();
 
-    private void getshen(View view) {
-        if (shen != null) {
-            if (shen.size() >= 1) {
-                set_npView();
-            }
-        } else
-            prestent.getSSQ(DPAddress.this, retrofit_Single.getInstence().getOpenid(DPAddress.this), 0, "0");
-    }
-
-    private void getshi() {
-        if (shi != null) {
-            if (shi.size() >= 1) {
-                String[] data = new String[shi.size()];
-                for (int i = 0; i < shi.size(); i++) {
-                    data[i] = shi.get(i);
-                }
-                qnp2.setDisplayedValues(data);
-                setNumberPickerDividerColor(qnp2);
-                qnp2.setMinValue(0);
-                qnp2.setMaxValue(data.length - 1);
-                qnp2.setValue(0);
-                qnp1.setVisibility(View.GONE);
-                qnp2.setVisibility(View.VISIBLE);
-            }
-        } else {
-            prestent.getSSQ(DPAddress.this, retrofit_Single.getInstence().getOpenid(DPAddress.this), 1, shen1.get(qnp1.getValue()));
-        }
-    }
-
-    private void getqu() {
-
-        if (qu != null) {
-            if (qu.size() >= 1) {
-                String[] data = new String[qu.size()];
-                for (int i = 0; i < qu.size(); i++) {
-                    data[i] = qu.get(i);
-                }
-                qnp3.setDisplayedValues(data);
-                setNumberPickerDividerColor(qnp3);
-                qnp3.setMinValue(0);
-                qnp3.setMaxValue(data.length - 1);
-                qnp3.setValue(0);
-                qnp2.setVisibility(View.GONE);
-                qnp3.setVisibility(View.VISIBLE);
-            }
-        } else {
-            prestent.getSSQ(DPAddress.this, retrofit_Single.getInstence().getOpenid(DPAddress.this), 2, shi1.get(qnp2.getValue()));
-        }
-    }
-
-    private void getqu1() {
-        qu = null;
-        qu1 = null;
-        if (qu != null) {
-            if (qu.size() >= 1) {
-                String[] data = new String[qu.size()];
-                for (int i = 0; i < qu.size(); i++) {
-                    data[i] = qu.get(i);
-                }
-                qnp3.setDisplayedValues(data);
-                setNumberPickerDividerColor(qnp3);
-                qnp3.setMinValue(0);
-                qnp3.setMaxValue(data.length - 1);
-                qnp3.setValue(0);
-                qnp2.setVisibility(View.GONE);
-                qnp3.setVisibility(View.VISIBLE);
-            }
-        } else {
-            prestent.getSSQ(DPAddress.this, retrofit_Single.getInstence().getOpenid(DPAddress.this), 3, shi1.get(qnp2.getValue()));
-        }
+        pickerView.showPopWin(DPAddress.this);
     }
 
     @Override
-    public void getAddress(int pos, List ssq, List ssqid) {
+    public void getAddress(int pos, List<CityInfo> ssq) {
+
+        this.cityList = ssq;
         if (pos == 0) {
-            shen = ssq;
-            shen1 = ssqid;
-            getshen(te_ssq1);
-        } else if (pos == 1) {
-            shi = ssq;
-            shi1 = ssqid;
-            getshi();
-        } else if (pos == 2) {
-            qu = ssq;
-            qu1 = ssqid;
-            getqu();
-        } else if (pos == 3) {
-            qu = ssq;
-            qu1 = ssqid;
-            list.removeAll(list);
-            for (int i = 0; i < qu.size(); i++) {
-                if (i == 0)
-                    list.add(new Recyc_data(true, qu.get(i), qu1.get(i)));
-                else list.add(new Recyc_data(false, qu.get(i), qu1.get(i)));
+            createCityDialog();
+        } else {
+            if (pos == 2) {
+                this.districtList = ssq;
+                if (initDistrict) {
+                    setDistrictView();
+                }
             }
-            ada.notifyDataSetChanged();
-            pos = 0;
+            if (pickerView != null)
+                pickerView.reFreshData(pos, cityList);
         }
+    }
+
+
+    private void getAddress(int pos, String id) {
+        prestent.getSSQ(DPAddress.this, retrofit_Single.getInstence().getOpenid(DPAddress.this), pos, id);
+    }
+
+    private void setDistrictView() {
+        String delivery_district_ids = authen_RZ.jsonAuthor.getDelivery_district_ids();
+        if (districtList == null || districtList.isEmpty()) {
+            return;
+        }
+        String[] ids = delivery_district_ids.split(",");
+        for (String id : ids) {
+            for (CityInfo info : districtList) {
+                if (TextUtils.equals(id, info.getCityId())) {
+                    info.setCheek(true);
+                }
+            }
+        }
+        ada.refresh(districtList);
     }
 }

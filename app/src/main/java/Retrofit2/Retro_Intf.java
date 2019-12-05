@@ -22,6 +22,10 @@ public interface Retro_Intf {
     @FormUrlEncoded
     Call<ResponseBody> getLogin(@Header("Cookie") String cook, @FieldMap Map<String, String> maps);
 
+    @POST("/ApiApp-Index-store_join_do.html")
+    @FormUrlEncoded
+    Call<ResponseBody> getRegister(@Header("Cookie") String cook, @FieldMap Map<String, String> maps);
+
     @GET("/ApiApp-Index-index.html")
     Call<ResponseBody> homePage(@Header("Cookie") String cook, @QueryMap Map<String, String> maps);
 
@@ -293,4 +297,38 @@ public interface Retro_Intf {
     @GET("/ApiApp-Order-order_refuse_balance_communicate_do.html")
     Call<ResponseBody> jujuejs(@Header("Cookie") String cook, @QueryMap Map<String, String> map);
 
+    //拒绝部分结算
+    @GET("/ApiApp-Order-get_order_pool_list.html")
+    Call<ResponseBody> getGrabOrder(@Header("Cookie") String cook, @QueryMap Map<String, String> map);
+
+
+    //抢单
+    @POST("/ApiApp-Order-order_pool_receive_do.html")
+    @FormUrlEncoded
+    Call<ResponseBody> grabOrder(@Header("Cookie") String cook, @FieldMap Map<String, String> map);
+
+    //请求涨价
+    @POST("/ApiApp-Order-order_pool_amount_add_do.html")
+    @FormUrlEncoded
+    Call<ResponseBody> addPrice(@Header("Cookie") String cook, @FieldMap Map<String, String> map);
+
+    //涨价界面
+    @POST("/ApiApp-Order-order_pool_amount_add.html")
+    @FormUrlEncoded
+    Call<ResponseBody> addPricePage(@Header("Cookie") String cook, @FieldMap Map<String, String> map);
+
+    //忘记密码中获取验证码
+    @POST("/ApiApp-Public-send_forget_pass_sms_code.html")
+    @FormUrlEncoded
+    Call<ResponseBody> forget_pwd_sms_code(@Header("Cookie") String cook, @FieldMap Map<String, String> map);
+
+    //忘记密码中修改密码
+    @POST("/ApiApp-Public-forget_pass_do.html")
+    @FormUrlEncoded
+    Call<ResponseBody> forget_pwd_commit(@Header("Cookie") String cook, @FieldMap Map<String, String> map);
+
+    //撤销退单（花店）
+    @POST("/ApiApp-Order-order_store_revoke_cancel_do.html")
+    @FormUrlEncoded
+    Call<ResponseBody> withdraw_order(@Header("Cookie") String cook, @FieldMap Map<String, String> map);
 }

@@ -5,6 +5,7 @@ import android.content.Context;
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BasePresenter;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
+import com.shijiucheng.konghua.main.entity.CityInfo;
 
 import java.util.List;
 
@@ -15,10 +16,9 @@ public class Contact {
 
         void closeload();
 
-
         void showToast(String msg);
 
-        void getAddress(int pos, List ssq, List ssqid);
+        void getAddress(int pos, List<CityInfo> list);
 
     }
 

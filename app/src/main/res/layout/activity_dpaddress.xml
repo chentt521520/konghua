@@ -52,7 +52,7 @@
                     android:minWidth="150dp"
                     android:paddingLeft="5sp"
                     android:singleLine="true"
-                    android:text="请选择地址信息！"
+                    android:hint="请选择地址信息！"
                     android:textColor="@color/hei"
                     android:textSize="11sp" />
             </LinearLayout>

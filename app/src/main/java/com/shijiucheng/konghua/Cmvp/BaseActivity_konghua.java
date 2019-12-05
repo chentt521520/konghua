@@ -89,7 +89,8 @@ public abstract class BaseActivity_konghua extends AppCompatActivity {
             finish();
         }
     }
-    protected void startActivityByIntent(Context context, Class<?> cls,  Bundle data) {
+
+    protected void startActivityByIntent(Context context, Class<?> cls, Bundle data) {
         Intent i = new Intent();
         i.setClass(context, cls);
         i.putExtras(data);
@@ -97,6 +98,7 @@ public abstract class BaseActivity_konghua extends AppCompatActivity {
         overridePendingTransition(R.anim.push_left_in,
                 R.anim.push_left_out);
     }
+
     protected void startActivityByIntent(Context context, Class<?> cls) {
         Intent i = new Intent();
         i.setClass(context, cls);
@@ -125,6 +127,10 @@ public abstract class BaseActivity_konghua extends AppCompatActivity {
      */
     protected void toaste_ut(Context context, String str) {
         Toast.makeText(context, str, Toast.LENGTH_SHORT).show();
+    }
+
+    public void toast(String msg) {
+        Toast.makeText(BaseActivity_konghua.this, msg, Toast.LENGTH_SHORT).show();
     }
 
     /**

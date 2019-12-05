@@ -22,6 +22,8 @@ import butterknife.Unbinder;
 public class jiedan_frag extends DialogFragment {
     View view;
     int wxx = 0;
+    @BindView(R.id.tetxt)
+    TextView jiedanMsg;
     @BindView(R.id.jiedan_teok)
     TextView jiedanTeok;
     @BindView(R.id.jiedan_tequxiao)
@@ -40,6 +42,7 @@ public class jiedan_frag extends DialogFragment {
         DisplayMetrics dm = getActivity().getResources().getDisplayMetrics();
         wxx = dm.widthPixels;
         unbinder = ButterKnife.bind(this, view);
+
         setdata();
         setviewlisten();
 
@@ -65,7 +68,13 @@ public class jiedan_frag extends DialogFragment {
     }
 
     private void setdata() {
-
+        Bundle bundle = getArguments();
+        String notice = "您接收该笔订单后不可撤单，确认继续？";
+        if (bundle != null) {
+            bundle.getString("tag");
+            notice = bundle.getString("notice");
+        }
+        jiedanMsg.setText(notice);
     }
 
     public interface jiedan {

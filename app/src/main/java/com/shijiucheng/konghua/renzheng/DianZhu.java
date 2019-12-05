@@ -8,10 +8,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Base64;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -32,6 +30,7 @@ import com.shijiucheng.konghua.authen_RZ;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.DaoHang_top;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.configParams;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.paramsDataBean;
+import com.shijiucheng.konghua.main.Utils.StringUtils;
 import com.shijiucheng.konghua.renzheng.data.dianzhufra;
 
 import org.greenrobot.eventbus.EventBus;
@@ -52,53 +51,24 @@ public class DianZhu extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua i
     @BindView(R.id.dianzu_dh)
     DaoHang_top dh;
 
-    @BindView(R.id.dianzhu_linxm)
-    LinearLayout lin_xm;
-    @BindView(R.id.dianzhu_texm)
-    TextView te_xm;
     @BindView(R.id.dianzhu_edxm)
     EditText ed_xm;
 
-    @BindView(R.id.dianzhu_linpho)
-    LinearLayout lin_pho;
-    @BindView(R.id.dianzhu_tepho)
-    TextView te_pho;
     @BindView(R.id.dianzhu_edpho)
     EditText ed_pho;
 
-    @BindView(R.id.dianzhu_linqq)
-    LinearLayout lin_qq;
-    @BindView(R.id.dianzhu_teqq)
-    TextView te_qq;
     @BindView(R.id.dianzhu_edqq)
     EditText ed_qq;
 
-    @BindView(R.id.dianzhu_linsfz)
-    LinearLayout lin_sfz;
-    @BindView(R.id.dianzhu_tesfz)
-    TextView te_sfz;
     @BindView(R.id.dianzhu_edsfz)
     EditText ed_sfz;
 
-    @BindView(R.id.dianzhu_tesfzt)
-    TextView te_sfzt;
 
-    @BindView(R.id.dianzhu_linsfztp)
-    LinearLayout lin_sfztp;
     @BindView(R.id.dianzhu_imsfz1)
     ImageView im_sfz1;
     @BindView(R.id.dianzhu_imsfz2)
     ImageView im_sfz2;
 
-    @BindView(R.id.dianzhu_linsfztp1)
-    LinearLayout lin_sfztp1;
-    @BindView(R.id.dianzhu_imsfz11)
-    ImageView im_sfz11;
-    @BindView(R.id.dianzhu_imsfz21)
-    ImageView im_sfz21;
-
-    @BindView(R.id.dianzhu_tesfzt1)
-    TextView te_sfztts;
     @BindView(R.id.dianzhu_teok)
     TextView te_ok;
 
@@ -151,97 +121,78 @@ public class DianZhu extends com.shijiucheng.konghua.Cmvp.BaseActivity_konghua i
         }
 
         dh.settext_("填写店主信息");
-        setViewHw_Lin(lin_xm, w_ - (int) (w_ * 28 / 750.0), (int) (w_ * 80 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 30 / 750.0), (int) (w_ * 14 / 750.0), 0);
-        setTextSize(te_xm, (int) (w_ * 28 / 750.0));
-        setTextSize(ed_xm, (int) (w_ * 28 / 750.0));
-        setViewHw_Lin(lin_pho, w_ - (int) (w_ * 28 / 750.0), (int) (w_ * 80 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 10 / 750.0), (int) (w_ * 14 / 750.0), 0);
-        setTextSize(te_pho, (int) (w_ * 28 / 750.0));
-        setTextSize(ed_pho, (int) (w_ * 28 / 750.0));
-        setViewHw_Lin(lin_qq, w_ - (int) (w_ * 28 / 750.0), (int) (w_ * 80 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 10 / 750.0), (int) (w_ * 14 / 750.0), 0);
-        setTextSize(te_qq, (int) (w_ * 28 / 750.0));
-        setTextSize(ed_qq, (int) (w_ * 28 / 750.0));
-        setViewHw_Lin(lin_sfz, w_ - (int) (w_ * 28 / 750.0), (int) (w_ * 80 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 10 / 750.0), (int) (w_ * 14 / 750.0), 0);
-        setTextSize(te_sfz, (int) (w_ * 28 / 750.0));
-        setTextSize(ed_sfz, (int) (w_ * 28 / 750.0));
-
-        setViewHw_Lin(te_sfzt, w_ - (int) (w_ * 28 / 750.0), (int) (w_ * 80 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 10 / 750.0), (int) (w_ * 14 / 750.0), 0);
-        setTextSize(te_sfzt, (int) (w_ * 28 / 750.0));
-
-        setViewHw_Lin(lin_sfztp, w_ - (int) (w_ * 28 / 750.0), (int) (w_ * 200 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 10 / 750.0), (int) (w_ * 14 / 750.0), 0);
-        setViewHw_Lin(lin_sfztp1, w_ - (int) (w_ * 28 / 750.0), (int) (w_ * 200 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 10 / 750.0), (int) (w_ * 14 / 750.0), 0);
-        setViewHw_Lin(te_sfztts, w_ - (int) (w_ * 28 / 750.0), (int) (w_ * 80 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 10 / 750.0), (int) (w_ * 14 / 750.0), (int) (w_ * 14 / 750.0));
-        setTextSize(te_sfztts, (int) (w_ * 28 / 750.0));
     }
 
     @Override
     protected void SetViewListen() {
 
-        im_sfz1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                picpos = 1;
-                if (fastClick()) {
-                    getpicdialogfragment getpicdialogfragment = new getpicdialogfragment();
-                    getpicdialogfragment.show(getFragmentManager(), "pzdz");
-                }
+        im_sfz1.setOnClickListener(view -> {
+            picpos = 1;
+            if (fastClick()) {
+                getpicdialogfragment getpicdialogfragment = new getpicdialogfragment();
+                getpicdialogfragment.show(getFragmentManager(), "pzdz");
             }
         });
-        im_sfz2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                picpos = 2;
-                if (fastClick()) {
-                    getpicdialogfragment getpicdialogfragment = new getpicdialogfragment();
-                    getpicdialogfragment.show(getFragmentManager(), "pzdz");
+        im_sfz2.setOnClickListener(v -> {
+            picpos = 2;
+            if (fastClick()) {
+                getpicdialogfragment getpicdialogfragment = new getpicdialogfragment();
+                getpicdialogfragment.show(getFragmentManager(), "pzdz");
 
-                }
             }
         });
 
-        te_ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (fastClick()) {
-                    if (namestr.equals("3")) {
-                        if (!dzfra.isAdded()) {
-                            dzfra.show(getSupportFragmentManager(), "dzhu");
-                        }
-                    } else {
-                        if (TextUtils.isEmpty(ed_xm.getText().toString()))
-                            toaste_ut(DianZhu.this, "请输入店主姓名");
-                        else {
-                            if (!isMatchered(PHONE_PATTERN, ed_pho.getText().toString()))
-                                toaste_ut(DianZhu.this, "请输入正确的店主手机号");
-                            else {
-                                if (TextUtils.isEmpty(ed_qq.getText().toString()))
-                                    toaste_ut(DianZhu.this, "请输入店主QQ");
-                                else {
-                                    if (TextUtils.isEmpty(ed_sfz.getText().toString()))
-                                        toaste_ut(DianZhu.this, "请输入店主身份证");
-                                    else {
-                                        if (TextUtils.isEmpty(file1))
-                                            toaste_ut(DianZhu.this, "请上传身份证正面照");
-                                        else {
-                                            if (TextUtils.isEmpty(file2))
-                                                toaste_ut(DianZhu.this, "请上传身份证背面照");
-                                            else {
-                                                authen_RZ.jsonAuthor.setStore_master_uname(ed_xm.getText().toString());
-                                                authen_RZ.jsonAuthor.setStore_master_tel(ed_pho.getText().toString());
-                                                authen_RZ.jsonAuthor.setStore_master_qq(ed_qq.getText().toString());
-                                                authen_RZ.jsonAuthor.setStore_master_idcard(ed_sfz.getText().toString());
-                                                present.saveData(ed_xm.getText().toString(), ed_pho.getText().toString(), ed_qq.getText().toString(), ed_sfz.getText().toString(), file1, file2);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+        te_ok.setOnClickListener(v -> {
+            if (fastClick()) {
+                if (namestr.equals("3")) {
+                    if (!dzfra.isAdded()) {
+                        dzfra.show(getSupportFragmentManager(), "dzhu");
                     }
+                } else {
+                    String ownerName = ed_xm.getText().toString();
+                    if (TextUtils.isEmpty(ownerName)) {
+                        toast("请输入店主姓名");
+                        return;
+                    }
+                    String phone = ed_pho.getText().toString();
+                    if (!isMatchered(PHONE_PATTERN, phone)) {
+                        toast("请输入正确的店主手机号");
+                        return;
+                    }
+                    String qq = ed_qq.getText().toString();
+                    if (TextUtils.isEmpty(qq)) {
+                        toast("请输入店主QQ");
+                        return;
+                    }
+                    String identity = ed_sfz.getText().toString();
+                    if (TextUtils.isEmpty(identity)) {
+                        toast("请输入店主身份证");
+                        return;
+                    } else if (!StringUtils.isIdentity(identity)) {
+                        toast("身份证格式错误");
+                        return;
+                    }
+
+                    if (TextUtils.isEmpty(file1)) {
+                        toast("请上传身份证正面照");
+                        return;
+                    }
+                    if (TextUtils.isEmpty(file2)) {
+                        toast("请上传身份证背面照");
+                        return;
+                    }
+
+                    authen_RZ.jsonAuthor.setStore_master_uname(ownerName);
+                    authen_RZ.jsonAuthor.setStore_master_tel(phone);
+                    authen_RZ.jsonAuthor.setStore_master_qq(qq);
+                    authen_RZ.jsonAuthor.setStore_master_idcard(identity);
+                    present.saveData(ownerName, phone, qq, identity, file1, file2);
                 }
             }
         });
 
     }
+
 
     @Override
     protected int getLayout() {

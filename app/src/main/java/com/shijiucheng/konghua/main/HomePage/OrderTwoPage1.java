@@ -163,6 +163,8 @@ public class OrderTwoPage1 extends BaseActivity_konghua implements ordertwoAdapt
                                     , jso1.getString("order_status_text"), jso1.getString("order_amount_add")));
                         }
                         adapter.notifyDataSetChanged();
+
+                        //"order_status":"11",
                         if (list.size() <= 0) {
                             if (layout != null)
                                 layout.setVisibility(View.VISIBLE);
@@ -230,6 +232,7 @@ public class OrderTwoPage1 extends BaseActivity_konghua implements ordertwoAdapt
         cancelinter(call);
         paramsDataBean databean = new paramsDataBean();
         databean.setMsg(configParams.orderSYrefr);
+        databean.setMsg1(configParams.refreshhp);
         EventBus.getDefault().post(databean);
     }
 

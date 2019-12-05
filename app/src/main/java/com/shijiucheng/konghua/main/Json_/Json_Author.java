@@ -55,6 +55,23 @@ public class Json_Author {
     private String facade_photo3;
     private List<?> store_contact;
 
+    /**
+     * 能否支持开具发票 1：可以开具发票 ；2：不能开具发票
+     */
+    private int is_support_invoice;
+    /**
+     * 能否制作鲜花 1：可以制作鲜花；2：不能制作鲜花
+     */
+    private int is_support_flower;
+    /**
+     * 能否制作蛋糕 1:可以制作蛋糕 2：不能制作蛋糕
+     */
+    private int is_support_cake;
+    /**
+     * 能否制作绿植 1：可以制作绿植；2：不能制作绿植
+     */
+    private int is_support_green_plants;
+
     public String getStore_master_uname() {
         return store_master_uname;
     }
@@ -237,5 +254,37 @@ public class Json_Author {
 
     public void setStore_contact(List<?> store_contact) {
         this.store_contact = store_contact;
+    }
+
+    public int getIs_support_invoice() {
+        return is_support_invoice;
+    }
+
+    public void setIs_support_invoice(int is_support_invoice) {
+        this.is_support_invoice = is_support_invoice;
+    }
+
+    public int getIs_support_flower() {
+        return is_support_flower;
+    }
+
+    public void setIs_support_flower(int is_support_flower) {
+        this.is_support_flower = is_support_flower;
+    }
+
+    public int getIs_support_cake() {
+        return is_support_cake;
+    }
+
+    public void setIs_support_cake(int is_support_cake) {
+        this.is_support_cake = is_support_cake;
+    }
+
+    public int getIs_support_green_plants() {
+        return is_support_green_plants;
+    }
+
+    public void setIs_support_green_plants(int is_support_green_plants) {
+        this.is_support_green_plants = is_support_green_plants;
     }
 }

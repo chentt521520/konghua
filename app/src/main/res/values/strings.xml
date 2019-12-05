@@ -13,5 +13,86 @@
     <string name="permission_recode_audio_hint">没有此权限，无法开启这个功能，请开启权限。PERMISSION_RECORD_AUDIO</string>
     <string name="title_activity_order__pei_song">order_PeiSong</string>
 
+    <!--注册-->
+
+
+    <string name="shop_name">花店名称</string>
+    <string name="input_shop_name">请输入花店名称</string>
+    <string name="login_account">登录账号</string>
+    <string name="input_login_account">请输入登录账号，建议手机号、邮箱</string>
+    <string name="login_password">登录密码</string>
+    <string name="input_login_password">请输入6–20位字母+数字格式的登录密码</string>
+    <string name="confirm_password">确认密码</string>
+    <string name="input_confirm_password">请输入确认密码</string>
+    <string name="shop_owner_name">店主姓名</string>
+    <string name="input_shop_owner_name">请输入店主姓名</string>
+    <string name="shop_owner_phone">店主手机</string>
+    <string name="input_shop_owner_phone">请输入店主手机</string>
+    <string name="shop_owner_qq">店主QQ</string>
+    <string name="input_shop_owner_qq">请输入店主QQ</string>
+    <string name="invite_code">邀请码</string>
+    <string name="input_invite_code">请输入邀请码</string>
+    <string name="district">所在区域</string>
+    <string name="input_district">请选择所在区域</string>
+    <string name="address">街道地址</string>
+    <string name="input_address">请输入街道地址</string>
+    <string name="send_district">配送区域</string>
+    <string name="register">立即注册</string>
+    <string name="tip">*</string>
+
+
+    <!--抢单-->
+    <string name="grab_order">抢单</string>
+    <string name="request_price">报价</string>
+    <string name="default_option">默认</string>
+    <string name="delivery_time_asc">配送时间 &#8595;</string>
+    <string name="delivery_time_desc">配送时间 &#8593;</string>
+    <string name="order_amount_asc">订单金额 &#8595;</string>
+    <string name="order_amount_desc">订单金额 &#8593;</string>
+    <string name="grabbing_order">待抢单</string>
+    <string name="order_number">订单号:</string>
+    <string name="delivery_time">配送时间:</string>
+    <string name="expect_price">期望金额:</string>
+    <string name="delivery_address">配送地址:</string>
+    <string name="receiver_information">收货人信息:</string>
+
+    <!--忘记密码-->
+    <string name="find_password">找回密码</string>
+    <string name="shop_owner_phone_number">店主手机号</string>
+    <string name="input_shop_owner_phone_number">请输入店主手机号</string>
+    <string name="verify_code_msg">短信验证码</string>
+    <string name="input_verify_code_msg">请输入短信验证码</string>
+    <string name="reset_account">需要重置的账号</string>
+    <string name="new_login_password">新登录密码</string>
+    <string name="input_new_login_password">请输入密码</string>
+    <string name="gain_verify_code">获取验证码</string>
+    <string name="commit">提交</string>
+    <string name="please_select_store">请选择修改的店铺</string>
+
+
+    <!--忘记密码-->
+    <string name="please_input_phone_number">请输入手机号</string>
+    <string name="phone_number_is_error">手机号格式有误</string>
+    <string name="please_input_verify_code">请输入验证码</string>
+    <string name="please_gain_verify_code">请先获取短信验证码</string>
+    <string name="please_input_password">请输入密码</string>
+    <string name="password_must_contain_letter_digital">密码应由字母和数字组合而成</string>
+
+
+    <string name="follow_official_account">关注"花脉"公众号</string>
+    <string name="notification_send_ontime">微信通知抵达率100%</string>
+    <string name="avoid_miss_notification">有效避免订单通知遗漏</string>
+    <string name="wechat_scan">微信扫一扫</string>
+    <string name="save_album">长按保存至相册</string>
+
+
+    <!--店铺认证-->
+    <string name="name">姓&#160;&#160;&#160;&#160;名:</string>
+    <string name="shop_owner_phome">手机号:</string>
+    <string name="identity_number">身份证:</string>
+    <string name="identity_phone">店主身份证照:</string>
+    <string name="qq">Q&#160;&#160;&#160;&#160;&#160;&#160;Q:</string>
+    <string name="identity_tip">一经认证成功，不能更换！</string>
+    <string name="identity_phone_tip">证件照需为jpg、png、gif格式，且大小不超过5M，须同时拍到人脸与身份证上的信息且保证信息清晰可见！</string>
 
 </resources>

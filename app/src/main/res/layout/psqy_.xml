@@ -3,17 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/bai"
+    android:paddingStart="10dp"
+    android:paddingEnd="10dp"
+    android:paddingTop="5dp"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/psqy_itte"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_gravity="center_horizontal"
         android:textColor="@color/bai"
         android:gravity="center"
-        android:background="@drawable/biankuang_bianse"
-        android:text="ddddddd" />
+        android:background="@drawable/biankuang_bianse"/>
 
 
 </LinearLayout>

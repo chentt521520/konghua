@@ -55,8 +55,6 @@ public class banklistada extends RecyclerView.Adapter<banklistada.viewholder> {
             Glide.with(context).load(R.mipmap.boc).into(holder.tjyhkitImtj);
         else if (img.equals("cmb"))
             Glide.with(context).load(R.mipmap.cmb).into(holder.tjyhkitImtj);
-        else if (img.equals("cmb"))
-            Glide.with(context).load(R.mipmap.cmb).into(holder.tjyhkitImtj);
         else if (img.equals("cib"))
             Glide.with(context).load(R.mipmap.cib).into(holder.tjyhkitImtj);
         else if (img.equals("abc"))
@@ -71,6 +69,8 @@ public class banklistada extends RecyclerView.Adapter<banklistada.viewholder> {
             Glide.with(context).load(R.mipmap.ccb).into(holder.tjyhkitImtj);
         else if (img.equals("icbc"))
             Glide.with(context).load(R.mipmap.icbc).into(holder.tjyhkitImtj);
+        else if (img.equals("psbc"))//邮政银行
+            Glide.with(context).load(R.mipmap.psbc).into(holder.tjyhkitImtj);
         holder.tjyhkitTeyh.setText(data.bankname);
         holder.tjyhkitTeyhk.setText(data.bankNum);
         holder.tjyhkitTebji.setOnClickListener(new View.OnClickListener() {

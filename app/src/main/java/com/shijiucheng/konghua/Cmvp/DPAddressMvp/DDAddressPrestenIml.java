@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.shijiucheng.konghua.Cmvp.BaseCallbackListener;
 import com.shijiucheng.konghua.Cmvp.BaseResult;
+import com.shijiucheng.konghua.main.entity.CityInfo;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,13 +38,12 @@ public class DDAddressPrestenIml implements Contact.IdpAddressPrestent {
                     try {
                         JSONObject jsonObject = new JSONObject(result.getData());
                         JSONArray jsonArray = jsonObject.getJSONArray("region_list");
-                        List<String> list1 = new ArrayList<>(), list2 = new ArrayList<>();
+                        List<CityInfo> list = new ArrayList<>();
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                            list1.add(jsonObject1.getString("region_name"));
-                            list2.add(jsonObject1.getString("region_id"));
+                            list.add(new CityInfo(jsonObject1.getString("region_id"),jsonObject1.getString("region_name")));
                         }
-                        idpAddressView.getAddress(pos, list1, list2);
+                        idpAddressView.getAddress(pos, list);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

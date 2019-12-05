@@ -1,17 +1,21 @@
 package com.shijiucheng.konghua.main.HomePage;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
@@ -19,6 +23,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +47,7 @@ import com.shijiucheng.konghua.R;
 import com.shijiucheng.konghua.authen_RZ;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.configParams;
 import com.shijiucheng.konghua.com.shijiucheng.konghua.app.paramsDataBean;
+import com.shijiucheng.konghua.main.GrabOrderList;
 import com.shijiucheng.konghua.main.HomePage.viewPagerUtils.DensityUtil;
 import com.shijiucheng.konghua.main.HomePage.viewPagerUtils.InfiniteShufflingViewPager;
 import com.shijiucheng.konghua.main.HomePage.viewPagerUtils.pagerAdapter;
@@ -50,6 +56,12 @@ import com.shijiucheng.konghua.main.Newsdetails;
 import com.shijiucheng.konghua.main.per.payandget.per.tixian.sqtixian;
 import com.shijiucheng.konghua.main.per.payandget.per.tixian.tiXianlishi;
 import com.shijiucheng.konghua.main.per_.bank.banklist_guanli;
+import com.shijiucheng.konghua.main.widget.ChatView;
+import com.shijiucheng.konghua.main.widget.CusPopWindow;
+import com.shijiucheng.konghua.main.widget.NoticeDialog;
+import com.shijiucheng.konghua.main.widget.FloatViewClickListener;
+import com.shijiucheng.konghua.main.widget.QRCodeDialog;
+import com.shijiucheng.konghua.renzheng.ImageUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -145,10 +157,22 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
     List<orderdata> list = new ArrayList<>();
     com.shijiucheng.konghua.Cmvp.OrderSYMVPNew.orderrecyc.orderadapter orderadapter;
     String Phone = "", QQ = "";
-    int fristinit = 0, bannersize = 0, logincunt = 0;
+    int fristinit = 0;
+    int bannersize = 0;
 
     BadgeView bdv_jr, bdv_djd, bdv_qqzj, bdv_dps, bdv_dqs, bdv_sqtd, bdv_djs, bdv_ywc;
 
+    private View view;
+    private boolean isVisible;
+    /**
+     * 抢单悬浮框
+     */
+    private ChatView chatView;
+    private CusPopWindow popWindow;
+    private Bitmap bitmap;
+    private boolean isShow = true;
+    private NoticeDialog dialog;
+    private QRCodeDialog dialog1;
 
     @Override
     protected void AddView() {
@@ -171,6 +195,7 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
         bdv_djs.setTargetView(hpNewImbalance);
         bdv_ywc.setTargetView(hpNewImcomplete);
 
+        chatView = new ChatView(getActivity());
 
         EventBus.getDefault().register(this);
 
@@ -181,15 +206,20 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
         hpNewRecycorders.setAdapter(orderadapter);
 
         pagePresent.getData(getActivity(), retrofit_Single.getInstence().getOpenid(getActivity()));
+
+        bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.wechart_qrcode);
+
     }
 
     @Override
     protected void SetViewListen() {
 
+
     }
 
     @Override
     protected int getLayout() {
+        view = LayoutInflater.from(getContext()).inflate(R.layout.orderhomepage, null);
         return R.layout.orderhomepage;
     }
 
@@ -233,6 +263,18 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
             bdv_qqzj.setBadgeCount(Integer.valueOf(jsonObject.getString("amount_add_count")).intValue());
             bdv_dps.setBadgeCount(Integer.valueOf(jsonObject.getString("receive_non_delivery_count")).intValue());
             bdv_dqs.setBadgeCount(Integer.valueOf(jsonObject.getString("delivering_count")).intValue());
+
+            String showQRCode = jsonObject.getString("is_show_wechat_qrcode");
+            if (TextUtils.equals(showQRCode, "true") && isShow) {
+                showDialog();
+            }
+
+            String count = jsonObject.getString("order_pool_count");
+            if (TextUtils.equals(count, "0")) {
+                chatView.setmFloatViewText("抢单");
+            } else {
+                chatView.setmFloatViewText("抢单\n" + count);
+            }
 
             String x1 = jsonObject.getString("admin_cancel_count");
             String x2 = jsonObject.getString("cancel_count");
@@ -330,13 +372,13 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
     }
 
     /**
+     *
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void getmess(paramsDataBean data) {
         if (data != null) {
-            if (data.getMsg().equals(configParams.refreshhp)) {
+            if (TextUtils.equals(data.getMsg(), configParams.refreshhp) || TextUtils.equals(data.getMsg1(), configParams.refreshhp)) {
                 if (pagePresent != null) {
-                    System.out.println("hh11xx");
                     pagePresent.getData(getActivity(), retrofit_Single.getInstence().getOpenid(getActivity()));
                 }
                 return;
@@ -733,7 +775,7 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
                     public void onClick(View view) {
                         String id = textSwitcherAnimation.getTxtId();
                         if (!TextUtils.isEmpty(id)) {
-                            Intent i = i = new Intent(getActivity(), Newsdetails.class);
+                            Intent i = new Intent(getActivity(), Newsdetails.class);
                             i.putExtra("m_id", id);
                             getActivity().startActivity(i);
                             getActivity().overridePendingTransition(R.anim.push_left_in,
@@ -750,4 +792,174 @@ public class OrderHomePage extends BaseFragment_konghua implements BaseContact.b
     }
 
 
+    /**
+     * 显示悬浮窗
+     */
+    public void createFloatView() {
+        chatView.show();
+
+        chatView.setOnClickListener((FloatViewClickListener) view -> {
+            Intent intent = new Intent(getActivity(), GrabOrderList.class);
+            startActivity(intent);
+            getActivity().overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+        });
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        isVisible = isVisibleToUser;
+        if (isVisibleToUser) {
+            if (view != null)
+                createFloatView();
+        } else {
+            if (chatView != null)
+                chatView.hide();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (chatView != null)
+            chatView.hide();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (isVisible) {
+            createFloatView();
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
+
+//    private void showDialog() {
+//        chatView.hide();
+//
+//        int wi = org.xutils.common.util.DensityUtil.getScreenWidth() / 5;
+//        int he = org.xutils.common.util.DensityUtil.dip2px(550);
+//        View view = LayoutInflater.from(getActivity()).inflate(R.layout.item_pop_save_qrcode, null);
+//
+//        popWindow = new CusPopWindow.PopupWindowBuilder(getActivity())
+//                .setView(view)
+//                .enableBackgroundDark(true) //弹出popWindow时，背景是否变暗
+//                .setBgDarkAlpha(0.2f) // 控制亮度
+//                .size(wi * 4, he)
+//                .enableOutsideTouchableDissmiss(false)
+//                .create();
+//
+//        popWindow.showAtLocation(getActivity().getWindow().getDecorView(), Gravity.CENTER, 0, 0);
+//
+//        RelativeLayout water_mark = view.findViewById(R.id.water_mark);
+//        water_mark.setBackground(new WaterMarkBg(getActivity()));
+//        view.findViewById(R.id.pop_close).setOnClickListener(v -> {
+//            isShow = false;
+//            popWindow.dismiss();
+//        });
+//        view.findViewById(R.id.pop_to_wechart).setOnLongClickListener(v -> {
+//
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+//                    ActivityCompat.requestPermissions(getActivity(), PERMISSIONS_STORAGE, 1);
+//                } else {
+//                    boolean isSave = ImageUtils.saveImageToGallery(getActivity(), bitmap);
+//                    if (isSave) {
+//                        popWindow.dismiss();
+//                        isShow = false;
+//                        sussDialog();
+//                    } else {
+//                        toaste_ut(getActivity(), "保存失败");
+//                    }
+//                }
+//            }
+//            return true;
+//        });
+//
+//        //处理返回键
+//        view.setOnKeyListener((arg0, arg1, arg2) -> {
+//            if (arg1 == KeyEvent.KEYCODE_BACK) {
+//                //如果PopupWindow处于显示状态，则关闭PopupWindow
+//                if (popWindow.isShowing()) {
+//                    popWindow.dismiss();
+//                }
+//            }
+//            return false;
+//        });
+//
+//
+//    }
+
+    private void showDialog() {
+        dialog1 = new QRCodeDialog.Builder(getActivity())
+                .setDialogOnClick(new QRCodeDialog.onDismissListener() {
+                    @Override
+                    public void onDismissListener(View view) {
+                        isShow = false;
+                        dialog1.dismiss();
+                    }
+
+                    @Override
+                    public void onConfirmListener(View view) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                                ActivityCompat.requestPermissions(getActivity(), PERMISSIONS_STORAGE, 1);
+                            } else {
+                                boolean isSave = ImageUtils.saveImageToGallery(getActivity(), bitmap);
+                                if (isSave) {
+                                    dialog1.dismiss();
+                                    isShow = false;
+                                    sussDialog();
+                                } else {
+                                    toaste_ut(getActivity(), "保存失败");
+                                }
+                            }
+                        }
+                    }
+                }).create();
+        dialog1.show();
+        dialog1.setCanceledOnTouchOutside(false);
+    }
+
+    private void sussDialog() {
+        if (dialog == null) {
+            dialog = new NoticeDialog.Builder(getActivity())
+                    .setDialogOnClick(() -> dialog.dismiss())
+                    .setMsg("已经保存至你的相册\n请使用微信扫一扫，识别公众号二维码")
+                    .setBtn("确定")
+                    .create();
+        }
+        dialog.show();
+        dialog.setCanceledOnTouchOutside(false);
+    }
+
+    private String[] PERMISSIONS_STORAGE = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+
+        if (requestCode == 1) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                boolean isSave = ImageUtils.saveImageToGallery(getActivity(), bitmap);
+                if (isSave) {
+                    toaste_ut(getActivity(), "保存成功");
+                    popWindow.dismiss();
+                } else {
+                    toaste_ut(getActivity(), "保存失败");
+                }
+            } else {
+                toaste_ut(getActivity(), "请设置app允许读写权限，然后重试");
+            }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
 }

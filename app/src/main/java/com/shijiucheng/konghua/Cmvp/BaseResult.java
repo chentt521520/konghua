@@ -17,6 +17,14 @@ public class BaseResult {
         this.data = data;
     }
 
-    String code, data;
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    String code, data,msg;
 
 }

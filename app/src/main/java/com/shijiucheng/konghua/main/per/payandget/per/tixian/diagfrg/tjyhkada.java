@@ -54,26 +54,26 @@ public class tjyhkada extends RecyclerView.Adapter<tjyhkada.viewholder> {
 
         String img = data.getIcon().toLowerCase();
 
-        if (img.equals("boc"))
+        if (img.equals("boc"))//中国银行
             Glide.with(context).load(R.mipmap.boc).into(holder.tjyhkitImtj);
-        else if (img.equals("cmb"))
+        else if (img.equals("cmb"))//招商银行
             Glide.with(context).load(R.mipmap.cmb).into(holder.tjyhkitImtj);
-        else if (img.equals("cmb"))
-            Glide.with(context).load(R.mipmap.cmb).into(holder.tjyhkitImtj);
-        else if (img.equals("cib"))
+        else if (img.equals("cib"))//兴业银行
             Glide.with(context).load(R.mipmap.cib).into(holder.tjyhkitImtj);
-        else if (img.equals("abc"))
+        else if (img.equals("abc"))//农业银行
             Glide.with(context).load(R.mipmap.abc).into(holder.tjyhkitImtj);
-        else if (img.equals("cmbc"))
+        else if (img.equals("cmbc"))//民生银行
             Glide.with(context).load(R.mipmap.cmbc).into(holder.tjyhkitImtj);
-        else if (img.equals("bcm"))
+        else if (img.equals("bcm"))//交通银行
             Glide.with(context).load(R.mipmap.bcm).into(holder.tjyhkitImtj);
-        else if (img.equals("ceb"))
+        else if (img.equals("ceb"))//光大银行
             Glide.with(context).load(R.mipmap.ceb).into(holder.tjyhkitImtj);
-        else if (img.equals("ccb"))
+        else if (img.equals("ccb"))//建设银行
             Glide.with(context).load(R.mipmap.ccb).into(holder.tjyhkitImtj);
-        else if (img.equals("icbc"))
+        else if (img.equals("icbc"))//工商银行
             Glide.with(context).load(R.mipmap.icbc).into(holder.tjyhkitImtj);
+        else if (img.equals("psbc"))//邮政银行
+            Glide.with(context).load(R.mipmap.psbc).into(holder.tjyhkitImtj);
         holder.tjyhkitTeyh.setText(data.bankname);
         holder.tjyhkitTeyhk.setText(data.bankNum);
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {

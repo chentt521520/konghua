@@ -10,7 +10,8 @@
     <com.shijiucheng.konghua.com.shijiucheng.konghua.app.DaoHang_top
         android:id="@+id/orderddatails_dh"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="true" />
 
     <include
         android:id="@+id/orderdet_nodata"
@@ -28,6 +29,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:descendantFocusability="blocksDescendants"
             android:orientation="vertical">
 
             <TextView
@@ -37,76 +39,69 @@
                 android:layout_marginBottom="10dp"
                 android:background="#fdefb6"
                 android:lineSpacingExtra="5dp"
-                android:paddingLeft="12dp"
+                android:paddingStart="12dp"
                 android:paddingTop="5dp"
+                android:paddingEnd="12dp"
                 android:paddingBottom="5dp"
                 android:text="结算提示"
                 android:textColor="@color/zhu"
                 android:textSize="12sp"
                 android:visibility="gone" />
 
-
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="8dp">
 
                 <TextView
                     android:id="@+id/orderddatails_tebh"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="14dp"
-                    android:gravity="center_vertical"
                     android:text="订单编码：12313"
                     android:textColor="@color/hei"
                     android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/orderddatails_tezt"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginRight="20dp"
-                    android:gravity="center_vertical|end"
-                    android:paddingLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
                     android:text="已完成"
                     android:textColor="@color/zhu"
                     android:textSize="12sp" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/qianhei1" />
+            <View style="@style/ui_line" />
 
             <LinearLayout
                 android:id="@+id/orderddatails_linddxx"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="12dp">
 
                 <TextView
                     android:id="@+id/orderddatails_tejdsj"
                     android:layout_width="match_parent"
-                    android:layout_height="33dp"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical|bottom"
-                    android:paddingLeft="12dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:text="下单时间：2018888888"
                     android:textColor="@color/hei"
                     android:textSize="12sp"
                     android:visibility="gone" />
 
-
                 <TextView
                     android:id="@+id/orderddatails_tespprice"
                     android:layout_width="match_parent"
-                    android:layout_height="33dp"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="12dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:text="转单价格：2018888888"
                     android:textColor="@color/hei"
                     android:textSize="12sp" />
@@ -114,11 +109,8 @@
                 <TextView
                     android:id="@+id/orderddatails_tespprice1"
                     android:layout_width="match_parent"
-                    android:layout_height="33dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="12dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:text="结算金额：2018888888"
                     android:textColor="@color/hei"
                     android:textSize="12sp" />
@@ -127,9 +119,7 @@
                     android:id="@+id/orderddatails_tekkyy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="6dp"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="12dp"
+                    android:layout_marginTop="10dp"
                     android:text="* "
                     android:textColor="@color/hon"
                     android:textSize="12sp" />
@@ -138,44 +128,39 @@
 
             <View
                 android:id="@+id/orderddatails_hen1"
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:background="#ffdecb" />
+                style="@style/ui_orange_line" />
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:paddingStart="12dp"
+                android:layout_marginTop="10dp"
+                android:paddingEnd="12dp">
 
                 <ImageView
+                    android:id="@+id/delivery_icon"
                     android:layout_width="30dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="8dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
                     android:src="@mipmap/pslogtp" />
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="6dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="6dp"
+                    android:layout_toEndOf="@+id/delivery_icon"
                     android:text="配送信息"
                     android:textColor="@color/hei00"
                     android:textSize="14sp" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/orderddatails_tepsfz"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginRight="12dp"
-                    android:layout_marginBottom="2dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
                     android:background="@drawable/biankuangyuanjiaofz"
-                    android:gravity="center"
                     android:paddingLeft="5dp"
                     android:paddingTop="3dp"
                     android:paddingRight="5dp"
@@ -184,19 +169,19 @@
                     android:textColor="@color/hei"
                     android:textSize="12sp" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="33dp"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:paddingStart="12dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="12dp">
 
                 <TextView
                     android:id="@+id/orderddatails_tetime"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="12dp"
                     android:text="配送时间：2018年10月23"
                     android:textColor="@color/hei"
                     android:textSize="12sp" />
@@ -204,9 +189,10 @@
                 <TextView
                     android:id="@+id/orderddatails_tetime1"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center_vertical|bottom"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/orderddatails_tetime"
                     android:paddingLeft="12dp"
+                    android:paddingRight="12sp"
                     android:text="11-12dia"
                     android:textColor="@color/hei"
                     android:textSize="12sp"
@@ -216,27 +202,25 @@
                     android:id="@+id/orderddatails_teprice1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical|right|bottom"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="12sp"
-                    android:text="0"
+                    android:layout_alignParentEnd="true"
                     android:textColor="@color/hei"
                     android:textSize="12sp"
                     android:visibility="gone" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="12dp">
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="33dp"
+                    android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:paddingLeft="12dp"
                     android:text="配送地址："
                     android:textColor="@color/hei"
                     android:textSize="12sp" />
@@ -245,26 +229,25 @@
                     android:id="@+id/orderddatails_tedizhi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
                     android:gravity="center_vertical|bottom"
                     android:lineSpacingExtra="5dp"
-                    android:paddingRight="12sp"
-                    android:paddingBottom="6dp"
                     android:textColor="@color/hei"
                     android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="33dp"
-                android:layout_marginBottom="20dp"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="12dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
-                    android:paddingLeft="12dp"
                     android:text="    收货人："
                     android:textColor="@color/hei"
                     android:textSize="12sp" />
@@ -273,8 +256,6 @@
                     android:id="@+id/orderddatails_teshren"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:text="    收货人："
                     android:textColor="@color/hei"
                     android:textSize="12sp" />
 
@@ -282,35 +263,27 @@
                     android:id="@+id/orderddatails_tepho"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="12dp"
-                    android:text="137234234234"
+                    android:layout_marginStart="12dp"
                     android:textColor="@color/hei"
                     android:textSize="12sp" />
 
                 <ImageView
                     android:id="@+id/orderddatails_impho"
                     android:layout_width="15dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="8dp"
-                    android:src="@mipmap/ordertwopho"
-                    android:textColor="@color/hei"
-                    android:textSize="12sp" />
+                    android:layout_height="15dp"
+                    android:layout_marginStart="8dp" />
 
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:background="#ffdecb" />
+            <View style="@style/ui_orange_line" />
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginLeft="12dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp">
 
                 <TextView
                     android:id="@+id/orderddatails_tejuli"
@@ -322,54 +295,50 @@
                     android:textColor="@color/hei"
                     android:textSize="12sp" />
 
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="1" />
-
                 <ImageView
                     android:layout_width="15dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="15dp"
+                    android:layout_toStartOf="@+id/orderddatails_teditu"
                     android:src="@mipmap/dtpic" />
 
                 <TextView
                     android:id="@+id/orderddatails_teditu"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="12dp"
-                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
                     android:text="查看地图"
                     android:textColor="@color/zhu"
                     android:textSize="12sp" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:background="#ffdecb" />
+            <View style="@style/ui_orange_line" />
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/orderddatails_recyc"
+            <com.shijiucheng.konghua.main.widget.MyListView
+                android:id="@+id/orderddatails_listview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="50dp" />
+                android:divider="@null"/>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:background="#ffdecb" />
+            <!--            <android.support.v7.widget.RecyclerView-->
+            <!--                android:id="@+id/orderddatails_recyc"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"/>-->
+
+            <View style="@style/ui_orange_line" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp">
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="33dp"
+                    android:layout_height="wrap_content"
                     android:gravity="center_vertical|bottom"
-                    android:paddingLeft="12dp"
                     android:text="       贺卡："
                     android:textColor="@color/hei"
                     android:textSize="14sp" />
@@ -378,14 +347,8 @@
                     android:id="@+id/orderddatails_teheka"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="3dp"
                     android:layout_weight="1"
                     android:lineSpacingExtra="3dp"
-                    android:minHeight="40dp"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="12sp"
-                    android:paddingBottom="20dp"
-                    android:singleLine="false"
                     android:textColor="@color/hei"
                     android:textSize="12sp" />
 
@@ -393,10 +356,7 @@
                     android:id="@+id/orderddatails_thkfz"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginRight="12dp"
                     android:background="@drawable/biankuangyuanjiaofz"
-                    android:gravity="center"
                     android:paddingLeft="5dp"
                     android:paddingTop="3dp"
                     android:paddingRight="5dp"
@@ -410,14 +370,16 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp">
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="33dp"
-                    android:layout_marginBottom="6dp"
+                    android:layout_height="wrap_content"
                     android:gravity="center_vertical|bottom"
-                    android:paddingLeft="12dp"
                     android:text="       备注："
                     android:textColor="@color/hei"
                     android:textSize="14sp" />
@@ -426,34 +388,28 @@
                     android:id="@+id/orderddatails_tebeizu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
                     android:gravity="center_vertical|bottom"
-                    android:lineSpacingExtra="6dp"
-                    android:paddingLeft="12dp"
-                    android:paddingBottom="20dp"
+                    android:lineSpacingExtra="5dp"
                     android:textColor="@color/hei"
                     android:textSize="12sp" />
 
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:background="#ffdecb" />
+            <View style="@style/ui_orange_line" />
 
             <LinearLayout
                 android:id="@+id/orderddatails_bz"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_marginRight="6dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="33dp"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="12dp"
+                    android:layout_height="wrap_content"
                     android:text="包扎图片： "
                     android:textColor="@color/hei"
                     android:textSize="12sp" />
@@ -462,8 +418,7 @@
                     android:id="@+id/orderddatails_bz1"
                     android:layout_width="45dp"
                     android:layout_height="60dp"
-                    android:layout_marginRight="6dp"
-                    android:layout_marginBottom="6dp"
+                    android:layout_marginEnd="6dp"
                     android:orientation="vertical">
 
                     <ImageView
@@ -487,8 +442,8 @@
                 <LinearLayout
                     android:id="@+id/orderddatails_bz2"
                     android:layout_width="45dp"
-                    android:layout_height="70dp"
-                    android:layout_marginRight="6dp"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="6dp"
                     android:orientation="vertical">
 
                     <ImageView
@@ -513,7 +468,8 @@
                 <LinearLayout
                     android:id="@+id/orderddatails_bz3"
                     android:layout_width="45dp"
-                    android:layout_height="70dp"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="6dp"
                     android:orientation="vertical">
 
                     <ImageView
@@ -545,31 +501,32 @@
                 android:id="@+id/orderddatails_linqs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingStart="12dp"
+                android:paddingEnd="12sp">
 
                 <TextView
                     android:id="@+id/orderddatails_teqianshousj"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:gravity="center_vertical|bottom"
-                    android:paddingLeft="12dp"
-                    android:paddingRight="12sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
                     android:text="签收时间:  请选择签收时间"
                     android:textColor="@color/hei"
                     android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="33dp"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp">
 
                     <TextView
                         android:id="@+id/orderddatails_teqsr"
                         android:layout_width="wrap_content"
-                        android:layout_height="33dp"
-                        android:gravity="center_vertical|bottom"
-                        android:paddingLeft="12dp"
-                        android:paddingBottom="3dp"
+                        android:layout_height="wrap_content"
                         android:text="    签收人：  "
                         android:textColor="@color/hei"
                         android:textSize="12sp" />
@@ -579,7 +536,6 @@
                         android:layout_width="26dp"
                         android:layout_height="15dp"
                         android:layout_marginLeft="22dp"
-                        android:layout_marginTop="14dp"
                         android:layout_marginRight="5dp"
                         android:src="@mipmap/xzhong"
                         android:visibility="gone" />
@@ -587,9 +543,7 @@
                     <TextView
                         android:id="@+id/orderddatails_tebrqs1"
                         android:layout_width="wrap_content"
-                        android:layout_height="33dp"
-                        android:gravity="center_vertical|bottom"
-                        android:paddingBottom="3dp"
+                        android:layout_height="wrap_content"
                         android:text="本人签收"
                         android:textColor="@color/hei"
                         android:textSize="12sp" />
@@ -598,18 +552,13 @@
                         android:id="@+id/orderddatails_tetrqs"
                         android:layout_width="26dp"
                         android:layout_height="15dp"
-                        android:layout_marginLeft="22dp"
-                        android:layout_marginTop="14dp"
-                        android:layout_marginRight="5dp"
                         android:src="@mipmap/xzhong1"
                         android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/orderddatails_tetrqs1"
                         android:layout_width="wrap_content"
-                        android:layout_height="33dp"
-                        android:gravity="center_vertical|bottom"
-                        android:paddingBottom="3dp"
+                        android:layout_height="wrap_content"
                         android:text="他人签收"
                         android:textColor="@color/hei"
                         android:textSize="12sp" />
@@ -619,15 +568,13 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginRight="6dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="33dp"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="12dp"
+                        android:layout_height="wrap_content"
                         android:text="签收凭证： "
                         android:textColor="@color/hei"
                         android:textSize="12sp" />
@@ -636,8 +583,7 @@
                         android:id="@+id/orderddatails_fd1"
                         android:layout_width="45dp"
                         android:layout_height="60dp"
-                        android:layout_marginRight="6dp"
-                        android:layout_marginBottom="6dp"
+                        android:layout_marginEnd="6dp"
                         android:orientation="vertical">
 
                         <ImageView
@@ -661,8 +607,8 @@
                     <LinearLayout
                         android:id="@+id/orderddatails_fd2"
                         android:layout_width="45dp"
-                        android:layout_height="70dp"
-                        android:layout_marginRight="6dp"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="6dp"
                         android:orientation="vertical">
 
                         <ImageView
@@ -687,7 +633,8 @@
                     <LinearLayout
                         android:id="@+id/orderddatails_fd3"
                         android:layout_width="45dp"
-                        android:layout_height="70dp"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="6dp"
                         android:orientation="vertical">
 
                         <ImageView
@@ -712,9 +659,9 @@
                 <TextView
                     android:id="@+id/orderddatails_teqsts"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="11dp"
-                    android:layout_marginBottom="6dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
                     android:lineSpacingExtra="4dp"
                     android:text="*  请勿在没有送达的情况下点击签收，送达前确认签收产生的交易纠纷由接单方承担。"
                     android:textColor="#da0000"
@@ -732,28 +679,31 @@
                 android:id="@+id/orderddatails_linxdf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingStart="12dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="10dp">
 
                 <TextView
                     android:id="@+id/orderddatails_texdfname"
                     android:layout_width="match_parent"
-                    android:layout_height="33dp"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="12dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
                     android:text="下单方姓名:   "
                     android:textColor="@color/hei"
                     android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="33dp"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="33dp"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="12dp"
+                        android:layout_height="wrap_content"
                         android:text="下单方Q Q :   "
                         android:textColor="@color/hei"
                         android:textSize="12sp" />
@@ -761,34 +711,28 @@
                     <TextView
                         android:id="@+id/orderddatails_texdfqq"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:text="137234234234"
+                        android:layout_height="wrap_content"
                         android:textColor="@color/hei"
                         android:textSize="12sp" />
 
                     <ImageView
                         android:id="@+id/orderddatails_imxdfqq"
                         android:layout_width="20dp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="right"
-                        android:layout_marginLeft="8dp"
-                        android:src="@mipmap/qqtp"
-                        android:textColor="@color/hei"
-                        android:textSize="12sp" />
+                        android:layout_height="20dp"
+                        android:layout_marginStart="8dp"
+                        android:src="@mipmap/qqtp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="33dp"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="12dp"
+                        android:layout_height="wrap_content"
                         android:text="下单方电话： "
                         android:textColor="@color/hei"
                         android:textSize="12sp" />
@@ -796,18 +740,15 @@
                     <TextView
                         android:id="@+id/orderddatails_texdfpho"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:text="137234234234"
+                        android:layout_height="wrap_content"
                         android:textColor="@color/hei"
                         android:textSize="12sp" />
 
                     <ImageView
                         android:id="@+id/orderddatails_imxdfpho"
                         android:layout_width="15dp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="right"
-                        android:layout_marginLeft="8dp"
+                        android:layout_height="15dp"
+                        android:layout_marginStart="8dp"
                         android:src="@mipmap/ordertwopho"
                         android:textColor="@color/hei"
                         android:textSize="12sp" />
@@ -818,19 +759,19 @@
 
             <View
                 android:id="@+id/orderddatails_henxdf"
-                android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:background="#ffdecb" />
+                style="@style/ui_orange_line" />
 
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:gravity="center_vertical|bottom"
-                android:paddingLeft="12dp"
+                android:layout_height="wrap_content"
+                android:paddingStart="12dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="10dp"
                 android:text="操作历史详情"
                 android:textColor="@color/hei"
-                android:textSize="15dp" />
+                android:textSize="14sp" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/orderddatails_recyc1"
@@ -850,56 +791,54 @@
     <LinearLayout
         android:id="@+id/orderddatails_linbot"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:visibility="gone">
+        android:paddingStart="12dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="10dp"
+        android:visibility="visible">
 
         <View
             android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
 
         <TextView
             android:id="@+id/orderddatails_tecz1"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="12dp"
-            android:layout_marginBottom="5dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/biankuangyuanjiao"
-            android:gravity="center"
             android:paddingLeft="10dp"
+            android:paddingTop="5dp"
             android:paddingRight="10dp"
-            android:text="立即接单"
+            android:paddingBottom="5dp"
             android:textColor="@color/zhu"
             android:textSize="12sp" />
 
         <TextView
             android:id="@+id/orderddatails_tecz2"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="12dp"
-            android:layout_marginBottom="5dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:background="@drawable/biankuangyuanjiao1"
-            android:gravity="center"
             android:paddingLeft="10dp"
+            android:paddingTop="5dp"
             android:paddingRight="10dp"
-            android:text="立即接单"
+            android:paddingBottom="5dp"
             android:textColor="@color/hei"
             android:textSize="12sp" />
 
         <TextView
             android:id="@+id/orderddatails_tecz3"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
-            android:layout_marginBottom="5dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:background="@drawable/biankuangyuanjiao1"
-            android:gravity="center"
             android:paddingLeft="10dp"
+            android:paddingTop="5dp"
             android:paddingRight="10dp"
-            android:text="立即接单"
+            android:paddingBottom="5dp"
             android:textColor="@color/hei"
             android:textSize="12sp" />
 
